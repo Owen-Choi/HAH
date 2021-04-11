@@ -29,9 +29,11 @@ public class Full_Right_ShotPoint : MonoBehaviour
             EverySecond += Time.deltaTime;
             HoldingTime += Time.deltaTime;
 
-            if (Player_Stat.instance.stamina < 0 && !Zero_Stamina)
+            if (Player_Stat.instance.stamina < 0 && !Zero_Stamina && HoldingTime > 0.4f)
             {
                 Shoot();                                        //차징 중 스테미나 고갈로 놓치는 화살의 경우 연속사격이 적용되지 않는다
+                HoldingTime = 0f;
+                EverySecond = 0f;
                 increaseDamage = 0f;
                 increaseLaunchForce = 0f;
                 Zero_Stamina = true;

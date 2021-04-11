@@ -34,9 +34,11 @@ public class ShotPoint : MonoBehaviour
             HoldingTime += Time.deltaTime;
 
             Player_Stat.instance.stamina -= (0.03f * Player_Stat.instance.Decrease_Stamina_When_Bow_Charge);
-            if (Player_Stat.instance.stamina < 0 && !Zero_Stamina)          
+            if (Player_Stat.instance.stamina < 0 && !Zero_Stamina && HoldingTime > 0.4f)          
             {
                 Shoot();
+                HoldingTime = 0f;
+                EverySecond = 0f;
                 increaseDamage = 0f;
                 increaseLaunchForce = 0f;
                 Zero_Stamina = true;

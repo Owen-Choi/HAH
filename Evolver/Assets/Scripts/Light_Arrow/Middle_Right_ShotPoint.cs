@@ -29,9 +29,11 @@ public class Middle_Right_ShotPoint : MonoBehaviour
             EverySecond += Time.deltaTime;
             HoldingTime += Time.deltaTime;
 
-            if (Player_Stat.instance.stamina < 0 && !Zero_Stamina)
+            if (Player_Stat.instance.stamina < 0 && !Zero_Stamina && HoldingTime > 0.4f)
             {
                 Shoot();
+                HoldingTime = 0f;
+                EverySecond = 0f;
                 increaseDamage = 0f;
                 increaseLaunchForce = 0f;
                 Zero_Stamina = true;
