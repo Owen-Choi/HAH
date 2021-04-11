@@ -7,7 +7,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
     Vector3 shootDirection; public GameObject Silver_Arrow; 
     public float offset; bool Zero_Stamina; float EverySecond = 0f; float HoldingTime = 0f;
     float launchForce; public float increaseDamage; float increaseLaunchForce; bool ischanged; float chargingDamage; float TempDMG; float TempLF;  float MaxDist = 15f;
-    TrailRenderer tr;  public float DMGPercent;  float First;    float Second;  float DSC;
+    TrailRenderer tr;  public float DMGPercent;  float First;    float Second;  public float DSC;
     public bool concen; public bool Long_range;  public bool Penetrate;   //스킬 관련 변수들
     private void Start()
     {
@@ -68,7 +68,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && !Zero_Stamina)
         {
             if (HoldingTime < 0.4f)
-                Debug.Log("Blocked");
+                HoldingTime = 0;                        //block continued arrow shot when stamina is nearly zero
             else
             {
                 Second = Player_Stat.instance.stamina;
@@ -123,7 +123,19 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                 {
                     increaseDamage += Player_Stat.instance.damage;
                 }
-                hit.transform.GetComponent<Zombie_Stat>().Health -= increaseDamage * (float)(0.1f * DMGPercent);
+
+                if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent)
+                {
+                    if (Player_Stat.instance.is_Penetrate3)
+                        Player_Stat.instance.stamina += 20;
+
+                    hit.transform.GetComponent<Zombie_Stat>().Health -= (increaseDamage * (float)(0.1f * DMGPercent)) * (float)(Player_Stat.instance.criticalDamage / 100);
+                    CameraShake.instance.cameraShake();
+                }
+                else
+                {
+                    hit.transform.GetComponent<Zombie_Stat>().Health -= increaseDamage * (float)(0.1f * DMGPercent);
+                }
                 DMGPercent -= 1f;
             }
         }

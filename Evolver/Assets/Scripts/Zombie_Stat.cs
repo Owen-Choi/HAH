@@ -10,7 +10,7 @@ public class Zombie_Stat : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerAttack")
         {
-            if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)
+            if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)              //AbsolCrit는 100%의 확률로 크리티컬 히트를 제공한다.
             {
                 if (Player_Stat.instance.AbsolCrit)
                 {

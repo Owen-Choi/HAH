@@ -67,8 +67,9 @@ public class MultiShot : Skill_Manager
 
         if(this.Selected_Last)
         {
+            this.Selected = true;
             Player_Stat.instance.Charge_Damage_Plus += 2;
-            this.GetComponent<MultiShot>().enabled = false;
+            return;
             //크리티컬 확률 감소와 증가도 추가로 넣어줘야될 것 같다.
         }
     }
