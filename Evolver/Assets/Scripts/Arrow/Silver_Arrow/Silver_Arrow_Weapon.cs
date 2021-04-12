@@ -8,7 +8,7 @@ public class Silver_Arrow_Weapon : MonoBehaviour
     int behind = 5;
     int front = 7;
     public float offset = 0.0f;
-    SpriteRenderer sp;
+    public SpriteRenderer sp;
     public float increaseDamage = 0f; int MaxHoldingDamage;
     float launchForce; public float increaseLaunchForce = 0f; int MaxHoldingLaunchForce;
     public float HoldingTime; public float EverySecond;

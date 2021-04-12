@@ -53,12 +53,12 @@ public class Middle_Left_ShotPoint : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0) && !Zero_Stamina)
         {
-            if (increaseLaunchForce == 0)
-                ;
+            if (HoldingTime < 0.4f)
+                HoldingTime = 0f;
             else
             {
                 Shoot();
-              
+
                 HoldingTime = 0f;
                 EverySecond = 0f;
                 increaseDamage = 0f;
@@ -90,8 +90,8 @@ public class Middle_Left_ShotPoint : MonoBehaviour
         
 
         GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
-        newArrow.GetComponent<Arrow>().HoldDamage = increaseDamage;
-        newArrow.GetComponent<Arrow>().HoldLaunchForce = increaseLaunchForce;
+        newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
+        newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
         newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
            shootDirection.y * (launchForce + increaseLaunchForce));
        
@@ -115,10 +115,10 @@ public class Middle_Left_ShotPoint : MonoBehaviour
         shootDirection.y = (float)2f * Mathf.Sin(degree);
 
         
-
+        
         GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
-        newArrow.GetComponent<Arrow>().HoldDamage = tempDamage;
-        newArrow.GetComponent<Arrow>().HoldLaunchForce = increaseLaunchForce;
+        newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = tempDamage;
+        newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
         newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
            shootDirection.y * (launchForce + tempLaunchForce));
         

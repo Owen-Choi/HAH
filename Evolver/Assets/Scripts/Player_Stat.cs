@@ -10,6 +10,7 @@ public class Player_Stat : MonoBehaviour
     public float criticalDamage;        public float launchForce = 2f;  public float moveSpeed = 4f;  
     public static Player_Stat instance; public float speedForDash = 2f; public float SlowForCharge = 0.5f;  public bool AbsolCrit;
     public float damage;                public float Charge_Damage_Plus = 6f;   public bool is_Continued_Shot; public bool is_Continued_Shot2;  public bool is_Penetrate3;
+    public float Burn_Percent;
     
     void Awake()
     {

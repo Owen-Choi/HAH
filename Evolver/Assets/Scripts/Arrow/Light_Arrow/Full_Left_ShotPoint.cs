@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Full_Right_ShotPoint : MonoBehaviour
+public class Full_Left_ShotPoint : MonoBehaviour
 {
     public GameObject arrow;
     Vector3 shootDirection;
@@ -12,7 +12,7 @@ public class Full_Right_ShotPoint : MonoBehaviour
     {
         chargingDamage = Player_Stat.instance.Charge_Damage_Plus;
         launchForce = Player_Stat.instance.launchForce;
-       
+        
     }
 
     void Update()
@@ -31,7 +31,7 @@ public class Full_Right_ShotPoint : MonoBehaviour
 
             if (Player_Stat.instance.stamina < 0 && !Zero_Stamina && HoldingTime > 0.4f)
             {
-                Shoot();                                        //차징 중 스테미나 고갈로 놓치는 화살의 경우 연속사격이 적용되지 않는다
+                Shoot();
                 HoldingTime = 0f;
                 EverySecond = 0f;
                 increaseDamage = 0f;
@@ -54,12 +54,12 @@ public class Full_Right_ShotPoint : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0) && !Zero_Stamina)
         {
-            if (increaseLaunchForce == 0)
-                ;
+            if (HoldingTime < 0.4f)
+                HoldingTime = 0f;
             else
             {
                 Shoot();
-               
+
                 HoldingTime = 0f;
                 EverySecond = 0f;
                 increaseDamage = 0f;
@@ -78,26 +78,28 @@ public class Full_Right_ShotPoint : MonoBehaviour
         shootDirection = Input.mousePosition;
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
-        difference.Normalize();                
+        difference.Normalize();                 
 
 
-        float degree = Mathf.Atan2(difference.y, difference.x) - 0.4f;          
+        float degree = Mathf.Atan2(difference.y, difference.x) + 0.4f;          
         shootDirection.z = 0.0f;
         shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
         shootDirection = shootDirection - transform.position;
         shootDirection.x = (float)2f * Mathf.Cos(degree);                       
         shootDirection.y = (float)2f * Mathf.Sin(degree);
-        
-
        
 
+
+        
+
         GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
-        newArrow.GetComponent<Arrow>().HoldDamage = increaseDamage;
-        newArrow.GetComponent<Arrow>().HoldLaunchForce = increaseLaunchForce;
+        newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
+        newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
         newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
            shootDirection.y * (launchForce + increaseLaunchForce));
         
     }
+
     public void Shoot(float tempDamage, float tempLaunchForce)
     {
         shootDirection = Input.mousePosition;
@@ -105,18 +107,19 @@ public class Full_Right_ShotPoint : MonoBehaviour
 
         difference.Normalize();                 
 
-        float degree = Mathf.Atan2(difference.y, difference.x) - 0.4f;
+
+        float degree = Mathf.Atan2(difference.y, difference.x) + 0.4f;
         shootDirection.z = 0.0f;
         shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
-        shootDirection = shootDirection - transform.position;                  
+        shootDirection = shootDirection - transform.position;                   
         shootDirection.x = (float)2f * Mathf.Cos(degree);                       
         shootDirection.y = (float)2f * Mathf.Sin(degree);
 
-       
+        
 
         GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
-        newArrow.GetComponent<Arrow>().HoldDamage = tempDamage;
-        newArrow.GetComponent<Arrow>().HoldLaunchForce = increaseLaunchForce;
+        newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = tempDamage;
+        newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
         newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
            shootDirection.y * (launchForce + tempLaunchForce));
        

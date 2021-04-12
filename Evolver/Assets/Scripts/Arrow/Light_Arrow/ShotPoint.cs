@@ -59,8 +59,8 @@ public class ShotPoint : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0) && !Zero_Stamina)
         {
-            if (increaseLaunchForce == 0)
-                ;
+            if (HoldingTime < 0.4f)
+                HoldingTime = 0f;
             else
             {
                 Shoot();
@@ -70,7 +70,7 @@ public class ShotPoint : MonoBehaviour
                     TempLF = increaseLaunchForce;
                     StartCoroutine("ShootDelay");
                 }
-                else if(Player_Stat.instance.is_Continued_Shot && Player_Stat.instance.is_Continued_Shot2)
+                else if (Player_Stat.instance.is_Continued_Shot && Player_Stat.instance.is_Continued_Shot2)
                 {
                     TempDMG = increaseDamage;
                     TempLF = increaseLaunchForce;
@@ -114,8 +114,8 @@ public class ShotPoint : MonoBehaviour
         //shootDirection = shootDirection - transform.position;                
 
         GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
-        newArrow.GetComponent<Arrow>().HoldDamage = increaseDamage;
-        newArrow.GetComponent<Arrow>().HoldLaunchForce = increaseLaunchForce;
+        newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
+        newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
         newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
            shootDirection.y * (launchForce + increaseLaunchForce));
 
@@ -142,8 +142,8 @@ public class ShotPoint : MonoBehaviour
         //shootDirection = shootDirection - transform.position;                
 
         GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
-        newArrow.GetComponent<Arrow>().HoldDamage = tempDamage;
-        newArrow.GetComponent<Arrow>().HoldLaunchForce = increaseLaunchForce;
+        newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = tempDamage;
+        newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
         newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
            shootDirection.y * (launchForce + tempLaunchForce));
         isShoot = true;
