@@ -32,7 +32,6 @@ public class Got_Burned : MonoBehaviour                             //¿Ã Ω∫≈©∏≥∆
             this.anim.SetBool("is_Burned", false);
             sr.enabled = false;
             light.enabled = false;
-            
         }
     }
 }

@@ -29,6 +29,7 @@ public class Fire_Arrow_ShotPoint : MonoBehaviour
             EverySecond += Time.deltaTime;
             HoldingTime += Time.deltaTime;
 
+            Player_Stat.instance.stamina -= (3.5f * Player_Stat.instance.Decrease_Stamina_When_Bow_Charge) * Time.deltaTime;
             if (Player_Stat.instance.stamina < 0 && !Zero_Stamina && HoldingTime > 0.4f)
             {
                 Shoot();

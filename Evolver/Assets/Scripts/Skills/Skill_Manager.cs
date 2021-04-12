@@ -35,7 +35,7 @@ public class Skill_Manager : MonoBehaviour {
     public void Update()
     {
        
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))                    //Level 시스템이 구축 된다면 레벨업 후 변수의 변화를 받아 난수를 생성하여 결정할 예정
         {
             foreach (Skill_Manager sm in scripts)
             {

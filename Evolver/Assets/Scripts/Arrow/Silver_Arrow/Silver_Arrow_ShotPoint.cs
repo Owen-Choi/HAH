@@ -41,7 +41,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                 HoldingTime += Time.deltaTime;
             }
             First = Player_Stat.instance.stamina;
-            Player_Stat.instance.stamina -= (0.03f * DSC);
+            Player_Stat.instance.stamina -= (4.5f * DSC) * Time.deltaTime;                      //은화살은 스테미나 소모가 가장 크다.
             if (Player_Stat.instance.stamina < 0 && !Zero_Stamina && HoldingTime > 0.4f)
             {
                 Second = Player_Stat.instance.stamina;

@@ -134,6 +134,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                CameraShake.instance.cameraShake();
                 Player_Stat.instance.health -= (collision.gameObject.GetComponent<Zombie_Stat>().Power - Player_Stat.instance.armor);
                 Vector2 difference = (transform.position - collision.transform.position) * 1.2f;
                 transform.position = new Vector2(transform.position.x + difference.x, transform.position.y + difference.y);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Fire_Arrow : MonoBehaviour
 {
+   
     public float countTime;
     EdgeCollider2D EdgeCol;
     void Awake()
@@ -17,14 +18,20 @@ public class Fire_Arrow : MonoBehaviour
         if (other.tag == "Enemy")
         {
             EdgeCol.isTrigger = false;
-            Destroy(gameObject);
             if (Random.Range(0, 100) < Player_Stat.instance.Burn_Percent)
+            {
                 other.gameObject.layer = LayerMask.NameToLayer("Servant_Burned");
+            }
+            StartCoroutine("DestroyDelay");
         }
 
         if (other.tag == "border")
             Destroy(gameObject);
     }
 
-    
+   IEnumerator DestroyDelay()
+    {
+        yield return new WaitForSeconds(0.25f);
+        Destroy(gameObject);
+    }
 }
