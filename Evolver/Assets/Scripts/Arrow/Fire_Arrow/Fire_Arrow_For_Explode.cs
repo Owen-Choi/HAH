@@ -23,7 +23,7 @@ public class Fire_Arrow_For_Explode : MonoBehaviour
 
 
             if(Fire_Arrow_ShotPoint.GetComponent<Fire_Arrow_ShotPoint>().is_Explode && Random.Range(0,100) < Fire_Arrow_ShotPoint.GetComponent<Fire_Arrow_ShotPoint>().Explode_Percent)
-                Instantiate(Explode, this.transform.position, this.transform.rotation);                 //气惯 积己
+                Instantiate(Resources.Load("Explode"), this.transform.position, this.transform.rotation);                 //气惯 积己
 
             StartCoroutine("DestroyDelay");
         }
