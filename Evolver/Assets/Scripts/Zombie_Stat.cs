@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class Zombie_Stat : MonoBehaviour
 {
-    int i;
-    public bool is_burned;  public float Burning_DMG = 0.0005f;     //스킬 관련 변수들
+    int i;   int CurrentFireborne;
+    public bool is_burned;  public float Burning_DMG;     //스킬 관련 변수들
     public float Health;
     public float Power = 10f;
+
+    private void Start()
+    {
+        CurrentFireborne = 0;
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "PlayerAttack")                     //불화살의 경우는 Fire_Arrow의 스크립트에서 확률적으로 화상 상태로 레이어를 변경한다.
@@ -26,12 +31,24 @@ public class Zombie_Stat : MonoBehaviour
                 Health -= (Player_Stat.instance.damage + other.GetComponent<Arrow_Damage_System>().HoldDamage);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy" && this.gameObject.layer == LayerMask.NameToLayer("Master_Burned") && CurrentFireborne <= Player_Stat.instance.FireborneMax)
+        {
+            collision.gameObject.layer = LayerMask.NameToLayer("Master_Burned");
+            CurrentFireborne++;
+        }
+    }
+
     private void Update()
     {
+        Burning_DMG = Player_Stat.instance.Burning_DMG;
+
         if (Health <= 0)
             Destroy(gameObject);
 
-        if(this.gameObject.layer == LayerMask.NameToLayer("Servant_Burned"))
+        if(this.gameObject.layer == LayerMask.NameToLayer("Servant_Burned") || this.gameObject.layer == LayerMask.NameToLayer("Master_Burned")) //서번트, 혹은 마스터 상태의 화상인지 체크
         {
             if (Player_Stat.instance.isPyro && Random.Range(0, 100) <= 2)
             {
@@ -44,12 +61,14 @@ public class Zombie_Stat : MonoBehaviour
                 StartCoroutine("Burning_Time");
             }
         }
+
     }
 
     IEnumerator Burning_Time()
     {
         yield return StartCoroutine("Burning_Damage_Delay");
         is_burned = false;
+        CurrentFireborne = 0;                                                     //그을림 관련 변수를 0으로 초기화해서 다시 전염이 가능하도록 만들어주기
         this.gameObject.layer = LayerMask.NameToLayer("Enemy");                   //may cause some errors. if there are not only Enemy layers, this code should be changed 
     }
 

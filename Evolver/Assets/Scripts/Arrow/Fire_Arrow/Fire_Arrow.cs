@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fire_Arrow : MonoBehaviour
 {
-   
+    public bool isSoot;                             //그을림 스킬체크 변수
     public float countTime;
     EdgeCollider2D EdgeCol;
     void Awake()
@@ -20,7 +20,10 @@ public class Fire_Arrow : MonoBehaviour
             EdgeCol.isTrigger = false;
             if (Random.Range(0, 100) < Player_Stat.instance.Burn_Percent)
             {
-                other.gameObject.layer = LayerMask.NameToLayer("Servant_Burned");
+                if(isSoot)
+                    other.gameObject.layer = LayerMask.NameToLayer("Master_Burned");                //그을림 스킬체크 시 화상이 전염되는 Master_Burned 레이어로 바꿈 
+                else
+                    other.gameObject.layer = LayerMask.NameToLayer("Servant_Burned");
             }
             StartCoroutine("DestroyDelay");
         }
