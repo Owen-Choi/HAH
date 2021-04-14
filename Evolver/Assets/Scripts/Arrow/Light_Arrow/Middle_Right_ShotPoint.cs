@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Middle_Right_ShotPoint : MonoBehaviour
 {
+    public GameObject CritArrow;
     public GameObject arrow;
     Vector3 shootDirection;
     public float offset; bool Zero_Stamina; float EverySecond = 0f; float HoldingTime = 0f;
@@ -86,17 +87,29 @@ public class Middle_Right_ShotPoint : MonoBehaviour
         shootDirection = shootDirection - transform.position;
         shootDirection.x = (float)2f * Mathf.Cos(degree);                       
         shootDirection.y = (float)2f * Mathf.Sin(degree);
-        
 
 
-        
 
-        GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
-        newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
-        newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
-        newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
-           shootDirection.y * (launchForce + increaseLaunchForce));
-        
+
+
+        if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)
+        {
+            GameObject newArrow = Instantiate(CritArrow, transform.position, this.transform.rotation);
+            newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
+            newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
+            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
+               shootDirection.y * (launchForce + increaseLaunchForce));
+        }
+
+        else
+        {
+            GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
+            newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
+            newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
+            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
+               shootDirection.y * (launchForce + increaseLaunchForce));
+        }
+
     }
 
     public void Shoot(float tempDamage, float tempLaunchForce)
@@ -115,14 +128,26 @@ public class Middle_Right_ShotPoint : MonoBehaviour
         shootDirection.x = (float)2f * Mathf.Cos(degree);                       
         shootDirection.y = (float)2f * Mathf.Sin(degree);
 
-        
 
-        GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
-        newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = tempDamage;
-        newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
-        newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
-           shootDirection.y * (launchForce + tempLaunchForce));
-        
+
+        if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)
+        {
+            GameObject newArrow = Instantiate(CritArrow, transform.position, this.transform.rotation);
+            newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = tempDamage;
+            newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = tempLaunchForce;
+            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
+               shootDirection.y * (launchForce + tempLaunchForce));
+        }
+
+        else
+        {
+            GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
+            newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = tempDamage;
+            newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = tempLaunchForce;
+            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
+               shootDirection.y * (launchForce + tempLaunchForce));
+        }
+
     }
    
 }

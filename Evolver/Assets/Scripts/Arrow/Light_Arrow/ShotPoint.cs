@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShotPoint : MonoBehaviour
 {
+    public GameObject CritArrow;
     public GameObject arrow;
     Vector3 shootDirection;
     public float offset;    bool Zero_Stamina;  float EverySecond = 0f;  float HoldingTime = 0f;    public bool isShoot;        float time = 0f; //WindStep을 위한 변수   
@@ -110,15 +111,30 @@ public class ShotPoint : MonoBehaviour
         shootDirection = shootDirection - transform.position;                   
         shootDirection.x = (float)2f * Mathf.Cos(degree);                       
         shootDirection.y = (float)2f * Mathf.Sin(degree);
-        
+
         //shootDirection = shootDirection - transform.position;                
 
-        GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
-        newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
-        newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
-        newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
-           shootDirection.y * (launchForce + increaseLaunchForce));
+        if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)
+        {
+            if (Player_Stat.instance.AbsolCrit)
+            {
+                Player_Stat.instance.AbsolCrit = false;
+            }
+            GameObject newArrow = Instantiate(CritArrow, transform.position, this.transform.rotation);
+            newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
+            newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
+            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
+               shootDirection.y * (launchForce + increaseLaunchForce));
+        }
 
+        else
+        {
+            GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
+            newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
+            newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
+            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
+               shootDirection.y * (launchForce + increaseLaunchForce));
+        }
         isShoot = true;
         
     }
@@ -141,11 +157,27 @@ public class ShotPoint : MonoBehaviour
 
         //shootDirection = shootDirection - transform.position;                
 
-        GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
-        newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = tempDamage;
-        newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
-        newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
-           shootDirection.y * (launchForce + tempLaunchForce));
+        if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)
+        {
+            if (Player_Stat.instance.AbsolCrit)
+            {
+                StartCoroutine("AbsolCritDelay");
+            }
+            GameObject newArrow = Instantiate(CritArrow, transform.position, this.transform.rotation);
+            newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = tempDamage;
+            newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = tempLaunchForce;
+            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
+               shootDirection.y * (launchForce + tempLaunchForce));
+        }
+
+        else
+        {
+            GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
+            newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = tempDamage;
+            newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = tempLaunchForce;
+            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
+               shootDirection.y * (launchForce + tempLaunchForce));
+        }
         isShoot = true;
         
     }
@@ -185,5 +217,11 @@ public class ShotPoint : MonoBehaviour
             Full_Right_ShotPoint.GetComponent<Full_Right_ShotPoint>().Shoot(TempDMG, TempLF);
         }
         TempDMG = 0; TempLF = 0;
+    }
+
+    IEnumerator AbsolCritDelay()
+    {
+        yield return new WaitForSeconds(0.3f);
+        Player_Stat.instance.AbsolCrit = false;
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public float countTime;
     EdgeCollider2D EdgeCol;
     void Awake()
     {
@@ -17,13 +16,20 @@ public class Arrow : MonoBehaviour
         if (other.tag == "Enemy")
         {
             EdgeCol.isTrigger = false;
-            Destroy(gameObject);
+            //경량화살의 경우 격발 시점에서 크리티컬이 결정되어 화살의 오브젝트가 바뀐다. 일반 화살의 경우 크리티컬이 뜨지 않는다.
+            other.GetComponent<Zombie_Stat>().Health -= (Player_Stat.instance.damage + this.GetComponent<Arrow_Damage_System>().HoldDamage);
+
+            StartCoroutine("DestroyDelay");
         }
 
         if (other.tag == "border")
-            Destroy(gameObject);
+            StartCoroutine("DestroyDelay");
     }
 
-    
+    IEnumerator DestroyDelay()
+    {
+        yield return new WaitForSeconds(0.25f);
+        Destroy(gameObject);
+    }
 
 }

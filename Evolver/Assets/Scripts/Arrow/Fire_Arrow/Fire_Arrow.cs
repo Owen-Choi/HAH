@@ -18,6 +18,17 @@ public class Fire_Arrow : MonoBehaviour
         if (other.tag == "Enemy")
         {
             EdgeCol.isTrigger = false;
+            //치명타 적용시
+            if(Random.Range(0, 100) < Player_Stat.instance.criticalPercent)
+            {
+                other.GetComponent<Zombie_Stat>().Health -= ((Player_Stat.instance.damage + this.GetComponent<Arrow_Damage_System>().HoldDamage) * (float)(Player_Stat.instance.criticalDamage / 100));
+                CameraShake.instance.cameraShake();
+            }
+            //치명타 미적용시
+            else
+                other.GetComponent<Zombie_Stat>().Health -= (Player_Stat.instance.damage + this.GetComponent<Arrow_Damage_System>().HoldDamage);
+
+
             if (Random.Range(0, 100) < Player_Stat.instance.Burn_Percent)
             {
                 if(isSoot)
@@ -27,9 +38,8 @@ public class Fire_Arrow : MonoBehaviour
             }
             StartCoroutine("DestroyDelay");
         }
-
         if (other.tag == "border")
-            Destroy(gameObject);
+            StartCoroutine("DestroyDelay");
     }
 
    IEnumerator DestroyDelay()

@@ -14,7 +14,8 @@ public class Zombie_Stat : MonoBehaviour
     {
         CurrentFireborne = 0;
     }
-    void OnTriggerEnter2D(Collider2D other)
+
+   /* void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "PlayerAttack")                     //불화살의 경우는 Fire_Arrow의 스크립트에서 확률적으로 화상 상태로 레이어를 변경한다.
         {
@@ -30,7 +31,7 @@ public class Zombie_Stat : MonoBehaviour
             else
                 Health -= (Player_Stat.instance.damage + other.GetComponent<Arrow_Damage_System>().HoldDamage);
         }
-    }
+    }*/
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

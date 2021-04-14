@@ -18,7 +18,7 @@ public class Explode : MonoBehaviour
         if (other.tag == "Enemy" && !DamageOnce)
         {
             DamageOnce = true;
-            other.GetComponent<Zombie_Stat>().Health -= 50;                                 //sample code
+            other.GetComponent<Zombie_Stat>().Health -= (float)Player_Stat.instance.damage * 5 * Player_Stat.instance.Explode_Multiple_Damage;   //프리팹화 한 오브젝트의 스크립트에는 접근할 수 없다. 중요.
             other.gameObject.layer = LayerMask.NameToLayer("Servant_Burned");               //폭발에 접촉한 오브젝트는 무조건 화상을 입음
         }
     }
