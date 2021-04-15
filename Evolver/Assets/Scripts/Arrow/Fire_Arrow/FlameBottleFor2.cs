@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FlameBottleFor2 : MonoBehaviour
 {
-    bool isOnce;    Vector3 shootDirection; public Transform Player;    public GameObject FlameBottleFor3;
+    public bool isActive;
+    bool isOnce;    Vector3 shootDirection; public Transform FireArrowShotPoint;    public GameObject FlameBottleFor3; public GameObject FlameBottle;
     public GameObject FlameBottleFor1;
     public SpriteRenderer sr;
     public SpriteRenderer sr3;
@@ -21,7 +22,7 @@ public class FlameBottleFor2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isCreate && FlameBottleFor1.GetComponent<FlameBottleFor1>().sr.enabled && isOnce)
+        if (!isCreate && FlameBottleFor1.GetComponent<FlameBottleFor1>().sr.enabled && isOnce && isActive)
         {
             isOnce = false;                         //딱 한번만 조건문을 발동하기 위한 장치.
             sr.enabled = false;
@@ -36,7 +37,7 @@ public class FlameBottleFor2 : MonoBehaviour
 
         if(this.sr.enabled)
         {
-            if (Input.GetMouseButtonDown(1) && !sr3.enabled)
+            if (Input.GetMouseButtonDown(1) && !sr3.enabled || Input.GetMouseButtonDown(1) && !FlameBottleFor3.GetComponent<FlameBottleFor3>().isActive)
                 Throw();
         }
 
@@ -57,7 +58,7 @@ public class FlameBottleFor2 : MonoBehaviour
         shootDirection.x = (float)5f * Mathf.Cos(degree);
         shootDirection.y = (float)5f * Mathf.Sin(degree);
 
-        GameObject newBottle = Instantiate(Resources.Load("FlameBottle"), Player.position, Player.transform.rotation) as GameObject;
+        GameObject newBottle = Instantiate(FlameBottle, FireArrowShotPoint.position, FireArrowShotPoint.transform.rotation) as GameObject;
         newBottle.GetComponent<Rigidbody2D>().velocity = shootDirection;
         isCreate = false;
         isOnce = true;
