@@ -14,6 +14,7 @@ public class Long_Range_Shot : Skill_Manager
     {
         if(this.Selected_First)
         {
+            this.Selected = true;
             Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().Long_range = true;
             this.GetComponent<Long_Range_Shot>().enabled = false;
         }

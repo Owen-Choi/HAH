@@ -16,8 +16,9 @@ public class Concentration_Shot : Skill_Manager
         if (this.Selected_First)
         {
             // 시작 값 - 끝나는 값 만큼 데미지 +
+            this.Selected = true;
             Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().concen = true;
-            this.GetComponent<Concentration_Shot>().enabled = false;
+            return;
         }
     }
 }

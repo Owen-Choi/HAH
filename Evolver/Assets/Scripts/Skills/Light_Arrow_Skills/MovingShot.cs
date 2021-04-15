@@ -14,8 +14,10 @@ public class MovingShot : Skill_Manager         //차징 시 이동속도 감소 디버프가
     {
         if(this.Selected_First)
         {
+            this.Selected = true;
             Player_Stat.instance.SlowForCharge = 1f;
             this.GetComponent<MovingShot>().enabled = false;
+            return;
         }
     }
 }
