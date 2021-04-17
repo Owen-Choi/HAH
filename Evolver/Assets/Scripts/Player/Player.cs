@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private Inventory inventory;
     public static bool isHideWeapon;            bool isLight;
     Rigidbody2D rigid;                          bool isSilver;                     bool isFire;
     Animator anim;
@@ -16,7 +17,12 @@ public class Player : MonoBehaviour
     public float TimeForDamaged = 0.0f;
     public GameObject Enemy;
     protected Color color;
-   
+
+
+    private void Awake()
+    {
+        inventory = new Inventory();
+    }
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();

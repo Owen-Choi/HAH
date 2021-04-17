@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Zombie_Stat : MonoBehaviour
 {
+    private Item item;
     int i;   int CurrentFireborne;
     public bool is_burned;  public float Burning_DMG;     //스킬 관련 변수들
     public float Health;
@@ -12,6 +13,7 @@ public class Zombie_Stat : MonoBehaviour
 
     private void Start()
     {
+        item = new Item();
         CurrentFireborne = 0;
     }
 
@@ -79,6 +81,14 @@ public class Zombie_Stat : MonoBehaviour
         {
             yield return new WaitForSeconds(0.25f);
             Health -= Burning_DMG;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(Random.Range(0,100) < item.MutantSampleDropPercent)
+        {
+            Instantiate(Resources.Load("MutantSample"), this.transform.position, this.transform.rotation);      //생성 위치에 변동을 주고싶다면 이 코드를 수정하자.
         }
     }
 

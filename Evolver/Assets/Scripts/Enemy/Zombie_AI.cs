@@ -31,7 +31,7 @@ public class Zombie_AI : MonoBehaviour
         if (circle.collider.tag == "Player")
         {
             anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
-           anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
+            anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
             if (GetAngle() > 0f && GetAngle() <= 1.5f)
             {
 
@@ -52,9 +52,9 @@ public class Zombie_AI : MonoBehaviour
             {
                 if (GetAngle() >= 2.5f)         //좌측 상단 왼쪽을 향할 때
                 {
-                   anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
-                   anim.SetFloat("VerticalValue", 0f);
-                   anim.Play("Basic_Zombie_TypeB_Left_Walking");
+                    anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
+                    anim.SetFloat("VerticalValue", 0f);
+                    anim.Play("Basic_Zombie_TypeB_Left_Walking");
                 }
                 else
                 {
@@ -65,7 +65,7 @@ public class Zombie_AI : MonoBehaviour
             }
             else if (GetAngle() > -3.0f && GetAngle() <= -1.5f)
             {
-               
+
                 if (GetAngle() <= -2.5f)        //좌측 하단 왼쪽을 향할 때
                 {
                     anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
@@ -81,7 +81,7 @@ public class Zombie_AI : MonoBehaviour
             }
             else if (GetAngle() > -1.5f && GetAngle() <= 0f)
             {
-                
+
                 if (GetAngle() <= -0.5f)        //우측 하단 오른쪽을 향할 때
                 {
                     anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
@@ -98,6 +98,7 @@ public class Zombie_AI : MonoBehaviour
 
             this.transform.position = Vector3.MoveTowards(this.transform.position, Player.position, MoveSpeed * Time.deltaTime);
         }
+        else;
        
        
     }
