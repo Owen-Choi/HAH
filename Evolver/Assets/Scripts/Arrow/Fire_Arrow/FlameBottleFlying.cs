@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class FlameBottleFlying : MonoBehaviour
 {
-    
-    void Start()
+    void Update()
     {
-        
+        transform.Rotate(new Vector3(0f, 0f, 350f) * Time.deltaTime);
+
     }
 
   

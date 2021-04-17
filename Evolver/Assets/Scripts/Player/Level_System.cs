@@ -14,12 +14,7 @@ public class Level_System : MonoBehaviour
         instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (IsPauseTime)
-            IsPauseTime = false;
-    }
+   
 
     private void OnTriggerEnter2D(Collider2D other)
     {

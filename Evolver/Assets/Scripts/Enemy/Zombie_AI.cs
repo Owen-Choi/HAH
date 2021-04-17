@@ -99,27 +99,6 @@ public class Zombie_AI : MonoBehaviour
             this.transform.position = Vector3.MoveTowards(this.transform.position, Player.position, MoveSpeed * Time.deltaTime);
         }
        
-        /*
-            if (hMove > 0 || hMove < 0)
-                isHorizonMove = true;
-            else if (hMove == 0)
-                isHorizonMove = false;
-
-        if (anim.GetInteger("HorizonValue") != hMove)
-        {
-            anim.SetBool("isChange", true);
-            anim.SetInteger("HorizonValue", hMove);
-        }
-        else if (anim.GetInteger("VerticalValue") != vMove)
-        {
-            anim.SetBool("isChange", true);
-            anim.SetInteger("VerticalValue", vMove);
-        }
-        else
-        {
-            //anim.SetBool("isChange", false);
-        }
-        */
        
     }
 
@@ -128,8 +107,8 @@ public class Zombie_AI : MonoBehaviour
         Vector2 moveVec = isHorizonMove ? new Vector2(hMove, 0) : new Vector2(0, vMove);
         rigid.velocity = moveVec * MoveSpeed;
     }
-
-    void MoveAI()
+    // AI 개편 전 랜덤으로 움직이는 AI 함수
+    /*void MoveAI()
     {
 
         if(Random.Range(0,100) < 30)
@@ -147,7 +126,7 @@ public class Zombie_AI : MonoBehaviour
         }
         Invoke("MoveAI", term);
 
-    } 
+    } */       
 
         float GetAngle()
         {
