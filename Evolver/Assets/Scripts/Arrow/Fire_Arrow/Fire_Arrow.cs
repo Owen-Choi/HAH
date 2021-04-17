@@ -19,15 +19,19 @@ public class Fire_Arrow : MonoBehaviour
         {
             EdgeCol.isTrigger = false;
             //치명타 적용시
-            if(Random.Range(0, 100) < Player_Stat.instance.criticalPercent)
+            if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent)
             {
                 other.GetComponent<Zombie_Stat>().Health -= ((Player_Stat.instance.damage + this.GetComponent<Arrow_Damage_System>().HoldDamage) * (float)(Player_Stat.instance.criticalDamage / 100));
                 CameraShake.instance.cameraShake();
+                //치명타 전용 데미지 표시기 추가하기
             }
             //치명타 미적용시
             else
+            {
+                Vector3 vec = new Vector3(other.transform.position.x, other.transform.position.y + 0.772f, 0f);
                 other.GetComponent<Zombie_Stat>().Health -= (Player_Stat.instance.damage + this.GetComponent<Arrow_Damage_System>().HoldDamage);
-
+                Instantiate(Resources.Load("FloatingPoints"), vec, Quaternion.identity);
+            }
 
             if (Random.Range(0, 100) < Player_Stat.instance.Burn_Percent)
             {

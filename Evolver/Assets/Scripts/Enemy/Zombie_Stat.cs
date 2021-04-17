@@ -10,7 +10,6 @@ public class Zombie_Stat : MonoBehaviour
     public bool is_burned;  public float Burning_DMG;     //스킬 관련 변수들
     public float Health;
     public float Power = 10f;
-
     private void Start()
     {
         item = new Item();
