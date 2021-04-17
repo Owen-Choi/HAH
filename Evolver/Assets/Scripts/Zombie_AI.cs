@@ -25,50 +25,81 @@ public class Zombie_AI : MonoBehaviour
     {
 
         RaycastHit2D circle = Physics2D.CircleCast(transform.position, radius, Vector2.up, radius, LayerMask.GetMask("Player"));
-        Debug.Log(circle);
+
+        //애니메이터는 정말 이해가 안간다. 조건에 안맞을 때 강제로 애니메이션을 실행시켜줘야 실행이 된다;;
 
         if (circle.collider.tag == "Player")
         {
             anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
-            anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
-
-           
-            if (GetAngle() > 0 && GetAngle() <= 1.5f)
+           anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
+            if (GetAngle() > 0f && GetAngle() <= 1.5f)
             {
-                anim.SetBool("isChange", true);
-                anim.SetBool("isLeft", false);
-                anim.SetBool("isRight", true);
-                anim.SetBool("isBack", true);
+
+                if (GetAngle() <= 0.5f)         //우측 상단 오른쪽을 향할 때
+                {
+                    anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
+                    anim.SetFloat("VerticalValue", 0f);
+                    anim.Play("Basic_Zombie_TypeB_Right_Walking");
+                }
+                else
+                {
+                    anim.SetFloat("HorizonValue", 0f);
+                    anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
+                    anim.Play("Basic_Zombie_TypeB_Up_Walking");
+                }
+            }
+            else if (GetAngle() >= 1.5f && GetAngle() < 3.0f)
+            {
+                if (GetAngle() >= 2.5f)         //좌측 상단 왼쪽을 향할 때
+                {
+                   anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
+                   anim.SetFloat("VerticalValue", 0f);
+                   anim.Play("Basic_Zombie_TypeB_Left_Walking");
+                }
+                else
+                {
+                    anim.SetFloat("HorizonValue", 0f);
+                    anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
+                    anim.Play("Basic_Zombie_TypeB_Up_Walking");
+                }
+            }
+            else if (GetAngle() > -3.0f && GetAngle() <= -1.5f)
+            {
+               
+                if (GetAngle() <= -2.5f)        //좌측 하단 왼쪽을 향할 때
+                {
+                    anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
+                    anim.SetFloat("VerticalValue", 0f);
+                    anim.Play("Basic_Zombie_TypeB_Left_Walking");
+                }
+                else
+                {
+                    anim.SetFloat("HorizonValue", 0f);
+                    anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
+                    anim.Play("Basic_Zombie_TypeB_Down_Walking");
+                }
+            }
+            else if (GetAngle() > -1.5f && GetAngle() <= 0f)
+            {
                 
+                if (GetAngle() <= -0.5f)        //우측 하단 오른쪽을 향할 때
+                {
+                    anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
+                    anim.SetFloat("VerticalValue", 0f);
+                    anim.Play("Basic_Zombie_TypeB_Right_Walking");
+                }
+                else
+                {
+                    anim.SetFloat("HorizonValue", 0f);
+                    anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
+                    anim.Play("Basic_Zombie_TypeB_Down_Walking");
+                }
             }
 
-            if (GetAngle() >= 1.5f && GetAngle() < 3.0f)
-            {
-                anim.SetBool("isChange", true);
-                anim.SetBool("isRight", false);
-                anim.SetBool("isLeft", true);
-                anim.SetBool("isBack", true);
-            }
-
-            if (GetAngle() > -3.0f && GetAngle() <= -1.5f)
-            {
-                anim.SetBool("isChange", true);
-                anim.SetBool("isRight", false);
-                anim.SetBool("isLeft", true);
-                anim.SetBool("isBack", false);
-            }
-
-            if (GetAngle() > -1.5f && GetAngle() <= 0f)
-            {
-                anim.SetBool("isChange", true);
-                anim.SetBool("isLeft", false);
-                anim.SetBool("isRight", true);
-                anim.SetBool("isBack", false);
-            }
             this.transform.position = Vector3.MoveTowards(this.transform.position, Player.position, MoveSpeed * Time.deltaTime);
         }
        
-
+        /*
             if (hMove > 0 || hMove < 0)
                 isHorizonMove = true;
             else if (hMove == 0)
@@ -88,7 +119,7 @@ public class Zombie_AI : MonoBehaviour
         {
             //anim.SetBool("isChange", false);
         }
-
+        */
        
     }
 
@@ -124,9 +155,9 @@ public class Zombie_AI : MonoBehaviour
 
             difference.Normalize();
 
-
+            
             return degree = Mathf.Atan2(difference.y, difference.x);
-
+            
         }
 
     }
