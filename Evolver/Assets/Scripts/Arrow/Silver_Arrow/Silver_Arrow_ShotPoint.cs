@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Silver_Arrow_ShotPoint : MonoBehaviour
 { 
-    Vector3 shootDirection; public GameObject Silver_Arrow;     public GameObject Immed_Silver_Arrow; 
+    Vector3 shootDirection; Vector3 shootDirection2; public GameObject Silver_Arrow;     public GameObject Immed_Silver_Arrow; 
     public float offset; bool Zero_Stamina; float EverySecond = 0f; float HoldingTime = 0f;
     float launchForce; public float increaseDamage; float increaseLaunchForce; bool ischanged; float chargingDamage; public float TempDMG; float TempLF;  float MaxDist = 15f;
     TrailRenderer tr;  public float DMGPercent;  float First;    float Second;  public float DSC;
     public bool concen; public bool Long_range;  public bool Penetrate;   public int Immediate_Shot_Count;   public int ISCMax = 999; public bool ISCAble; //스킬 관련 변수들
-    public bool isImmed;
+    public bool isImmed;    float DMG;  float DMGForCrit;    GameObject temp;
     private void Start()
     {
         chargingDamage = Player_Stat.instance.Charge_Damage_Plus + 14;
@@ -123,6 +123,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
             RaycastHit2D hit = hits[i];
             if (hit.transform.tag == "Enemy" && DMGPercent > 0f)
             {
+                Vector3 vec = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, 0f);
                 if (Long_range && hit.distance > 4f)                    //장거리 사격 스킬체크시 increaseDamage에 플레이어 스탯의 데미지를 더해준다.
                 {
                     increaseDamage += Player_Stat.instance.damage;
@@ -133,12 +134,20 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                     if (Player_Stat.instance.is_Penetrate3)
                         Player_Stat.instance.stamina += 20;
                     Immediate_Shot_Count++;
-                    hit.transform.GetComponent<Zombie_Stat>().Health -= (increaseDamage * (float)(0.1f * DMGPercent)) * (float)(Player_Stat.instance.criticalDamage / 100);
+                    DMGForCrit = (increaseDamage * (float)(0.1f * DMGPercent)) * (float)(Player_Stat.instance.criticalDamage / 100);
+                    hit.transform.GetComponent<Zombie_Stat>().Health -= DMGForCrit;
+                    temp = Instantiate(Resources.Load("FloatingParentsForCrit"), vec, Quaternion.identity) as GameObject;
+                    temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMGForCrit.ToString();
                     CameraShake.instance.cameraShake();
                 }
                 else
                 {
-                    hit.transform.GetComponent<Zombie_Stat>().Health -= increaseDamage * (float)(0.1f * DMGPercent);
+                   
+                    DMG = increaseDamage * (float)(0.1f * DMGPercent);
+                    hit.transform.GetComponent<Zombie_Stat>().Health -= DMG;
+                    temp = Instantiate(Resources.Load("FloatingParents"), vec, Quaternion.identity) as GameObject;
+                    temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMG.ToString();
+
                 }
                 DMGPercent -= 1f;
             }
@@ -153,28 +162,28 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
 
     public void Shoot(float TempDMG)
     {
-        shootDirection = Input.mousePosition;
+        shootDirection2 = Input.mousePosition;
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
         difference.Normalize();
 
 
         float degree = Mathf.Atan2(difference.y, difference.x);
-        shootDirection.z = 0.0f;
-        shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
-        shootDirection = shootDirection - transform.position;
-        shootDirection.x = (float)2f * Mathf.Cos(degree);
-        shootDirection.y = (float)2f * Mathf.Sin(degree);
+        shootDirection2.z = 0.0f;
+        shootDirection2 = Camera.main.ScreenToWorldPoint(shootDirection2);
+        shootDirection2 = shootDirection2 - transform.position;
+        shootDirection2.x = (float)2f * Mathf.Cos(degree);
+        shootDirection2.y = (float)2f * Mathf.Sin(degree);
 
         GameObject new_Silver_Arrow = Instantiate(Immed_Silver_Arrow, transform.position, this.transform.rotation);
-        new_Silver_Arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (200f),
-           shootDirection.y * (200f));
+        new_Silver_Arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection2.x * (200f),
+           shootDirection2.y * (200f));
         RayAll(TempDMG);
     }
 
     void RayAll(float TempDMG)
     {
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, shootDirection, MaxDist);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, shootDirection2, MaxDist);
         DMGPercent = 10f;
         Immediate_Shot_Count = 0;
         for (int i = 0; i < hits.Length; i++)
@@ -182,6 +191,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
             RaycastHit2D hit = hits[i];
             if (hit.transform.tag == "Enemy" && DMGPercent > 0f)
             {
+                Vector3 vec = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, 0f);
                 if (Long_range && hit.distance > 4f)                    //장거리 사격 스킬체크시 increaseDamage에 플레이어 스탯의 데미지를 더해준다.
                 {
                     TempDMG += Player_Stat.instance.damage;
@@ -192,12 +202,18 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                     if (Player_Stat.instance.is_Penetrate3)
                         Player_Stat.instance.stamina += 20;
                         Immediate_Shot_Count++;
-                    hit.transform.GetComponent<Zombie_Stat>().Health -= (TempDMG * (float)(0.1f * DMGPercent)) * (float)(Player_Stat.instance.criticalDamage / 100);
+                    DMGForCrit = (TempDMG * (float)(0.1f * DMGPercent)) * (float)(Player_Stat.instance.criticalDamage / 100);
+                    hit.transform.GetComponent<Zombie_Stat>().Health -= DMGForCrit;
+                    temp = Instantiate(Resources.Load("FloatingParentsForCrit"), vec, Quaternion.identity) as GameObject;
+                    temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMGForCrit.ToString();
                     CameraShake.instance.cameraShake();
                 }
                 else
                 {
-                    hit.transform.GetComponent<Zombie_Stat>().Health -= TempDMG * (float)(0.1f * DMGPercent);
+                    DMG = TempDMG * (float)(0.1f * DMGPercent);
+                    hit.transform.GetComponent<Zombie_Stat>().Health -= DMG;
+                    temp = Instantiate(Resources.Load("FloatingParents"), vec, Quaternion.identity) as GameObject;
+                    temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMG.ToString();
                 }
                 DMGPercent -= 1f;
             }
