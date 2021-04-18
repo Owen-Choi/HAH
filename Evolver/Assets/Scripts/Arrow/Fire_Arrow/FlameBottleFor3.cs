@@ -7,33 +7,29 @@ public class FlameBottleFor3 : MonoBehaviour
     public bool isActive;
     bool isOnce; Vector3 shootDirection; public Transform Player; public GameObject FlameBottle;    public Transform FireArrowShotPoint;
     public GameObject FlameBottleFor2;
-    public SpriteRenderer sr;
-    bool isCreate;
+    public bool isCreate;
     void Start()
-    {
-        sr = GetComponent<SpriteRenderer>();
-        isCreate = false;
-        sr.enabled = false;
+    {     
+        isCreate = false;       
         isOnce = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isCreate && FlameBottleFor2.GetComponent<FlameBottleFor2>().sr.enabled && isOnce && isActive)
+        if (!isCreate && FlameBottleFor2.GetComponent<FlameBottleFor2>().isCreate && isOnce && isActive)
         {
             isOnce = false;                         //딱 한번만 조건문을 발동하기 위한 장치.
-            sr.enabled = false;
             StartCoroutine("CreateDelay");
         }
 
-        if (!FlameBottleFor2.GetComponent<FlameBottleFor2>().sr.enabled)
+        if (!FlameBottleFor2.GetComponent<FlameBottleFor2>().isCreate)
         {
             StopCoroutine("CreateDelay");
             isOnce = true;
         }
 
-        if (this.sr.enabled)
+        if (isCreate)
         {
             if (Input.GetMouseButtonDown(1))
                 Throw();
@@ -58,14 +54,19 @@ public class FlameBottleFor3 : MonoBehaviour
 
         GameObject newBottle = Instantiate(FlameBottle, FireArrowShotPoint.position, FireArrowShotPoint.transform.rotation) as GameObject;
         newBottle.GetComponent<Rigidbody2D>().velocity = shootDirection;
-        isCreate = false;
-        isOnce = true;
+        StartCoroutine("ChangeDelay");
     }
 
     IEnumerator CreateDelay()
     {
         yield return new WaitForSeconds(10f);
         isCreate = true;
-        sr.enabled = true;
+    }
+
+    IEnumerator ChangeDelay()
+    {
+        yield return new WaitForSeconds(0.25f);
+        isCreate = false;
+        isOnce = true;
     }
 }

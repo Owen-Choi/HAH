@@ -9,16 +9,11 @@ public class FlameBottleFor1 : MonoBehaviour
     bool isOnce;
     Vector3 shootDirection;
     public Transform Player;
-    public SpriteRenderer sr;
-    public SpriteRenderer sr2;
     public bool isCreate;
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
         isCreate = false;
-        sr.enabled = false;
         isOnce = true;
-        sr2 = FlameBottleFor2.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -27,14 +22,13 @@ public class FlameBottleFor1 : MonoBehaviour
         if (!isCreate && isOnce && isActive)
         {
             isOnce = false;
-            sr.enabled = false;
             StartCoroutine("CreateDelay");
         }
             
 
-        if(this.sr.enabled && isCreate)
+        if(isCreate)
         {
-            if (Input.GetMouseButtonDown(1) && !sr2.enabled || Input.GetMouseButtonDown(1) && !FlameBottleFor2.GetComponent<FlameBottleFor2>().isActive)
+            if (Input.GetMouseButtonDown(1) && !FlameBottleFor2.GetComponent<FlameBottleFor2>().isCreate || Input.GetMouseButtonDown(1) && !FlameBottleFor2.GetComponent<FlameBottleFor2>().isActive)
                 Throw();
         }
     }
@@ -64,6 +58,5 @@ public class FlameBottleFor1 : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
         isCreate = true;
-        sr.enabled = true;
     }
 }

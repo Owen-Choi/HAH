@@ -104,8 +104,8 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
         shootDirection.z = 0.0f;
         shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
         shootDirection = shootDirection - transform.position;
-        shootDirection.x = (float)2f * Mathf.Cos(degree);                       
-        shootDirection.y = (float)2f * Mathf.Sin(degree);
+        //shootDirection.x = (float)2f * Mathf.Cos(degree);                       
+        //shootDirection.y = (float)2f * Mathf.Sin(degree);
 
         GameObject new_Silver_Arrow = Instantiate(Silver_Arrow, transform.position, this.transform.rotation);
         new_Silver_Arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (200f),
@@ -162,16 +162,13 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
 
     public void Shoot(float TempDMG)
     {
-        shootDirection2 = Input.mousePosition;
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
         difference.Normalize();
 
 
         float degree = Mathf.Atan2(difference.y, difference.x);
-        shootDirection2.z = 0.0f;
-        shootDirection2 = Camera.main.ScreenToWorldPoint(shootDirection2);
-        shootDirection2 = shootDirection2 - transform.position;
+        shootDirection2 = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         shootDirection2.x = (float)2f * Mathf.Cos(degree);
         shootDirection2.y = (float)2f * Mathf.Sin(degree);
 

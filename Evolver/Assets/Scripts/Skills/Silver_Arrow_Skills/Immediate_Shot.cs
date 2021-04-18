@@ -49,7 +49,7 @@ public class Immediate_Shot : Skill_Manager
             {
                 if(FreeStamina) 
                 {
-                    CameraShake.instance.cameraShake();
+                    //CameraShake.instance.cameraShake();       카메라가 흔들리면서 마우스 좌표에 영향이 끼친다. 화살이 이상한 방향으로 튀어버림
                     Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().Shoot(Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().TempDMG);
                     Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().ISCAble = false;
                     Silver_Arrow_Weapon.GetComponent<Silver_Arrow_Weapon>().sp.color = OriginColor;
@@ -58,7 +58,7 @@ public class Immediate_Shot : Skill_Manager
                 {
                     if(Player_Stat.instance.stamina > 40f)
                     {
-                        CameraShake.instance.cameraShake();
+                        //CameraShake.instance.cameraShake();
                         Player_Stat.instance.stamina -= 40f;
                         Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().Shoot(Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().TempDMG);
                         Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().ISCAble = false;

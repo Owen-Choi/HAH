@@ -7,37 +7,31 @@ public class FlameBottleFor2 : MonoBehaviour
     public bool isActive;
     bool isOnce;    Vector3 shootDirection; public Transform FireArrowShotPoint;    public GameObject FlameBottleFor3; public GameObject FlameBottle;
     public GameObject FlameBottleFor1;
-    public SpriteRenderer sr;
-    public SpriteRenderer sr3;
-    bool isCreate;
+    public bool isCreate;
     void Start()
-    {
-        sr = GetComponent<SpriteRenderer>();
-        isCreate = false;
-        sr.enabled = false;
-        isOnce = true;
-        sr3 = FlameBottleFor3.GetComponent<SpriteRenderer>();
+    {      
+        isCreate = false;       
+        isOnce = true;    
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isCreate && FlameBottleFor1.GetComponent<FlameBottleFor1>().sr.enabled && isOnce && isActive)
+        if (!isCreate && FlameBottleFor1.GetComponent<FlameBottleFor1>().isCreate && isOnce && isActive)
         {
             isOnce = false;                         //딱 한번만 조건문을 발동하기 위한 장치.
-            sr.enabled = false;
             StartCoroutine("CreateDelay");
         }
 
-        if (!FlameBottleFor1.GetComponent<FlameBottleFor1>().sr.enabled)
+        if (!FlameBottleFor1.GetComponent<FlameBottleFor1>().isCreate)
         {
             StopCoroutine("CreateDelay");
             isOnce = true;
         }
 
-        if(this.sr.enabled)
+        if(isCreate)
         {
-            if (Input.GetMouseButtonDown(1) && !sr3.enabled || Input.GetMouseButtonDown(1) && !FlameBottleFor3.GetComponent<FlameBottleFor3>().isActive)
+            if (Input.GetMouseButtonDown(1) && !FlameBottleFor3.GetComponent<FlameBottleFor3>().isCreate || Input.GetMouseButtonDown(1) && !FlameBottleFor3.GetComponent<FlameBottleFor3>().isActive)
                 Throw();
         }
 
@@ -60,14 +54,19 @@ public class FlameBottleFor2 : MonoBehaviour
 
         GameObject newBottle = Instantiate(FlameBottle, FireArrowShotPoint.position, FireArrowShotPoint.transform.rotation) as GameObject;
         newBottle.GetComponent<Rigidbody2D>().velocity = shootDirection;
-        isCreate = false;
-        isOnce = true;
+        StartCoroutine("ChangeDelay");
     }
 
     IEnumerator CreateDelay()
     {
         yield return new WaitForSeconds(10f);
         isCreate = true;
-        sr.enabled = true;
+    }
+
+    IEnumerator ChangeDelay()
+    {
+        yield return new WaitForSeconds(0.25f);
+        isCreate = false;
+        isOnce = true;
     }
 }
