@@ -28,14 +28,14 @@ public class Zombie_AI : MonoBehaviour
 
         //애니메이터는 정말 이해가 안간다. 조건에 안맞을 때 강제로 애니메이션을 실행시켜줘야 실행이 된다;;
 
-        if (circle.collider.tag == "Player")
+        if (circle.collider.tag == "Player")                //여기도 오류뜨는거 잡아야 함.
         {
             anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
             anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
             if (GetAngle() > 0f && GetAngle() <= 1.5f)
             {
 
-                if (GetAngle() <= 0.5f)         //우측 상단 오른쪽을 향할 때
+                if (GetAngle() <= 0.75f)         //우측 상단 오른쪽을 향할 때
                 {
                     anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
                     anim.SetFloat("VerticalValue", 0f);
@@ -50,7 +50,7 @@ public class Zombie_AI : MonoBehaviour
             }
             else if (GetAngle() >= 1.5f && GetAngle() < 3.0f)
             {
-                if (GetAngle() >= 2.5f)         //좌측 상단 왼쪽을 향할 때
+                if (GetAngle() >= 2.25f)         //좌측 상단 왼쪽을 향할 때
                 {
                     anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
                     anim.SetFloat("VerticalValue", 0f);
@@ -66,7 +66,7 @@ public class Zombie_AI : MonoBehaviour
             else if (GetAngle() > -3.0f && GetAngle() <= -1.5f)
             {
 
-                if (GetAngle() <= -2.5f)        //좌측 하단 왼쪽을 향할 때
+                if (GetAngle() <= -2.25f)        //좌측 하단 왼쪽을 향할 때
                 {
                     anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
                     anim.SetFloat("VerticalValue", 0f);
@@ -82,7 +82,7 @@ public class Zombie_AI : MonoBehaviour
             else if (GetAngle() > -1.5f && GetAngle() <= 0f)
             {
 
-                if (GetAngle() <= -0.5f)        //우측 하단 오른쪽을 향할 때
+                if (GetAngle() <= -0.75f)        //우측 하단 오른쪽을 향할 때
                 {
                     anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
                     anim.SetFloat("VerticalValue", 0f);

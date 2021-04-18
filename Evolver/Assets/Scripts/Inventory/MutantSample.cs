@@ -17,6 +17,6 @@ public class MutantSample : MonoBehaviour
 
     private void OnDestroy()
     {
-        inventory.AddItem(new Item { itemtype = Item.ItemType.MutantSample, amount = 1 });          //문제 : 인벤토리 기본 생성자를 불러오면 로직 에러가 생김. 조치하기
+        BackPack.instance.addItem("MuntantSample", Random.Range(1, 3));
     }
 }

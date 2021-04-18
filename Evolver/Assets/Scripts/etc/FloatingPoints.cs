@@ -14,7 +14,7 @@ public class FloatingPoints : MonoBehaviour
     
     IEnumerator delay()
     {
-        yield return new WaitForSeconds(0.25f);
-        Destroy(gameObject);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);            //이렇게 하면 부모 오브젝트가 남는다
     }
 }
