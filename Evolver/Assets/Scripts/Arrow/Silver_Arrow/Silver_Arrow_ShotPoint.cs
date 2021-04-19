@@ -134,7 +134,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                     if (Player_Stat.instance.is_Penetrate3)
                         Player_Stat.instance.stamina += 20;
                     Immediate_Shot_Count++;
-                    DMGForCrit = (increaseDamage * (float)(0.1f * DMGPercent)) * (float)(Player_Stat.instance.criticalDamage / 100);
+                    DMGForCrit = ((increaseDamage + Player_Stat.instance.damage) * (float)(0.1f * DMGPercent)) * (float)(Player_Stat.instance.criticalDamage / 100);
                     hit.transform.GetComponent<Zombie_Stat>().Health -= DMGForCrit;
                     temp = Instantiate(Resources.Load("FloatingParentsForCrit"), vec, Quaternion.identity) as GameObject;
                     temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMGForCrit.ToString();
@@ -143,7 +143,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                 else
                 {
                    
-                    DMG = increaseDamage * (float)(0.1f * DMGPercent);
+                    DMG = (increaseDamage + Player_Stat.instance.damage) * (float)(0.1f * DMGPercent);
                     hit.transform.GetComponent<Zombie_Stat>().Health -= DMG;
                     temp = Instantiate(Resources.Load("FloatingParents"), vec, Quaternion.identity) as GameObject;
                     temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMG.ToString();
