@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MutantSample : MonoBehaviour
 {
-    public Inventory inventory;
-    public Item item;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player")
@@ -14,9 +12,9 @@ public class MutantSample : MonoBehaviour
             //오디오 플레이 추가 예정
         }
     }
-
-    private void OnDestroy()
+    //불가능한 구조 : 이 오브젝트가 프리팹화 된 시점부터 다른 클래스나 오브젝트로의 참조는 불가능한 것 같다.
+    /*private void OnDestroy()
     {
-        BackPack.instance.addItem("MuntantSample", Random.Range(1, 3));
-    }
+        BackPack.GetComponent<BackPack>().AddItem("MuntantSample", Random.Range(1, 4));
+    }*/
 }

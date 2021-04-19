@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class Zombie_Stat : MonoBehaviour
 {
-    private Item item;
+    public GameObject BackPack;
     int i;   int CurrentFireborne;
     public bool is_burned;  public float Burning_DMG;     //스킬 관련 변수들
     public float Health;
     public float Power = 10f;
     private void Start()
     {
-        item = new Item();
         CurrentFireborne = 0;
     }
 
@@ -85,7 +84,7 @@ public class Zombie_Stat : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(Random.Range(0,100) < item.MutantSampleDropPercent)
+        if(Random.Range(0,100) < BackPack.GetComponent<BackPack>().GetDropPercent("MutantSample"))  //백팩 -> 인벤토리 순으로 접근
         {
             Instantiate(Resources.Load("MutantSample"), this.transform.position, this.transform.rotation);      //생성 위치에 변동을 주고싶다면 이 코드를 수정하자.
         }
