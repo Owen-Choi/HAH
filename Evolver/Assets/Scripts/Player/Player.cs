@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public GameObject Enemy;
     protected Color color;
 
+    //맵핑중인 플레이어에게 적용되는 스크립트
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         color = spriteRenderer.color;
         Can_Dash = true;
+        StackRadioActive();
     }
 
 
@@ -104,6 +106,8 @@ public class Player : MonoBehaviour
 
         if (this.gameObject.layer == LayerMask.NameToLayer("Player_Damaged"))
             DamagedLayer();
+
+        
     }
 
     void FixedUpdate()
@@ -120,7 +124,12 @@ public class Player : MonoBehaviour
 
     }
 
-
+    void StackRadioActive()
+    {
+        Player_Stat.instance.RadioActive++;
+        Player_Stat.instance.healthMax--;                   //may cause some errors. pay attention to it
+        Invoke("StackRadioActive", 20f);
+    }
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_Stat : MonoBehaviour
 {
-    public float health; 
+    public float health;                public float healthMax;         public float RadioActive;   public float DefaultHealthMax;
     public float stamina;               public float armor;             float Max_Stamina = 100f;   float Stamina_recovery_speed = 5f;
     public float missPercent;           public float criticalPercent;   public float Decrease_Stamina_When_Bow_Charge = 5f;         //always check not only in script value, but also Insepctor value
     public float criticalDamage;        public float launchForce = 4f;  public float moveSpeed = 4f;  
@@ -16,10 +16,14 @@ public class Player_Stat : MonoBehaviour
     void Awake()
     {
         instance = this;
+        healthMax = 100f;
+        RadioActive = 0f;
+        DefaultHealthMax = 100f;
     }
 
     public void Update()
     {
+
        if(stamina < Max_Stamina)
         {
             stamina += Time.deltaTime * Stamina_recovery_speed; 
@@ -31,6 +35,11 @@ public class Player_Stat : MonoBehaviour
        if(stamina < 0)
         {
             stamina = 0;
+        }
+
+       if(health >= healthMax)
+        {
+            health = healthMax;
         }
     }
 }

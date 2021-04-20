@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Zombie_Stat : MonoBehaviour
 {
+    bool isOnce;
     Rigidbody2D rigid;
     public GameObject BackPack;
     int i;   int CurrentFireborne;
@@ -51,15 +52,18 @@ public class Zombie_Stat : MonoBehaviour
         if (Health <= 0)
             Destroy(gameObject);
 
+        //화상 레이어에서 해당 조건문을 계속 체크해서 무조건 즉사되는 버그 발생, isOnce 변수 추가해서 조치
         if(this.gameObject.layer == LayerMask.NameToLayer("Servant_Burned") || this.gameObject.layer == LayerMask.NameToLayer("Master_Burned")) //서번트, 혹은 마스터 상태의 화상인지 체크
         {
-            if (Player_Stat.instance.isPyro && Random.Range(0, 100) <= 2)
+            if (Player_Stat.instance.isPyro && Random.Range(0, 100) <= 2 && !isOnce)
             {
                 CameraShake.instance.cameraShake();
                 Destroy(this.gameObject);
+                isOnce = false; 
             }
             else
             {
+                isOnce = true;
                 is_burned = true;                                                       //this line makes Burning Animation Start by Changing its value
                 StartCoroutine("Burning_Time");
             }
