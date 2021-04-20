@@ -23,12 +23,12 @@ public class Zombie_AI : MonoBehaviour
 
     void Update()
     {
-
-        RaycastHit2D circle = Physics2D.CircleCast(transform.position, radius, Vector2.up, radius, LayerMask.GetMask("Player"));
+        int layerMask = (1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("Player_Damaged") | (1 << LayerMask.NameToLayer("Player_Dash")));
+        RaycastHit2D circle = Physics2D.CircleCast(transform.position, radius, Vector2.up, radius, layerMask);
 
         //애니메이터는 정말 이해가 안간다. 조건에 안맞을 때 강제로 애니메이션을 실행시켜줘야 실행이 된다;;
-
-        if (circle.collider.tag == "Player")                //여기도 오류뜨는거 잡아야 함.
+        
+        if (circle.collider)
         {
             anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
             anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
@@ -99,6 +99,7 @@ public class Zombie_AI : MonoBehaviour
             this.transform.position = Vector3.MoveTowards(this.transform.position, Player.position, MoveSpeed * Time.deltaTime);
         }
         else;
+        
        
        
     }
@@ -140,5 +141,6 @@ public class Zombie_AI : MonoBehaviour
             
         }
 
-    }
+
+}
 

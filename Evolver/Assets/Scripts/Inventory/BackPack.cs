@@ -32,11 +32,19 @@ public class BackPack : MonoBehaviour
         return inventory.getItemCount(name);
     }
 
+    public void SetItemCount(string name, int count)
+    {
+        inventory.SetItemCount(name, count);
+    }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.H))
         {
-            Debug.Log(GetItemCount("MutantSample"));
+            if(GetItemCount("Bandage") != 0)
+            {
+                Player_Stat.instance.health += 15;
+                SetItemCount("Bandage", 1);
+            }
         }
     }
 }

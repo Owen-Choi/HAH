@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Zombie_Stat : MonoBehaviour
 {
+    Rigidbody2D rigid;
     public GameObject BackPack;
     int i;   int CurrentFireborne;
     public bool is_burned;  public float Burning_DMG;     //스킬 관련 변수들
@@ -13,6 +14,7 @@ public class Zombie_Stat : MonoBehaviour
     private void Start()
     {
         CurrentFireborne = 0;
+        rigid = GetComponent<Rigidbody2D>();
     }
 
    /* void OnTriggerEnter2D(Collider2D other)
@@ -82,8 +84,11 @@ public class Zombie_Stat : MonoBehaviour
         }
     }
 
+
     private void OnDestroy()
     {
+        Instantiate(Resources.Load("Zombie_Dead"), this.transform.position, this.transform.rotation);
+
         if(Random.Range(0,100) < BackPack.GetComponent<BackPack>().GetDropPercent("MutantSample"))  //백팩 -> 인벤토리 순으로 접근
         {
             Instantiate(Resources.Load("MutantSample"), this.transform.position, this.transform.rotation);      //생성 위치에 변동을 주고싶다면 이 코드를 수정하자.

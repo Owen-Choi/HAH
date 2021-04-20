@@ -90,4 +90,23 @@ public class Inventory
                 break;
         }
     }
+
+    public void SetItemCount(string name, int count)
+    {
+        switch (name)
+        {
+            case "MutantSample":
+                this.MutantSample -= count;
+                break;
+            case "Bandage":
+                this.Bandage -= count;
+                break;
+            case "Medikit":
+                this.Medikit -= count;
+                break;
+            case "StaminaPotion":
+                this.StaminaPotion -= count;
+                break;
+        }
+    }
 }
