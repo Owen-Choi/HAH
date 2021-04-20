@@ -32,9 +32,9 @@ public class BackPack : MonoBehaviour
         return inventory.getItemCount(name);
     }
 
-    public void SetItemCount(string name, int count)
+    public void UseItem(string name, int count)
     {
-        inventory.SetItemCount(name, count);
+        inventory.UseItem(name, count);
     }
     private void Update()
     {
@@ -43,7 +43,7 @@ public class BackPack : MonoBehaviour
             if(GetItemCount("Bandage") != 0)
             {
                 Player_Stat.instance.health += 15;
-                SetItemCount("Bandage", 1);
+                UseItem("Bandage", 1);
             }
         }
     }
