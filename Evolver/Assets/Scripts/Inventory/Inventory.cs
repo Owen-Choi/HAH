@@ -19,6 +19,8 @@ public class Inventory
         Bandage = 3;
         Medikit = 1;
         StaminaPotion = 3;
+        Food = 5;
+        Water = 7;
     }
    
     public int getItemCount(string name)
