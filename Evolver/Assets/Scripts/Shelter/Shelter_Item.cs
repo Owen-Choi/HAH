@@ -21,6 +21,10 @@ public class Shelter_Item : MonoBehaviour
         {
             DisplayKitchen.gameObject.SetActive(true);
         }
+        if (other.gameObject.tag == "Player" && this.gameObject.layer == LayerMask.NameToLayer("Map"))
+        {
+            DisplayKitchen.gameObject.SetActive(true);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -32,6 +36,10 @@ public class Shelter_Item : MonoBehaviour
         }
         //Kitchen 오브젝트가 플레이어와의 충돌이 끝났다면
         if (other.gameObject.tag == "Player" && this.gameObject.layer == LayerMask.NameToLayer("kitchen"))
+        {
+            DisplayKitchen.gameObject.SetActive(false);
+        }
+        if (other.gameObject.tag == "Player" && this.gameObject.layer == LayerMask.NameToLayer("Map"))
         {
             DisplayKitchen.gameObject.SetActive(false);
         }

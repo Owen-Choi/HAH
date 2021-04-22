@@ -11,7 +11,7 @@ public class PlayerInShelter : MonoBehaviour
     bool isHorizonMove;
     SpriteRenderer spriteRenderer;
 
-
+    //플레이어가 쉘터에 있을 때 이 스크립트가 적용된다.
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -63,5 +63,5 @@ public class PlayerInShelter : MonoBehaviour
         Vector2 moveVec = isHorizonMove ? new Vector2(h, 0) : new Vector2(0, v);
         rigid.velocity = moveVec * Player_Stat.instance.moveSpeed;
     }
-
+    //씬 전환 체크는 플레이어가 아니라 오브젝트에서 하는걸로    
 }
