@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public static bool isHideWeapon;            bool isLight;
@@ -27,6 +26,7 @@ public class Player : MonoBehaviour
         color = spriteRenderer.color;
         Can_Dash = true;
         StackRadioActive();
+        StackThirsty();
     }
 
 
@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
     {
         Player_Stat.instance.RadioActive++;
         Player_Stat.instance.healthMax--;                   //may cause some errors. pay attention to it
-        Invoke("StackRadioActive", 20f);                    //20초마다 방사능 스택 추가
+        Invoke("StackRadioActive", 40f);                    //20초마다 방사능 스택 추가 #수정 : 20초는 너무 빠르다. 40초로 수정
     }
     void OnCollisionStay2D(Collision2D collision)
     {
