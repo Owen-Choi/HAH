@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Shelter_Item : MonoBehaviour
 {
-    Canvas DisplayLab;
+    public Canvas DisplayLab;
     Canvas DisplaySkill;
     Canvas DisplayMap;
     Canvas Displaysurvive;
