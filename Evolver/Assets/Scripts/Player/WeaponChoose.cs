@@ -9,6 +9,8 @@ public class WeaponChoose : MonoBehaviour
     public GameObject Follower1; public GameObject Follower2; public GameObject Follower3;
     void Awake()
     {
+        isSilver = true;
+
         if(isLight)
         {
             SilverArrow.gameObject.SetActive(false);
