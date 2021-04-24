@@ -5,7 +5,6 @@ using UnityEngine;
 public class Skill_Manager : MonoBehaviour {
     public int Skill_Num;
     public bool Selected;
-    
     public bool Selected_First;
     public bool Selected_Second;
     public bool Selected_Last;
@@ -32,15 +31,5 @@ public class Skill_Manager : MonoBehaviour {
         Selected = true;
     }
 
-    public void Update()
-    {
-       
-        if (Input.GetKeyDown(KeyCode.E))                    //Level 시스템이 구축 된다면 레벨업 후 변수의 변화를 받아 난수를 생성하여 결정할 예정
-        {
-            foreach (Skill_Manager sm in scripts)
-            {
-                
-            }
-        }
-    }
+   
 }
