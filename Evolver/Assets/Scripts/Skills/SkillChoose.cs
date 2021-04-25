@@ -1,24 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class SkillChoose : MonoBehaviour
 {
+    public Canvas SkillChooseUI;
+    public GameObject Skill_Manager;
     public GameObject WeaponChoose;
-    Skill_Manager One;   public int frame1;
-    Skill_Manager Two;   public int frame2;
-    Skill_Manager Three; public int frame3;
-    public Skill_Manager[] scripts;
     public int MinValue;   public int MaxValue;
-
-    private void Awake()
-    {
-
-        scripts = GetComponents<Skill_Manager>();
-        One = GetComponent<Skill_Manager>();
-        Two = GetComponent<Skill_Manager>();
-        Three = GetComponent<Skill_Manager>();
-    }
+    Skill_Manager One;
+    Skill_Manager Two;
+    Skill_Manager Three;
     private void Start()
     {
         if (WeaponChoose.GetComponent<WeaponChoose>().isLight)
@@ -36,25 +28,27 @@ public class SkillChoose : MonoBehaviour
             MinValue = 25;
             MaxValue = 29;
         }
+
+        SkillChooseUI.gameObject.SetActive(false);
     }
 
-   /* void Update()
+    private void Update()
     {
         if (Player_Stat.instance.isLevelUp)
         {
             Player_Stat.instance.isLevelUp = false;
-            frame1 = Random.Range(MinValue, MaxValue + 1);
-            do
-                frame2 = Random.Range(MinValue, MaxValue + 1);
-            while (frame2 == frame1);
+            StartCoroutine("LevelUpDelay");
+            One = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(1);
+            Two = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(2);
+            Three = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(3);
 
-            do
-                frame3 = Random.Range(MinValue, MaxValue + 1);
-            while (frame3 == frame2 || frame3 == frame1);
-
+            SkillChooseUI.gameObject.SetActive(true);
+            //Obj.transform.GetChild(0).GetComponent<Image>.overrideSprite =  Resources.Load<Sprite>("Textures/sprite"); 예제 코드
         }
-    }*/
-
-   
+    }
+    IEnumerator LevelUpDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+    }
 }
 
