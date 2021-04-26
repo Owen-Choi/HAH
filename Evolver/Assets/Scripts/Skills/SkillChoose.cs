@@ -58,6 +58,53 @@ public class SkillChoose : MonoBehaviour
             SkillChooseUI.transform.GetChild(2).GetComponent<Image>().overrideSprite = sprites[Three.Sprite_Num];
         }
     }
+
+    // # Selected 된 스킬은 아예 목록에 뜨지 않는다. 따라서 Selected_First, Second, Last 이 세가지만 신경쓰면 됨.
+    public void FirstButtonPressed()
+    {
+        if (!One.Selected_First)
+            One.Selected_First = true;
+        else if (!One.Selected_Second)
+            One.Selected_Second = true;
+        else if (!One.Selected_Last)
+            One.Selected_Last = true;
+        else
+        {
+            Debug.Log("Error in One");
+            return;             //오류 상황에 대비하는 코드 생각해보기
+        }
+        SkillChooseUI.gameObject.SetActive(false);
+    }
+    public void SecondButtonPressed()
+    {
+        if (!Two.Selected_First)
+            Two.Selected_First = true;
+        else if (!Two.Selected_Second)
+            Two.Selected_Second = true;
+        else if (!Two.Selected_Last)
+            Two.Selected_Last = true;
+        else
+        {
+            Debug.Log("Error in Two");
+            return;
+        }
+        SkillChooseUI.gameObject.SetActive(false);
+    }
+    public void ThirdButtonPressed()
+    {
+        if (!Three.Selected_First)
+            Three.Selected_First = true;
+        else if (!Three.Selected_Second)
+            Three.Selected_Second = true;
+        else if (!Three.Selected_Last)
+            Three.Selected_Last = true;
+        else
+        {
+            Debug.Log("Error in Three");
+            return;
+        }
+        SkillChooseUI.gameObject.SetActive(false);
+    }
     IEnumerator LevelUpDelay()
     {
         yield return new WaitForSeconds(0.5f);
