@@ -8,9 +8,11 @@ public class WindStep : Skill_Manager
     bool ForOne = false;
     public float time = 0f;
     public GameObject ShotPoint;
+    
     void Start()
     {
         this.Skill_Num = 6;
+        this.Sprite_Num = 4;
     }
 
 

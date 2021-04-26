@@ -8,6 +8,7 @@ public class Dash_Master : Skill_Manager
     private void Start()
     {
         this.Skill_Num = 17;
+        this.Sprite_Num = 15;
     }
 
     private void Update()

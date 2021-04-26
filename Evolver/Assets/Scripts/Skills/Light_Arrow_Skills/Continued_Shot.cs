@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Continued_Shot : Skill_Manager
 {
-
+    bool DMG_Decrease_Once;
+    bool DMG_Decrease_Twice;
     private void Start()
     {
+        this.DMG_Decrease_Once = false;
+        this.DMG_Decrease_Twice = false;
         this.Skill_Num = 4;
         //this.Selected_First = false;
         //this.Selected_Second = false;
         //this.Selected_Last = false;
+        this.Sprite_Num = 7;
     }
 
    
@@ -18,12 +22,22 @@ public class Continued_Shot : Skill_Manager
     void Update()
     {
         if (this.Selected_First)
-            //공격력 감소 구현해야함
+            if (!DMG_Decrease_Once)
+            {
+                DMG_Decrease_Once = true;
+                this.Sprite_Num = 8;
+                //공격력 감소 구현해야함
+            }
             Player_Stat.instance.is_Continued_Shot = true;
 
         if (this.Selected_Second)
-            //공격력 감소 구현해야함
-            Player_Stat.instance.is_Continued_Shot2 = true;
+            if (!DMG_Decrease_Twice)
+            {
+                this.Sprite_Num = 9;
+                DMG_Decrease_Twice = true;
+                //공격력 감소 구현해야함
+            }
+        Player_Stat.instance.is_Continued_Shot2 = true;
 
         if(this.Selected_Last)
         {

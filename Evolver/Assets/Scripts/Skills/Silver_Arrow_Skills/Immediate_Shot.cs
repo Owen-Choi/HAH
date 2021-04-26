@@ -15,6 +15,7 @@ public class Immediate_Shot : Skill_Manager
         ChangeTwice = false;
         Redcolor.r = 255f; Redcolor.g = 0f;   Redcolor.b = 0f;   Redcolor.a = 255f;
         OriginColor.r = 255f;   OriginColor.g = 255f;   OriginColor.b = 255f;   OriginColor.a = 255f;
+        this.Sprite_Num = 20;
     }
 
     // Update is called once per frame
@@ -24,6 +25,7 @@ public class Immediate_Shot : Skill_Manager
         if (Selected_First && !ChangeOnce)
         {
             ChangeOnce = true;
+            this.Sprite_Num = 21;
             Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().isImmed = true;
             Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().ISCMax = 4;
         }
@@ -31,6 +33,7 @@ public class Immediate_Shot : Skill_Manager
         if(Selected_Second && !ChangeTwice)
         {
             ChangeTwice = true;
+            this.Sprite_Num = 22;
             Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().ISCMax = 3;
         }
 

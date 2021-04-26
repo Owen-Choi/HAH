@@ -8,6 +8,7 @@ public class Feather : Skill_Manager        //회피율의 10%만큼 이동속도 증가, 최
     private void Start()
     {
         this.Skill_Num = 2;
+        this.Sprite_Num = 5;
     }
 
 

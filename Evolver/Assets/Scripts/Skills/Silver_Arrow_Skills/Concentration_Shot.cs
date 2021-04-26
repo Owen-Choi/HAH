@@ -9,6 +9,7 @@ public class Concentration_Shot : Skill_Manager
     private void Start()
     {
         this.Skill_Num = 15;
+        this.Sprite_Num = 14;
     }
 
     private void Update()

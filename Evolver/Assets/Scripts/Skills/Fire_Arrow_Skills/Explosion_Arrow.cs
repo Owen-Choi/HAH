@@ -14,6 +14,7 @@ public class Explosion_Arrow : Skill_Manager
         ChangeOnce = false;
         ChangeTwice = false;
         ChangeLast = false;
+        this.Sprite_Num = 27;
     }
 
     // Update is called once per frame
@@ -24,6 +25,7 @@ public class Explosion_Arrow : Skill_Manager
             Fire_Arrow_ShotPoint.GetComponent<Fire_Arrow_ShotPoint>().is_Explode = true;
             Player_Stat.instance.criticalPercent -= 10;
             ChangeOnce = true;
+            this.Sprite_Num = 28;
         }
 
         if(this.Selected_Second && !ChangeTwice)
@@ -31,6 +33,7 @@ public class Explosion_Arrow : Skill_Manager
             ChangeTwice = true;
             Player_Stat.instance.criticalPercent += 5;
             Player_Stat.instance.Explode_Multiple_Damage += 0.5f;
+            this.Sprite_Num = 29;
         }
 
         if(this.Selected_Last && !ChangeLast)

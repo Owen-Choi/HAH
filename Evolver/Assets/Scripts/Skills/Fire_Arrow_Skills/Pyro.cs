@@ -9,6 +9,7 @@ public class Pyro : Skill_Manager
     void Start()
     {
         this.Skill_Num = 26;
+        this.Sprite_Num = 26;
     }
 
     // Update is called once per frame

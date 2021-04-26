@@ -10,6 +10,7 @@ public class YeokMaShal : Skill_Manager
     void Start()
     {
         this.Skill_Num = 5;
+        this.Sprite_Num = 6;
     }
 
     // Update is called once per frame

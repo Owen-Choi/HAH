@@ -12,6 +12,7 @@ public class Soot : Skill_Manager
         ChangeOnce = false;
         ChangeTwice = false;
         ChangeLast = false;
+        this.Sprite_Num = 32;                       //+랑 ++가 준비가 안되었다고 한다. 준비 되면 수정할 것.
     }
 
    

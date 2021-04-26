@@ -11,6 +11,7 @@ public class FlameBottle : Skill_Manager
     void Start()
     {
         this.Skill_Num = 29;
+        this.Sprite_Num = 33;
     }
 
    
@@ -20,12 +21,14 @@ public class FlameBottle : Skill_Manager
         {
             ChangeOnce = true;
             FlameBottleFor1.GetComponent<FlameBottleFor1>().isActive = true;
+            this.Sprite_Num = 34;
         }
 
         if (this.Selected_Second && !ChangeTwice)
         {
             ChangeTwice = true;
             FlameBottleFor2.GetComponent<FlameBottleFor2>().isActive = true;
+            this.Sprite_Num = 35;
         }
 
         if (this.Selected_Last)

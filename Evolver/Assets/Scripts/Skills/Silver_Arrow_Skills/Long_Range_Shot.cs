@@ -8,6 +8,7 @@ public class Long_Range_Shot : Skill_Manager
     private void Start()
     {
         this.Skill_Num = 16;
+        this.Sprite_Num = 13;
     }
 
     private void Update()
