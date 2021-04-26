@@ -10,6 +10,7 @@ public class BackPack : MonoBehaviour
     {
         //인벤토리 최초 생성
         inventory = new Inventory();
+        DontDestroyOnLoad(this);
     }
 
     public void AddItem(string name, int count)

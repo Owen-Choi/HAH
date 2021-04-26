@@ -34,6 +34,7 @@ public class SkillChoose : MonoBehaviour
         SkillChooseUI.gameObject.SetActive(false);
 
         sprites = Resources.LoadAll<Sprite>("SkillIcon");
+        DontDestroyOnLoad(this);
     }
 
     private void Update()

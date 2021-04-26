@@ -13,6 +13,7 @@ public class Skill_Manager : MonoBehaviour {
     private void Start()
     {
         scripts = this.GetComponents<Skill_Manager>();
+        DontDestroyOnLoad(this);
     }
 
     public virtual void Activate_First()
