@@ -8,6 +8,7 @@ public class SkillMaintain : MonoBehaviour
     Skill_Manager tempSkillManager;
     public Skill_Manager[] SkillList;
     bool forOne;    int StructIndex;
+    bool forTwo;
 
     public struct SkillContainer
     {
@@ -25,6 +26,7 @@ public class SkillMaintain : MonoBehaviour
         container = new SkillContainer[30];
         SkillList =  GameObject.Find("Skill_System_In_Shelter").GetComponents<Skill_Manager>();
         forOne = false;
+        forTwo = false;
     }
 
     private void Update()
@@ -81,7 +83,30 @@ public class SkillMaintain : MonoBehaviour
                     continue;
                 }
                 StructIndex++;
-                Debug.Log(StructIndex);
+                
+            }
+        }
+
+        if(SceneManager.GetActiveScene().name != "Shelter" && !forTwo)
+        {
+            StructIndex = 0;
+            forTwo = true;
+            foreach (Skill_Manager sm in GameObject.Find("Skill_System_In_Map").GetComponent<Skill_Manager>().scripts)
+            {
+                if (container[StructIndex].Selected_Second)
+                {
+                    sm.Selected_First = true;
+                    sm.Selected_Second = true;
+                }
+                else if (container[StructIndex].Selected)
+                {
+                    sm.Selected = true;
+                }
+                else if (container[StructIndex].Selected_First)
+                {
+                    sm.Selected_First = true;
+                }
+                StructIndex++;
             }
         }
     }
