@@ -4,43 +4,85 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SkillMaintain : MonoBehaviour
 {
-    public GameObject CopyShelter;
+   
     Skill_Manager tempSkillManager;
     public Skill_Manager[] SkillList;
-    bool forOne;
+    bool forOne;    int StructIndex;
+
+    public struct SkillContainer
+    {
+        public bool Selected_First;
+        public bool Selected_Second;
+        public bool Selected_Last;
+        public bool Selected;
+    }
+
+    SkillContainer[] container;
+
     void Start()
     {
-
-        // # 어쨌든 Find를 사용하는 코드도 결국엔 참조다. 씬이 전환될 경우 참조가 모두 풀려버린다. 다른 방법을 찾아야 한다. 
         DontDestroyOnLoad(this);
-       if(SceneManager.GetActiveScene().name == "Shelter")              //현재 씬이 쉘터라면
-       {
-            CopyShelter = GameObject.Find("Skill_System_In_Shelter");   //쉘터의 스킬 시스템 오브젝트를 복사함
-            //SkillList = CopyShelter.GetComponent<Skill_Manager>().scripts.Clone();
-            /*SkillIndex = new int[SkillList.Length];
-            foreach (Skill_Manager sm in SkillList)*/   //일단 보류
-       }
-       else                                                             //현재 씬이 쉘터가 아니라면
-       {
-            GameObject.Find("Skill_System_In_Map").GetComponent<Skill_Manager>().scripts = SkillList;       
-            Debug.Log("bye there");
-       }
+        container = new SkillContainer[30];
+        SkillList =  GameObject.Find("Skill_System_In_Shelter").GetComponents<Skill_Manager>();
         forOne = false;
     }
 
     private void Update()
     {
-        if(Player_Stat.instance.isLevelUp)
-        {
-            CopyShelter = GameObject.Find("Skill_System_In_Shelter");
-            SkillList = CopyShelter.GetComponent<Skill_Manager>().scripts;
-        }
-
-        if(SceneManager.GetActiveScene().name != "Shelter" && !forOne)
+        if (!forOne)
         {
             forOne = true;
-            GameObject.Find("Skill_System_In_Map").GetComponent<Skill_Manager>().scripts = SkillList;      
-            Debug.Log("bye there");
+            SkillList = (Skill_Manager[])GameObject.Find("Skill_System_In_Shelter").GetComponent<Skill_Manager>().scripts.Clone();
+            StructIndex = 0;
+            // # SkillList의 정보를 다시 구조체에 넣어준다.
+            foreach (Skill_Manager sm in SkillList)
+            {
+                if (sm.Selected)
+                {
+                    container[StructIndex].Selected = true;
+                    continue;
+                }
+                else if (sm.Selected_Second)
+                {
+                    container[StructIndex].Selected_First = container[StructIndex].Selected_Second = true;
+                    continue;
+                }
+                else if (sm.Selected_First)
+                {
+                    container[StructIndex].Selected_First = true;
+                    continue;
+                }
+                StructIndex++;
+            }
+
+        }
+
+        // # 씬을 나가면서 실행할 수 있는 방법이 있나?
+
+        if(Player_Stat.instance.isLevelUp)              
+        {
+            StructIndex = 0;
+            // # SkillList의 정보를 다시 구조체에 넣어준다.
+            foreach (Skill_Manager sm in SkillList)
+            {
+                if (sm.Selected)
+                {
+                    container[StructIndex].Selected = true;
+                    continue;
+                }
+                else if (sm.Selected_Second)
+                {
+                    container[StructIndex].Selected_First = container[StructIndex].Selected_Second = true;
+                    continue;
+                }
+                else if (sm.Selected_First)
+                {
+                    container[StructIndex].Selected_First = true;
+                    continue;
+                }
+                StructIndex++;
+                Debug.Log(StructIndex);
+            }
         }
     }
 }

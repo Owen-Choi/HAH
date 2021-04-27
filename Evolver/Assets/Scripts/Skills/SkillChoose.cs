@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SkillChoose : MonoBehaviour
 {
+    bool ForOne;
     public Canvas SkillChooseUI;
     public GameObject Skill_Manager;
     public GameObject WeaponChoose;
@@ -34,13 +35,13 @@ public class SkillChoose : MonoBehaviour
         SkillChooseUI.gameObject.SetActive(false);
 
         sprites = Resources.LoadAll<Sprite>("SkillIcon");
+        ForOne = false;
     }
 
     private void Update()
     {
-        if (Player_Stat.instance.isLevelUp)
+        if (Player_Stat.instance.isLevelUp && !ForOne)
         {
-            StartCoroutine("LevelUpDelay");
             One = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(1);
             Two = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(2);
             Three = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(3);
@@ -55,9 +56,8 @@ public class SkillChoose : MonoBehaviour
             SkillChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[Two.Sprite_Num];
             spriteName = "SkillIcon_" + Three.Sprite_Num;
             SkillChooseUI.transform.GetChild(2).GetComponent<Image>().overrideSprite = sprites[Three.Sprite_Num];
-            Player_Stat.instance.isLevelUp = false;
-            GameObject.Find("SkillCarrier").GetComponent<SkillMaintain>().SkillList = GameObject.Find("Skill_System_In_Shelter").GetComponent<Skill_Manager>().scripts;
-            Debug.Log("Hello?");
+            ForOne = true;
+            StartCoroutine("LevelUpDelay");
         }
     }
 
@@ -109,7 +109,8 @@ public class SkillChoose : MonoBehaviour
     }
     IEnumerator LevelUpDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForEndOfFrame();
+        Player_Stat.instance.isLevelUp = false;
     }
 }
 
