@@ -9,11 +9,10 @@ public class Skill_Manager : MonoBehaviour {
     public bool Selected_First;
     public bool Selected_Second;
     public bool Selected_Last;
-    Skill_Manager[] scripts;
+    public Skill_Manager[] scripts;
     private void Start()
     {
         scripts = this.GetComponents<Skill_Manager>();
-        DontDestroyOnLoad(this);
     }
 
     public virtual void Activate_First()

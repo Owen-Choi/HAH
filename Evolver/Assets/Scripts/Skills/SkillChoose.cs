@@ -34,14 +34,12 @@ public class SkillChoose : MonoBehaviour
         SkillChooseUI.gameObject.SetActive(false);
 
         sprites = Resources.LoadAll<Sprite>("SkillIcon");
-        DontDestroyOnLoad(this);
     }
 
     private void Update()
     {
         if (Player_Stat.instance.isLevelUp)
         {
-            Player_Stat.instance.isLevelUp = false;
             StartCoroutine("LevelUpDelay");
             One = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(1);
             Two = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(2);
@@ -57,6 +55,9 @@ public class SkillChoose : MonoBehaviour
             SkillChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[Two.Sprite_Num];
             spriteName = "SkillIcon_" + Three.Sprite_Num;
             SkillChooseUI.transform.GetChild(2).GetComponent<Image>().overrideSprite = sprites[Three.Sprite_Num];
+            Player_Stat.instance.isLevelUp = false;
+            GameObject.Find("SkillCarrier").GetComponent<SkillMaintain>().SkillList = GameObject.Find("Skill_System_In_Shelter").GetComponent<Skill_Manager>().scripts;
+            Debug.Log("Hello?");
         }
     }
 
