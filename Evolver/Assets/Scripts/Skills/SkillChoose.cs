@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SkillChoose : MonoBehaviour
 {
-    bool ForOne;
+    bool ForOne;    public bool isPressed;
     public Canvas SkillChooseUI;
     public GameObject Skill_Manager;
     public GameObject WeaponChoose;
@@ -76,6 +76,7 @@ public class SkillChoose : MonoBehaviour
             return;             //오류 상황에 대비하는 코드 생각해보기
         }
         SkillChooseUI.gameObject.SetActive(false);
+        isPressed = true;
     }
     public void SecondButtonPressed()
     {
@@ -91,6 +92,7 @@ public class SkillChoose : MonoBehaviour
             return;
         }
         SkillChooseUI.gameObject.SetActive(false);
+        isPressed = true;
     }
     public void ThirdButtonPressed()
     {
@@ -106,11 +108,13 @@ public class SkillChoose : MonoBehaviour
             return;
         }
         SkillChooseUI.gameObject.SetActive(false);
+        isPressed = true;
     }
     IEnumerator LevelUpDelay()
     {
         yield return new WaitForEndOfFrame();
         Player_Stat.instance.isLevelUp = false;
+        ForOne = false;
     }
 }
 

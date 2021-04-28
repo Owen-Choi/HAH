@@ -61,8 +61,9 @@ public class SkillMaintain : MonoBehaviour
 
         // # 씬을 나가면서 실행할 수 있는 방법이 있나?
 
-        if(Player_Stat.instance.isLevelUp)              
+        if(SceneManager.GetActiveScene().name == "Shelter" && GameObject.Find("SkillChoose").GetComponent<SkillChoose>().isPressed)              
         {
+            GameObject.Find("SkillChoose").GetComponent<SkillChoose>().isPressed = false;
             StructIndex = 0;
             // # SkillList의 정보를 다시 구조체에 넣어준다.
             foreach (Skill_Manager sm in SkillList)
