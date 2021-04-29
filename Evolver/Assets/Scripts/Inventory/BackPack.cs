@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class BackPack : MonoBehaviour
 {
     //BackPack 클래스는 중계 역할을 한다. 특정 클래스에서 인벤토리를 생성하면 다른 클래스에서 인벤토리를 참조할 수 없으므로 BackPack이 대표자로 참조 후 해당 오브젝트를 추가하여 참조한다.
     private Inventory inventory;
+    bool OnlyOnce = true;
     private void Awake()
     {
         //인벤토리 최초 생성
         inventory = new Inventory();
-        DontDestroyOnLoad(this);
+        // # 소용없다. 오브젝트의 변수 정보가 유지되지 않고 새로 업데이트 되는 듯
+        if (SceneManager.GetActiveScene().name == "Shelter" && !Player_Stat.instance.DontDestroyOnLoadFirst)
+        {
+            DontDestroyOnLoad(this);
+            Player_Stat.instance.DontDestroyOnLoadFirst = true
+        }
     }
 
     public void AddItem(string name, int count)

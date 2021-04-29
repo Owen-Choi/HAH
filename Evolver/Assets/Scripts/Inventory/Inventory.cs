@@ -15,7 +15,7 @@ public class Inventory
     //인벤토리 최초 생성 시 기본 지급 아이템 목록
     public Inventory()     
     {
-        MutantSample = 15;
+        MutantSample = 100;
         Bandage = 3;
         Medikit = 1;
         StaminaPotion = 3;
