@@ -12,10 +12,13 @@ public class BackPack : MonoBehaviour
         //인벤토리 최초 생성
         inventory = new Inventory();
         // # 소용없다. 오브젝트의 변수 정보가 유지되지 않고 새로 업데이트 되는 듯
-        if (SceneManager.GetActiveScene().name == "Shelter" && !Player_Stat.instance.DontDestroyOnLoadFirst)
+        if (SceneManager.GetActiveScene().name == "Shelter")
         {
-            DontDestroyOnLoad(this);
-            Player_Stat.instance.DontDestroyOnLoadFirst = true
+            var obj = FindObjectsOfType<BackPack>();
+            if (obj.Length == 1)
+                DontDestroyOnLoad(this);
+            else
+                Destroy(this.gameObject);
         }
     }
 

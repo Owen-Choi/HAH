@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ItemCollecter : MonoBehaviour
 {
     int tempCount;
 
     private void Start()
     {
-        GameObject.Find("BasicUI").GetComponent<ItemCounterForMapping>().MutantSampleCount.text = GameObject.Find("BackPack").GetComponent<BackPack>().GetItemCount("MutantSample").ToString();
-        GameObject.Find("BasicUI").GetComponent<ItemCounterForMapping>().BandageCount.text = GameObject.Find("BackPack").GetComponent<BackPack>().GetItemCount("Bandage").ToString();
-        GameObject.Find("BasicUI").GetComponent<ItemCounterForMapping>().MedikitCount.text = GameObject.Find("BackPack").GetComponent<BackPack>().GetItemCount("Medikit").ToString();
-        GameObject.Find("BasicUI").GetComponent<ItemCounterForMapping>().StaminaPotionCount.text = GameObject.Find("BackPack").GetComponent<BackPack>().GetItemCount("StaminaPotion").ToString();
+        if (SceneManager.GetActiveScene().name != "Shelter")
+        {
+            GameObject.Find("BasicUI").GetComponent<ItemCounterForMapping>().MutantSampleCount.text = GameObject.Find("BackPack").GetComponent<BackPack>().GetItemCount("MutantSample").ToString();
+            GameObject.Find("BasicUI").GetComponent<ItemCounterForMapping>().BandageCount.text = GameObject.Find("BackPack").GetComponent<BackPack>().GetItemCount("Bandage").ToString();
+            GameObject.Find("BasicUI").GetComponent<ItemCounterForMapping>().MedikitCount.text = GameObject.Find("BackPack").GetComponent<BackPack>().GetItemCount("Medikit").ToString();
+            GameObject.Find("BasicUI").GetComponent<ItemCounterForMapping>().StaminaPotionCount.text = GameObject.Find("BackPack").GetComponent<BackPack>().GetItemCount("StaminaPotion").ToString();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //아이템을 얻는 건 그렇다 쳐도 사용하는 아이템은 어떻게 반영을 해주지?
         if(other.gameObject.tag == "Item")
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("MutantSample"))

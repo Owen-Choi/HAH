@@ -6,10 +6,10 @@ public class Lab : MonoBehaviour
 {
     public Text Require;
     int require;    int DefaultRequire = 5;
-    public GameObject BackPack;
+    public Text MutantSampleCount;
     void Start()
     {
-        require = DefaultRequire + Player_Stat.instance.Level;
+        require = DefaultRequire + Player_Stat.instance.Level;                  //이 코드는 문제가 없다. 문제는 Player_Stat이 씬 전환 간 연동이 안될 뿐
         Require.text = require.ToString();
     }
 
@@ -18,11 +18,12 @@ public class Lab : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if(BackPack.GetComponent<BackPack>().GetItemCount("MutantSample") >= require)
+            if(GameObject.Find("BackPack").GetComponent<BackPack>().GetItemCount("MutantSample") >= require)
             {
                 Player_Stat.instance.Level++;
                 Player_Stat.instance.isLevelUp = true;
-                BackPack.GetComponent<BackPack>().UseItem("MutantSample", require);
+                GameObject.Find("BackPack").GetComponent<BackPack>().UseItem("MutantSample", require);
+                MutantSampleCount.text = GameObject.Find("BackPack").GetComponent<BackPack>().GetItemCount("MutantSample").ToString();
                 require = DefaultRequire + Player_Stat.instance.Level;
                 // #기존의 코드에서는 Lab 오브젝트에서 SkillChoose UI를 띄웠지만, 현재는 SkillChoose 스크립트에서 조정하는 것으로 변경하였다.
                 Require.text = require.ToString();

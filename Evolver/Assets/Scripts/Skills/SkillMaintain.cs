@@ -22,7 +22,14 @@ public class SkillMaintain : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(this);
+        if (SceneManager.GetActiveScene().name == "Shelter")
+        {
+            var obj = FindObjectsOfType<SkillMaintain>();
+            if (obj.Length <= 2)
+                DontDestroyOnLoad(this);
+            else
+                Destroy(this.gameObject);
+        }
         container = new SkillContainer[30];
         SkillList =  GameObject.Find("Skill_System_In_Shelter").GetComponents<Skill_Manager>();
         forOne = false;
