@@ -10,7 +10,7 @@ public class ToMapTest : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-                SceneManager.LoadScene("SampleScene");                      //오류 없음.이제 이 오브젝트가 생성되는 시기를 어떻게 하면 좋을 지 생각해보기
+                SceneManager.LoadScene("SampleScene");                      
         }
     }
 }
