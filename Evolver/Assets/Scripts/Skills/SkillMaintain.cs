@@ -8,7 +8,7 @@ public class SkillMaintain : MonoBehaviour
     Skill_Manager tempSkillManager;
     public Skill_Manager[] SkillList;
     bool forOne;    int StructIndex;
-    bool forTwo;
+    bool forTwo;    bool forThree;
 
     public struct SkillContainer
     {
@@ -20,24 +20,20 @@ public class SkillMaintain : MonoBehaviour
 
     SkillContainer[] container;
 
-    void Start()
+    void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "Shelter")
-        {
-            var obj = FindObjectsOfType<SkillMaintain>();
-            if (obj.Length <= 2)
-                DontDestroyOnLoad(this);
-            else
-                Destroy(this.gameObject);
-        }
+       
+        DontDestroyOnLoad(this);
         container = new SkillContainer[30];
-        SkillList =  GameObject.Find("Skill_System_In_Shelter").GetComponents<Skill_Manager>();
+        //SkillList =  GameObject.Find("Skill_System_In_Shelter").GetComponents<Skill_Manager>();
         forOne = false;
         forTwo = false;
+        Debug.Log("Start");
     }
 
     private void Update()
     {
+
         if (!forOne)
         {
             forOne = true;
@@ -100,6 +96,29 @@ public class SkillMaintain : MonoBehaviour
             StructIndex = 0;
             forTwo = true;
             foreach (Skill_Manager sm in GameObject.Find("Skill_System_In_Map").GetComponent<Skill_Manager>().scripts)
+            {
+                if (container[StructIndex].Selected_Second)
+                {
+                    sm.Selected_First = true;
+                    sm.Selected_Second = true;
+                }
+                else if (container[StructIndex].Selected)
+                {
+                    sm.Selected = true;
+                }
+                else if (container[StructIndex].Selected_First)
+                {
+                    sm.Selected_First = true;
+                }
+                StructIndex++;
+            }
+        }
+
+        if((SceneManager.GetActiveScene().name == "Shelter" && !forThree)) 
+        {
+            StructIndex = 0;
+            forThree = true;
+            foreach (Skill_Manager sm in GameObject.Find("Skill_System_In_Shelter").GetComponent<Skill_Manager>().scripts)
             {
                 if (container[StructIndex].Selected_Second)
                 {
