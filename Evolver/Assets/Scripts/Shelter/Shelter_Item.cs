@@ -14,7 +14,7 @@ public class Shelter_Item : MonoBehaviour
         //Lab 오브젝트가 플레이어와 충돌했다면
         if (other.gameObject.tag == "Player" && this.gameObject.layer == LayerMask.NameToLayer("Lab"))
         {
-            DisplayLab.gameObject.SetActive(true);
+            DisplayLab.gameObject.SetActive(true);                   //비활성화 되어있으면 못찾는 것 같은데.....?
         }
         //Kitchen 오브젝트가 플레이어와 충돌했다면
         if (other.gameObject.tag == "Player" && this.gameObject.layer == LayerMask.NameToLayer("kitchen"))
@@ -23,7 +23,7 @@ public class Shelter_Item : MonoBehaviour
         }
         if (other.gameObject.tag == "Player" && this.gameObject.layer == LayerMask.NameToLayer("Map"))
         {
-            DisplayKitchen.gameObject.SetActive(true);
+            DisplayMap.gameObject.SetActive(true);
         }
     }
 
@@ -41,7 +41,7 @@ public class Shelter_Item : MonoBehaviour
         }
         if (other.gameObject.tag == "Player" && this.gameObject.layer == LayerMask.NameToLayer("Map"))
         {
-            DisplayKitchen.gameObject.SetActive(false);
+            DisplayMap.gameObject.SetActive(false);
         }
     }
 }

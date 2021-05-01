@@ -22,7 +22,6 @@ public class SkillMaintain : MonoBehaviour
     //SkillContainer[] containerForShelter;
     void Awake()
     {
-        DontDestroyOnLoad(this);
         container = new SkillContainer[30];
         //SkillList =  GameObject.Find("Skill_System_In_Shelter").GetComponents<Skill_Manager>();
         forOne = false;
@@ -63,7 +62,7 @@ public class SkillMaintain : MonoBehaviour
 
         // # 씬을 나가면서 실행할 수 있는 방법이 있나?
 
-        if(SceneManager.GetActiveScene().name == "Shelter" && GameObject.Find("SkillChoose").GetComponent<SkillChoose>().isPressed)              
+        if(GameObject.Find("SkillChoose").GetComponent<SkillChoose>().isPressed)              
         {
             GameObject.Find("SkillChoose").GetComponent<SkillChoose>().isPressed = false;
             StructIndex = 0;
@@ -89,55 +88,6 @@ public class SkillMaintain : MonoBehaviour
             }
         }
 
-        if(SceneManager.GetActiveScene().name != "Shelter" && !forTwo)
-        {
-            StructIndex = 0;
-            forTwo = true;
-            foreach (Skill_Manager sm in GameObject.Find("Skill_System_In_Map").GetComponent<Skill_Manager>().scripts)
-            {
-                if (container[StructIndex].Selected_Second)
-                {
-                    sm.Selected_First = true;
-                    sm.Selected_Second = true;
-                }
-                else if (container[StructIndex].Selected)
-                {
-                    sm.Selected = true;
-                }
-                else if (container[StructIndex].Selected_First)
-                {
-                    sm.Selected_First = true;
-                }
-                StructIndex++;
-            }
-
-
-        }
-
-        // # 쉘터의 스킬은 씬 전환 시 초기화가 되어 있을 것이다. 그 정보를 다시 쉘터에 넣어줘야 하는데....
-        if((SceneManager.GetActiveScene().name == "Shelter" && !forThree)) 
-        {
-            StructIndex = 0;
-            forThree = true;
-            while(StructIndex < SkillList.Length)
-            {
-                Debug.Log("Yeah");
-                if (container[StructIndex].Selected_Second)
-                {
-                    
-                    SkillList[StructIndex].Selected_First = true;
-                    SkillList[StructIndex].Selected_Second = true;
-                }
-                else if (container[StructIndex].Selected)
-                {
-                    SkillList[StructIndex].Selected = true;
-                }
-                else if (container[StructIndex].Selected_First)
-                {
-                    SkillList[StructIndex].Selected_First = true;
-                }
-                StructIndex++;
-            }
-        }
+       
     }
 }

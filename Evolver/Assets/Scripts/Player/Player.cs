@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         color = spriteRenderer.color;
         Can_Dash = true;
-        StackRadioActive();
+        StackRadioActive();                                     //씬 전환이 사라졌기 때문에 쉘터로 이동할 경우 이 코드를 제한해줄 방안이 필요하다.
         StackThirsty();
     }
 
