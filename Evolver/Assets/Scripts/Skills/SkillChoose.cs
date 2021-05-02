@@ -40,16 +40,15 @@ public class SkillChoose : MonoBehaviour
 
     private void Update()
     {
+        // # Skill_Manager에서 넘겨준 정보를 받아 버튼에 띄운다.
         if (Player_Stat.instance.isLevelUp && !ForOne)
         {
             One = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(1);
             Two = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(2);
             Three = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(3);
-            Debug.Log(One); Debug.Log(Two); Debug.Log(Three);
             SkillChooseUI.gameObject.SetActive(true);
             //Obj.transform.GetChild(0).GetComponent<Image>.overrideSprite =  Resources.Load<Sprite>("Textures/sprite"); 예제 코드
             spriteName = "SkillIcon_" + One.Sprite_Num;
-            Debug.Log(spriteName);
             //SkillChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(spriteName);
             SkillChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[One.Sprite_Num];
             spriteName = "SkillIcon_" + Two.Sprite_Num;
@@ -61,7 +60,7 @@ public class SkillChoose : MonoBehaviour
         }
     }
 
-    // # Selected 된 스킬은 아예 목록에 뜨지 않는다. 따라서 Selected_First, Second, Last 이 세가지만 신경쓰면 됨.
+    
     public void FirstButtonPressed()
     {
         if (!One.Selected_First)

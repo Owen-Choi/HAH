@@ -50,14 +50,9 @@ public class Skill_Manager : MonoBehaviour {
         int Max = GameObject.Find("SkillChoose").GetComponent<SkillChoose>().MaxValue;
         // # 스킬넘버 3개를 난수 생성으로 받기
         frame1 = Random.Range(Min, Max + 1);
-        do
-            frame2 = Random.Range(Min, Max + 1);
-        while (frame2 == frame1);
-
-        do
-            frame3 = Random.Range(Min, Max + 1);
-        while (frame3 == frame2 || frame3 == frame1);
-        // # 이미 투자된 스킬이 다시 뜨지 않게 하기
+        frame2 = Random.Range(Min, Max + 1);
+        frame3 = Random.Range(Min, Max + 1);
+        // # 스킬 중복 방지와 선택된 스킬 체크 방지는 에러로 인해 없앴다. 
         do
         {
             foreach (Skill_Manager sm in scripts)
@@ -84,20 +79,13 @@ public class Skill_Manager : MonoBehaviour {
                             Check3 = true;
                         }
                     }
-                    else
+                   else
                     {   // # 이미 선택된 스킬이라면 frame 3개중에 어떤 frame의 숫자인지 일단 파악한다.
                         frame1 = Random.Range(Min, Max + 1);
-                        do
-                            frame2 = Random.Range(Min, Max + 1);
-                        while (frame2 == frame1);
-
-                        do
-                            frame3 = Random.Range(Min, Max + 1);
-                        while (frame3 == frame2 || frame3 == frame1);
-                        Check1 = Check2 = Check3 = false;
+                        frame2 = Random.Range(Min, Max + 1);
+                        frame3 = Random.Range(Min, Max + 1);
                         break;
                     }
-
                 }
             }
         }

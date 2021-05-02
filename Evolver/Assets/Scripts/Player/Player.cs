@@ -24,9 +24,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         color = spriteRenderer.color;
-        Can_Dash = true;
-        StackRadioActive();                                     //씬 전환이 사라졌기 때문에 쉘터로 이동할 경우 이 코드를 제한해줄 방안이 필요하다.
-        StackThirsty();
+        Can_Dash = true;                                     //씬 전환이 사라졌기 때문에 쉘터로 이동할 경우 이 코드를 제한해줄 방안이 필요하다.
     }
 
 
@@ -107,7 +105,16 @@ public class Player : MonoBehaviour
         if (this.gameObject.layer == LayerMask.NameToLayer("Player_Damaged"))
             DamagedLayer();
 
-        
+        if (Player_Stat.instance.isShelter)
+        {   // # 쉘터라면 더 이상 방사능 수치와 목마름 수치가 증가하지 않는다.
+            CancelInvoke("StackThirsty");
+            CancelInvoke("StackRadioActive");
+        }
+        else
+        {   // # 쉘터가 아니라면 방사능과 목마름 수치 점차 증가
+            StackThirsty();
+            StackRadioActive();
+        }
     }
 
     void FixedUpdate()
