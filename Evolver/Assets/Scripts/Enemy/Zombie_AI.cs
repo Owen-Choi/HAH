@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Zombie_AI : MonoBehaviour
 {
-    public Transform Player;
+    public Transform PlayerCopy;
     public float radius; float degree;
     public int hMove;
     public int vMove;
@@ -18,6 +18,7 @@ public class Zombie_AI : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
+        PlayerCopy = GameObject.Find("Player").GetComponent<Transform>();
         //MoveAI();
     }
 
@@ -30,21 +31,21 @@ public class Zombie_AI : MonoBehaviour
         
         if (circle.collider)
         {
-            anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
-            anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
+            anim.SetFloat("HorizonValue", (PlayerCopy.position.x - this.transform.position.x));
+            anim.SetFloat("VerticalValue", (PlayerCopy.position.y - this.transform.position.y));
             if (GetAngle() > 0f && GetAngle() <= 1.5f)
             {
 
                 if (GetAngle() <= 0.75f)         //우측 상단 오른쪽을 향할 때
                 {
-                    anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
+                    anim.SetFloat("HorizonValue", (PlayerCopy.position.x - this.transform.position.x));
                     anim.SetFloat("VerticalValue", 0f);
                     anim.Play("Basic_Zombie_TypeB_Right_Walking");
                 }
                 else
                 {
                     anim.SetFloat("HorizonValue", 0f);
-                    anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
+                    anim.SetFloat("VerticalValue", (PlayerCopy.position.y - this.transform.position.y));
                     anim.Play("Basic_Zombie_TypeB_Up_Walking");
                 }
             }
@@ -52,14 +53,14 @@ public class Zombie_AI : MonoBehaviour
             {
                 if (GetAngle() >= 2.25f)         //좌측 상단 왼쪽을 향할 때
                 {
-                    anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
+                    anim.SetFloat("HorizonValue", (PlayerCopy.position.x - this.transform.position.x));
                     anim.SetFloat("VerticalValue", 0f);
                     anim.Play("Basic_Zombie_TypeB_Left_Walking");
                 }
                 else
                 {
                     anim.SetFloat("HorizonValue", 0f);
-                    anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
+                    anim.SetFloat("VerticalValue", (PlayerCopy.position.y - this.transform.position.y));
                     anim.Play("Basic_Zombie_TypeB_Up_Walking");
                 }
             }
@@ -68,14 +69,14 @@ public class Zombie_AI : MonoBehaviour
 
                 if (GetAngle() <= -2.25f)        //좌측 하단 왼쪽을 향할 때
                 {
-                    anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
+                    anim.SetFloat("HorizonValue", (PlayerCopy.position.x - this.transform.position.x));
                     anim.SetFloat("VerticalValue", 0f);
                     anim.Play("Basic_Zombie_TypeB_Left_Walking");
                 }
                 else
                 {
                     anim.SetFloat("HorizonValue", 0f);
-                    anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
+                    anim.SetFloat("VerticalValue", (PlayerCopy.position.y - this.transform.position.y));
                     anim.Play("Basic_Zombie_TypeB_Down_Walking");
                 }
             }
@@ -84,19 +85,19 @@ public class Zombie_AI : MonoBehaviour
 
                 if (GetAngle() <= -0.75f)        //우측 하단 오른쪽을 향할 때
                 {
-                    anim.SetFloat("HorizonValue", (Player.position.x - this.transform.position.x));
+                    anim.SetFloat("HorizonValue", (PlayerCopy.position.x - this.transform.position.x));
                     anim.SetFloat("VerticalValue", 0f);
                     anim.Play("Basic_Zombie_TypeB_Right_Walking");
                 }
                 else
                 {
                     anim.SetFloat("HorizonValue", 0f);
-                    anim.SetFloat("VerticalValue", (Player.position.y - this.transform.position.y));
+                    anim.SetFloat("VerticalValue", (PlayerCopy.position.y - this.transform.position.y));
                     anim.Play("Basic_Zombie_TypeB_Down_Walking");
                 }
             }
 
-            this.transform.position = Vector3.MoveTowards(this.transform.position, Player.position, MoveSpeed * Time.deltaTime);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, PlayerCopy.position, MoveSpeed * Time.deltaTime);
         }
         else;
         
@@ -132,7 +133,7 @@ public class Zombie_AI : MonoBehaviour
 
         float GetAngle()
         {
-            Vector3 difference = Player.position - transform.position;
+            Vector3 difference = PlayerCopy.position - transform.position;
 
             difference.Normalize();
 

@@ -23,6 +23,8 @@ public class Player_Stat : MonoBehaviour
         DefaultStaminaMax = 100f;
         Max_Stamina = DefaultStaminaMax;
         isShelter = true;
+        is_Continued_Shot = false;
+        is_Continued_Shot2 = false;
     }
 
     public void Update()

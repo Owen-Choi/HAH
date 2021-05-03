@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class WeaponChoose : MonoBehaviour
 {
     public bool isLight;    public bool isFire;     public bool isSilver;
-    public GameObject SkillChoose;
+    public GameObject SkillChoose; 
     public GameObject LightArrow;  public GameObject SilverArrow;  public GameObject FireArrow;
+    public GameObject Middle_Right_ShotPoint; public GameObject Middle_Left_ShotPoint; public GameObject Full_Right_ShotPoint; public GameObject Full_Left_ShotPoint;
     public GameObject Follower1; public GameObject Follower2; public GameObject Follower3;
     void Update()
     {
@@ -14,6 +15,10 @@ public class WeaponChoose : MonoBehaviour
         {
             SilverArrow.gameObject.SetActive(false);
             FireArrow.gameObject.SetActive(false);
+            Middle_Left_ShotPoint.gameObject.SetActive(false);
+            Middle_Right_ShotPoint.gameObject.SetActive(false);
+            Full_Left_ShotPoint.gameObject.SetActive(false);
+            Full_Right_ShotPoint.gameObject.SetActive(false);
             Follower1.gameObject.SetActive(false);
             Follower2.gameObject.SetActive(false);
             Follower3.gameObject.SetActive(false);

@@ -47,8 +47,9 @@ public class MultiShot : Skill_Manager
     {                                           
         if (this.Selected_First)
         {
-            Middle_Left_ShotPoint.GetComponent<Middle_Left_ShotPoint>().enabled = true;
-            Middle_Right_ShotPoint.GetComponent<Middle_Right_ShotPoint>().enabled = true;
+            //Middle_Left_ShotPoint.GetComponent<Middle_Left_ShotPoint>().enabled = true;   기존 코드
+            Middle_Left_ShotPoint.gameObject.SetActive(true);
+            Middle_Right_ShotPoint.gameObject.SetActive(true);
             if (!DMG_Decrease_Once)
             {
                 this.Sprite_Num = 11;
@@ -58,8 +59,8 @@ public class MultiShot : Skill_Manager
         }
         if(this.Selected_Second)                //else if 조건문으로 가면 앞에서 걸려버리기 때문에 else를 붙여서는 안된다.
         {
-            Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().enabled = true;
-            Full_Right_ShotPoint.GetComponent<Full_Right_ShotPoint>().enabled = true;
+            Full_Left_ShotPoint.gameObject.SetActive(true);
+            Full_Right_ShotPoint.gameObject.SetActive(true);
             if (!DMG_Decrease_Twice)
             {
                 this.Sprite_Num = 12;
