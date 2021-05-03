@@ -7,7 +7,6 @@ public class SkillChoose : MonoBehaviour
     bool ForOne;    public bool isPressed;
     public Canvas SkillChooseUI;
     public GameObject Skill_Manager;
-    public GameObject WeaponChoose;
     string spriteName;
     public int MinValue;   public int MaxValue;
     Skill_Manager One;
@@ -16,21 +15,6 @@ public class SkillChoose : MonoBehaviour
     Sprite[] sprites;
     private void Start()
     {
-        if (WeaponChoose.GetComponent<WeaponChoose>().isLight)
-        {
-            MinValue = 1;
-            MaxValue = 6;
-        }
-        else if (WeaponChoose.GetComponent<WeaponChoose>().isSilver)
-        {
-            MinValue = 15;
-            MaxValue = 19;
-        }
-        else if (WeaponChoose.GetComponent<WeaponChoose>().isFire)
-        {
-            MinValue = 25;
-            MaxValue = 29;
-        }
 
         SkillChooseUI.gameObject.SetActive(false);
 
