@@ -12,7 +12,7 @@ public class ToMapTest : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Instantiate(Resources.Load("Stage_1"));
+                Instantiate(Resources.Load("Forest_Stage_1"));
                 GameObject.Find("Player").GetComponent<Transform>().position = GameObject.Find("SpawnPoint").GetComponent<Transform>().position;
             }
             // Player_Stat.instance.IsShelter = false;

@@ -5,9 +5,9 @@ using UnityEngine.UI;
 public class Shelter_Item : MonoBehaviour
 {
     public Canvas DisplayLab;
-    Canvas DisplaySkill;
+    Canvas DisplaySkill;                //구현 보류
     public Canvas DisplayMap;
-    Canvas Displaysurvive;
+    Canvas Displaysurvive;              //구현 보류
     public Canvas DisplayKitchen;
     private void OnCollisionEnter2D(Collision2D other)
     {
