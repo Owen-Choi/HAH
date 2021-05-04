@@ -26,18 +26,20 @@ public class Continued_Shot : Skill_Manager
             {
                 DMG_Decrease_Once = true;
                 this.Sprite_Num = 8;
+                Player_Stat.instance.is_Continued_Shot = true;
                 //공격력 감소 구현해야함
             }
-            Player_Stat.instance.is_Continued_Shot = true;
+            
 
         if (this.Selected_Second)
             if (!DMG_Decrease_Twice)
             {
                 this.Sprite_Num = 9;
                 DMG_Decrease_Twice = true;
+                Player_Stat.instance.is_Continued_Shot2 = true;
                 //공격력 감소 구현해야함
             }
-        Player_Stat.instance.is_Continued_Shot2 = true;
+        
 
         if(this.Selected_Last)
         {

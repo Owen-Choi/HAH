@@ -186,12 +186,15 @@ public class ShotPoint : MonoBehaviour
     {
         yield return new WaitForSeconds(0.35f);
         this.Shoot(TempDMG, TempLF);
-        Middle_Right_ShotPoint.GetComponent<Middle_Right_ShotPoint>().Shoot(TempDMG, TempLF);
-        Middle_Left_ShotPoint.GetComponent<Middle_Left_ShotPoint>().Shoot(TempDMG, TempLF);
-        if (Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().enabled)
+        if (Middle_Left_ShotPoint.gameObject.activeSelf)
         {
-            Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().Shoot(TempDMG, TempLF);
-            Full_Right_ShotPoint.GetComponent<Full_Right_ShotPoint>().Shoot(TempDMG, TempLF);
+            Middle_Right_ShotPoint.GetComponent<Middle_Right_ShotPoint>().Shoot(TempDMG, TempLF);
+            Middle_Left_ShotPoint.GetComponent<Middle_Left_ShotPoint>().Shoot(TempDMG, TempLF);
+            if (Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().enabled)
+            {
+                Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().Shoot(TempDMG, TempLF);
+                Full_Right_ShotPoint.GetComponent<Full_Right_ShotPoint>().Shoot(TempDMG, TempLF);
+            }
         }
         TempDMG = 0; TempLF = 0;
     }
@@ -200,21 +203,27 @@ public class ShotPoint : MonoBehaviour
     {
         yield return new WaitForSeconds(0.35f);
         this.Shoot(TempDMG, TempLF);
-        Middle_Right_ShotPoint.GetComponent<Middle_Right_ShotPoint>().Shoot(TempDMG, TempLF);
-        Middle_Left_ShotPoint.GetComponent<Middle_Left_ShotPoint>().Shoot(TempDMG, TempLF);
-        if (Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().enabled)
+        if (Middle_Left_ShotPoint.gameObject.activeSelf)
         {
-            Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().Shoot(TempDMG, TempLF);
-            Full_Right_ShotPoint.GetComponent<Full_Right_ShotPoint>().Shoot(TempDMG, TempLF);
+            Middle_Right_ShotPoint.GetComponent<Middle_Right_ShotPoint>().Shoot(TempDMG, TempLF);
+            Middle_Left_ShotPoint.GetComponent<Middle_Left_ShotPoint>().Shoot(TempDMG, TempLF);
+            if (Full_Left_ShotPoint.gameObject.activeSelf)
+            {
+                Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().Shoot(TempDMG, TempLF);
+                Full_Right_ShotPoint.GetComponent<Full_Right_ShotPoint>().Shoot(TempDMG, TempLF);
+            }
         }
         yield return new WaitForSeconds(0.35f);
         this.Shoot(TempDMG, TempLF);
-        Middle_Right_ShotPoint.GetComponent<Middle_Right_ShotPoint>().Shoot(TempDMG, TempLF);
-        Middle_Left_ShotPoint.GetComponent<Middle_Left_ShotPoint>().Shoot(TempDMG, TempLF);
-        if (Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().enabled)
+        if (Middle_Left_ShotPoint.gameObject.activeSelf)
         {
-            Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().Shoot(TempDMG, TempLF);
-            Full_Right_ShotPoint.GetComponent<Full_Right_ShotPoint>().Shoot(TempDMG, TempLF);
+            Middle_Right_ShotPoint.GetComponent<Middle_Right_ShotPoint>().Shoot(TempDMG, TempLF);
+            Middle_Left_ShotPoint.GetComponent<Middle_Left_ShotPoint>().Shoot(TempDMG, TempLF);
+            if (Full_Left_ShotPoint.gameObject.activeSelf)
+            {
+                Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().Shoot(TempDMG, TempLF);
+                Full_Right_ShotPoint.GetComponent<Full_Right_ShotPoint>().Shoot(TempDMG, TempLF);
+            }
         }
         TempDMG = 0; TempLF = 0;
     }
