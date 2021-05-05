@@ -6,10 +6,12 @@ public class Continued_Shot : Skill_Manager
 {
     bool DMG_Decrease_Once;
     bool DMG_Decrease_Twice;
+    bool DMG_Increase_First;
     private void Start()
     {
         this.DMG_Decrease_Once = false;
         this.DMG_Decrease_Twice = false;
+        this.DMG_Increase_First = false;
         this.Skill_Num = 4;
         //this.Selected_First = false;
         //this.Selected_Second = false;
@@ -27,7 +29,7 @@ public class Continued_Shot : Skill_Manager
                 DMG_Decrease_Once = true;
                 this.Sprite_Num = 8;
                 Player_Stat.instance.is_Continued_Shot = true;
-                //공격력 감소 구현해야함
+                Player_Stat.instance.damage -= 3;               //향후 수치 조정하기
             }
             
 
@@ -37,14 +39,15 @@ public class Continued_Shot : Skill_Manager
                 this.Sprite_Num = 9;
                 DMG_Decrease_Twice = true;
                 Player_Stat.instance.is_Continued_Shot2 = true;
-                //공격력 감소 구현해야함
+                Player_Stat.instance.damage -= 2;               //향후 수치 조정하기
             }
         
 
-        if(this.Selected_Last)
+        if(this.Selected_Last && !DMG_Increase_First)
         {
             this.Selected = true;
-            //투사체 속도 증가, 딜 증가 구현해야함
+            DMG_Increase_First = true;
+            Player_Stat.instance.damage += 5;                   //향후 수치 조정하기
             this.GetComponent<Continued_Shot>().enabled = false;
             return;
         }
