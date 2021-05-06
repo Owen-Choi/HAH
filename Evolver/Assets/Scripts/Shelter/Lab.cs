@@ -11,7 +11,7 @@ public class Lab : MonoBehaviour
     public GameObject BackPack;
     void Start()
     {
-        require = DefaultRequire + Player_Stat.instance.Level;                  
+        require = DefaultRequire;                   //씬 전환 시스템 개선 이전 코드 : 현재에는 관계 없음.                  
         Require.text = require.ToString();
         radius = 1;
     }
@@ -30,7 +30,7 @@ public class Lab : MonoBehaviour
                     Player_Stat.instance.isLevelUp = true;
                     BackPack.GetComponent<BackPack>().UseItem("MutantSample", require);
                     MutantSampleCount.text = BackPack.GetComponent<BackPack>().GetItemCount("MutantSample").ToString();
-                    require = DefaultRequire + Player_Stat.instance.Level;
+                    require = DefaultRequire + 1;
                     // #기존의 코드에서는 Lab 오브젝트에서 SkillChoose UI를 띄웠지만, 현재는 SkillChoose 스크립트에서 조정하는 것으로 변경하였다.
                     //Require.text = require.ToString();
                     Require.text = require.ToString();
