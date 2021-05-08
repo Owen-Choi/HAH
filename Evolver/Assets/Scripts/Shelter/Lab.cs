@@ -29,8 +29,8 @@ public class Lab : MonoBehaviour
                     Player_Stat.instance.Level++;
                     Player_Stat.instance.isLevelUp = true;
                     BackPack.GetComponent<BackPack>().UseItem("MutantSample", require);
-                    MutantSampleCount.text = BackPack.GetComponent<BackPack>().GetItemCount("MutantSample").ToString();
-                    require = DefaultRequire + 1;
+                    //MutantSampleCount.text = BackPack.GetComponent<BackPack>().GetItemCount("MutantSample").ToString();
+                    require++;
                     // #기존의 코드에서는 Lab 오브젝트에서 SkillChoose UI를 띄웠지만, 현재는 SkillChoose 스크립트에서 조정하는 것으로 변경하였다.
                     //Require.text = require.ToString();
                     Require.text = require.ToString();
