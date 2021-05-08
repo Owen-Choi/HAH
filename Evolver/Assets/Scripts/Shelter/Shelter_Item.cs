@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Shelter_Item : MonoBehaviour
 {
     public Canvas DisplayLab;
+    public Canvas DisplayPhysical_Lab;
     Canvas DisplaySkill;                //구현 보류
     public Canvas DisplayMap;
     Canvas Displaysurvive;              //구현 보류
@@ -25,6 +26,10 @@ public class Shelter_Item : MonoBehaviour
         {
             DisplayMap.gameObject.SetActive(true);
         }
+        if(other.gameObject.tag == "Player" && this.gameObject.layer == LayerMask.NameToLayer("Physical_Lab"))
+        {
+            DisplayPhysical_Lab.gameObject.SetActive(true);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -42,6 +47,10 @@ public class Shelter_Item : MonoBehaviour
         if (other.gameObject.tag == "Player" && this.gameObject.layer == LayerMask.NameToLayer("Map"))
         {
             DisplayMap.gameObject.SetActive(false);
+        }
+        if (other.gameObject.tag == "Player" && this.gameObject.layer == LayerMask.NameToLayer("Physical_Lab"))
+        {
+            DisplayPhysical_Lab.gameObject.SetActive(false);
         }
     }
 }
