@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_Stat : MonoBehaviour
 {
-    public int Level = 1;               public bool isLevelUp;          public int Physical_Level = 1;
+    public int Level = 1;               public bool isLevelUp;          public int Physical_Level = 1;  public bool isPhysical_LevelUp;
     public float health;                public float healthMax;         public float RadioActive;   public float DefaultHealthMax;  public float DefaultStaminaMax;
     public float stamina;               public float armor;             public float Max_Stamina;   float Stamina_recovery_speed = 5f;
     public float missPercent;           public float criticalPercent;   public float Decrease_Stamina_When_Bow_Charge = 5f;         //always check not only in script value, but also Insepctor value

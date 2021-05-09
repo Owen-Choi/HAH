@@ -18,14 +18,14 @@ public class SkillChoose : MonoBehaviour
 
         SkillChooseUI.gameObject.SetActive(false);
 
-        sprites = Resources.LoadAll<Sprite>("SkillIcon");
+        sprites = Resources.LoadAll<Sprite>("SkillIcon");                               
         ForOne = false;
     }
 
     private void Update()
     {
         // # Skill_Manager에서 넘겨준 정보를 받아 버튼에 띄운다.
-        if (Player_Stat.instance.isLevelUp && !ForOne)
+        if (Player_Stat.instance.isLevelUp && !ForOne)                                  // isLevelUp이 true로 바뀐다면 
         {
             One = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(1);
             Two = Skill_Manager.GetComponent<Skill_Manager>().LevelUpSkillChoose(2);
@@ -93,7 +93,7 @@ public class SkillChoose : MonoBehaviour
         SkillChooseUI.gameObject.SetActive(false);
         isPressed = true;
     }
-    IEnumerator LevelUpDelay()
+    IEnumerator LevelUpDelay()                          //혹시 몰라 약간의 간격을 주기 위해 만들어 둔 딜레이
     {
         yield return new WaitForEndOfFrame();
         Player_Stat.instance.isLevelUp = false;

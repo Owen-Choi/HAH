@@ -22,9 +22,9 @@ public class Physical_Lab : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (BackPack.GetComponent<BackPack>().GetItemCount("MutantSample") >= require)
+                if (BackPack.GetComponent<BackPack>().GetItemCount("MutantSample") >= require)          //돌연변이 표본이 충분하다면 Player_Stat의 Physical_Level을 올릴 수 있다.
                 {
-                    Player_Stat.instance.Physical_Level++;          //아직 신체레벨업을 할 시 어떤 benefit을 주어야 할 지 정하지 못하였다. 
+                    Player_Stat.instance.Physical_Level++;
                     BackPack.GetComponent<BackPack>().UseItem("MutantSample", require);
                     require++;
                     Require.text = require.ToString();

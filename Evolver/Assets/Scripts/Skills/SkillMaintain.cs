@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class SkillMaintain : MonoBehaviour
 {
    
+    // # 씬이 여러개이던 기존의 방식에서 씬 간에 스킬을 연동하기 위해 만들었던 스크립트. 현재에는 아무 기능도 하지 않는다. 
+
     Skill_Manager tempSkillManager;
     public Skill_Manager[] SkillList;
     bool forOne;    int StructIndex;
