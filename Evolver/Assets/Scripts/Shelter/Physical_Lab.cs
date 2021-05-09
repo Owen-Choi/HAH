@@ -25,6 +25,7 @@ public class Physical_Lab : MonoBehaviour
                 if (BackPack.GetComponent<BackPack>().GetItemCount("MutantSample") >= require)          //돌연변이 표본이 충분하다면 Player_Stat의 Physical_Level을 올릴 수 있다.
                 {
                     Player_Stat.instance.Physical_Level++;
+                    Player_Stat.instance.isPhysical_LevelUp = true;
                     BackPack.GetComponent<BackPack>().UseItem("MutantSample", require);
                     require++;
                     Require.text = require.ToString();

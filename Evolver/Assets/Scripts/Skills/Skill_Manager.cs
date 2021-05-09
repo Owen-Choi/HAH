@@ -101,7 +101,7 @@ public class Skill_Manager : MonoBehaviour {
         else
             return null;
 
-
+        // # 씬 전환이 일어났던 기존의 시스템에서 필요했던 코드. 지금은 더 쉬운 방법이 있지만 일단 그대로 사용하겠다.
         // 이 3개를 이미지화 해서 버튼에 넣고 누르면 Selected 되게 만들어야 한다. 스킬 아이콘의 템플릿은 SkillIcon_(스킬숫자)의 형식이므로 지정만 잘해주면 충분히 여기서 접근할 수 있다.
 
        Skill_Manager GetChosenOne()
