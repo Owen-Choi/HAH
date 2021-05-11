@@ -13,7 +13,6 @@ public class Middle_Right_ShotPoint : MonoBehaviour
     {
         chargingDamage = Player_Stat.instance.Charge_Damage_Plus;
         launchForce = Player_Stat.instance.launchForce;
-        
     }
 
     void Update()
@@ -27,8 +26,8 @@ public class Middle_Right_ShotPoint : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            EverySecond += Time.deltaTime;
-            HoldingTime += Time.deltaTime;
+            EverySecond += Time.deltaTime * Player_Stat.instance.ChargingSpeed;
+            HoldingTime += Time.deltaTime * Player_Stat.instance.ChargingSpeed;
 
             if (Player_Stat.instance.stamina < 0 && !Zero_Stamina && HoldingTime > 0.4f)
             {

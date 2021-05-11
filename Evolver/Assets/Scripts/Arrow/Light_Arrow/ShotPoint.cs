@@ -31,8 +31,8 @@ public class ShotPoint : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            EverySecond += Time.deltaTime;
-            HoldingTime += Time.deltaTime;
+            EverySecond += Time.deltaTime * Player_Stat.instance.ChargingSpeed;             // 신체부위 팔 스킬 중 차징속도 감소 스킬을 위한 코드. 아직 모든 ShotPoint에 적용된 것은 아니다.
+            HoldingTime += Time.deltaTime * Player_Stat.instance.ChargingSpeed;
 
             Player_Stat.instance.stamina -= (3f * Player_Stat.instance.Decrease_Stamina_When_Bow_Charge) * Time.deltaTime;
             if (Player_Stat.instance.stamina < 0 && !Zero_Stamina && HoldingTime > 0.4f)          
@@ -52,7 +52,7 @@ public class ShotPoint : MonoBehaviour
                 increaseDamage += 6;
             }
 
-            if ((int)EverySecond >= 1)
+            if ((int)EverySecond >= 1)  //매 초마다 차징 수준을 올려주기 위한 장치. Coroutine을 이용한 방법이 왜인지 동작을 하지 않아 이렇게 바꾸었다.
             {
                 EverySecond = 0;
                 ischanged = false;
