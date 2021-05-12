@@ -39,7 +39,7 @@ public class Player_Stat : MonoBehaviour
         {
             stamina = Max_Stamina;
         }
-        if (Max_Stamina >= DefaultStaminaMax)
+        if (Max_Stamina >= DefaultStaminaMax)           //DefaultStaminaMax : 스테미나의 절대적 최대값. 목마름에 의한 일시적 최대스테미나가 아니라 캐릭터의 원래 최대 스테미나를 나타내는 값이다.
             Max_Stamina = DefaultStaminaMax;
        if(stamina < 0)
         {
@@ -51,7 +51,7 @@ public class Player_Stat : MonoBehaviour
             health = healthMax;
         }
 
-        if (healthMax >= DefaultHealthMax)
+        if (healthMax >= DefaultHealthMax)              //DefaultHealthMax : 체력의 절대적 최대값. 방사능에 의한 일시적 최대체력이 아니라 캐릭터의 원래 최대체력을 나타내는 값이다.
             healthMax = DefaultHealthMax;
 
     }
