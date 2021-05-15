@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     public float TimeForDamaged = 0.0f;
     public GameObject Enemy;
     protected Color color;
-
     //맵핑중인 플레이어에게 적용되는 스크립트
 
     void Start()

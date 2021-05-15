@@ -2,23 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Growing : Physical_Manager
+public class DualCore : Physical_Manager
 {
     int PlayerLevel;
     private void Awake()
     {
         PlayerLevel = Player_Stat.instance.Physical_Level;
     }
-
-    void Update()
+    private void Update()
     {
         if (this.Selected)
         {
-            if(PlayerLevel < Player_Stat.instance.Physical_Level)       //참조 개념이 내가 생각하는 것과 다르다면 동작하지 않을 코드이다.
+            if (PlayerLevel < Player_Stat.instance.Physical_Level)
             {
                 PlayerLevel = Player_Stat.instance.Physical_Level;
-                Player_Stat.instance.DefaultHealthMax += 5f;           
+                Player_Stat.instance.DefaultHealthMax += 5f;
             }
-        }
+        }        
     }
 }
