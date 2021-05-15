@@ -26,6 +26,8 @@ public class Player_Stat : MonoBehaviour
         is_Continued_Shot = false;
         is_Continued_Shot2 = false;
         ChargingSpeed = 1.2f;
+        criticalDamage = 150f;
+        criticalPercent = 10f;
     }
 
     public void Update()

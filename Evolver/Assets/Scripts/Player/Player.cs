@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
         Player_Stat.instance.Max_Stamina--;
         Invoke("StackThirsty", 30f);                        //30초마다 목마름 스택 추가
     }
-    void StackRadioActive()
+    public void StackRadioActive()
     {
         Player_Stat.instance.RadioActive++;
         Player_Stat.instance.healthMax--;                   //may cause some errors. pay attention to it
@@ -160,7 +160,7 @@ public class Player : MonoBehaviour
                 //순간이동 급으로 발동되는 넉백코드 일단 삭제, 좀 더 부드럽게 피격 효과 줄 수 있는 방법 생각해보기
             }
             this.gameObject.layer = LayerMask.NameToLayer("Player_Damaged");
-            //씬 전환 체크는 플레이어가 아니라 맵핑을 끝내는 오브젝트에서 하는걸로. 근데 될지는 모르겠다 .라이브러리를 추가해야되기 때문.
+            
         }
     }
     void DamagedLayer()
