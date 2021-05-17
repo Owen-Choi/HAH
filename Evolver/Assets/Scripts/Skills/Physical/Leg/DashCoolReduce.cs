@@ -10,7 +10,8 @@ public class DashCoolReduce : Physical_Manager
         if (this.Selected)
         {
             this.Selected = false;
-
+            if(Player_Stat.instance.dashCool >= 10)
+                Player_Stat.instance.dashCool -= 10;  
         }      
     }
 }

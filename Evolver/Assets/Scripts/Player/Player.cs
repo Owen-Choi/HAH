@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;                          bool isSilver;                     bool isFire;
     Animator anim;
     float h;            public bool hDown;  public bool hUp;    public bool vDown;  public bool vUp; public bool DashMaster;    //질주의 달인 스킬 체크를 위한 변수
-    float v;            public bool Can_Dash;
+    float v;            public bool Can_Dash;   public int dashCool;    public float DashTime;
     bool isHorizonMove;
     SpriteRenderer spriteRenderer;
     public bool isDash;
@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         color = spriteRenderer.color;
         Can_Dash = true;                                     //씬 전환이 사라졌기 때문에 쉘터로 이동할 경우 이 코드를 제한해줄 방안이 필요하다.
+        dashCool = Player_Stat.instance.dashCool;
+        DashTime = Player_Stat.instance.DashTime;
     }
 
 
@@ -89,7 +91,7 @@ public class Player : MonoBehaviour
         if(isDash == true)
         {
             TimeForDash += Time.deltaTime;
-            if (TimeForDash > 0.4f)                 //일단은 Coroutine 말고 델타 타임으로 처리했다. 문제 생기면 수정해야함!
+            if (TimeForDash > DashTime)                 //일단은 Coroutine 말고 델타 타임으로 처리했다. 문제 생기면 수정해야함!
             {
                 isDash = false;
                 TimeForDash = 0;
@@ -178,12 +180,12 @@ public class Player : MonoBehaviour
     }
 
     IEnumerator DashCoolForNotMaster() {
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(dashCool);          //이게 될 지 모르겠다.
         Can_Dash = true;
     }
     IEnumerator DashCoolForMaster()
     {
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(dashCool - 10);
         Can_Dash = true;
     }
 }
