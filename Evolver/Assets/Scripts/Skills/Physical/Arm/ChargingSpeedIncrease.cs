@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class ChargingSpeedIncrease : Physical_Manager
 {
-   
+
+    private void Awake()
+    {
+        this.Skill_Num = 11;
+        //this.Sprite_Num = 
+    }
     void Update()
     {
         if (this.Selected)

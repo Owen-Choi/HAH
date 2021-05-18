@@ -43,8 +43,9 @@ public class Physical_Part_Choose : MonoBehaviour
                 case 3:
                     Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[14];
                     break;
-                //case 4:
-                //머리 부위 스프라이트 받으면 resource 파일 다시 적용해서 코드 수정하기
+                case 4:
+                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[19];
+                    break;
                 default:
                     Debug.Log("Error in body part choose");
                     break;
@@ -60,8 +61,9 @@ public class Physical_Part_Choose : MonoBehaviour
                 case 3:
                     Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[14];
                     break;
-                //case 4:
-                //머리 부위 스프라이트 받으면 resource 파일 다시 적용해서 코드 수정하기
+                case 4:
+                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[19];
+                    break;
                 default:
                     Debug.Log("Error in body part choose");
                     break;
@@ -69,7 +71,7 @@ public class Physical_Part_Choose : MonoBehaviour
             // # 두개의 부위를 정해서 스프라이트 이미지와 정보를 넘겨주어야 한다.
         }   
     }
-    void FirstButtonPressed()
+    public void FirstButtonPressed()
     {
         switch (randNum1)
         {
@@ -91,28 +93,37 @@ public class Physical_Part_Choose : MonoBehaviour
                     Chest.gameObject.SetActive(true);
                     break;
                 }
-            //case 4:
-            //머리 부위 스프라이트 받으면 resource 파일 다시 적용해서 코드 수정하기
+            case 4:
+                {
+                    Physic_ChooseUI.gameObject.SetActive(false);
+                    Head.gameObject.SetActive(true);
+                    break;
+                }
             default:
                 Debug.Log("Error in body part choose");
                 break;
         }
     }
-    void SecondButtonPressed()
+    public void SecondButtonPressed()
     {
         switch (randNum2)
         {
             case 1:
-
+                Physic_ChooseUI.gameObject.SetActive(false);
+                Leg.gameObject.SetActive(true);
                 break;
             case 2:
-
+                Physic_ChooseUI.gameObject.SetActive(false);
+                Arm.gameObject.SetActive(true);
                 break;
             case 3:
-
+                Physic_ChooseUI.gameObject.SetActive(false);
+                Chest.gameObject.SetActive(true);
                 break;
-            //case 4:
-            //머리 부위 스프라이트 받으면 resource 파일 다시 적용해서 코드 수정하기
+            case 4:
+                Physic_ChooseUI.gameObject.SetActive(false);
+                Head.gameObject.SetActive(true);
+                break;
             default:
                 Debug.Log("Error in body part choose");
                 break;

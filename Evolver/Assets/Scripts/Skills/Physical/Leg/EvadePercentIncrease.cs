@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EvadePercentIncrease : Physical_Manager
-{ 
+{
+    private void Awake()
+    {
+        this.Skill_Num = 1;
+        this.Sprite_Num = 10;
+    }
     void Update()
     {
         if (Selected)

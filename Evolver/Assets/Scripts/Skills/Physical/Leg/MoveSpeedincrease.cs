@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class MoveSpeedincrease : Physical_Manager
 {
+    private void Awake()
+    {
+        this.Skill_Num = 0;
+        this.Sprite_Num = 9;
+    }
     void Update()
     {
         if (Selected)
