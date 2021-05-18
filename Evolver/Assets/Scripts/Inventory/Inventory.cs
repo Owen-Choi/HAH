@@ -9,7 +9,7 @@ public class Inventory
     public int Bandage;         public int BandageDropPercent = 4;
     public int Medikit;         public int MedikitDropPercent = 1;
     public int StaminaPotion;   public int StaminaPotionDropPercent = 3;
-    public int Food;            public int FoodDropPercent = 20;                    //몬스터 드랍이 아니라 특정 오브젝트 조사하면 드랍되게끔.
+    public int Food;            public int FoodDropPercent = 20;                         //특정 오브젝트 조사하면 나오게끔.
     public int Water;           public int WaterDropPercent = 20;
 
     //인벤토리 최초 생성 시 기본 지급 아이템 목록
