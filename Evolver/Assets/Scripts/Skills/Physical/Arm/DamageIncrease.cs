@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class NewBehaviourScript : Physical_Manager
 {
+    private void Awake()
+    {
+        this.Skill_Num = 10;
+        this.Sprite_Num = 1;
+    }
     void Update()
     {
         if(Selected)

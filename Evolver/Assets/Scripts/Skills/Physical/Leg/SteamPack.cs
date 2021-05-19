@@ -6,6 +6,11 @@ public class SteamPack : Physical_Manager
 {
     private bool Selected_Once;
 
+    private void Awake()
+    {
+        this.Skill_Num = 3;
+        this.Sprite_Num = 13;
+    }
     private void Update()
     {
         if(this.Selected && !this.Selected_Once)

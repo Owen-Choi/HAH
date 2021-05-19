@@ -6,6 +6,12 @@ public class Gambler : Physical_Manager
 {
     private bool Selected_Once;
 
+
+    private void Awake()
+    {
+        this.Skill_Num = 2;
+        this.Sprite_Num = 12;
+    }
     private void Update()
     {
         if(this.Selected && !this.Selected_Once)
