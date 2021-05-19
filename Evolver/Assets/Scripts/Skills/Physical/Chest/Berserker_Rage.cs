@@ -6,6 +6,12 @@ public class Berserker_Rage : Physical_Manager
 {
     bool Berserked;
     float OriginalDMG;
+
+    private void Awake()
+    {
+        this.Skill_Num = 26;
+        //this.Sprite_Num = 
+    }
     private void Update()
     {
         if (this.Selected)

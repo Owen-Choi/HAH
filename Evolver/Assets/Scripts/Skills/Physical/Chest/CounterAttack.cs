@@ -7,6 +7,12 @@ public class CounterAttack : Physical_Manager
     bool Damaged;
     float tempDMG;
     public GameObject Player;
+
+    private void Awake()
+    {
+        this.Skill_Num = 27;
+        //this.Sprite_Num = 
+    }
     private void Update()
     {
         if (this.Selected)

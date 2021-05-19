@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class StaminaRecoveryIncrease :  Physical_Manager
 {
+    private void Awake()
+    {
+        this.Skill_Num = 23;
+        //this.Sprite_Num = 
+    }
     void Update()
     {
         if (this.Selected)
