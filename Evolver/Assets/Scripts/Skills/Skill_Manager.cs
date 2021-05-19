@@ -92,6 +92,8 @@ public class Skill_Manager : MonoBehaviour {
         while (!Check1 || !Check2 || !Check3);                  //정말 비효율적인 알고리즘. 개선할 여지가 많다.
         //Debug.Log(chosen1); Debug.Log(chosen2); Debug.Log(chosen3);
 
+
+        // # 한번에 하나씩밖에 return이 안돼서 이렇게 코드를 짰는데 이 코드 때문에 스킬들이 중복되어 나타난다.
         if (Select == 1)
             return GetChosenOne();
         else if (Select == 2)

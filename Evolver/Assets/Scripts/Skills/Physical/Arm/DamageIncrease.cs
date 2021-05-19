@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : Physical_Manager
+public class DamageIncrease : Physical_Manager
 {
     private void Awake()
     {
