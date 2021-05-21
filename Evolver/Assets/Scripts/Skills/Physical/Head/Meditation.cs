@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Meditation : Physical_Manager
 {
+
+    private void Awake()
+    {
+        this.Skill_Num = 43;
+        //this.Sprite_Num = 
+    }
     void Update()
     {
         // # 명상으로는 능력치의 한계 없이 계속해서 올릴 수 있다. 하지만 값의 증가가 굉장히 미세하다.

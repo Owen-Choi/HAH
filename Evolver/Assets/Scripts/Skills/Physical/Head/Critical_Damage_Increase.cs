@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Critical_Damage_Increase : Physical_Manager
 {
+    private void Awake()
+    {
+        this.Skill_Num = 35;
+        //this.Sprite_Num = 
+    }
     private void Update()
     {
         if (this.Selected)

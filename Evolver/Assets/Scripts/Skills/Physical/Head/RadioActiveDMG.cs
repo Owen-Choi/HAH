@@ -9,6 +9,8 @@ public class RadioActiveDMG : Physical_Manager
     float originalDMG;
     void Awake()
     {
+        this.Skill_Num = 39;
+        //this.Sprite_Num = 
         originalDMG = Player_Stat.instance.damage;          //기존의 데미지 값을 저장
     }
     void Update()

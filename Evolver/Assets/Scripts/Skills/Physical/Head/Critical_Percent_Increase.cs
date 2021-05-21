@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Critical_Percent_Increase : Physical_Manager
 {
+    private void Awake()
+    {
+        this.Skill_Num = 36;
+        //this.Sprite_Num = 
+    }
     private void Update()
     {
         if (this.Selected)

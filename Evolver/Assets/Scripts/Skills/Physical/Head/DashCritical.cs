@@ -7,6 +7,12 @@ public class DashCritical : Physical_Manager
     public GameObject Player;
     bool isDash;    bool One;
     float tempCritPercent;
+
+    private void Awake()
+    {
+        this.Skill_Num = 37;
+        //this.Sprite_Num = 
+    }
     void Start()
     {
         isDash = Player.GetComponent<Player>().isDash;              //실시간으로 업데이트가 되나?

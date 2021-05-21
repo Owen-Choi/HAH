@@ -8,6 +8,8 @@ public class Thief : Physical_Manager
     int original_FoodDrop;
     private void Awake()
     {
+        this.Skill_Num = 40;
+        //this.Sprite_Num = 
         original_FoodDrop = BackPack.GetComponent<BackPack>().GetDropPercent("Food");
     }
     void Update()

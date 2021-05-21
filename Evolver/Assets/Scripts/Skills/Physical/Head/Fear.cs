@@ -5,8 +5,9 @@ using UnityEngine;
 public class Fear : Physical_Manager
 {
     // # 좀비의 종류가 늘어난다면 여기에 추가해주기
-    public Zombie_AI AIscript;
-    public Zombie_AI_For_TypeA AIscriptForA;
+    // # 이거 안될텐데??
+    public Zombie_AI AIscript;  
+    public Zombie_AI_For_TypeA AIscriptForA;    
 
     private void Awake()
     {
