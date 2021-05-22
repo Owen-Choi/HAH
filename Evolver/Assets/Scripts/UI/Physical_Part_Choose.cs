@@ -24,9 +24,9 @@ public class Physical_Part_Choose : MonoBehaviour
     // # 1 : ´Ù¸® 2 : ÆÈ 3 : °¡½¿ 4 : ¸Ó¸® 
     void Update()
     {
-        if (Player_Stat.instance.isPhysical_LevelUp && !ForOne)
+        if (Player_Stat.instance.isPhysical_LevelUp)
         {
-            ForOne = true;
+            Player_Stat.instance.isPhysical_LevelUp = false;
             Physic_ChooseUI.gameObject.SetActive(true);
             randNum1 = Random.Range(1, 5);
             do
@@ -133,7 +133,5 @@ public class Physical_Part_Choose : MonoBehaviour
     IEnumerator Physical_LevelUp_Delay()
     {
         yield return new WaitForEndOfFrame();
-        Player_Stat.instance.isPhysical_LevelUp = false;
-        ForOne = false;
     }
 }
