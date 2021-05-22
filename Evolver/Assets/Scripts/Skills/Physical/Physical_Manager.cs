@@ -29,7 +29,9 @@ public class Physical_Manager : MonoBehaviour
         StartCoroutine("LevelUpDelay");
         frame1 = Random.Range(Min, Max + 1);
         do
+        {
             frame2 = Random.Range(Min, Max + 1);
+        }
         while (frame2 == frame1);
 
         foreach (Physical_Manager pm in scripts)

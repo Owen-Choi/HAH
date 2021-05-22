@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Silver_Arrow : MonoBehaviour
 {
-    float time;
-    // Start is called before the first frame update
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void Awake()
     {
-        time += Time.deltaTime;
-        if (time > 0.5f)
-            Destroy(this.gameObject);
+        Debug.Log("Hi");
+        StartCoroutine("DeleteTimer");
+    }
+    IEnumerator DeleteTimer()
+    {
+        yield return new WaitForSeconds(0.35f);
+        Destroy(gameObject);
     }
 }

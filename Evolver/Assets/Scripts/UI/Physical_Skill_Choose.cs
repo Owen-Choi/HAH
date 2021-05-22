@@ -10,7 +10,6 @@ public class Physical_Skill_Choose : MonoBehaviour
     public GameObject Head;
     public GameObject Physic_System;
     Sprite[] sprites;
-    [HideInInspector]
     public int Min; public int Max;
     Physical_Manager One;
     Physical_Manager Two;
@@ -69,6 +68,34 @@ public class Physical_Skill_Choose : MonoBehaviour
             Head.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[Two.Sprite_Num];
             ForOne = true;
         }
+    }
+
+    public void FirstButtonPress()
+    {
+        One.Selected = true;
+        if (Leg.gameObject.activeSelf)
+            Leg.gameObject.SetActive(false);
+        else if (Arm.gameObject.activeSelf)
+            Arm.gameObject.SetActive(false);
+        else if (Chest.gameObject.activeSelf)
+            Chest.gameObject.SetActive(false);
+        else if (Head.gameObject.activeSelf)
+            Head.gameObject.SetActive(false);
+        ForOne = false;
+    }
+
+    public void SecondButtonPress()
+    {
+        Two.Selected = true;
+        if (Leg.gameObject.activeSelf)
+            Leg.gameObject.SetActive(false);
+        else if (Arm.gameObject.activeSelf)
+            Arm.gameObject.SetActive(false);
+        else if (Chest.gameObject.activeSelf)
+            Chest.gameObject.SetActive(false);
+        else if (Head.gameObject.activeSelf)
+            Head.gameObject.SetActive(false);
+        ForOne = false;
     }
     IEnumerator WaitForUpdate()
     {

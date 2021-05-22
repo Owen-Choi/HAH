@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Silver_Arrow_ShotPoint : MonoBehaviour
 { 
-    Vector3 shootDirection; Vector3 shootDirection2; public GameObject Silver_Arrow;     public GameObject Immed_Silver_Arrow; 
+    Vector3 shootDirection; Vector3 shootDirection2; //public GameObject Silver_Arrow;     public GameObject Immed_Silver_Arrow; 
     public float offset; bool Zero_Stamina; float EverySecond = 0f; float HoldingTime = 0f;
     float launchForce; public float increaseDamage; float increaseLaunchForce; bool ischanged; float chargingDamage; public float TempDMG; float TempLF;  float MaxDist = 15f;
     TrailRenderer tr;  public float DMGPercent;  float First;    float Second;  public float DSC;
@@ -107,7 +107,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
         //shootDirection.x = (float)2f * Mathf.Cos(degree);                       
         //shootDirection.y = (float)2f * Mathf.Sin(degree);
 
-        GameObject new_Silver_Arrow = Instantiate(Silver_Arrow, transform.position, this.transform.rotation);
+        GameObject new_Silver_Arrow = Instantiate(Resources.Load("Silver_Arrow"), transform.position, this.transform.rotation) as GameObject;
         new_Silver_Arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (200f),
            shootDirection.y * (200f));
         RayAll();
@@ -172,7 +172,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
         shootDirection2.x = (float)2f * Mathf.Cos(degree);
         shootDirection2.y = (float)2f * Mathf.Sin(degree);
 
-        GameObject new_Silver_Arrow = Instantiate(Immed_Silver_Arrow, transform.position, this.transform.rotation);
+        GameObject new_Silver_Arrow = Instantiate(Resources.Load("Silver_Arrow_For_ImmedShot"), transform.position, this.transform.rotation) as GameObject;
         new_Silver_Arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection2.x * (200f),
            shootDirection2.y * (200f));
         RayAll(TempDMG);
