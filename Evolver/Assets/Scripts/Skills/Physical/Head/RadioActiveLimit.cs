@@ -6,6 +6,12 @@ public class RadioActiveLimit : Physical_Manager
 {
     public GameObject Player;
     float RadioActive;  bool Canceled;
+
+    private void Awake()
+    {
+        this.Skill_Num = 38;
+        //this.Sprite_Num = 
+    }
     void Update()
     {
         if (this.Selected)

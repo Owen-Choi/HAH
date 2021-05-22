@@ -17,7 +17,7 @@ public class Physical_Part_Choose : MonoBehaviour
     void Start()
     {
         Physic_ChooseUI.gameObject.SetActive(false);        // 일단은 오브젝트 꺼두기
-        sprites = Resources.LoadAll<Sprite>("BodySkillIcon");
+        sprites = Resources.LoadAll<Sprite>("Physical_Skill");
         ForOne = false;
     }
 

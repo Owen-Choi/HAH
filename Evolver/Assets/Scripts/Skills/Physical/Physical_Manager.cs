@@ -14,21 +14,19 @@ public class Physical_Manager : MonoBehaviour
         scripts = this.GetComponents<Physical_Manager>();
         this.Selected = false;
     }
-    void Update()
+    /*void Update()
     {
         if (Player_Stat.instance.isPhysical_LevelUp)
         {
             
         }
-    }
+    }*/
 
-    public Physical_Manager Physic_Skill_Choose(int num)
+    public Physical_Manager Physic_Skill_Choose(int Min, int Max, int num)
     {
-        int Min; int Max; int frame1; int frame2;
+        int frame1; int frame2;
         Physical_Manager chosen1 = null; Physical_Manager chosen2 = null;
         StartCoroutine("LevelUpDelay");
-        Min = GetComponent<Physical_Skill_Choose>().Min;        //이게 될까?
-        Max = GetComponent<Physical_Skill_Choose>().Max;
         frame1 = Random.Range(Min, Max + 1);
         do
             frame2 = Random.Range(Min, Max + 1);
