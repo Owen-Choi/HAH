@@ -8,7 +8,7 @@ public class Growing : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 24;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 28;
         PlayerLevel = Player_Stat.instance.Physical_Level;
     }
 

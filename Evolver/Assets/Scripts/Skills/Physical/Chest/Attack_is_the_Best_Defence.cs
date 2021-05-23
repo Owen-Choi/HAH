@@ -8,7 +8,7 @@ public class Attack_is_the_Best_Defence : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 28;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 9;
     }
     private void Update()
     {

@@ -9,7 +9,7 @@ public class DualCore : Physical_Manager
     {
         PlayerLevel = Player_Stat.instance.Physical_Level;
         this.Skill_Num = 25;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 26;
     }
     private void Update()
     {

@@ -10,6 +10,8 @@ public class refill_Stamina : Physical_Manager
     private void Awake()
     {
         isAble = true;
+        this.Skill_Num = 29;
+        this.Sprite_Num = 8;    // 완벽한 사냥 스프라이트를 대신 사용하였다.
     }
     void Update()
     {

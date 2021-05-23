@@ -7,7 +7,7 @@ public class StaminaRecoveryIncrease :  Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 23;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 29;
     }
     void Update()
     {

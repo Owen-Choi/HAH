@@ -9,7 +9,7 @@ public class Safetyisbest : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 14;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 5;
     }
     void Update()
     {

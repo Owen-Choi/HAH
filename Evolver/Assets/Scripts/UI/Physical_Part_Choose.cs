@@ -35,16 +35,16 @@ public class Physical_Part_Choose : MonoBehaviour
             switch(randNum1)
             {
                 case 1:
-                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[8];
+                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[14];
                     break;
                 case 2:
                     Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[0];
                     break;
                 case 3:
-                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[14];
+                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[22];
                     break;
                 case 4:
-                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[19];
+                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[30];
                     break;
                 default:
                     Debug.Log("Error in body part choose");
@@ -53,16 +53,16 @@ public class Physical_Part_Choose : MonoBehaviour
             switch (randNum2)
             {
                 case 1:
-                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[8];
+                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[14];
                     break;
                 case 2:
                     Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[0];
                     break;
                 case 3:
-                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[14];
+                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[22];
                     break;
                 case 4:
-                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[19];
+                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[30];
                     break;
                 default:
                     Debug.Log("Error in body part choose");

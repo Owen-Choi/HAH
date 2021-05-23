@@ -7,7 +7,7 @@ public class LaunchForceIncrease : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 12;
-        this.Sprite_Num = 2;
+        this.Sprite_Num = 3;
     }
     private void Update()
     {

@@ -8,7 +8,7 @@ public class ChargingSpeedIncrease : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 11;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 2;
     }
     void Update()
     {

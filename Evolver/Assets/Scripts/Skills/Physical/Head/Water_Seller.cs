@@ -11,7 +11,7 @@ public class Water_Seller : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 41;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 33;
         Original_WaterDrop = BackPack.GetComponent<BackPack>().GetDropPercent("Water");
     }
     void Update()

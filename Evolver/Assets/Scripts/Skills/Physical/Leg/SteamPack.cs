@@ -9,7 +9,7 @@ public class SteamPack : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 3;
-        this.Sprite_Num = 13;
+        this.Sprite_Num = 19;
     }
     private void Update()
     {

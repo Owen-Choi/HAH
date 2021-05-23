@@ -9,7 +9,7 @@ public class HealthPerDamage : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 16;
-        this.Sprite_Num = 4;
+        this.Sprite_Num = 6;
         isChanged = true;
         originalDMG = Player_Stat.instance.damage;
     }

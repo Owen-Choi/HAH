@@ -7,7 +7,7 @@ public class MoveSpeedincrease : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 0;
-        this.Sprite_Num = 9;
+        this.Sprite_Num = 15;
     }
     void Update()
     {

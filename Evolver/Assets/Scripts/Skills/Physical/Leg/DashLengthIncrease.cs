@@ -7,6 +7,8 @@ public class DashLengthIncrease : Physical_Manager
     float DashTime;
     private void Awake()
     {
+        this.Skill_Num = 5;
+        this.Sprite_Num = 21;
         this.DashTime = Player_Stat.instance.DashTime;
     }
 

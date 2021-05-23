@@ -10,7 +10,7 @@ public class Gambler : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 2;
-        this.Sprite_Num = 12;
+        this.Sprite_Num = 18;
     }
     private void Update()
     {
