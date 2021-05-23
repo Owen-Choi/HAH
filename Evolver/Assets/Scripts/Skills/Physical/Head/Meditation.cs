@@ -8,7 +8,7 @@ public class Meditation : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 43;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 12; 
     }
     void Update()
     {
