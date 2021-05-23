@@ -16,6 +16,8 @@ public class Immediate_Shot : Skill_Manager
         Redcolor.r = 255f; Redcolor.g = 0f;   Redcolor.b = 0f;   Redcolor.a = 255f;
         OriginColor.r = 255f;   OriginColor.g = 255f;   OriginColor.b = 255f;   OriginColor.a = 255f;
         this.Sprite_Num = 20;
+        this.Skill_Name = "Counter";
+        this.Skill_Desc = "If a critical attack exceeds a certain number of times with one arrow, the next attack can be carried out immediately";
     }
 
     // Update is called once per frame

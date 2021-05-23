@@ -13,6 +13,10 @@ public class Penetrate : Skill_Manager
         this.Sprite_Num = 16;
         this.Once = false;
         this.Twice = false;
+        this.Skill_Name = "Penetration";
+        this.Skill_Desc = "+ : decreases stamina need when charging" + "" +
+            "++ : increases Charging speed" + "" +
+            "+++ : Small amount of stamina recovered from critical shot";
     }
 
 

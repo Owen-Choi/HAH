@@ -9,6 +9,8 @@ public class Long_Range_Shot : Skill_Manager
     {
         this.Skill_Num = 16;
         this.Sprite_Num = 13;
+        this.Skill_Name = "Long-range shot";
+        this.Skill_Desc = "Increases damage when shooting enemies outside a range";
     }
 
     private void Update()
