@@ -10,6 +10,8 @@ public class Skill_Manager : MonoBehaviour {
     public bool Selected_Second;
     public bool Selected_Last;
     public Skill_Manager[] scripts;
+    public string Skill_Name;       // 스킬 이름을 저장할 변수
+    public string Skill_Desc;       // 스킬 설명을 저장할 변수
     private void Start()
     {
         scripts = this.GetComponents<Skill_Manager>();

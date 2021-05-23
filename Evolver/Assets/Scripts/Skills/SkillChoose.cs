@@ -35,10 +35,13 @@ public class SkillChoose : MonoBehaviour
             spriteName = "SkillIcon_" + One.Sprite_Num;
             //SkillChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(spriteName);
             SkillChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[One.Sprite_Num];
+            SkillChooseUI.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = One.Skill_Name;
             spriteName = "SkillIcon_" + Two.Sprite_Num;
             SkillChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[Two.Sprite_Num];
+            SkillChooseUI.transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text = Two.Skill_Name;
             spriteName = "SkillIcon_" + Three.Sprite_Num;
             SkillChooseUI.transform.GetChild(2).GetComponent<Image>().overrideSprite = sprites[Three.Sprite_Num];
+            SkillChooseUI.transform.GetChild(2).transform.GetChild(0).GetComponent<Text>().text = Three.Skill_Name;
             ForOne = true;
             StartCoroutine("LevelUpDelay");
         }

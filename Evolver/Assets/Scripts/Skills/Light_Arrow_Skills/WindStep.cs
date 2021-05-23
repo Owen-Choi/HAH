@@ -8,11 +8,15 @@ public class WindStep : Skill_Manager
     bool ForOne = false;
     public float time = 0f;
     public GameObject ShotPoint;
+    GameObject SP;
+    bool isShoot;
     
     void Start()
     {
         this.Skill_Num = 6;
         this.Sprite_Num = 4;
+        this.Skill_Name = "Wind Step";
+        this.Skill_Desc = "Your dodge percent will be increased and your movement speed will be increased temporarily when you attack enemy";
     }
 
 
@@ -26,7 +30,7 @@ public class WindStep : Skill_Manager
                 ForOne = true;
             }
             this.Selected = true;
-            if (ShotPoint.GetComponent<ShotPoint>().isShoot && !TimeDone)
+            if (ShotPoint.GetComponent<ShotPoint>().isShoot && !TimeDone)           //비효율적인 코드지만 개선안이 생각나지 않는다....
                 ws();
         }
     }

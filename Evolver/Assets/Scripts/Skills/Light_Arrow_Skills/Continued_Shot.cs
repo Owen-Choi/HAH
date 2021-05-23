@@ -13,10 +13,9 @@ public class Continued_Shot : Skill_Manager
         this.DMG_Decrease_Twice = false;
         this.DMG_Increase_First = false;
         this.Skill_Num = 4;
-        //this.Selected_First = false;
-        //this.Selected_Second = false;
-        //this.Selected_Last = false;
         this.Sprite_Num = 7;
+        this.Skill_Name = "Additional Shot";
+        this.Skill_Desc = "One Additional attack will be added";
     }
 
    

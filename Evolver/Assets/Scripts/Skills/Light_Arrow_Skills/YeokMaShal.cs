@@ -11,6 +11,8 @@ public class YeokMaShal : Skill_Manager
     {
         this.Skill_Num = 5;
         this.Sprite_Num = 6;
+        this.Skill_Name = "Runner";
+        this.Skill_Desc = "If you fill your running-gage, then your next attack will be critical shot";
     }
 
     // Update is called once per frame

@@ -11,7 +11,7 @@ public class DashCritical : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 37;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 10;
     }
     void Start()
     {

@@ -22,6 +22,8 @@ public class MultiShot : Skill_Manager
         this.DMG_Decrease_Once = false;
         this.DMG_Decrease_Twice = false;
         this.Sprite_Num = 10;
+        this.Skill_Name = "MultiShot";
+        this.Skill_Desc = "Two additional arrow will be added";
     }
 
     /* public override void Activate()
