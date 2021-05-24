@@ -6,6 +6,13 @@ public class Kitchen : MonoBehaviour
 {
     float radius = 1;
     public GameObject BackPack;
+    public int RadioActiveDecrease;
+
+
+    private void Awake()
+    {
+        RadioActiveDecrease = 10;
+    }
     void Update()
     {
         RaycastHit2D circle = Physics2D.CircleCast(transform.position, radius, Vector2.up, radius, LayerMask.GetMask("Player"));
@@ -14,8 +21,8 @@ public class Kitchen : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 BackPack.GetComponent<BackPack>().UseItem("Food", 1);
-                Player_Stat.instance.RadioActive -= 10;
-                Player_Stat.instance.healthMax += 10;
+                Player_Stat.instance.RadioActive -= RadioActiveDecrease;
+                Player_Stat.instance.healthMax += RadioActiveDecrease;
             }
 
             if (Input.GetKeyDown(KeyCode.R))

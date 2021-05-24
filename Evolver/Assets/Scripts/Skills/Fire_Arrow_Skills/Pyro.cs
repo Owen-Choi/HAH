@@ -10,6 +10,8 @@ public class Pyro : Skill_Manager
     {
         this.Skill_Num = 26;
         this.Sprite_Num = 26;
+        this.Skill_Name = "Pyro";
+        this.Skill_Desc = "The burning enemy died instantly at a very low probability ";
     }
 
     // Update is called once per frame

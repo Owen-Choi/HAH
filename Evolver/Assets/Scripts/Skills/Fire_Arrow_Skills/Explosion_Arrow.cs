@@ -15,6 +15,8 @@ public class Explosion_Arrow : Skill_Manager
         ChangeTwice = false;
         ChangeLast = false;
         this.Sprite_Num = 27;
+        this.Skill_Name = "Explosive arrow";
+        this.Skill_Desc = "The arrow explodes in the event of a critical shot";
     }
 
     // Update is called once per frame

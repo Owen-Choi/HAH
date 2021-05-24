@@ -11,7 +11,11 @@ public class Oil : Skill_Manager
         this.Skill_Num = 25;
         ChangeOnce = false;
         ChangeTwice = false;
-        this.Sprite_Num = 37;        //기름 스킬의 스프라이트가 아니다. 일단은 임시로 사용 중이니 다시 찍어달라고 하자.
+        this.Sprite_Num = 37;
+        this.Skill_Name = "Oil";
+        this.Skill_Desc = "+ : There is an increased chance of burning the enemy " +
+            "++ : There is an increased chance of burning the enemy " +
+            "+++ : Every attack causes burning ";
     }
 
     // Update is called once per frame

@@ -12,6 +12,8 @@ public class FlameBottle : Skill_Manager
     {
         this.Skill_Num = 29;
         this.Sprite_Num = 33;
+        this.Skill_Name = "Flame bottle";
+        this.Skill_Desc = "you can use explosive flame bottle";
     }
 
    
