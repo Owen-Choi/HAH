@@ -34,17 +34,22 @@ public class Physical_Part_Choose : MonoBehaviour
             while (randNum1 == randNum2);               //두개의 수는 같을 수 없다.
             switch(randNum1)
             {
+                // 14 : 팔, 0 : 다리, 22 : 가슴, 30 : 머리
                 case 1:
                     Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[14];
+                    Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Arm";
                     break;
                 case 2:
                     Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[0];
+                    Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Leg";
                     break;
                 case 3:
                     Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[22];
+                    Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Chest";
                     break;
                 case 4:
                     Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[30];
+                    Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Head";
                     break;
                 default:
                     Debug.Log("Error in body part choose");
@@ -54,15 +59,19 @@ public class Physical_Part_Choose : MonoBehaviour
             {
                 case 1:
                     Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[14];
+                    Physic_ChooseUI.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "Arm";
                     break;
                 case 2:
                     Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[0];
+                    Physic_ChooseUI.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "Leg";
                     break;
                 case 3:
                     Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[22];
+                    Physic_ChooseUI.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "Chest";
                     break;
                 case 4:
                     Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[30];
+                    Physic_ChooseUI.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "Head";
                     break;
                 default:
                     Debug.Log("Error in body part choose");

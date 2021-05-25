@@ -8,6 +8,8 @@ public class EvadePercentIncrease : Physical_Manager
     {
         this.Skill_Num = 1;
         this.Sprite_Num = 16;
+        this.Skill_Name = "Increase percent of dodge";
+        this.Skill_Desc = "";
     }
     void Update()
     {

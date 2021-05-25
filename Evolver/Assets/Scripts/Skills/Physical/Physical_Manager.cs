@@ -8,6 +8,8 @@ public class Physical_Manager : MonoBehaviour
     public int Sprite_Num;
     public Physical_Manager[] scripts;
     public bool Selected;
+    public string Skill_Name;
+    public string Skill_Desc;
     
     void Start()
     {

@@ -11,6 +11,8 @@ public class Gambler : Physical_Manager
     {
         this.Skill_Num = 2;
         this.Sprite_Num = 18;
+        this.Skill_Name = "Gambler";
+        this.Skill_Desc = "Increases dodge percent as 30%, but max health decreases 20% ";
     }
     private void Update()
     {

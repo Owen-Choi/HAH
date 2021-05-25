@@ -10,6 +10,8 @@ public class DashLengthIncrease : Physical_Manager
         this.Skill_Num = 5;
         this.Sprite_Num = 21;
         this.DashTime = Player_Stat.instance.DashTime;
+        this.Skill_Name = "Increase dash distance";
+        this.Skill_Desc = "";
     }
 
     void Update()

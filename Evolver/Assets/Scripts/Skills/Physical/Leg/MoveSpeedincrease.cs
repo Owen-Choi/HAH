@@ -8,6 +8,8 @@ public class MoveSpeedincrease : Physical_Manager
     {
         this.Skill_Num = 0;
         this.Sprite_Num = 15;
+        this.Skill_Name = "Increase movement speed";
+        this.Skill_Desc = "";
     }
     void Update()
     {
