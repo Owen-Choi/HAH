@@ -9,6 +9,8 @@ public class ChargingSpeedIncrease : Physical_Manager
     {
         this.Skill_Num = 11;
         this.Sprite_Num = 2;
+        this.Skill_Name = "Increase charging speed";
+        this.Skill_Desc = "";
     }
     void Update()
     {

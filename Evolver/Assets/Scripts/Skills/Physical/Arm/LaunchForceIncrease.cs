@@ -8,6 +8,8 @@ public class LaunchForceIncrease : Physical_Manager
     {
         this.Skill_Num = 12;
         this.Sprite_Num = 3;
+        this.Skill_Name = "Increase arrow speed";
+        this.Skill_Desc = "";
     }
     private void Update()
     {

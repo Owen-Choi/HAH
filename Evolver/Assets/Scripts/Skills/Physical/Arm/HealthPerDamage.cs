@@ -12,19 +12,17 @@ public class HealthPerDamage : Physical_Manager
         this.Sprite_Num = 6;
         isChanged = true;
         originalDMG = Player_Stat.instance.damage;
+        this.Skill_Name = "Viking";
+        this.Skill_Desc = "Increase health as 5 percent of damage";
     }
     void Update()
     {
-        if (this.Selected && isChanged)
+        // 일회성으로 효과가 계속 지속되지 않게 해야겠다.
+        if (this.Selected)
         {
-            isChanged = false;
+            this.Selected = false;
             Player_Stat.instance.DefaultHealthMax += Player_Stat.instance.damage * 0.05f; 
         }
 
-        // # 공격력의 변화가 감지되면 다시 최대체력 업데이트. 이 코드가 동작할 지는 모르겠다.
-        if(originalDMG < Player_Stat.instance.damage)
-        {
-            isChanged = true;         
-        }
     }
 }

@@ -10,6 +10,8 @@ public class Safetyisbest : Physical_Manager
     {
         this.Skill_Num = 14;
         this.Sprite_Num = 5;
+        this.Skill_Name = "Safety is the best";
+        this.Skill_Desc = "Decrease damage as 10 percent, and increase armor as damage decreased";
     }
     void Update()
     {

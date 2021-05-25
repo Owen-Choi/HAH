@@ -8,6 +8,8 @@ public class DamageIncrease : Physical_Manager
     {
         this.Skill_Num = 10;
         this.Sprite_Num = 1;
+        this.Skill_Name = "Increase damage";
+        this.Skill_Desc = "";
     }
     void Update()
     {
