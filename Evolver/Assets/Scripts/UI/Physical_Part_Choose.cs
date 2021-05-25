@@ -36,20 +36,24 @@ public class Physical_Part_Choose : MonoBehaviour
             {
                 // 14 : 팔, 0 : 다리, 22 : 가슴, 30 : 머리
                 case 1:
-                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[14];
-                    Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Arm";
+                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[0];
+                    Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Arm";                                                //이름이 표시되는 UI
+                    Physic_ChooseUI.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = "Damage, Charging speed, Arrow speed";               //설명이 표시되는 UI
                     break;
                 case 2:
-                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[0];
+                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[14];
                     Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Leg";
+                    Physic_ChooseUI.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = "Movement speed, Dodge";
                     break;
                 case 3:
                     Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[22];
                     Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Chest";
+                    Physic_ChooseUI.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = "Armor, Health, Stamina";
                     break;
                 case 4:
                     Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[30];
                     Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Head";
+                    Physic_ChooseUI.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = "Critical chance, Critical damage";
                     break;
                 default:
                     Debug.Log("Error in body part choose");
@@ -58,20 +62,24 @@ public class Physical_Part_Choose : MonoBehaviour
             switch (randNum2)
             {
                 case 1:
-                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[14];
+                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[0];
                     Physic_ChooseUI.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "Arm";
+                    Physic_ChooseUI.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "Damage, Charging speed, Arrow speed";
                     break;
                 case 2:
-                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[0];
+                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[14];
                     Physic_ChooseUI.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "Leg";
+                    Physic_ChooseUI.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "Movement speed, Dodge";
                     break;
                 case 3:
                     Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[22];
                     Physic_ChooseUI.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "Chest";
+                    Physic_ChooseUI.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "Armor, Health, Stamina";
                     break;
                 case 4:
                     Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[30];
                     Physic_ChooseUI.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "Head";
+                    Physic_ChooseUI.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "Critical chance, Critical damage";
                     break;
                 default:
                     Debug.Log("Error in body part choose");
