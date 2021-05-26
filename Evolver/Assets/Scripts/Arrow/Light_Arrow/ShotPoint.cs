@@ -190,7 +190,7 @@ public class ShotPoint : MonoBehaviour
         {
             Middle_Right_ShotPoint.GetComponent<Middle_Right_ShotPoint>().Shoot(TempDMG, TempLF);
             Middle_Left_ShotPoint.GetComponent<Middle_Left_ShotPoint>().Shoot(TempDMG, TempLF);
-            if (Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().enabled)
+            if (Full_Left_ShotPoint.gameObject.activeSelf)
             {
                 Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().Shoot(TempDMG, TempLF);
                 Full_Right_ShotPoint.GetComponent<Full_Right_ShotPoint>().Shoot(TempDMG, TempLF);

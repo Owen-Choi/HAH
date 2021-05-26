@@ -11,7 +11,7 @@ public class WeaponChooseUI : MonoBehaviour
 
     private void Awake()
     {
-        this.gameObject.SetActive(true);
+        this.gameObject.SetActive(true);                            //꺼져있는 상태라 자기 자신도 제어를 못하나보다. 나중에 gameManager 오브젝트에서 제어해줘야할 듯 하다.
     }
     public void FirstButtonPress()
     {
