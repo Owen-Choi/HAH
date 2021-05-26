@@ -34,7 +34,7 @@ public class Physical_Part_Choose : MonoBehaviour
             while (randNum1 == randNum2);               //두개의 수는 같을 수 없다.
             switch(randNum1)
             {
-                // 14 : 팔, 0 : 다리, 22 : 가슴, 30 : 머리
+                // 0 : 팔, 14 : 다리, 22 : 가슴, 30 : 머리
                 case 1:
                     Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[0];
                     Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Arm";                                                //이름이 표시되는 UI
@@ -95,13 +95,13 @@ public class Physical_Part_Choose : MonoBehaviour
             case 1:
                 {
                     Physic_ChooseUI.gameObject.SetActive(false);
-                    Leg.gameObject.SetActive(true);             //Leg_Skills UI에서 스킬 선정부터 적용까지 다 다뤄야할 것 같다. 버튼을 기준으로 더 이상 투자 가능한 스킬이 없으면 비워두는 형식으로 가자.
+                    Arm.gameObject.SetActive(true);             //Leg_Skills UI에서 스킬 선정부터 적용까지 다 다뤄야할 것 같다. 버튼을 기준으로 더 이상 투자 가능한 스킬이 없으면 비워두는 형식으로 가자.
                     break;
                 }
             case 2:
                 {
                     Physic_ChooseUI.gameObject.SetActive(false);
-                    Arm.gameObject.SetActive(true);
+                    Leg.gameObject.SetActive(true);
                     break;
                 }
             case 3:
@@ -127,11 +127,11 @@ public class Physical_Part_Choose : MonoBehaviour
         {
             case 1:
                 Physic_ChooseUI.gameObject.SetActive(false);
-                Leg.gameObject.SetActive(true);
+                Arm.gameObject.SetActive(true);
                 break;
             case 2:
                 Physic_ChooseUI.gameObject.SetActive(false);
-                Arm.gameObject.SetActive(true);
+                Leg.gameObject.SetActive(true);
                 break;
             case 3:
                 Physic_ChooseUI.gameObject.SetActive(false);

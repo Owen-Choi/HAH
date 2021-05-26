@@ -9,6 +9,10 @@ public class WeaponChooseUI : MonoBehaviour
     public Canvas BasicUI;
     // 세가지 유형의 무기 중 하나를 선택하면 BasicUI 활성화하고 WeaponChoose 오브젝트에 정보 넘겨주고 게임 시작
 
+    private void Awake()
+    {
+        this.gameObject.SetActive(true);
+    }
     public void FirstButtonPress()
     {
         WeaponChoose.GetComponent<WeaponChoose>().isLight = true;

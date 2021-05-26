@@ -10,7 +10,9 @@ public class RadioActiveLimit : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 38;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 36;
+        this.Skill_Name = "Cliff edge";
+        this.Skill_Desc = "If your radioactive value is greater than 90%, it will stop stacking";
     }
     void Update()
     {

@@ -11,6 +11,8 @@ public class Thief : Physical_Manager
         this.Skill_Num = 40;
         this.Sprite_Num = 32;
         original_FoodDrop = BackPack.GetComponent<BackPack>().GetDropPercent("Food");
+        this.Skill_Name = "Thief";
+        this.Skill_Desc = "Food drop probability will be increased";
     }
     void Update()
     {

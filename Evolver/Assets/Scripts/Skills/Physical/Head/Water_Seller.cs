@@ -13,6 +13,8 @@ public class Water_Seller : Physical_Manager
         this.Skill_Num = 41;
         this.Sprite_Num = 33;
         Original_WaterDrop = BackPack.GetComponent<BackPack>().GetDropPercent("Water");
+        this.Skill_Name = "Water seller";
+        this.Skill_Desc = "Water drop probability will be increased";
     }
     void Update()
     {

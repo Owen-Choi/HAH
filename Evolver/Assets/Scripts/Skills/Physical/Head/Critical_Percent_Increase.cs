@@ -7,8 +7,9 @@ public class Critical_Percent_Increase : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 36;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 39;
         this.Skill_Name = "Increase critical attack probability";
+        this.Skill_Desc = "";
     }
     private void Update()
     {
