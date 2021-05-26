@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class refill_Stamina : Physical_Manager
 {
-    // # 연타하면 스테미나가 가득 차는 현상을 방지하기 위해 스테미나가 50퍼센트 이상이 넘어야 다시 기회가 생기는 시스템으로 만들자.
+    // # 연타하면 스테미나가 가득 차는 현상을 방지하기 위해 스테미나가 50퍼센트 이상이 넘어야 다시 기회가 생기는 시스템으로 만들었다.
     bool isAble;
 
     private void Awake()
@@ -12,6 +12,8 @@ public class refill_Stamina : Physical_Manager
         isAble = true;
         this.Skill_Num = 29;
         this.Sprite_Num = 8;    // 완벽한 사냥 스프라이트를 대신 사용하였다.
+        this.Skill_Name = "Stamina re-fill";
+        this.Skill_Desc = "if your stamina is zero, your stamina immediately jump to max value by 10 percent probability";
     }
     void Update()
     {

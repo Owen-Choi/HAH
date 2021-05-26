@@ -10,7 +10,9 @@ public class Berserker_Rage : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 26;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 13;
+        this.Skill_Name = "Berserker rage";
+        this.Skill_Desc = "pump damage when your health is less than 10%";
     }
     private void Update()
     {

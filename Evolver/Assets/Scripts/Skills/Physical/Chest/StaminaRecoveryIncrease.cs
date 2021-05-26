@@ -8,6 +8,8 @@ public class StaminaRecoveryIncrease :  Physical_Manager
     {
         this.Skill_Num = 23;
         this.Sprite_Num = 29;
+        this.Skill_Name = "Increase stamina recovery speed";
+        this.Skill_Desc = "";
     }
     void Update()
     {

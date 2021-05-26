@@ -12,6 +12,8 @@ public class DashCritical : Physical_Manager
     {
         this.Skill_Num = 37;
         this.Sprite_Num = 10;
+        this.Skill_Name = "Critical dash";
+        this.Skill_Desc = "Critical attack's probability will be temporarily increased after dash";
     }
     void Start()
     {

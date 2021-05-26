@@ -8,6 +8,8 @@ public class Max_Stamina_Increase : Physical_Manager
     {
         this.Skill_Num = 22;
         this.Sprite_Num = 25;
+        this.Skill_Name = "Increase max stamina";
+        this.Skill_Desc = "";
     }
     void Update()
     {
