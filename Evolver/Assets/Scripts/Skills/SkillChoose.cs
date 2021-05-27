@@ -12,13 +12,11 @@ public class SkillChoose : MonoBehaviour
     Skill_Manager One;
     Skill_Manager Two;
     Skill_Manager Three;
-    Sprite[] sprites;
+    public Sprite[] sprites;
     private void Start()
     {
-
         SkillChooseUI.gameObject.SetActive(false);
-
-        sprites = Resources.LoadAll<Sprite>("SkillIcon");                               
+        // # 스프라이트를 Resources 파일에서 가져오는 작업은 WeaponChoose 스크립트에서 진행한다.
         ForOne = false;
     }
 
@@ -34,6 +32,7 @@ public class SkillChoose : MonoBehaviour
             //Obj.transform.GetChild(0).GetComponent<Image>.overrideSprite =  Resources.Load<Sprite>("Textures/sprite"); 예제 코드
             spriteName = "SkillIcon_" + One.Sprite_Num;
             //SkillChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = Resources.Load<Sprite>(spriteName);
+            
             SkillChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[One.Sprite_Num];
             SkillChooseUI.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = One.Skill_Name;
             SkillChooseUI.transform.GetChild(0).transform.GetChild(1).GetComponent<Text>().text = One.Skill_Desc;

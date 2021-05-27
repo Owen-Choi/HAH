@@ -11,7 +11,7 @@ public class Oil : Skill_Manager
         this.Skill_Num = 25;
         ChangeOnce = false;
         ChangeTwice = false;
-        this.Sprite_Num = 37;
+        this.Sprite_Num = 13;
         this.Skill_Name = "Oil";
         this.Skill_Desc = "+ : There is an increased chance of burning the enemy " +
             "++ : There is an increased chance of burning the enemy " +
@@ -25,13 +25,13 @@ public class Oil : Skill_Manager
         {
             Player_Stat.instance.Burn_Percent = 40f;
             ChangeOnce = true;
-            this.Sprite_Num = 38;
+            this.Sprite_Num = 14;
         }
         if (this.Selected_Second && !ChangeTwice)
         {
             Player_Stat.instance.Burn_Percent = 60f;
             ChangeTwice = true;
-            this.Sprite_Num = 39;
+            this.Sprite_Num = 15;
         }
         if(this.Selected_Last)
         {

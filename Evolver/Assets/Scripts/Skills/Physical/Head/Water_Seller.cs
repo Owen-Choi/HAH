@@ -11,10 +11,10 @@ public class Water_Seller : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 41;
-        this.Sprite_Num = 33;
-        Original_WaterDrop = BackPack.GetComponent<BackPack>().GetDropPercent("Water");
+        this.Sprite_Num = 3;
         this.Skill_Name = "Water seller";
         this.Skill_Desc = "Water drop probability will be increased";
+        Original_WaterDrop = BackPack.GetComponent<BackPack>().GetDropPercent("Water");     // 왜 안되는거야
     }
     void Update()
     {

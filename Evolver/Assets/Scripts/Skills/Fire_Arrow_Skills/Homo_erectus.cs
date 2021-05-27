@@ -9,7 +9,7 @@ public class Homo_erectus : Skill_Manager
     void Start()
     {
         this.Skill_Num = 30;
-        this.Sprite_Num = 23;
+        this.Sprite_Num = 2;
         this.Skill_Name = "Homo erectus";
         this.Skill_Desc = "More radioacive will be decreased by food";
         ForOnce = false;

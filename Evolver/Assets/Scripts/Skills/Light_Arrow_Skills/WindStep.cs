@@ -14,7 +14,7 @@ public class WindStep : Skill_Manager
     void Start()
     {
         this.Skill_Num = 6;
-        this.Sprite_Num = 4;
+        this.Sprite_Num = 2;
         this.Skill_Name = "Wind Step";
         this.Skill_Desc = "Your dodge percent will be increased and your movement speed will be increased temporarily when you attack enemy";
     }

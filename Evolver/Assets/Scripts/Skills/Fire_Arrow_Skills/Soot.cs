@@ -12,7 +12,7 @@ public class Soot : Skill_Manager
         ChangeOnce = false;
         ChangeTwice = false;
         ChangeLast = false;
-        this.Sprite_Num = 32;
+        this.Sprite_Num = 9;
         this.Skill_Name = "Soot";
         this.Skill_Desc = "When an enemy on fire contact with another enemy, the burn spreads ";
     }

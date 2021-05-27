@@ -8,7 +8,7 @@ public class Dash_Master : Skill_Manager
     private void Start()
     {
         this.Skill_Num = 17;
-        this.Sprite_Num = 15;
+        this.Sprite_Num = 3;
         this.Skill_Name = "Dash Master";
         this.Skill_Desc = "You can dash without stamina and dash's cool time will be reduced as 10 secs";
     }

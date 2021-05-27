@@ -8,7 +8,7 @@ public class Meditation : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 43;
-        this.Sprite_Num = 12;
+        this.Sprite_Num = 1;
         this.Skill_Name = "Meditation";
         this.Skill_Desc = "All stats will be slightly increased ";
     }

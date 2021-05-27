@@ -11,8 +11,8 @@ public class DashCritical : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 37;
-        this.Sprite_Num = 10;
-        this.Skill_Name = "Critical dash";
+        this.Sprite_Num = 9;
+        this.Skill_Name = "Sharp posture";
         this.Skill_Desc = "Critical attack's probability will be temporarily increased after dash";
     }
     void Start()

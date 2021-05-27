@@ -9,7 +9,7 @@ public class Concentration_Shot : Skill_Manager
     private void Start()
     {
         this.Skill_Num = 15;
-        this.Sprite_Num = 14;
+        this.Sprite_Num = 2;
         this.Skill_Name = "Concentration";
         this.Skill_Desc = "Damage will be increased as stamina that is used when charging";
     }

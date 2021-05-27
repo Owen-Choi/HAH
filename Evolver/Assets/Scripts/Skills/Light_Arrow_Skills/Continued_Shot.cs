@@ -13,7 +13,7 @@ public class Continued_Shot : Skill_Manager
         this.DMG_Decrease_Twice = false;
         this.DMG_Increase_First = false;
         this.Skill_Num = 4;
-        this.Sprite_Num = 7;
+        this.Sprite_Num = 4;
         this.Skill_Name = "Additional Shot";
         this.Skill_Desc = "One Additional attack will be added";
     }
@@ -26,7 +26,7 @@ public class Continued_Shot : Skill_Manager
             if (!DMG_Decrease_Once)
             {
                 DMG_Decrease_Once = true;
-                this.Sprite_Num = 8;
+                this.Sprite_Num = 5;
                 Player_Stat.instance.is_Continued_Shot = true;
                 Player_Stat.instance.damage -= 3;               //향후 수치 조정하기
             }
@@ -35,7 +35,7 @@ public class Continued_Shot : Skill_Manager
         if (this.Selected_Second)
             if (!DMG_Decrease_Twice)
             {
-                this.Sprite_Num = 9;
+                this.Sprite_Num = 6;
                 DMG_Decrease_Twice = true;
                 Player_Stat.instance.is_Continued_Shot2 = true;
                 Player_Stat.instance.damage -= 2;               //향후 수치 조정하기

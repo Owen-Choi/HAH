@@ -15,7 +15,7 @@ public class Immediate_Shot : Skill_Manager
         ChangeTwice = false;
         Redcolor.r = 255f; Redcolor.g = 0f;   Redcolor.b = 0f;   Redcolor.a = 255f;
         OriginColor.r = 255f;   OriginColor.g = 255f;   OriginColor.b = 255f;   OriginColor.a = 255f;
-        this.Sprite_Num = 20;
+        this.Sprite_Num = 7;
         this.Skill_Name = "Counter";
         this.Skill_Desc = "If a critical attack exceeds a certain number of times with one arrow, the next attack can be carried out immediately";
     }
@@ -27,7 +27,7 @@ public class Immediate_Shot : Skill_Manager
         if (Selected_First && !ChangeOnce)
         {
             ChangeOnce = true;
-            this.Sprite_Num = 21;
+            this.Sprite_Num = 8;
             Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().isImmed = true;
             Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().ISCMax = 4;
         }
@@ -35,7 +35,7 @@ public class Immediate_Shot : Skill_Manager
         if(Selected_Second && !ChangeTwice)
         {
             ChangeTwice = true;
-            this.Sprite_Num = 22;
+            this.Sprite_Num = 9;
             Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().ISCMax = 3;
         }
 

@@ -9,10 +9,10 @@ public class Thief : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 40;
-        this.Sprite_Num = 32;
-        original_FoodDrop = BackPack.GetComponent<BackPack>().GetDropPercent("Food");
+        this.Sprite_Num = 2;
         this.Skill_Name = "Thief";
         this.Skill_Desc = "Food drop probability will be increased";
+        original_FoodDrop = BackPack.GetComponent<BackPack>().GetDropPercent("Food");
     }
     void Update()
     {

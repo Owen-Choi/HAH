@@ -21,7 +21,7 @@ public class MultiShot : Skill_Manager
         this.Selected_Last = false;
         this.DMG_Decrease_Once = false;
         this.DMG_Decrease_Twice = false;
-        this.Sprite_Num = 10;
+        this.Sprite_Num = 7;
         this.Skill_Name = "MultiShot";
         this.Skill_Desc = "Two additional arrow will be added";
     }
@@ -54,7 +54,7 @@ public class MultiShot : Skill_Manager
             Middle_Right_ShotPoint.gameObject.SetActive(true);
             if (!DMG_Decrease_Once)
             {
-                this.Sprite_Num = 11;
+                this.Sprite_Num = 8;
                 Player_Stat.instance.Charge_Damage_Plus -= 2;
                 DMG_Decrease_Once = true;
             }
@@ -65,7 +65,7 @@ public class MultiShot : Skill_Manager
             Full_Right_ShotPoint.gameObject.SetActive(true);
             if (!DMG_Decrease_Twice)
             {
-                this.Sprite_Num = 12;
+                this.Sprite_Num = 9;
                 Player_Stat.instance.Charge_Damage_Plus--;
                 DMG_Decrease_Twice = true;
             }

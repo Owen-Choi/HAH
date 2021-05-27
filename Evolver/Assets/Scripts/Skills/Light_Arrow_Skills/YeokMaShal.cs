@@ -10,7 +10,7 @@ public class YeokMaShal : Skill_Manager
     void Start()
     {
         this.Skill_Num = 5;
-        this.Sprite_Num = 6;
+        this.Sprite_Num = 1;    //근접사격 스프라이트 사용
         this.Skill_Name = "Runner";
         this.Skill_Desc = "If you fill your running-gage, then your next attack will be critical shot";
     }

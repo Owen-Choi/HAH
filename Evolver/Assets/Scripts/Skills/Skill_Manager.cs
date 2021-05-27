@@ -51,8 +51,8 @@ public class Skill_Manager : MonoBehaviour {
         int Min = GameObject.Find("SkillChoose").GetComponent<SkillChoose>().MinValue;
         int Max = GameObject.Find("SkillChoose").GetComponent<SkillChoose>().MaxValue;
         // # 스킬넘버 3개를 난수 생성으로 받기
-        frame1 = Random.Range(Min, Max);
-        frame2 = Random.Range(Min, Max);
+        frame1 = Random.Range(Min, Max+1);
+        frame2 = Random.Range(Min, Max+1);
         frame3 = Random.Range(Min, Max+1);
         // # 스킬 중복 방지와 선택된 스킬 체크 방지는 에러로 인해 없앴다. 
         do
