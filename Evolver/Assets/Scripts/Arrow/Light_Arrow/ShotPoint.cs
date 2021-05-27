@@ -13,7 +13,7 @@ public class ShotPoint : MonoBehaviour
     public GameObject Middle_Right_ShotPoint;
     public GameObject Full_Left_ShotPoint;
     public GameObject Full_Right_ShotPoint;
-
+    float DMGCache;
     private void Start()
     {
         launchForce = Player_Stat.instance.launchForce;
@@ -232,5 +232,21 @@ public class ShotPoint : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         Player_Stat.instance.AbsolCrit = false;
+    }
+
+    public void RobinHood()
+    {
+        DMGCache = Player_Stat.instance.damage;
+        this.Shoot(DMGCache, 10);
+        if (Middle_Left_ShotPoint.gameObject.activeSelf)
+        {
+            Middle_Right_ShotPoint.GetComponent<Middle_Right_ShotPoint>().Shoot(DMGCache, 10);
+            Middle_Left_ShotPoint.GetComponent<Middle_Left_ShotPoint>().Shoot(DMGCache, 10);
+            if (Full_Left_ShotPoint.gameObject.activeSelf)
+            {
+                Full_Left_ShotPoint.GetComponent<Full_Left_ShotPoint>().Shoot(DMGCache, 10);
+                Full_Right_ShotPoint.GetComponent<Full_Right_ShotPoint>().Shoot(DMGCache, 10);
+            }
+        }
     }
 }
