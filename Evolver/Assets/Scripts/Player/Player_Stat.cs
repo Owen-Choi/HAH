@@ -14,8 +14,11 @@ public class Player_Stat : MonoBehaviour
     public float Burn_Percent;          public bool isPyro;             public int FireborneMax = 1;    public float Burning_DMG;
     public float Explode_Multiple_Damage;   public bool isShelter;      public float ChargingSpeed;     public int dashCool;    public float DashTime;
 
+    public bool isLight;    public bool isSilver;   public bool isFire;
+
     void Awake()
     {
+        // # 초기값으로 설정되어야 하는 값들 추가하기
         instance = this;
         healthMax = 100f;
         RadioActive = 0f;

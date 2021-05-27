@@ -25,6 +25,7 @@ public class BackPack : MonoBehaviour
     public int GetDropPercent(string name)
     {
         return inventory.getDropPercent(name);
+        
     }
     
     public int GetItemCount(string name)

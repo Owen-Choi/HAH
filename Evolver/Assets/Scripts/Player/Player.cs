@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public float TimeForDash = 0.0f;
     public float TimeForDamaged = 0.0f;
     public GameObject Enemy;
+    public bool isThorn;
     protected Color color;
     //맵핑중인 플레이어에게 적용되는 스크립트
 
@@ -149,6 +150,12 @@ public class Player : MonoBehaviour
         {
             if (this.gameObject.layer == LayerMask.NameToLayer("Player_Damaged"))
                 return;
+
+            if (isThorn)                                    //경량화살 스킬 가시 관련 코드. 비효율적이다.
+            {
+                if (Random.Range(0, 100) < 100)
+                    Destroy(collision.gameObject);
+            }
 
             if (Random.Range(1, 100) < Player_Stat.instance.missPercent)      //회피했을 시
             {
