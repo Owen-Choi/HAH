@@ -8,7 +8,10 @@ public class Physical_Part_Choose : MonoBehaviour
     public 
     bool ForOne;
     int randNum1;   int randNum2;
-    Sprite[] sprites;
+    Sprite[] ArmSprites;
+    Sprite[] LegSprites;
+    Sprite[] ChestSprites;
+    Sprite[] HeadSprites;
     public Canvas Leg;
     public Canvas Arm;
     public Canvas Chest;
@@ -17,7 +20,10 @@ public class Physical_Part_Choose : MonoBehaviour
     void Start()
     {
         Physic_ChooseUI.gameObject.SetActive(false);        // 일단은 오브젝트 꺼두기
-        sprites = Resources.LoadAll<Sprite>("Physical_Skill");
+        ArmSprites = Resources.LoadAll<Sprite>("Arm_Physical_Skill");
+        LegSprites = Resources.LoadAll<Sprite>("Leg_Physical_Skill");
+        ChestSprites = Resources.LoadAll<Sprite>("Chest_Physical_Skill");
+        HeadSprites = Resources.LoadAll<Sprite>("Head_Physical_Skill");
         ForOne = false;
     }
 
@@ -36,22 +42,22 @@ public class Physical_Part_Choose : MonoBehaviour
             {
                 // 0 : 팔, 14 : 다리, 22 : 가슴, 30 : 머리
                 case 1:
-                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[0];
+                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = ArmSprites[0];
                     Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Arm";                                                //이름이 표시되는 UI
                     Physic_ChooseUI.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = "Damage, Charging speed, Arrow speed";               //설명이 표시되는 UI
                     break;
                 case 2:
-                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[14];
+                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = LegSprites[0];
                     Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Leg";
                     Physic_ChooseUI.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = "Movement speed, Dodge";
                     break;
                 case 3:
-                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[22];
+                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = ChestSprites[0];
                     Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Chest";
                     Physic_ChooseUI.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = "Armor, Health, Stamina";
                     break;
                 case 4:
-                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = sprites[30];
+                    Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = HeadSprites[0];
                     Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Head";
                     Physic_ChooseUI.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = "Critical chance, Critical damage";
                     break;
@@ -62,22 +68,22 @@ public class Physical_Part_Choose : MonoBehaviour
             switch (randNum2)
             {
                 case 1:
-                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[0];
+                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = ArmSprites[0];
                     Physic_ChooseUI.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "Arm";
                     Physic_ChooseUI.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "Damage, Charging speed, Arrow speed";
                     break;
                 case 2:
-                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[14];
+                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = LegSprites[0];
                     Physic_ChooseUI.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "Leg";
                     Physic_ChooseUI.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "Movement speed, Dodge";
                     break;
                 case 3:
-                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[22];
+                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = ChestSprites[0];
                     Physic_ChooseUI.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "Chest";
                     Physic_ChooseUI.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "Armor, Health, Stamina";
                     break;
                 case 4:
-                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = sprites[30];
+                    Physic_ChooseUI.transform.GetChild(1).GetComponent<Image>().overrideSprite = HeadSprites[0];
                     Physic_ChooseUI.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "Head";
                     Physic_ChooseUI.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "Critical chance, Critical damage";
                     break;
