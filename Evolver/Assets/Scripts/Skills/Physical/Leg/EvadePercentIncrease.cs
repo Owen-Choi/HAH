@@ -7,8 +7,8 @@ public class EvadePercentIncrease : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 1;
-        this.Sprite_Num = 16;
-        this.Skill_Name = "Increase percent of dodge";
+        this.Sprite_Num = 2;
+        this.Skill_Name = "Increase dodge probability";
         this.Skill_Desc = "";
     }
     void Update()

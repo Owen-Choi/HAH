@@ -7,7 +7,7 @@ public class DashCoolReduce : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 4;
-        this.Sprite_Num = 20;
+        this.Sprite_Num = 6;
         this.Skill_Name = "Reduce dash cool time";
         this.Skill_Desc = "";
         

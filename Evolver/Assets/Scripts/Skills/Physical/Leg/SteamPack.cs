@@ -9,7 +9,7 @@ public class SteamPack : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 3;
-        this.Sprite_Num = 19;
+        this.Sprite_Num = 5;
         this.Skill_Name = "Steampack";
         this.Skill_Desc = "Increase movement speed and charging speed, but decrease max health as 5% ";
     }

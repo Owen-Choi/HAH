@@ -10,7 +10,7 @@ public class Gambler : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 2;
-        this.Sprite_Num = 18;
+        this.Sprite_Num = 4;
         this.Skill_Name = "Gambler";
         this.Skill_Desc = "Increases dodge percent as 30%, but max health decreases 20% ";
     }

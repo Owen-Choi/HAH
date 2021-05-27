@@ -7,7 +7,7 @@ public class ArmorIncrease : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 21;
-        this.Sprite_Num = 24;
+        this.Sprite_Num = 2;
         this.Skill_Name = "Increase armor";
         this.Skill_Desc = "";
     }

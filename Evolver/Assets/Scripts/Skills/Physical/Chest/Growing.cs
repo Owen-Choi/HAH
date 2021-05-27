@@ -8,7 +8,7 @@ public class Growing : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 24;
-        this.Sprite_Num = 28;
+        this.Sprite_Num = 6;
         PlayerLevel = Player_Stat.instance.Physical_Level;
         this.Skill_Name = "Growing";
         this.Skill_Desc = "Max health will be slightly increased every time when your level up";

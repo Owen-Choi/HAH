@@ -9,7 +9,7 @@ public class DualCore : Physical_Manager
     {
         PlayerLevel = Player_Stat.instance.Physical_Level;
         this.Skill_Num = 25;
-        this.Sprite_Num = 26;
+        this.Sprite_Num = 4;
         this.Skill_Name = "DualCore";
         this.Skill_Desc = "Max stamina will be slightly increased every time when your level up";
     }

@@ -8,7 +8,7 @@ public class DashLengthIncrease : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 5;
-        this.Sprite_Num = 21;
+        this.Sprite_Num = 7;
         this.DashTime = Player_Stat.instance.DashTime;
         this.Skill_Name = "Increase dash distance";
         this.Skill_Desc = "";

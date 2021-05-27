@@ -7,7 +7,7 @@ public class Critical_Damage_Increase : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 35;
-        this.Sprite_Num = 38;
+        this.Sprite_Num = 7;
         this.Skill_Name = "Increase critical damage";
         this.Skill_Desc = "";
     }

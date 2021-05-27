@@ -7,7 +7,7 @@ public class MoveSpeedincrease : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 0;
-        this.Sprite_Num = 15;
+        this.Sprite_Num = 1;
         this.Skill_Name = "Increase movement speed";
         this.Skill_Desc = "";
     }

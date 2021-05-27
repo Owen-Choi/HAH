@@ -11,7 +11,7 @@ public class CounterAttack : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 27;
-        this.Sprite_Num = 7;
+        this.Sprite_Num = 8;
         this.Skill_Name = "Counter Attack";
         this.Skill_Desc = "Damage will be increased temporarily if you are attacked";
     }

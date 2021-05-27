@@ -11,7 +11,7 @@ public class refill_Stamina : Physical_Manager
     {
         isAble = true;
         this.Skill_Num = 29;
-        this.Sprite_Num = 8;    // 완벽한 사냥 스프라이트를 대신 사용하였다.
+        //this.Sprite_Num = 8;    
         this.Skill_Name = "Stamina re-fill";
         this.Skill_Desc = "if your stamina is zero, your stamina immediately jump to max value by 10 percent probability";
     }
