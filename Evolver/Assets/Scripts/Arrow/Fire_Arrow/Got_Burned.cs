@@ -7,7 +7,7 @@ public class Got_Burned : MonoBehaviour                             //이 스크립�
     SpriteRenderer sr;
     Light2D light;
     Animator anim;
-    
+    GameObject ParentObj;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -15,19 +15,20 @@ public class Got_Burned : MonoBehaviour                             //이 스크립�
         sr = GetComponent<SpriteRenderer>();
         sr.enabled = false;
         light.enabled = false;
+        ParentObj = this.transform.parent.gameObject;                   //캐싱을 위한 코드. 먹힐지는 모르겠다.
     }
 
     
     void Update()
     {
-        if(this.GetComponentInParent<Zombie_Stat>().is_burned)          //부모 오브젝트의 스크립트에서 is_burned 변수가 true로 바뀔 경우 화상 애니메이션 재생
+        if(ParentObj.GetComponent<Zombie_Stat>().is_burned)          //부모 오브젝트의 스크립트에서 is_burned 변수가 true로 바뀔 경우 화상 애니메이션 재생
         {
             sr.enabled = true;
             light.enabled = true;
             this.anim.SetBool("is_Burned", true);
         }
 
-        if (!this.GetComponentInParent<Zombie_Stat>().is_burned)        //변수가 false로 바뀐 경우 애니메이션 중지
+        if (!ParentObj.GetComponent<Zombie_Stat>().is_burned)        //변수가 false로 바뀐 경우 애니메이션 중지
         {
             this.anim.SetBool("is_Burned", false);
             sr.enabled = false;

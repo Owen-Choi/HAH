@@ -29,7 +29,6 @@ public class Fire_Arrow : MonoBehaviour
                 temp = Instantiate(Resources.Load("FloatingParentsForCrit"), vec, Quaternion.identity) as GameObject;
                 temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMGForCrit.ToString();
                 CameraShake.instance.cameraShake();
-                //치명타 전용 데미지 표시기 추가하기
             }
             //치명타 미적용시
             else

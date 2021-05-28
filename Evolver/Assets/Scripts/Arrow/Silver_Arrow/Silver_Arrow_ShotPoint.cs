@@ -8,7 +8,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
     public float offset; bool Zero_Stamina; float EverySecond = 0f; float HoldingTime = 0f;
     float launchForce; public float increaseDamage; float increaseLaunchForce; bool ischanged; float chargingDamage; public float TempDMG; float TempLF;  float MaxDist = 15f;
     TrailRenderer tr;  public float DMGPercent;  float First;    float Second;  public float DSC;
-    public bool concen; public bool Long_range;  public bool Penetrate;   public int Immediate_Shot_Count;   public int ISCMax = 999; public bool ISCAble; //스킬 관련 변수들
+    public bool concen; public bool Long_range;   public int Immediate_Shot_Count;   public int ISCMax = 999; public bool ISCAble; //스킬 관련 변수들
     public bool isImmed;    float DMG;  float DMGForCrit;    GameObject temp;   public bool isFlash;
     private void Start()
     {
@@ -30,16 +30,8 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            if (Penetrate)
-            {
-                EverySecond += Time.deltaTime * 1.2f;
-                HoldingTime += Time.deltaTime * 1.2f;
-            }
-            else
-            {
-                EverySecond += Time.deltaTime;
-                HoldingTime += Time.deltaTime;
-            }
+                EverySecond += Time.deltaTime * Player_Stat.instance.ChargingSpeed;
+                HoldingTime += Time.deltaTime * Player_Stat.instance.ChargingSpeed;
             First = Player_Stat.instance.stamina;
             Player_Stat.instance.stamina -= (4.5f * DSC) * Time.deltaTime;                      //은화살은 스테미나 소모가 가장 크다.
             if (Player_Stat.instance.stamina < 0 && !Zero_Stamina && HoldingTime > 0.4f)

@@ -18,7 +18,7 @@ public class DashCoolReduce : Physical_Manager
         {
             this.Selected = false;
             if(Player_Stat.instance.dashCool >= 10)
-                Player_Stat.instance.dashCool -= 10;  
+                Player_Stat.instance.dashCool -= 5;  
         }      
     }
 }

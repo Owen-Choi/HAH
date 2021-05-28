@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         color = spriteRenderer.color;
-        Can_Dash = true;                                     //씬 전환이 사라졌기 때문에 쉘터로 이동할 경우 이 코드를 제한해줄 방안이 필요하다.
+        Can_Dash = true;                                     
         dashCool = Player_Stat.instance.dashCool;
         DashTime = Player_Stat.instance.DashTime;
     }

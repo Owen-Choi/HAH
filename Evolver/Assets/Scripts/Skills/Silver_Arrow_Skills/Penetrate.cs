@@ -38,7 +38,7 @@ public class Penetrate : Skill_Manager
                 this.Twice = true;
                 this.Sprite_Num = 6;
             }
-            Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().Penetrate = true;
+            Player_Stat.instance.ChargingSpeed += 0.4f;                                     //수치 조정해야할 가능성 있음.
         }
         if (this.Selected_Last)
         {
