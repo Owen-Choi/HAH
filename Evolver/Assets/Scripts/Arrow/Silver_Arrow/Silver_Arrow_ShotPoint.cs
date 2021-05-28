@@ -9,7 +9,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
     float launchForce; public float increaseDamage; float increaseLaunchForce; bool ischanged; float chargingDamage; public float TempDMG; float TempLF;  float MaxDist = 15f;
     TrailRenderer tr;  public float DMGPercent;  float First;    float Second;  public float DSC;
     public bool concen; public bool Long_range;  public bool Penetrate;   public int Immediate_Shot_Count;   public int ISCMax = 999; public bool ISCAble; //스킬 관련 변수들
-    public bool isImmed;    float DMG;  float DMGForCrit;    GameObject temp;
+    public bool isImmed;    float DMG;  float DMGForCrit;    GameObject temp;   public bool isFlash;
     private void Start()
     {
         chargingDamage = Player_Stat.instance.Charge_Damage_Plus + 14;
@@ -131,6 +131,11 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
 
                 if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent)            //크리티컬 카운트 ++, 즉발사격 Update 함수에서 우클릭 시 즉발사격 가능하게 구현하기
                 {                                                                           // +무기 색깔 바꾸기
+                    // # 발광화살 스킬 체크라면
+                    if (isFlash)
+                        if(Random.Range(0,100) < 20)
+                            hit.transform.gameObject.layer = LayerMask.NameToLayer("Servant_Burned");
+                    // # 관통 3강 스킬 체크라면
                     if (Player_Stat.instance.is_Penetrate3)
                         Player_Stat.instance.stamina += 20;
                     Immediate_Shot_Count++;
@@ -196,6 +201,9 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
 
                 if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent)            //크리티컬 카운트 ++, 즉발사격 Update 함수에서 우클릭 시 즉발사격 가능하게 구현하기
                 {                                                                           // +무기 색깔 바꾸기
+                    if (isFlash)
+                        if (Random.Range(0, 100) < 20)
+                            hit.transform.gameObject.layer = LayerMask.NameToLayer("Servant_Burned");
                     if (Player_Stat.instance.is_Penetrate3)
                         Player_Stat.instance.stamina += 20;
                         Immediate_Shot_Count++;
