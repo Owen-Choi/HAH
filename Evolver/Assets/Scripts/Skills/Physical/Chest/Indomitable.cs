@@ -6,6 +6,7 @@ public class Indomitable : Physical_Manager
 {
     public GameObject Player;
     GameObject PlayerCache;
+    [SerializeField]
     bool isOnce;
     float OriginalArmor;
     private void Awake()
@@ -26,14 +27,15 @@ public class Indomitable : Physical_Manager
                 isOnce = true;
                 OriginalArmor = Player_Stat.instance.armor;
                 Player_Stat.instance.armor += Player_Stat.instance.armor * 0.5f;
+                StartCoroutine("Duration");
 
             }
         }
     }
     IEnumerator Duration()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(5f);
         isOnce = false;
-        Player_Stat.instance.armor = OriginalArmor;                 //방어력 원상복귀. 오류가 발생했는지 원상복귀가 안된다. 조치하기.
+        Player_Stat.instance.armor = OriginalArmor;                 //방어력 원상복귀.
     }
 }
