@@ -9,7 +9,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
     float launchForce; public float increaseDamage; float increaseLaunchForce; bool ischanged; float chargingDamage; public float TempDMG; float TempLF;  float MaxDist = 15f;
     TrailRenderer tr;  public float DMGPercent;  float First;    float Second;  public float DSC;
     public bool concen; public bool Long_range;   public int Immediate_Shot_Count;   public int ISCMax = 999; public bool ISCAble; //스킬 관련 변수들
-    public bool isImmed;    float DMG;  float DMGForCrit;    GameObject temp;   public bool isFlash;
+    public bool isImmed;    float DMG;  float DMGForCrit;    GameObject temp;   public bool isFlash;    public bool isStalker;
     private void Start()
     {
         chargingDamage = Player_Stat.instance.Charge_Damage_Plus + 14;
@@ -132,7 +132,13 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                         Player_Stat.instance.stamina += 20;
                     Immediate_Shot_Count++;
                     DMGForCrit = ((increaseDamage + Player_Stat.instance.damage) * (float)(0.1f * DMGPercent)) * (float)(Player_Stat.instance.criticalDamage / 100);
-                    hit.transform.GetComponent<Zombie_Stat>().Health -= DMGForCrit;
+                    if (isStalker && hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                    {
+                        hit.transform.GetComponent<Zombie_Stat>().Health -= DMGForCrit * 2;
+                        hit.transform.gameObject.layer = LayerMask.NameToLayer("EnemyChasing");
+                    }
+                    else
+                        hit.transform.GetComponent<Zombie_Stat>().Health -= DMGForCrit;
                     temp = Instantiate(Resources.Load("FloatingParentsForCrit"), vec, Quaternion.identity) as GameObject;
                     temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMGForCrit.ToString();
                     CameraShake.instance.cameraShake();
@@ -141,7 +147,13 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                 {
                    
                     DMG = (increaseDamage + Player_Stat.instance.damage) * (float)(0.1f * DMGPercent);
-                    hit.transform.GetComponent<Zombie_Stat>().Health -= DMG;
+                    if (isStalker && hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                    {
+                        hit.transform.GetComponent<Zombie_Stat>().Health -= DMG * 2;                        //스토커 스킬 체크 및 적이 플레이어를 발견하지 못했다면 2배의 데미지
+                        hit.transform.gameObject.layer = LayerMask.NameToLayer("EnemyChasing");
+                    }
+                    else
+                        hit.transform.GetComponent<Zombie_Stat>().Health -= DMG;
                     temp = Instantiate(Resources.Load("FloatingParents"), vec, Quaternion.identity) as GameObject;
                     temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMG.ToString();
 

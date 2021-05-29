@@ -28,9 +28,10 @@ public class Zombie_AI : MonoBehaviour
         RaycastHit2D circle = Physics2D.CircleCast(transform.position, radius, Vector2.up, radius, layerMask);
 
         //애니메이터는 정말 이해가 안간다. 조건에 안맞을 때 강제로 애니메이션을 실행시켜줘야 실행이 된다;;
-        
+
         if (circle.collider)
         {
+            this.gameObject.layer = LayerMask.NameToLayer("EnemyChasing");
             anim.SetFloat("HorizonValue", (PlayerCopy.position.x - this.transform.position.x));
             anim.SetFloat("VerticalValue", (PlayerCopy.position.y - this.transform.position.y));
             if (GetAngle() > 0f && GetAngle() <= 1.5f)
@@ -99,10 +100,12 @@ public class Zombie_AI : MonoBehaviour
 
             this.transform.position = Vector3.MoveTowards(this.transform.position, PlayerCopy.position, MoveSpeed * Time.deltaTime);
         }
-        else;
-        
-       
-       
+        /*else
+            this.gameObject.layer = LayerMask.NameToLayer("Enemy"); */          //일단은 보류. 스토커 스킬에서 적을 기습해도 이 코드 때문에 레이어가 바뀌지 않는다.
+
+        if (this.gameObject.layer == LayerMask.NameToLayer("EnemyChasing"))
+            radius *= 2;
+
     }
 
     void FixedUpdate()
