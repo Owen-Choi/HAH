@@ -8,18 +8,13 @@ public class ShotPoint : MonoBehaviour
     public GameObject arrow;
     Vector3 shootDirection;
     public float offset;    bool Zero_Stamina;  float EverySecond = 0f;  float HoldingTime = 0f;    public bool isShoot;        float time = 0f; //WindStep을 위한 변수   
-    float launchForce;      float increaseDamage;   float increaseLaunchForce;  bool ischanged; public float degree;    float TempDMG;  float TempLF;
+    float increaseDamage;   float increaseLaunchForce;  bool ischanged; public float degree;    float TempDMG;  float TempLF;
     public GameObject Middle_Left_ShotPoint;
     public GameObject Middle_Right_ShotPoint;
     public GameObject Full_Left_ShotPoint;
     public GameObject Full_Right_ShotPoint;
     float DMGCache;
-    private void Start()
-    {
-        launchForce = Player_Stat.instance.launchForce;
-        
-    }
-
+    
     void Update()
     {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -123,8 +118,8 @@ public class ShotPoint : MonoBehaviour
             GameObject newArrow = Instantiate(CritArrow, transform.position, this.transform.rotation);
             newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
             newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
-            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
-               shootDirection.y * (launchForce + increaseLaunchForce));
+            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (Player_Stat.instance.launchForce + increaseLaunchForce),
+               shootDirection.y * (Player_Stat.instance.launchForce + increaseLaunchForce));
         }
 
         else
@@ -132,8 +127,8 @@ public class ShotPoint : MonoBehaviour
             GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
             newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
             newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
-            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
-               shootDirection.y * (launchForce + increaseLaunchForce));
+            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (Player_Stat.instance.launchForce + increaseLaunchForce),
+               shootDirection.y * (Player_Stat.instance.launchForce + increaseLaunchForce));
         }
         isShoot = true;
         
@@ -166,8 +161,8 @@ public class ShotPoint : MonoBehaviour
             GameObject newArrow = Instantiate(CritArrow, transform.position, this.transform.rotation);
             newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = tempDamage;
             newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = tempLaunchForce;
-            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
-               shootDirection.y * (launchForce + tempLaunchForce));
+            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (Player_Stat.instance.launchForce + tempLaunchForce),
+               shootDirection.y * (Player_Stat.instance.launchForce + tempLaunchForce));
         }
 
         else
@@ -175,8 +170,8 @@ public class ShotPoint : MonoBehaviour
             GameObject newArrow = Instantiate(arrow, transform.position, this.transform.rotation);
             newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = tempDamage;
             newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = tempLaunchForce;
-            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
-               shootDirection.y * (launchForce + tempLaunchForce));
+            newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (Player_Stat.instance.launchForce + tempLaunchForce),
+               shootDirection.y * (Player_Stat.instance.launchForce + tempLaunchForce));
         }
         isShoot = true;
         
