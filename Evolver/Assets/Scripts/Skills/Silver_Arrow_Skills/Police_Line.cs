@@ -28,7 +28,7 @@ public class Police_Line : Skill_Manager
                 isOnce = true;
                 if (Random.Range(0, 100) < 10)
                 {
-                    RaycastHit2D[] circle = Physics2D.CircleCastAll(PlayerCache.transform.position, 1, Vector2.up, 1, LayerMask.GetMask("Enemy"));
+                    RaycastHit2D[] circle = Physics2D.CircleCastAll(PlayerCache.transform.position, 1, Vector2.up, 1, LayerMask.GetMask("EnemyChasing"));
                     if (circle[0])
                     {
                         for (i = 0; i < circle.Length; i++)
@@ -48,7 +48,7 @@ public class Police_Line : Skill_Manager
                 isOnce = true;
                 if (Random.Range(0, 100) < 20)
                 {
-                    RaycastHit2D[] circle = Physics2D.CircleCastAll(PlayerCache.transform.position, 1, Vector2.up, 1, LayerMask.GetMask("Enemy"));
+                    RaycastHit2D[] circle = Physics2D.CircleCastAll(PlayerCache.transform.position, 1, Vector2.up, 1, LayerMask.GetMask("EnemyChasing"));
                     if (circle[0])
                     {
                         for (i = 0; i < circle.Length; i++)
@@ -69,7 +69,7 @@ public class Police_Line : Skill_Manager
                 isOnce = true;
                 if (Random.Range(0, 100) < 20)
                 {
-                    RaycastHit2D[] circle = Physics2D.CircleCastAll(PlayerCache.transform.position, 1, Vector2.up, 1, LayerMask.GetMask("Enemy"));
+                    RaycastHit2D[] circle = Physics2D.CircleCastAll(PlayerCache.transform.position, 1, Vector2.up, 1, LayerMask.GetMask("EnemyChasing"));
                     if (circle[0])
                     {
                         for (i = 0; i < circle.Length; i++)

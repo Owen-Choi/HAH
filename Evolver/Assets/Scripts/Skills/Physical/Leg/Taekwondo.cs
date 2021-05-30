@@ -26,8 +26,8 @@ public class Taekwondo : Physical_Manager
             if (Input.GetKeyDown(KeyCode.K) && Player_Stat.instance.stamina >= 20)
             {
                 Player_Stat.instance.stamina -= 20;
-                CameraShake.instance.cameraShake();
-                RaycastHit2D[] circle = Physics2D.CircleCastAll(PlayerCache.transform.position, 1, Vector2.up, 1, LayerMask.GetMask("Enemy"));
+                // # 플레이어를 따라오는 상태의 적은 Eneny가 아니라 EnemyChasing이다.   주의하자.
+                RaycastHit2D[] circle = Physics2D.CircleCastAll(PlayerCache.transform.position, 1.5f, Vector2.up, 1.5f, LayerMask.GetMask("EnemyChasing"));
                 if (circle[0])
                 {
                     for (i = 0; i < circle.Length; i++)
@@ -37,6 +37,7 @@ public class Taekwondo : Physical_Manager
                         circle[i].transform.GetComponent<Zombie_Stat>().Health -= 5;
                     }
                 }
+                CameraShake.instance.cameraShake();
             }
         }
     }

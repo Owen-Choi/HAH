@@ -15,6 +15,7 @@ public class Protect_Position : Physical_Manager
         this.Skill_Desc = "You can protect enemy's attack once with 40 stamina, just Press P";
         PlayerCache = Player;
         available = true;
+
     }
 
     

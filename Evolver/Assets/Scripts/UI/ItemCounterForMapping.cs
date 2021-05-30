@@ -19,6 +19,6 @@ public class ItemCounterForMapping : MonoBehaviour
         MedikitCount.text = BackPack.GetComponent<BackPack>().GetItemCount("Medikit").ToString();
         StaminaPotionCount.text = BackPack.GetComponent<BackPack>().GetItemCount("StaminaPotion").ToString();
         RadioActive.text = Player_Stat.instance.RadioActive.ToString();
-        Thirsty.text = (Player_Stat.instance.DefaultStaminaMax - Player_Stat.instance.Max_Stamina).ToString();
+        Thirsty.text = (Player_Stat.instance.DefaultStaminaMax - Player_Stat.instance.Max_Stamina).ToString();              //목마름의 경우 별도의 수치를 띄우는 게 아니라 차이를 띄운다. 주의하기.
     }
 }

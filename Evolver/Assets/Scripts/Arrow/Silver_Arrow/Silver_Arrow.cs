@@ -7,7 +7,6 @@ public class Silver_Arrow : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Hi");
         StartCoroutine("DeleteTimer");
     }
     IEnumerator DeleteTimer()

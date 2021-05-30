@@ -194,7 +194,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
         Immediate_Shot_Count = 0;
         for (int i = 0; i < hits.Length; i++)
         {
-            RaycastHit2D hit = hits[i];
+            RaycastHit2D hit = hits[i];                                 //지금 보니 상당히 비효율적인 코드다.
             if (hit.transform.tag == "Enemy" && DMGPercent > 0f)
             {
                 Vector3 vec = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, 0f);

@@ -14,9 +14,9 @@ public class Player : MonoBehaviour
     public float TimeForDash = 0.0f;
     public float TimeForDamaged = 0.0f;
     public GameObject Enemy;
-    public bool isThorn;
+    public bool isThorn;    public bool isBurningCloak;
     protected Color color;
-    //맵핑중인 플레이어에게 적용되는 스크립트
+    
 
     void Start()
     {
@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
         if (this.gameObject.layer == LayerMask.NameToLayer("Player_Damaged"))
             DamagedLayer();
 
-        if (Player_Stat.instance.isShelter)
+      /*  if (Player_Stat.instance.isShelter)
         {   // # 쉘터라면 더 이상 방사능 수치와 목마름 수치가 증가하지 않는다.
             CancelInvoke("StackThirsty");
             CancelInvoke("StackRadioActive");
@@ -116,7 +116,9 @@ public class Player : MonoBehaviour
         {   // # 쉘터가 아니라면 방사능과 목마름 수치 점차 증가
             StackThirsty();
             StackRadioActive();
-        }
+        }*/     
+
+        // 방사능과 목마름은 Layer와 연관지어서 다시 코딩하자.
     }
 
     void FixedUpdate()
@@ -135,7 +137,7 @@ public class Player : MonoBehaviour
 
     void StackThirsty()
     {
-        Player_Stat.instance.Max_Stamina--;
+        Player_Stat.instance.Max_Stamina--;                 
         Invoke("StackThirsty", 30f);                        //30초마다 목마름 스택 추가
     }
     public void StackRadioActive()
@@ -157,9 +159,12 @@ public class Player : MonoBehaviour
 
             if (isThorn)                                    //경량화살 스킬 가시 관련 코드. 비효율적이다.
             {
-                if (Random.Range(0, 100) < 100)
+                if (Random.Range(0, 100) < 4)
                     Destroy(collision.gameObject);
             }
+
+            if (isBurningCloak)                             //불화살 스킬 불타는 망토 관련 코드. 비효율적이다.
+                collision.gameObject.layer = LayerMask.NameToLayer("Servant_Burned");               //불타는 망토 스킬체크 시 화상상태로 만듦.
 
             if (Random.Range(1, 100) < Player_Stat.instance.missPercent)      //회피했을 시
             {
