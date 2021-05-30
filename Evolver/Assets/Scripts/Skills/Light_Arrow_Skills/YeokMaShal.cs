@@ -47,7 +47,7 @@ public class YeokMaShal : Skill_Manager
         if (FullCharge)     //AbsolCrit가 false가 돼도 여기서 바로 true로 바껴서 오류가 뜬다.
         {
             FullCharge = false;
-            Player_Stat.instance.AbsolCrit = true;
+            Player_Stat.instance.Runner = true;             //AbsolCrit에서 Runner로 변수 변경
         }
     }
 

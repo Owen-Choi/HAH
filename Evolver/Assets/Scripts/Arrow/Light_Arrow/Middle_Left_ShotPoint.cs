@@ -90,7 +90,7 @@ public class Middle_Left_ShotPoint : MonoBehaviour
 
 
 
-        if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)
+        if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit || Player_Stat.instance.Runner)
         {
             GameObject newArrow = Instantiate(CritArrow, transform.position, this.transform.rotation);
             newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;

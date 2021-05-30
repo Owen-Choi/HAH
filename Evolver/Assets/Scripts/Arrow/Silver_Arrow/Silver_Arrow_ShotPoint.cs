@@ -121,7 +121,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                     increaseDamage += Player_Stat.instance.damage;
                 }
 
-                if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent)            //크리티컬 카운트 ++, 즉발사격 Update 함수에서 우클릭 시 즉발사격 가능하게 구현하기
+                if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)      //크리티컬 카운트 ++, 즉발사격 Update 함수에서 우클릭 시 즉발사격 가능하게 구현하기
                 {                                                                           // +무기 색깔 바꾸기
                     // # 발광화살 스킬 체크라면
                     if (isFlash)
@@ -203,7 +203,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                     TempDMG += Player_Stat.instance.damage;
                 }
 
-                if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent)            //크리티컬 카운트 ++, 즉발사격 Update 함수에서 우클릭 시 즉발사격 가능하게 구현하기
+                if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)
                 {                                                                           // +무기 색깔 바꾸기
                     if (isFlash)
                         if (Random.Range(0, 100) < 20)

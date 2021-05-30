@@ -109,11 +109,11 @@ public class ShotPoint : MonoBehaviour
 
         //shootDirection = shootDirection - transform.position;                
 
-        if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)
+        if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit || Player_Stat.instance.Runner)
         {
-            if (Player_Stat.instance.AbsolCrit)
+            if (Player_Stat.instance.Runner)
             {
-                Player_Stat.instance.AbsolCrit = false;
+                Player_Stat.instance.Runner = false;                    //Runner로 얻는 치명타는 연속사격에는 적용되지 않는다.
             }
             GameObject newArrow = Instantiate(CritArrow, transform.position, this.transform.rotation);
             newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
@@ -154,10 +154,6 @@ public class ShotPoint : MonoBehaviour
 
         if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)
         {
-            if (Player_Stat.instance.AbsolCrit)
-            {
-                StartCoroutine("AbsolCritDelay");
-            }
             GameObject newArrow = Instantiate(CritArrow, transform.position, this.transform.rotation);
             newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = tempDamage;
             newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = tempLaunchForce;
@@ -223,11 +219,6 @@ public class ShotPoint : MonoBehaviour
         TempDMG = 0; TempLF = 0;
     }
 
-    IEnumerator AbsolCritDelay()
-    {
-        yield return new WaitForSeconds(0.3f);
-        Player_Stat.instance.AbsolCrit = false;
-    }
 
     public void RobinHood()
     {

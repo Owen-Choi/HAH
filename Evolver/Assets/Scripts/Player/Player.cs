@@ -148,8 +148,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            if (this.gameObject.layer == LayerMask.NameToLayer("Player_Damaged"))
+            if (this.gameObject.layer == LayerMask.NameToLayer("Player_Damaged") || this.gameObject.layer == LayerMask.NameToLayer("Player_Defense"))
+            {
+                if (this.gameObject.layer == LayerMask.NameToLayer("Player_Defense"))
+                    this.gameObject.layer = LayerMask.NameToLayer("Player_Damaged");            //방어태세 해제
                 return;
+            }
 
             if (isThorn)                                    //경량화살 스킬 가시 관련 코드. 비효율적이다.
             {
