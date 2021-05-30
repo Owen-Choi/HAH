@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;                          bool isSilver;                     bool isFire;
     Animator anim;
     float h;            public bool hDown;  public bool hUp;    public bool vDown;  public bool vUp; public bool DashMaster;    //질주의 달인 스킬 체크를 위한 변수
-    float v;            public bool Can_Dash;   public int dashCool;    public float DashTime;
+    float v;            public bool Can_Dash;   public int dashCool;    public float DashTime;  public bool isDodge;
     bool isHorizonMove;
     SpriteRenderer spriteRenderer;
     public bool isDash;
@@ -160,13 +160,12 @@ public class Player : MonoBehaviour
             if (Random.Range(1, 100) < Player_Stat.instance.missPercent)      //회피했을 시
             {
                 this.gameObject.layer = LayerMask.NameToLayer("Player_Damaged");
-                Debug.Log("회피");
+                isDodge = true;
             }
             else
             {
                 //CameraShake.instance.cameraShake();   카메라 쉐이크 효과도 일단 삭제.
                 Player_Stat.instance.health -= (collision.gameObject.GetComponent<Zombie_Stat>().Power - Player_Stat.instance.armor);
-                //순간이동 급으로 발동되는 넉백코드 일단 삭제, 좀 더 부드럽게 피격 효과 줄 수 있는 방법 생각해보기
             }
             this.gameObject.layer = LayerMask.NameToLayer("Player_Damaged");
             

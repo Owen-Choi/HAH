@@ -24,7 +24,7 @@ public class Feather : Skill_Manager        //회피율의 10%만큼 이동속도 증가, 최
             this.Selected = true;
             Temp = (float)Player_Stat.instance.missPercent / 10;
             Player_Stat.instance.moveSpeed += Temp;
-            Player_Stat.instance.health = Player_Stat.instance.health - (float)Player_Stat.instance.health / 10;
+            Player_Stat.instance.DefaultHealthMax = Player_Stat.instance.DefaultHealthMax - (float)Player_Stat.instance.DefaultHealthMax * 0.1f;
             return;
         }
     }
