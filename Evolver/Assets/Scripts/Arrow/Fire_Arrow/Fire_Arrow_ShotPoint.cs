@@ -34,7 +34,7 @@ public class Fire_Arrow_ShotPoint : MonoBehaviour
             Player_Stat.instance.stamina -= (3.5f * Player_Stat.instance.Decrease_Stamina_When_Bow_Charge) * Time.deltaTime;
             if (Player_Stat.instance.stamina < 0 && !Zero_Stamina && HoldingTime > 0.4f)
             {
-                if (is_Explode && Random.Range(0,100) < Player_Stat.instance.criticalPercent)                                    //폭발화살 구현 코드
+                if (is_Explode && Random.Range(0,100) < Player_Stat.instance.criticalPercent || is_Explode && Player_Stat.instance.AbsolCrit)     //폭발화살 구현 코드
                     Explode_Shoot();
                 else
                     Shoot();
@@ -64,7 +64,7 @@ public class Fire_Arrow_ShotPoint : MonoBehaviour
                 HoldingTime = 0f;
             else
             {
-                if (is_Explode && Random.Range(0, 100) < Player_Stat.instance.criticalPercent)                                    //폭발화살 구현 코드
+                if (is_Explode && Random.Range(0, 100) < Player_Stat.instance.criticalPercent || is_Explode && Player_Stat.instance.AbsolCrit)      //폭발화살 구현 코드
                     Explode_Shoot();
                 else
                     Shoot();

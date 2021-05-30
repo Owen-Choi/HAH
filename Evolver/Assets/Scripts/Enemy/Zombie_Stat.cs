@@ -11,6 +11,7 @@ public class Zombie_Stat : MonoBehaviour
     public bool is_burned;  public float Burning_DMG;     //스킬 관련 변수들
     public float Health;
     public float Power = 10f;
+    float Second;
     private void Start()
     {
         CurrentFireborne = 0;
@@ -66,26 +67,23 @@ public class Zombie_Stat : MonoBehaviour
                 is_burned = true;                                                       //this line makes Burning Animation Start by Changing its value
                 StartCoroutine("Burning_Time");
             }
+
+            Second += Time.deltaTime;
+            if ((int)Second % 1 == 0 && Second > 1f)
+                Health -= Player_Stat.instance.Burning_DMG;
         }
 
     }
 
     IEnumerator Burning_Time()
     {
-        yield return StartCoroutine("Burning_Damage_Delay");
+        yield return new WaitForSeconds(5f);
         is_burned = false;
         CurrentFireborne = 0;                                                     //그을림 관련 변수를 0으로 초기화해서 다시 전염이 가능하도록 만들어주기
         this.gameObject.layer = LayerMask.NameToLayer("Enemy");                   //may cause some errors. if there are not only Enemy layers, this code should be changed 
+        Second = 0f;
     }
 
-    IEnumerator Burning_Damage_Delay()                                              //코루틴 딜레이 생각해보기
-    {
-        for (i = 0; i < 250; i++)                                                   //이게 맞나;; 수정할 여지가 많다
-        {
-            yield return new WaitForSeconds(0.25f);
-            Health -= Burning_DMG;
-        }
-    }
 
 
     private void OnDestroy()

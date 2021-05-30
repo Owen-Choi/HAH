@@ -9,7 +9,7 @@ public class Player_Stat : MonoBehaviour
     public float stamina;               public float armor;             public float Max_Stamina;   public float Stamina_recovery_speed = 5f;
     public float missPercent;           public float criticalPercent;   public float Decrease_Stamina_When_Bow_Charge = 5f;         //always check not only in script value, but also Insepctor value
     public float criticalDamage;        public float launchForce = 4f;  public float moveSpeed = 4f;  
-    public static Player_Stat instance; public float speedForDash = 2f; public float SlowForCharge = 0.5f;  public bool AbsolCrit;
+    public static Player_Stat instance; public float speedForDash = 2f; public float SlowForCharge = 0.5f;  public bool AbsolCrit;  public bool Runner;
     public float damage;                public float Charge_Damage_Plus = 6f;   public bool is_Continued_Shot; public bool is_Continued_Shot2;  public bool is_Penetrate3;
     public float Burn_Percent;          public bool isPyro;             public int FireborneMax = 1;    public float Burning_DMG;
     public float Explode_Multiple_Damage;   public bool isShelter;      public float ChargingSpeed;     public int dashCool;    public float DashTime;
@@ -33,6 +33,7 @@ public class Player_Stat : MonoBehaviour
         criticalPercent = 10f;
         dashCool = 30;
         DashTime = 0.4f;
+        Burning_DMG = 3f;
     }
 
     public void Update()

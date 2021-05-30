@@ -21,7 +21,7 @@ public class Fire_Arrow : MonoBehaviour
         {
             EdgeCol.isTrigger = false;
             //치명타 적용시
-            if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent)
+            if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)
             {
                 DMGForCrit = ((Player_Stat.instance.damage + this.GetComponent<Arrow_Damage_System>().HoldDamage) * (float)(Player_Stat.instance.criticalDamage / 100));
                 Vector3 vec = new Vector3(other.transform.position.x, other.transform.position.y + 0.5f, 0f);
