@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShotPoint : MonoBehaviour
 {
@@ -13,8 +14,18 @@ public class ShotPoint : MonoBehaviour
     public GameObject Middle_Right_ShotPoint;
     public GameObject Full_Left_ShotPoint;
     public GameObject Full_Right_ShotPoint;
+    public GameObject LightArrowUI;
+    GameObject LightArrowUI_Cache;
+    Color activate; Color deActivate;
     float DMGCache;
-    
+
+    private void Awake()
+    {
+        LightArrowUI_Cache = LightArrowUI;
+        activate.r = 255;   activate.g = 255;   activate.b = 255;   activate.a = 255;
+        deActivate.r = 255; deActivate.g = 255; deActivate.b = 255; deActivate.a = 0.3f;
+    }
+
     void Update()
     {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -81,6 +92,22 @@ public class ShotPoint : MonoBehaviour
         if (Zero_Stamina && !Input.GetMouseButton(0))
             Zero_Stamina = false;
 
+        if (HoldingTime > 1f && HoldingTime < 2f)
+        {
+            LightArrowUI_Cache.transform.GetChild(0).GetComponent<Image>().color = activate;
+        }
+        else if(HoldingTime > 2f && HoldingTime < 3f)
+        {
+            LightArrowUI_Cache.transform.GetChild(0).GetComponent<Image>().color = activate;
+            LightArrowUI_Cache.transform.GetChild(1).GetComponent<Image>().color = activate;
+        }
+        else if(HoldingTime > 3f)
+        {
+            LightArrowUI_Cache.transform.GetChild(0).GetComponent<Image>().color = activate;
+            LightArrowUI_Cache.transform.GetChild(1).GetComponent<Image>().color = activate;
+            LightArrowUI_Cache.transform.GetChild(2).GetComponent<Image>().color = activate;
+        }
+
         if(isShoot)
         {
             time += Time.deltaTime;
@@ -95,6 +122,10 @@ public class ShotPoint : MonoBehaviour
 
     public void Shoot()
     {
+        LightArrowUI_Cache.transform.GetChild(0).GetComponent<Image>().color = deActivate;              //È°À» ½î¸é Â÷Â¡ UI ÃÊ±âÈ­
+        LightArrowUI_Cache.transform.GetChild(1).GetComponent<Image>().color = deActivate;
+        LightArrowUI_Cache.transform.GetChild(2).GetComponent<Image>().color = deActivate;
+
         shootDirection = Input.mousePosition;
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 

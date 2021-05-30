@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Silver_Arrow_ShotPoint : MonoBehaviour
 { 
     Vector3 shootDirection; Vector3 shootDirection2; //public GameObject Silver_Arrow;     public GameObject Immed_Silver_Arrow; 
@@ -10,11 +10,18 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
     TrailRenderer tr;  public float DMGPercent;  float First;    float Second;  public float DSC;
     public bool concen; public bool Long_range;   public int Immediate_Shot_Count;   public int ISCMax = 999; public bool ISCAble; //스킬 관련 변수들
     public bool isImmed;    float DMG;  float DMGForCrit;    GameObject temp;   public bool isFlash;    public bool isStalker;
+    bool isShoot;
+
+    public GameObject SilverArrowUI;
+    GameObject SilverArrowUI_Cache; Color activate; Color DeActivate;
     private void Start()
     {
         chargingDamage = Player_Stat.instance.Charge_Damage_Plus + 14;
         launchForce = Player_Stat.instance.launchForce;
         tr = GetComponent<TrailRenderer>();
+        SilverArrowUI_Cache = SilverArrowUI;
+        activate.r = 255; activate.g = 255; activate.b = 255; activate.a = 255;
+        DeActivate.r = 255; DeActivate.g = 255; DeActivate.b = 255; DeActivate.a = 0.3f;
     }
 
     void Update()
@@ -79,7 +86,29 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
         if (Zero_Stamina && !Input.GetMouseButton(0))
             Zero_Stamina = false;
 
+        if (HoldingTime > 1f && HoldingTime < 2f)
+        {
+            SilverArrowUI_Cache.transform.GetChild(0).GetComponent<Image>().color = activate;
+        }
+        else if (HoldingTime > 2f && HoldingTime < 3f)
+        {
+            SilverArrowUI_Cache.transform.GetChild(0).GetComponent<Image>().color = activate;
+            SilverArrowUI_Cache.transform.GetChild(1).GetComponent<Image>().color = activate;
+        }
+        else if (HoldingTime > 3f)
+        {
+            SilverArrowUI_Cache.transform.GetChild(0).GetComponent<Image>().color = activate;
+            SilverArrowUI_Cache.transform.GetChild(1).GetComponent<Image>().color = activate;
+            SilverArrowUI_Cache.transform.GetChild(2).GetComponent<Image>().color = activate;
+        }
 
+        if (isShoot)
+        {
+            SilverArrowUI_Cache.transform.GetChild(0).GetComponent<Image>().color = DeActivate;
+            SilverArrowUI_Cache.transform.GetChild(1).GetComponent<Image>().color = DeActivate;
+            SilverArrowUI_Cache.transform.GetChild(2).GetComponent<Image>().color = DeActivate;
+            isShoot = false;
+        }
         
     }
 
@@ -103,6 +132,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
         new_Silver_Arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (200f),
            shootDirection.y * (200f));
         RayAll();
+        isShoot = true;
     }
 
    void RayAll()
@@ -185,6 +215,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
         new_Silver_Arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection2.x * (200f),
            shootDirection2.y * (200f));
         RayAll(TempDMG);
+        isShoot = true;
     }
 
     void RayAll(float TempDMG)
