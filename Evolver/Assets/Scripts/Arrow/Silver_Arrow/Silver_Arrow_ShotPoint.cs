@@ -10,7 +10,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
     TrailRenderer tr;  public float DMGPercent;  float First;    float Second;  public float DSC;
     public bool concen; public bool Long_range;   public int Immediate_Shot_Count;   public int ISCMax = 999; public bool ISCAble; //스킬 관련 변수들
     public bool isImmed;    float DMG;  float DMGForCrit;    GameObject temp;   public bool isFlash;    public bool isStalker;
-    bool isShoot;
+    bool isShoot;   public bool isSatisfying;
 
     public GameObject SilverArrowUI;
     GameObject SilverArrowUI_Cache; Color activate; Color DeActivate;
@@ -189,6 +189,12 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
 
                 }
                 DMGPercent -= 1f;
+
+                if (this.isSatisfying)
+                {
+                    Player_Stat.instance.stamina++;                                                             //만족감 추가시 스테미나++
+                }
+
             }
         }
         if (Immediate_Shot_Count > ISCMax && isImmed)
@@ -256,6 +262,11 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                     temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMG.ToString();
                 }
                 DMGPercent -= 1f;
+
+                if (this.isSatisfying)
+                {
+                    Player_Stat.instance.stamina++;                                                             
+                }
             }
         }
         if (Immediate_Shot_Count > ISCMax && isImmed)

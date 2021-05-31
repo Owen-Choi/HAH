@@ -40,7 +40,7 @@ public class Physical_Part_Choose : MonoBehaviour
             while (randNum1 == randNum2);               //두개의 수는 같을 수 없다.
             switch(randNum1)
             {
-                // 0 : 팔, 14 : 다리, 22 : 가슴, 30 : 머리
+                
                 case 1:
                     Physic_ChooseUI.transform.GetChild(0).GetComponent<Image>().overrideSprite = ArmSprites[0];
                     Physic_ChooseUI.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Arm";                                                //이름이 표시되는 UI

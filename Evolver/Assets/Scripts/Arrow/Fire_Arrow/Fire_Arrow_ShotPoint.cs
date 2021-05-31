@@ -9,7 +9,7 @@ public class Fire_Arrow_ShotPoint : MonoBehaviour
     Vector3 shootDirection;
     public float offset; bool Zero_Stamina; float EverySecond = 0f; float HoldingTime = 0f;
     float launchForce; float increaseDamage; float increaseLaunchForce; bool ischanged; float chargingDamage; float TempDMG; float TempLF;
-    public bool is_Explode;
+    public bool is_Explode; public bool isShoot;
     private void Start()
     {
         chargingDamage = Player_Stat.instance.Charge_Damage_Plus;
@@ -77,7 +77,7 @@ public class Fire_Arrow_ShotPoint : MonoBehaviour
         if (Zero_Stamina && !Input.GetMouseButton(0))
             Zero_Stamina = false;
 
-
+        
     }
 
 
@@ -105,7 +105,7 @@ public class Fire_Arrow_ShotPoint : MonoBehaviour
         newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
         newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
            shootDirection.y * (launchForce + increaseLaunchForce));
-
+        isShoot = true;                         //심지 준비 관련 변수. 다시 false로 변경도 심지 준비 스크립트에서 해준다.  추후 변경 가능
     }
         
     public void Explode_Shoot()                 //폭발 화살용 함수
@@ -132,6 +132,7 @@ public class Fire_Arrow_ShotPoint : MonoBehaviour
         newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
         newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
            shootDirection.y * (launchForce + increaseLaunchForce));
+        isShoot = true;
     }
    
 }
