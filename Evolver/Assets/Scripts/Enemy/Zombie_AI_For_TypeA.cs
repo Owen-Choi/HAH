@@ -13,12 +13,14 @@ public class Zombie_AI_For_TypeA : MonoBehaviour
     Rigidbody2D rigid;
     Animator anim;
     public float MoveSpeed;
+    float Original_MoveSpeed;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         PlayerCopy = GameObject.Find("Player").GetComponent<Transform>();
+        MoveSpeed = 1.4f;
     }
 
     void Update()
@@ -99,9 +101,22 @@ public class Zombie_AI_For_TypeA : MonoBehaviour
 
             this.transform.position = Vector3.MoveTowards(this.transform.position, PlayerCopy.position, MoveSpeed * Time.deltaTime);
         }
-        else
-            this.gameObject.layer = LayerMask.NameToLayer("Enemy");
+        /*else
+            this.gameObject.layer = LayerMask.NameToLayer("Enemy");*/
 
+        if (this.gameObject.layer == LayerMask.NameToLayer("EnemyChasing"))
+            radius *= 2;
+
+        if (Player_Stat.instance.isNapalm2)
+        {
+            Original_MoveSpeed = this.MoveSpeed;
+            if ((this.gameObject.layer == LayerMask.NameToLayer("Servant_Burned") || this.gameObject.layer == LayerMask.NameToLayer("Master_Burned")))
+            {
+                this.MoveSpeed = 1f;  //만약 적의 이동속도를 바꾸는 스킬이나 시스템이 생긴다면 변수를 만들어주러 와야한다.
+            }
+            else
+                this.MoveSpeed = Original_MoveSpeed;
+        }
 
     }
 

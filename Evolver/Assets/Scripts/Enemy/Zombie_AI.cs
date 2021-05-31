@@ -13,12 +13,13 @@ public class Zombie_AI : MonoBehaviour
     Rigidbody2D rigid;
     Animator anim;
     public float MoveSpeed;
-
+    float Original_MoveSpeed;
     void Awake()
     {
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         PlayerCopy = GameObject.Find("Player").GetComponent<Transform>();
+        MoveSpeed = 2f;
         //MoveAI();
     }
 
@@ -105,6 +106,19 @@ public class Zombie_AI : MonoBehaviour
 
         if (this.gameObject.layer == LayerMask.NameToLayer("EnemyChasing"))
             radius *= 2;
+
+        // # 네이팜 탄 스킬 체크를 위한 코드. 정말 비효율적이다.
+
+        if(Player_Stat.instance.isNapalm2)
+        {
+            Original_MoveSpeed = this.MoveSpeed;
+            if ((this.gameObject.layer == LayerMask.NameToLayer("Servant_Burned") || this.gameObject.layer == LayerMask.NameToLayer("Master_Burned")))
+            {
+                this.MoveSpeed = 1.5f;  //만약 적의 이동속도를 바꾸는 스킬이나 시스템이 생긴다면 변수를 만들어주러 와야한다.
+            }
+            else
+                this.MoveSpeed = Original_MoveSpeed;
+        }
 
     }
 

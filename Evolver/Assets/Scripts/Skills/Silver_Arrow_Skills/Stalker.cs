@@ -19,7 +19,7 @@ public class Stalker : Skill_Manager
         if (this.Selected)
         {
             SilverArrowShotPoint.GetComponent<Silver_Arrow_ShotPoint>().isStalker = true;
-            this.enabled = false;               //업데이트 함수만 끄는지는 모르겠다.   # 스크립트 자체가 꺼진다. 이건 일단 검토해보자.
+            //this.enabled = false;               업데이트 함수만 끄는지는 모르겠다.   # 스크립트 자체가 꺼진다. 이건 일단 검토해보자.
         }
     }
 }
