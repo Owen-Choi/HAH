@@ -28,7 +28,7 @@ public class Motor_Agility : Physical_Manager
             {
                 if (PlayerCache.GetComponent<Player>().isDodge)
                 {
-                    PlayerCache.GetComponent<Player>().isDodge = false;
+                    //PlayerCache.GetComponent<Player>().isDodge = false;   여기서 꺼버리면 다른 스킬은 해당 변수를 이용할 수 없다.
                     Player_Stat.instance.moveSpeed += 1;
                     StartCoroutine("SpeedUp");
                 }

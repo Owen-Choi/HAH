@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class FloatingPoints : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Awake()
     {
         StartCoroutine("delay");
     }
 
-    // Update is called once per frame
     
     IEnumerator delay()
     {

@@ -170,6 +170,7 @@ public class Player : MonoBehaviour
             {
                 this.gameObject.layer = LayerMask.NameToLayer("Player_Damaged");
                 isDodge = true;
+                StartCoroutine("Dodge");
             }
             else
             {
@@ -202,6 +203,11 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(dashCool - 10);
         Can_Dash = true;
+    }
+    IEnumerator Dodge()
+    {
+        yield return new WaitForEndOfFrame();
+        isDodge = false;
     }
 }
 

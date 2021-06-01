@@ -16,7 +16,7 @@ public class Burning_Cloak : Skill_Manager
         PlayerCache = Player;
     }
 
-   
+    
     void Update()
     {
         if (this.Selected && !isOnce)
