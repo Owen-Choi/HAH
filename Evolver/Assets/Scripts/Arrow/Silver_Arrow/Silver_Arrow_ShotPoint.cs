@@ -143,7 +143,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
         for (int i = 0; i<hits.Length; i++)
         {
             RaycastHit2D hit = hits[i];
-            if (hit.transform.tag == "Enemy" && DMGPercent > 0f)
+            if (hit.transform.tag == "Enemy" && DMGPercent > 0f)        //처음이라 잘 몰랐다. 다음번에는 LayerMask를 이용해서 적의 정보만 받아내자.
             {
                 Vector3 vec = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, 0f);
                 if (Long_range && hit.distance > 4f)                    //장거리 사격 스킬체크시 increaseDamage에 플레이어 스탯의 데미지를 더해준다.
