@@ -14,6 +14,7 @@ public class Motor_Agility : Physical_Manager
         this.Skill_Name = "Motor Agility";
         this.Skill_Desc = "Your movement speed will be temporariliy increased when you dodge enemy's attack ";
         PlayerCache = Player;
+        OriginalMoveSpeed = Player_Stat.instance.moveSpeed;
     }
 
     
@@ -21,19 +22,23 @@ public class Motor_Agility : Physical_Manager
     {
         if (this.Selected)
         {
-            if (PlayerCache.GetComponent<Player>().isDodge)
-            {
-                PlayerCache.GetComponent<Player>().isDodge = false;
+            if (PlayerCache.layer == LayerMask.NameToLayer("PlayerInShelter"))
                 OriginalMoveSpeed = Player_Stat.instance.moveSpeed;
-                Player_Stat.instance.moveSpeed += 2;
-                StartCoroutine("SpeedUp");
+            else
+            {
+                if (PlayerCache.GetComponent<Player>().isDodge)
+                {
+                    PlayerCache.GetComponent<Player>().isDodge = false;
+                    Player_Stat.instance.moveSpeed += 1;
+                    StartCoroutine("SpeedUp");
+                }
             }
         }
     }
 
     IEnumerator SpeedUp()
     {
-        yield return new WaitForSeconds(5f);                    // 가비지 생성이 많을 것이므로 캐싱하는 방법을 시도해보자.
+        yield return new WaitForSeconds(5f);                        // 가비지 생성이 많을 것이므로 캐싱하는 방법을 시도해보자.
         Player_Stat.instance.moveSpeed = OriginalMoveSpeed;     // 이동속도 원위치
     }
 }
