@@ -5,8 +5,9 @@ using UnityEngine;
 public class DashCritical : Physical_Manager
 {
     public GameObject Player;
+    GameObject PlayerCache;
     bool isDash;    bool One;
-    float tempCritPercent;
+    float Original_CritPercent; float Default_CriticalPercent;
 
     private void Awake()
     {
@@ -14,30 +15,40 @@ public class DashCritical : Physical_Manager
         this.Sprite_Num = 9;
         this.Skill_Name = "Sharp posture";
         this.Skill_Desc = "Critical attack's probability will be temporarily increased after dash";
+        Default_CriticalPercent = Original_CritPercent = Player_Stat.instance.criticalPercent;
     }
     void Start()
     {
-        isDash = Player.GetComponent<Player>().isDash;              //실시간으로 업데이트가 되나?
+        PlayerCache = Player;
+        Original_CritPercent = Default_CriticalPercent = Player_Stat.instance.criticalPercent;
         One = false;
     }
     void Update()
     {
         if (this.Selected)
         {
-            if (isDash && !One)
+            if (!One && PlayerCache.GetComponent<Player>().isDash)
             {
                 One = true;
-                tempCritPercent = Player_Stat.instance.criticalPercent;
+                Original_CritPercent = Player_Stat.instance.criticalPercent;
                 Player_Stat.instance.criticalPercent += 30f;
                 StartCoroutine("CriticalDuration");
             }
+
+            if (PlayerCache.layer == LayerMask.NameToLayer("PlayerInShelter"))
+                Default_CriticalPercent = Original_CritPercent = Player_Stat.instance.criticalPercent;
+
         }
     }
 
     IEnumerator CriticalDuration()
     {
         yield return new WaitForSeconds(5f);
+        if (Default_CriticalPercent != Original_CritPercent)
+            Player_Stat.instance.criticalPercent = Original_CritPercent;
+        else
+            Player_Stat.instance.criticalPercent = Default_CriticalPercent;
         One = false;
-        isDash = false;                                              //혹시 모르니 일단 false로 바꿔주자
+        
     }
 }

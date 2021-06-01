@@ -8,12 +8,14 @@ public class Breathing : Skill_Manager
     GameObject PlayerCache;
     float StandTime;
     float Original_RecoverSpeed;
+    bool isOnce;
     void Start()
     {
         this.Skill_Num = 24;
         this.Skill_Name = "Breathing";
         //this.Sprite_Num =
         PlayerCache = Player;
+        Original_RecoverSpeed = Player_Stat.instance.Stamina_recovery_speed;
     }
 
     
@@ -24,15 +26,18 @@ public class Breathing : Skill_Manager
             if (!PlayerCache.transform.hasChanged)                      //hasChanged 값이 false라면 움직임이 없는 상태. 이 상태가 2초간 지속되면 회복속도 증가
             {
                 StandTime += Time.deltaTime;
-                if(StandTime > 2f)
+                if(StandTime > 2f && !isOnce)
                 {
+                    isOnce = true;
                     Player_Stat.instance.Stamina_recovery_speed += 3f;
                 }
             }
             else if (PlayerCache.transform.hasChanged)                  //플레이어의 움직임이 감지된다면
             {
+                isOnce = false;
                 StandTime = 0f;
                 Player_Stat.instance.Stamina_recovery_speed = Original_RecoverSpeed;
+                PlayerCache.transform.hasChanged = false;
             }
 
 
