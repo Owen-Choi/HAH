@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public static bool isHideWeapon;            bool isLight;
@@ -16,7 +17,8 @@ public class Player : MonoBehaviour
     public GameObject Enemy;
     public bool isThorn;    public bool isBurningCloak;
     protected Color color;
-    
+    public GameObject DashIcon;
+    GameObject DashIconCache;   Color available;    Color unavailable;
 
     void Start()
     {
@@ -27,6 +29,11 @@ public class Player : MonoBehaviour
         Can_Dash = true;                                     
         dashCool = Player_Stat.instance.dashCool;
         DashTime = Player_Stat.instance.DashTime;
+        DashIconCache = DashIcon;
+        available.r = unavailable.r = 255;
+        available.g = unavailable.g = 255;
+        available.b = unavailable.b = 255;
+        available.a = 1f;   unavailable.a = 0f;
     }
 
 
@@ -73,6 +80,7 @@ public class Player : MonoBehaviour
         //질주의 달인 스킬 체크를 확인하는 조건문. 좀 많이 비효율적이긴 하다.
         if(DashMaster && Input.GetKeyDown("space") && this.gameObject.layer == LayerMask.NameToLayer("Player") && !Input.GetMouseButton(0) && Can_Dash)
         {
+            DashIconCache.GetComponent<Image>().color = unavailable;
             Can_Dash = false;
             isDash = true;
             this.gameObject.layer = LayerMask.NameToLayer("Player_Dash");
@@ -81,6 +89,7 @@ public class Player : MonoBehaviour
         }
         else if(Input.GetKeyDown("space") && Player_Stat.instance.stamina > 30 && this.gameObject.layer == LayerMask.NameToLayer("Player") && !Input.GetMouseButton(0) && Can_Dash)
         {
+            DashIconCache.GetComponent<Image>().color = unavailable;
             Can_Dash = false;
             isDash = true;
             Player_Stat.instance.stamina -= 30;
@@ -175,7 +184,10 @@ public class Player : MonoBehaviour
             else
             {
                 //CameraShake.instance.cameraShake();   카메라 쉐이크 효과도 일단 삭제.
-                Player_Stat.instance.health -= (collision.gameObject.GetComponent<Zombie_Stat>().Power - Player_Stat.instance.armor);
+                if (Player_Stat.instance.armor >= collision.gameObject.GetComponent<Zombie_Stat>().Power)
+                    Player_Stat.instance.health -= 2;
+                else
+                    Player_Stat.instance.health -= (collision.gameObject.GetComponent<Zombie_Stat>().Power - Player_Stat.instance.armor);
             }
             this.gameObject.layer = LayerMask.NameToLayer("Player_Damaged");
             
@@ -196,12 +208,14 @@ public class Player : MonoBehaviour
     }
 
     IEnumerator DashCoolForNotMaster() {
-        yield return new WaitForSeconds(dashCool);          //이게 될 지 모르겠다.
+        yield return new WaitForSeconds(dashCool);
+        DashIconCache.GetComponent<Image>().color = available;
         Can_Dash = true;
     }
     IEnumerator DashCoolForMaster()
     {
         yield return new WaitForSeconds(dashCool - 10);
+        DashIconCache.GetComponent<Image>().color = available;
         Can_Dash = true;
     }
     IEnumerator Dodge()

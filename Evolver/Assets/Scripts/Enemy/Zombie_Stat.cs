@@ -12,11 +12,12 @@ public class Zombie_Stat : MonoBehaviour
     public float Health;
     public float Power = 10f;
     float Second;
-    
+    GameObject BackPackCache;
     private void Start()
     {
         CurrentFireborne = 0;
         rigid = GetComponent<Rigidbody2D>();
+        BackPackCache = GameObject.Find("BackPack");
     }
 
    /* void OnTriggerEnter2D(Collider2D other)
@@ -91,7 +92,7 @@ public class Zombie_Stat : MonoBehaviour
     {
         Instantiate(Resources.Load("Zombie_Dead"), this.transform.position, this.transform.rotation);
 
-        if(Random.Range(0,100) < GameObject.Find("BackPack").GetComponent<BackPack>().GetDropPercent("MutantSample"))  //백팩 -> 인벤토리 순으로 접근
+        if(Random.Range(0,100) < BackPackCache.GetComponent<BackPack>().GetDropPercent("MutantSample"))  //백팩 -> 인벤토리 순으로 접근
         {
             Instantiate(Resources.Load("MutantSample"), this.transform.position, this.transform.rotation);      //생성 위치에 변동을 주고싶다면 이 코드를 수정하자.
         }
