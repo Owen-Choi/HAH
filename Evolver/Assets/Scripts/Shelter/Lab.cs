@@ -19,7 +19,7 @@ public class Lab : MonoBehaviour
    
     void Update()
     {
-        RaycastHit2D circle = Physics2D.CircleCast(transform.position, radius, Vector2.up, radius, LayerMask.GetMask("Player"));
+        RaycastHit2D circle = Physics2D.CircleCast(transform.position, radius, Vector2.up, radius, LayerMask.GetMask("PlayerInShelter"));
         if (circle)
         {
             if (Input.GetKeyDown(KeyCode.E))

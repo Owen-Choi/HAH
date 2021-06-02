@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
             anim.SetBool("isHorizon", false);
         }
         //질주의 달인 스킬 체크를 확인하는 조건문. 좀 많이 비효율적이긴 하다.
-        if(DashMaster && Input.GetKeyDown("space") && this.gameObject.layer != LayerMask.NameToLayer("Player_Damaged") && !Input.GetMouseButton(0) && Can_Dash)
+        if(DashMaster && Input.GetKeyDown("space") && this.gameObject.layer == LayerMask.NameToLayer("Player") && !Input.GetMouseButton(0) && Can_Dash)
         {
             Can_Dash = false;
             isDash = true;
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
             anim.SetBool("isDash", isDash);
             StartCoroutine("DashCoolForMaster");
         }
-        else if(Input.GetKeyDown("space") && Player_Stat.instance.stamina > 30 && this.gameObject.layer != LayerMask.NameToLayer("Player_Damaged") && !Input.GetMouseButton(0) && Can_Dash)
+        else if(Input.GetKeyDown("space") && Player_Stat.instance.stamina > 30 && this.gameObject.layer == LayerMask.NameToLayer("Player") && !Input.GetMouseButton(0) && Can_Dash)
         {
             Can_Dash = false;
             isDash = true;
