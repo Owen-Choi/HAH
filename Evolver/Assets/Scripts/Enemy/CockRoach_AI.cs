@@ -9,7 +9,7 @@ public class CockRoach_AI : MonoBehaviour
     GameObject BackPackCache;
     [SerializeField]
     float damage;
-    float angle;    float offset;
+    float angle;    float offset;   float radius = 7f;
     void Start()
     {
         PlayerCache = GameObject.Find("Player");            //Find 함수로 플레이어를 찾은 뒤 캐싱.
@@ -21,15 +21,18 @@ public class CockRoach_AI : MonoBehaviour
     
     void Update()
     {
+        RaycastHit2D circle = Physics2D.CircleCast(transform.position, radius, Vector2.up, radius, LayerMask.GetMask("Player"));        //Player가 일정 범위에 들어온다면 타겟으로 설정
+
+        if (circle)
+            this.transform.parent.gameObject.GetComponent<AIDestinationSetter>().target = PlayerCache.transform;
+
         if (this.transform.hasChanged)          //오브젝트가 움직인다면(플레이어를 쫓는다면)
         {
             this.gameObject.layer = LayerMask.NameToLayer("EnemyChasing");
             FaceTarget();
             this.transform.hasChanged = false;      //test
         }
-
-        if(PlayerCache.layer == LayerMask.NameToLayer("Player"))
-            this.transform.parent.gameObject.GetComponent<AIDestinationSetter>().target = PlayerCache.transform;
+           
 
     }
 
