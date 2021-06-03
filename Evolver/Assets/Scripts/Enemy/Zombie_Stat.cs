@@ -74,6 +74,7 @@ public class Zombie_Stat : MonoBehaviour
             Second += Time.deltaTime;
             if ((int)Second % 1 == 0 && Second > 1f)
             {
+                Second = 0f;
                 vec = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0f);     //Vector2도 되는 지 모르겠다.
                 temp = Instantiate(Resources.Load("FloatingParents"), vec, Quaternion.identity) as GameObject;
                 temp.transform.GetChild(0).GetComponent<TextMesh>().text = Player_Stat.instance.Burning_DMG.ToString();

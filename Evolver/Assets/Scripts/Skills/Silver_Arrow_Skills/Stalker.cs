@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stalker : Skill_Manager
 {
-    public GameObject SilverArrowShotPoint;
+    public GameObject SilverArrowShotPoint; bool isOnce;
     void Start()
     {
         this.Skill_Num = 22;
@@ -16,8 +16,9 @@ public class Stalker : Skill_Manager
     
     void Update()
     {
-        if (this.Selected)
+        if (this.Selected && !isOnce)
         {
+            isOnce = true;
             SilverArrowShotPoint.GetComponent<Silver_Arrow_ShotPoint>().isStalker = true;
             //this.enabled = false;               업데이트 함수만 끄는지는 모르겠다.   # 스크립트 자체가 꺼진다. 이건 일단 검토해보자.
         }

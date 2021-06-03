@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_Stat : MonoBehaviour
 {
     public int Level = 1;               public bool isLevelUp;          public int Physical_Level = 1;  public bool isPhysical_LevelUp;
-    public float health;                public float healthMax;         public float RadioActive;   public float DefaultHealthMax;  public float DefaultStaminaMax;
+    public float health;                public float healthMax;         public float RadioActive;   public float DefaultHealthMax;  public float DefaultStaminaMax; public float thirsty;
     public float stamina;               public float armor;             public float Max_Stamina;   public float Stamina_recovery_speed = 5f;
     public float missPercent;           public float criticalPercent;   public float Decrease_Stamina_When_Bow_Charge = 5f;         //always check not only in script value, but also Insepctor value
     public float criticalDamage;        public float launchForce = 4f;  public float moveSpeed = 4f;  
@@ -63,5 +63,7 @@ public class Player_Stat : MonoBehaviour
         if (healthMax >= DefaultHealthMax)              //DefaultHealthMax : 체력의 절대적 최대값. 방사능에 의한 일시적 최대체력이 아니라 캐릭터의 원래 최대체력을 나타내는 값이다.
             healthMax = DefaultHealthMax;
 
+        healthMax = DefaultHealthMax - RadioActive;
+        Max_Stamina = DefaultStaminaMax - thirsty;
     }
 }

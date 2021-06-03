@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Fire_Arrow_ShotPoint : MonoBehaviour
 {
     public GameObject Fire_Arrow_For_Explode;
@@ -10,11 +10,15 @@ public class Fire_Arrow_ShotPoint : MonoBehaviour
     public float offset; bool Zero_Stamina; float EverySecond = 0f; float HoldingTime = 0f;
     float launchForce; float increaseDamage; float increaseLaunchForce; bool ischanged; float chargingDamage; float TempDMG; float TempLF;
     public bool is_Explode; public bool isShoot;
+    public GameObject FireArrowUI;
+    GameObject FireArrowUI_Cache; Color activate; Color DeActivate;
     private void Start()
     {
         chargingDamage = Player_Stat.instance.Charge_Damage_Plus;
         launchForce = Player_Stat.instance.launchForce;
-
+        FireArrowUI_Cache = FireArrowUI;
+        activate.r = 255; activate.g = 255; activate.b = 255; activate.a = 255;
+        DeActivate.r = 255; DeActivate.g = 255; DeActivate.b = 255; DeActivate.a = 0.3f;
     }
 
     void Update()
@@ -77,7 +81,30 @@ public class Fire_Arrow_ShotPoint : MonoBehaviour
         if (Zero_Stamina && !Input.GetMouseButton(0))
             Zero_Stamina = false;
 
-        
+        if (HoldingTime > 1f && HoldingTime < 2f)
+        {
+            FireArrowUI_Cache.transform.GetChild(0).GetComponent<Image>().color = activate;
+        }
+        else if (HoldingTime > 2f && HoldingTime < 3f)
+        {
+            FireArrowUI_Cache.transform.GetChild(0).GetComponent<Image>().color = activate;
+            FireArrowUI_Cache.transform.GetChild(1).GetComponent<Image>().color = activate;
+        }
+        else if (HoldingTime > 3f)
+        {
+            FireArrowUI_Cache.transform.GetChild(0).GetComponent<Image>().color = activate;
+            FireArrowUI_Cache.transform.GetChild(1).GetComponent<Image>().color = activate;
+            FireArrowUI_Cache.transform.GetChild(2).GetComponent<Image>().color = activate;
+        }
+
+        if (isShoot)
+        {
+            FireArrowUI_Cache.transform.GetChild(0).GetComponent<Image>().color = DeActivate;
+            FireArrowUI_Cache.transform.GetChild(1).GetComponent<Image>().color = DeActivate;
+            FireArrowUI_Cache.transform.GetChild(2).GetComponent<Image>().color = DeActivate;
+            isShoot = false;
+        }
+
     }
 
 

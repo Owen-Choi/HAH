@@ -144,15 +144,15 @@ public class Player : MonoBehaviour
 
     }
 
-    void StackThirsty()
+    public void StackThirsty()
     {
-        Player_Stat.instance.Max_Stamina--;                 
+        Player_Stat.instance.thirsty++;                 
         Invoke("StackThirsty", 30f);                        //30초마다 목마름 스택 추가
     }
     public void StackRadioActive()
     {
         Player_Stat.instance.RadioActive++;
-        Player_Stat.instance.healthMax--;                   //may cause some errors. pay attention to it
+        // 최대 체력 감소는 Player_Stat 스크립트에서 실행하겠다.
         Invoke("StackRadioActive", 40f);                    //20초마다 방사능 스택 추가 #수정 : 20초는 너무 빠르다. 40초로 수정
     }
     void OnCollisionStay2D(Collision2D collision)

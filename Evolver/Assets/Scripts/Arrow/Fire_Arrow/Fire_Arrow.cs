@@ -39,8 +39,7 @@ public class Fire_Arrow : MonoBehaviour
                 temp = Instantiate(Resources.Load("FloatingParents"), vec, Quaternion.identity) as GameObject;
                 temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMG.ToString();
             }
-
-            if (Random.Range(0, 100) < Player_Stat.instance.Burn_Percent)
+            if (Random.Range(0,100) < Player_Stat.instance.Burn_Percent)
             {
                 if(isSoot)
                     other.gameObject.layer = LayerMask.NameToLayer("Master_Burned");                //그을림 스킬체크 시 화상이 전염되는 Master_Burned 레이어로 바꿈 

@@ -13,7 +13,7 @@ public class Zombie_AI_For_TypeA : MonoBehaviour
     Rigidbody2D rigid;
     Animator anim;
     public float MoveSpeed;
-    float Original_MoveSpeed;
+    float Original_MoveSpeed;   bool isOnce;
 
     void Awake()
     {
@@ -32,7 +32,11 @@ public class Zombie_AI_For_TypeA : MonoBehaviour
 
         if (circle.collider)
         {
-            this.gameObject.layer = LayerMask.NameToLayer("EnemyChasing");
+            if (!isOnce)
+            {
+                isOnce = true;
+                this.gameObject.layer = LayerMask.NameToLayer("EnemyChasing");
+            }
             anim.SetFloat("HorizonValue", (PlayerCopy.position.x - this.transform.position.x));
             anim.SetFloat("VerticalValue", (PlayerCopy.position.y - this.transform.position.y));
             if (GetAngle() > 0f && GetAngle() <= 1.5f)

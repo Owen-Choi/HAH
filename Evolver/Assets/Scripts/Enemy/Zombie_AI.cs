@@ -13,7 +13,7 @@ public class Zombie_AI : MonoBehaviour
     Rigidbody2D rigid;
     Animator anim;
     public float MoveSpeed;
-    float Original_MoveSpeed;
+    float Original_MoveSpeed;   bool isOnce;
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -32,7 +32,12 @@ public class Zombie_AI : MonoBehaviour
 
         if (circle.collider)
         {
-            this.gameObject.layer = LayerMask.NameToLayer("EnemyChasing");
+            // # 화상 레이어와 겹칠 경우 화상 레이어가 취소되기에 취한 조치. 문제점이 많아보인다.
+            if (!isOnce)
+            {
+                isOnce = true;
+                this.gameObject.layer = LayerMask.NameToLayer("EnemyChasing");
+            }
             anim.SetFloat("HorizonValue", (PlayerCopy.position.x - this.transform.position.x));
             anim.SetFloat("VerticalValue", (PlayerCopy.position.y - this.transform.position.y));
             if (GetAngle() > 0f && GetAngle() <= 1.5f)
