@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class FlameBottleFor1 : MonoBehaviour
 {
     public bool isActive;
@@ -10,10 +10,15 @@ public class FlameBottleFor1 : MonoBehaviour
     Vector3 shootDirection;
     public Transform Player;
     public bool isCreate;
-    void Start()
+    public GameObject FlameBottleUI;
+    GameObject FlameBottleUICache;  Color Active;   Color Deactive;
+    void Awake()
     {
         isCreate = false;
         isOnce = true;
+        FlameBottleUICache = FlameBottleUI;
+        Active.r = 255; Active.g = 255; Active.b = 255; Active.a = 1f;
+        Deactive.r = 255; Deactive.g = 255; Deactive.b = 255; Deactive.a = 0.3f;
     }
 
     // Update is called once per frame
@@ -28,9 +33,12 @@ public class FlameBottleFor1 : MonoBehaviour
 
         if(isCreate)
         {
+            FlameBottleUICache.GetComponent<Image>().color = Active;
             if (Input.GetMouseButtonDown(1) && !FlameBottleFor2.GetComponent<FlameBottleFor2>().isCreate || Input.GetMouseButtonDown(1) && !FlameBottleFor2.GetComponent<FlameBottleFor2>().isActive)
                 Throw();
         }
+        else
+            FlameBottleUICache.GetComponent<Image>().color = Deactive;
     }
 
     void Throw()

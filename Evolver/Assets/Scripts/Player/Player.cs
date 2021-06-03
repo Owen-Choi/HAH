@@ -116,18 +116,7 @@ public class Player : MonoBehaviour
         if (this.gameObject.layer == LayerMask.NameToLayer("Player_Damaged"))
             DamagedLayer();
 
-      /*  if (Player_Stat.instance.isShelter)
-        {   // # 쉘터라면 더 이상 방사능 수치와 목마름 수치가 증가하지 않는다.
-            CancelInvoke("StackThirsty");
-            CancelInvoke("StackRadioActive");
-        }
-        else
-        {   // # 쉘터가 아니라면 방사능과 목마름 수치 점차 증가
-            StackThirsty();
-            StackRadioActive();
-        }*/     
-
-        // 방사능과 목마름은 Layer와 연관지어서 다시 코딩하자.
+      
     }
 
     void FixedUpdate()

@@ -33,7 +33,7 @@ public class Player_Stat : MonoBehaviour
         criticalPercent = 10f;
         dashCool = 30;
         DashTime = 0.4f;
-        Burning_DMG = 3f;
+        Burning_DMG = 7f;
         burningTime = 5f;
     }
 
