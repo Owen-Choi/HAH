@@ -28,8 +28,9 @@ public class Penetrate : Skill_Manager
             {
                 this.Once = true;
                 this.Sprite_Num = 5;
+                Player_Stat.instance.Decrease_Stamina_When_Bow_Charge = 4f;                    //changing this values may cause some errors
             }
-            Player_Stat.instance.Decrease_Stamina_When_Bow_Charge = 4f;                    //changing this values may cause some errors
+            
         }
         if (this.Selected_Second)
         {
@@ -37,8 +38,9 @@ public class Penetrate : Skill_Manager
             {
                 this.Twice = true;
                 this.Sprite_Num = 6;
+                Player_Stat.instance.ChargingSpeed += 0.4f;                                     //수치 조정해야할 가능성 있음.
             }
-            Player_Stat.instance.ChargingSpeed += 0.4f;                                     //수치 조정해야할 가능성 있음.
+           
         }
         if (this.Selected_Last)
         {

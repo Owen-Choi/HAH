@@ -143,6 +143,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
         for (int i = 0; i<hits.Length; i++)
         {
             RaycastHit2D hit = hits[i];
+
             if (hit.transform.tag == "Enemy" && DMGPercent > 0f)        //처음이라 잘 몰랐다. 다음번에는 LayerMask를 이용해서 적의 정보만 받아내자.
             {
                 Vector3 vec = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, 0f);
@@ -153,9 +154,10 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
 
                 if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)      //크리티컬 카운트 ++, 즉발사격 Update 함수에서 우클릭 시 즉발사격 가능하게 구현하기
                 {                                                                           // +무기 색깔 바꾸기
+
                     // # 발광화살 스킬 체크라면
                     if (isFlash)
-                        if(Random.Range(0,100) < 20)
+                        if (Random.Range(0, 100) < 70)
                             hit.transform.gameObject.layer = LayerMask.NameToLayer("Servant_Burned");
                     // # 관통 3강 스킬 체크라면
                     if (Player_Stat.instance.is_Penetrate3)
@@ -175,7 +177,6 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                 }
                 else
                 {
-                   
                     DMG = (increaseDamage + Player_Stat.instance.damage) * (float)(0.1f * DMGPercent);
                     if (isStalker && hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
                     {
@@ -196,6 +197,8 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                 }
 
             }
+            else if (hit.transform.tag == "Enemy_Bug")
+                Destroy(hit.transform.parent.gameObject);
         }
         if (Immediate_Shot_Count > ISCMax && isImmed)
         {
@@ -234,6 +237,8 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
             RaycastHit2D hit = hits[i];                                 //지금 보니 상당히 비효율적인 코드다.
             if (hit.transform.tag == "Enemy" && DMGPercent > 0f)
             {
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy_Bug"))
+                    Destroy(hit.transform.parent.gameObject);
                 Vector3 vec = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, 0f);
                 if (Long_range && hit.distance > 4f)                    //장거리 사격 스킬체크시 increaseDamage에 플레이어 스탯의 데미지를 더해준다.
                 {
@@ -268,6 +273,8 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                     Player_Stat.instance.stamina++;                                                             
                 }
             }
+            else if (hit.transform.tag == "Enemy_Bug")
+                Destroy(hit.transform.parent.gameObject);
         }
         if (Immediate_Shot_Count > ISCMax && isImmed)
         {

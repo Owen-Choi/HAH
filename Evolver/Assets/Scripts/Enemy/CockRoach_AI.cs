@@ -49,7 +49,7 @@ public class CockRoach_AI : MonoBehaviour
         if (collision.tag == "Player")
         {
             if (Player_Stat.instance.armor > damage)
-                Player_Stat.instance.health -= 2;
+                Player_Stat.instance.health -= 5;
             else
                 Player_Stat.instance.health -= damage - Player_Stat.instance.armor;
             Destroy(this.transform.parent.gameObject);             //부모를 파괴할 경우 자신도 파괴됨.
@@ -59,7 +59,7 @@ public class CockRoach_AI : MonoBehaviour
             Destroy(this.transform.parent.gameObject);
     }
 
-    private void OnDestroy()
+   private void OnDestroy()
     {
         Instantiate(Resources.Load("CockroachDead"), this.transform.position, Quaternion.identity);
         if (Random.Range(0, 100) <BackPackCache.GetComponent<BackPack>().GetDropPercent("MutantSample"))  //백팩 -> 인벤토리 순으로 접근
