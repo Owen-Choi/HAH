@@ -11,8 +11,8 @@ public class YeokMaShal : Skill_Manager
     {
         this.Skill_Num = 5;
         this.Sprite_Num = 1;    //근접사격 스프라이트 사용
-        this.Skill_Name = "Runner";
-        this.Skill_Desc = "If you fill your running-gage, then your next attack will be critical shot";
+        this.Skill_Name = "역마살";
+        this.Skill_Desc = "플레이어가 이동하는 동안 이동게이지가 차고, 게이지가 다 차면 다음 공격은 확정 치명타로 적용된다.";
     }
 
     // Update is called once per frame

@@ -13,10 +13,8 @@ public class Penetrate : Skill_Manager
         this.Sprite_Num = 4;
         this.Once = false;
         this.Twice = false;
-        this.Skill_Name = "Penetration";
-        this.Skill_Desc = "+ : decreases stamina need when charging" + "" +
-            "++ : increases Charging speed" + "" +
-            "+++ : Small amount of stamina recovered from critical shot";
+        this.Skill_Name = "관통";
+        this.Skill_Desc = "차징 시 스테미나 소모량이 감소한다.";
     }
 
 
@@ -29,6 +27,7 @@ public class Penetrate : Skill_Manager
                 this.Once = true;
                 this.Sprite_Num = 5;
                 Player_Stat.instance.Decrease_Stamina_When_Bow_Charge = 4f;                    //changing this values may cause some errors
+                this.Skill_Desc = "차징속도가 증가한다.";
             }
             
         }
@@ -38,7 +37,8 @@ public class Penetrate : Skill_Manager
             {
                 this.Twice = true;
                 this.Sprite_Num = 6;
-                Player_Stat.instance.ChargingSpeed += 0.4f;                                     //수치 조정해야할 가능성 있음.
+                Player_Stat.instance.ChargingSpeed += 0.4f;                                     //수치 조정해야할 가능성 있음.  지금 보니 딱 적당한 듯
+                this.Skill_Desc = "치명타가 발생할 때마다 스테미나를 회복한다.";
             }
            
         }

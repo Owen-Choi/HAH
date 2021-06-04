@@ -15,9 +15,10 @@ public class Robin_hood : Skill_Manager
         Once = Twice = Third = false;
         this.Skill_Num = 7;
         //this.Sprite_Num =
-        this.Skill_Name = "Robin Hood";
-        this.Skill_Desc = "+ : You can launch arrow immediately one time with high speed and power as twice damage of player while dash " +
-            " ++ : You can launch arrow two times with same condition  " + " +++ : You can launch arrow three times with same condition ";
+        this.Skill_Name = "로빈 후드";
+        this.Skill_Desc = " + : 질주하는 동안 스테미나 감소와 차징시간 없이 1회 풀차징으로 공격할 수 있다. " +
+            " ++ : 질주하는 동안 2회 풀차징으로 공격할 수 있다. " +
+            " +++: 질주하는 동안 3회 풀차징으로 공격할 수 있다.";
         PlayerCache = Player;                    
         SP = ShotPoint;
         Count = 0;

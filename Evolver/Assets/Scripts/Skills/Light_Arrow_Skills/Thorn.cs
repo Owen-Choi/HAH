@@ -11,8 +11,8 @@ public class Thorn : Skill_Manager
     {
         this.Skill_Num = 8;
         //this.Sprite_Num =
-        this.Skill_Name = "Thorn";
-        this.Skill_Desc = "Enemy will be killed immediately with low probabiliy if you being damaged by them";
+        this.Skill_Name = "가시";
+        this.Skill_Desc = "적과 충돌할 시 4%의 확률로 적을 즉사시킨다.";
         PlayerCache = Player;
     }
 

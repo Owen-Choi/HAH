@@ -8,9 +8,9 @@ public class Stalker : Skill_Manager
     void Start()
     {
         this.Skill_Num = 22;
-        this.Skill_Name = "Stalker";
+        this.Skill_Name = "스토커";
         //this.Sprite_Num =
-        this.Skill_Desc = "";
+        this.Skill_Desc = "플레이어를 발견하지 못한 적에게 2배의 피해를 준다.";
     }
 
     

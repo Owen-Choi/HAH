@@ -22,8 +22,8 @@ public class MultiShot : Skill_Manager
         this.DMG_Decrease_Once = false;
         this.DMG_Decrease_Twice = false;
         this.Sprite_Num = 7;
-        this.Skill_Name = "MultiShot";
-        this.Skill_Desc = "Two additional arrow will be added";
+        this.Skill_Name = "다중사격";
+        this.Skill_Desc = "한번의 사격에 2개의 화살을 추가로 사격한다.";
     }
 
     /* public override void Activate()

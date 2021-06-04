@@ -15,8 +15,8 @@ public class WindStep : Skill_Manager
     {
         this.Skill_Num = 6;
         this.Sprite_Num = 2;
-        this.Skill_Name = "Wind Step";
-        this.Skill_Desc = "Your dodge percent will be increased and your movement speed will be increased temporarily when you attack enemy";
+        this.Skill_Name = "바람걸음";
+        this.Skill_Desc = "회피율이 영구적으로 증가하고 적을 공격할 때 마다 일시적으로 이동속도가 증가한다.";
     }
 
 

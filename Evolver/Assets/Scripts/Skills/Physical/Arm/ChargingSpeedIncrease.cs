@@ -17,8 +17,8 @@ public class ChargingSpeedIncrease : Physical_Manager
         if (this.Selected)
         {
             this.Selected = false;
-            if (Player_Stat.instance.ChargingSpeed < 8f)
-                Player_Stat.instance.ChargingSpeed += 1f;
+            if (Player_Stat.instance.ChargingSpeed < 4f)
+                Player_Stat.instance.ChargingSpeed += 0.35f;
         }
     }
 }

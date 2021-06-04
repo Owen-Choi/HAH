@@ -10,8 +10,8 @@ public class Concentration_Shot : Skill_Manager
     {
         this.Skill_Num = 15;
         this.Sprite_Num = 2;
-        this.Skill_Name = "Concentration";
-        this.Skill_Desc = "Damage will be increased as stamina that is used when charging";
+        this.Skill_Name = "집중";
+        this.Skill_Desc = "시위를 당기며 소모된 스테미나의 수치만큼 데미지가 증가한다.";
     }
 
     private void Update()

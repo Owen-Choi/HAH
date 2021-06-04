@@ -13,16 +13,15 @@ public class Police_Line : Skill_Manager
     {
         this.Skill_Num = 21;
         //this.Sprite_Num =
-        this.Skill_Name = "Police Line";
-        this.Skill_Desc = "+ : Push all nearby enemies with 10% probability when you hit by them " +
-            " ++ : Push all nearby enemies with 20% probability and 20 damage " + 
-            " +++ : Push harder all nearby enemies with 20% probability and 30 damage";
+        this.Skill_Name = "접근 금지";
+        this.Skill_Desc = "+ : 적에게 피격당했을 시 10%의 확률로 주위의 모든 적들을 밀어냄 ";
         PlayerCache = Player;
     }
     void Update()
     {
         if (this.Selected_First && !this.Selected_Second && !this.Selected_Last)
         {
+            this.Skill_Desc = "+ : 적에게 피격당했을 시 20%의 확률로 주위의 모든 적들을 밀어내며 20의 피해를 준다. ";
             if (PlayerCache.gameObject.layer == LayerMask.NameToLayer("Player_Damaged") && !isOnce)
             {
                 isOnce = true;
@@ -43,6 +42,7 @@ public class Police_Line : Skill_Manager
 
         if(this.Selected_First && this.Selected_Second && !this.Selected_Last)
         {
+            this.Skill_Desc = "+ : 적에게 피격당했을 시 20%의 확률로 주위의 모든 적들을 강하게 밀어내며 30의 피해를 준다. ";
             if (PlayerCache.gameObject.layer == LayerMask.NameToLayer("Player_Damaged") && !isOnce)
             {
                 isOnce = true;

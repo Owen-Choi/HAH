@@ -14,8 +14,8 @@ public class Continued_Shot : Skill_Manager
         this.DMG_Increase_First = false;
         this.Skill_Num = 4;
         this.Sprite_Num = 4;
-        this.Skill_Name = "Additional Shot";
-        this.Skill_Desc = "One Additional attack will be added";
+        this.Skill_Name = "연속사격";
+        this.Skill_Desc = "사격이 끝난 뒤 곧바로 한번 더 사격한다.";
     }
 
    

@@ -12,7 +12,8 @@ public class Breathing : Skill_Manager
     void Start()
     {
         this.Skill_Num = 24;
-        this.Skill_Name = "Breathing";
+        this.Skill_Name = "호흡";
+        this.Skill_Desc = "2초 이상 움직이지 않고 가만히 있을 경우 스테미나의 회복 속도가 증가한다.";
         //this.Sprite_Num =
         PlayerCache = Player;
         Original_RecoverSpeed = Player_Stat.instance.Stamina_recovery_speed;

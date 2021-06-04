@@ -7,6 +7,7 @@ public class Immediate_Shot : Skill_Manager
     public GameObject Silver_Arrow_Weapon;
     public GameObject Silver_Arrow_ShotPoint;
     bool ChangeOnce;    bool ChangeTwice;   protected Color Redcolor;   protected Color OriginColor;    bool FreeStamina;
+    bool isOnce;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,8 @@ public class Immediate_Shot : Skill_Manager
         Redcolor.r = 255f; Redcolor.g = 0f;   Redcolor.b = 0f;   Redcolor.a = 255f;
         OriginColor.r = 255f;   OriginColor.g = 255f;   OriginColor.b = 255f;   OriginColor.a = 255f;
         this.Sprite_Num = 7;
-        this.Skill_Name = "Counter";
-        this.Skill_Desc = "If a critical attack exceeds a certain number of times with one arrow, the next attack can be carried out immediately";
+        this.Skill_Name = "즉발사격";
+        this.Skill_Desc = "한번의 사격으로 치명타가 2번 이상 발생할 시 40의 스테미나를 소모하여 차징 시간 없이 1번의 추가 사격이 주어진다.";
     }
 
     // Update is called once per frame
@@ -29,21 +30,24 @@ public class Immediate_Shot : Skill_Manager
             ChangeOnce = true;
             this.Sprite_Num = 8;
             Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().isImmed = true;
-            Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().ISCMax = 4;
+            Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().ISCMax = 2;
+            this.Skill_Desc = "한번의 사격으로 치명타가 1번 이상 발생할 시 40의 스테미나를 소모하여 차징 시간 없이 1번의 추가 사격이 주어진다.";
         }
 
         if(Selected_Second && !ChangeTwice)
         {
             ChangeTwice = true;
             this.Sprite_Num = 9;
-            Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().ISCMax = 3;
+            Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().ISCMax = 1;
+            this.Skill_Desc = "한번의 사격으로 치명타가 1번 이상 발생할 시 스테미나 소모와 차징 시간 없이 1번의 추가 사격이 주어지며, 치명타 확률이 영구적으로 20% 증가한다.";
         }
 
-        if(Selected_Last)
+        if(Selected_Last && !isOnce)
         {
             this.Selected = true;
-            //치확 증가 예정
+            Player_Stat.instance.criticalPercent += 20; 
             this.FreeStamina = true;
+            isOnce = true;
         }
 
         if(Silver_Arrow_ShotPoint.GetComponent<Silver_Arrow_ShotPoint>().ISCAble)

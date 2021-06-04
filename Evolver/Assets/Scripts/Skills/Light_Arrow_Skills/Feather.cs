@@ -11,8 +11,8 @@ public class Feather : Skill_Manager        //회피율의 10%만큼 이동속도 증가, 최
         this.Skill_Num = 2;
         this.Sprite_Num = 3;
         OnlyOnce = false;
-        this.Skill_Name = "Feather";
-        this.Skill_Desc = "your movement speed will increase as 10 percent of dodge percent, and your max health will be decreased as 10 percent";
+        this.Skill_Name = "깃털";
+        this.Skill_Desc = "최대체력이 10% 감소하지만 회피율의 10%만큼 이동속도가 증가한다.";
     }
 
 
