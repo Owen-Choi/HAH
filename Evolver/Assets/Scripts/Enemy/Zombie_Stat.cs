@@ -11,7 +11,7 @@ public class Zombie_Stat : MonoBehaviour
     public bool is_burned;  public float Burning_DMG;     //스킬 관련 변수들
     public float Health;
     public float Power;
-    float Second;
+    float Second;   float dropNum;
     GameObject BackPackCache;
     GameObject temp;    Vector2 vec;
     private void Start()
@@ -97,10 +97,39 @@ public class Zombie_Stat : MonoBehaviour
 
     private void OnDestroy()
     {
+
+        // 다른 방법이 없어 어쩔 수 없이 확률이 낮은 순으로 한번씩 다 체크하는 시스템으로 코딩했다.
+        dropNum = Random.Range(0, 100);
         Instantiate(Resources.Load("Zombie_Dead"), this.transform.position, this.transform.rotation);
-        if (Random.Range(0,100) < BackPackCache.GetComponent<BackPack>().GetDropPercent("MutantSample"))  //백팩 -> 인벤토리 순으로 접근
+        if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("Medikit"))  //백팩 -> 인벤토리 순으로 접근
         {
-            Instantiate(Resources.Load("MutantSample"), this.transform.position, this.transform.rotation);      //생성 위치에 변동을 주고싶다면 이 코드를 수정하자.
+            Instantiate(Resources.Load("Medikit"), this.transform.position, Quaternion.identity);
+            return;
+        }
+
+        dropNum = Random.Range(0, 100);
+        if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("StaminaPotion"))
+        {
+            Instantiate(Resources.Load("StaminaPotion"), this.transform.position, Quaternion.identity);
+            return;
+        }
+
+        dropNum = Random.Range(0, 100);
+        if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("Bandage"))
+        {
+            Instantiate(Resources.Load("Bandage"), this.transform.position, Quaternion.identity);
+            return;
+        }
+
+        dropNum = Random.Range(0, 100);
+        if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("Food"))
+        {
+            dropNum = Random.Range(0, 2);
+            if(dropNum == 0)
+                Instantiate(Resources.Load("Food"), this.transform.position, Quaternion.identity);
+            else
+                Instantiate(Resources.Load("Water"), this.transform.position, Quaternion.identity);
+            return;
         }
     }
 

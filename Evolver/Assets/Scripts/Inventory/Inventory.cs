@@ -7,10 +7,10 @@ public class Inventory
     //아이템 목록
     public int MutantSample;    public int MutantSampleDropPercent = 10;
     public int Bandage;         public int BandageDropPercent = 4;
-    public int Medikit;         public int MedikitDropPercent = 1;
+    public int Medikit;         public int MedikitDropPercent = 2;
     public int StaminaPotion;   public int StaminaPotionDropPercent = 3;
-    public int Food;            public int FoodDropPercent = 20;                         //특정 오브젝트 조사하면 나오게끔.
-    public int Water;           public int WaterDropPercent = 20;
+    public int Food;            public int FoodDropPercent = 7;                         //특정 오브젝트 조사하면 나오게끔.
+    public int Water;           public int WaterDropPercent = 7;
 
     //인벤토리 최초 생성 시 기본 지급 아이템 목록
     public Inventory()     

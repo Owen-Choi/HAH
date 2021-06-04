@@ -7,12 +7,21 @@ public class Arrow : MonoBehaviour
     float DMG;
     GameObject temp;
     EdgeCollider2D EdgeCol;
+    public bool Launched;   float time;
     void Awake()
     {
         EdgeCol = GetComponent<EdgeCollider2D>();
     }
 
-    // # 스테이지에 있는 화살을 복사해서 사용하는 시스템이기 때문에 조건 없이 시간이 지나면 사라지는 식의 코드는 사용할 수 없다.
+    private void Update()
+    {
+        if (Launched)
+        {
+            time += Time.deltaTime;
+            if (time > 1f)
+                Destroy(this.gameObject);
+        }
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")

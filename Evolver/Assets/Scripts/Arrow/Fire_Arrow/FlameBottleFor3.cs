@@ -67,7 +67,7 @@ public class FlameBottleFor3 : MonoBehaviour
 
     IEnumerator CreateDelay()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(6f);
         isCreate = true;
     }
 

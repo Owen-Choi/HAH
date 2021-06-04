@@ -151,6 +151,7 @@ public class ShotPoint : MonoBehaviour
             newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
             newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (Player_Stat.instance.launchForce + increaseLaunchForce),
                shootDirection.y * (Player_Stat.instance.launchForce + increaseLaunchForce));
+            newArrow.GetComponent<LightArrow_For_Crit>().Launched = true;
         }
 
         else
@@ -160,6 +161,7 @@ public class ShotPoint : MonoBehaviour
             newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
             newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (Player_Stat.instance.launchForce + increaseLaunchForce),
                shootDirection.y * (Player_Stat.instance.launchForce + increaseLaunchForce));
+            newArrow.GetComponent<Arrow>().Launched = true;
         }
         isShoot = true;
         
@@ -190,6 +192,7 @@ public class ShotPoint : MonoBehaviour
             newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = tempLaunchForce;
             newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (Player_Stat.instance.launchForce + tempLaunchForce),
                shootDirection.y * (Player_Stat.instance.launchForce + tempLaunchForce));
+            newArrow.GetComponent<LightArrow_For_Crit>().Launched = true;
         }
 
         else
@@ -199,6 +202,7 @@ public class ShotPoint : MonoBehaviour
             newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = tempLaunchForce;
             newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (Player_Stat.instance.launchForce + tempLaunchForce),
                shootDirection.y * (Player_Stat.instance.launchForce + tempLaunchForce));
+            newArrow.GetComponent<Arrow>().Launched = true;
         }
         isShoot = true;
         

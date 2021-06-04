@@ -5,12 +5,22 @@ using UnityEngine;
 public class LightArrow_For_Crit : MonoBehaviour
 {
     EdgeCollider2D EdgeCol;
+    public bool Launched;   float time;
     void Awake()
     {
         EdgeCol = GetComponent<EdgeCollider2D>();
     }
 
 
+    private void Update()
+    {
+        if (Launched)
+        {
+            time += Time.deltaTime;
+            if (time > 1f)
+                Destroy(this.gameObject);
+        }
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")

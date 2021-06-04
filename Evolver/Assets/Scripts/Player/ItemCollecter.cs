@@ -20,7 +20,6 @@ public class ItemCollecter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //아이템을 얻는 건 그렇다 쳐도 사용하는 아이템은 어떻게 반영을 해주지?
         if(other.gameObject.tag == "Item")
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("MutantSample"))
@@ -46,6 +45,17 @@ public class ItemCollecter : MonoBehaviour
             {
                 BackPack.GetComponent<BackPack>().AddItem("StaminaPotion", 1);
                 BasicUI.GetComponent<ItemCounterForMapping>().StaminaPotionCount.text = (int.Parse(BasicUI.GetComponent<ItemCounterForMapping>().StaminaPotionCount.text) + 1).ToString();
+            }
+
+            // # 음식과 물같은 경우엔 UI에 표시가 안되므로 따로 UI에 띄울 필요가 없다.
+            if (other.gameObject.layer == LayerMask.NameToLayer("FoodItem"))
+            {
+                BackPack.GetComponent<BackPack>().AddItem("Food", 1);
+            }
+
+            if (other.gameObject.layer == LayerMask.NameToLayer("WaterItem"))
+            {
+                BackPack.GetComponent<BackPack>().AddItem("Water", 1);
             }
         }
     }
