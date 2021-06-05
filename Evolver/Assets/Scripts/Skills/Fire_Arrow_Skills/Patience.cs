@@ -14,7 +14,9 @@ public class Patience : Skill_Manager
     void Start()
     {
         this.Skill_Num = 32;
+        this.Skill_Name = "인내심";
         //this.Sprite_Num =
+        this.Skill_Desc = "4초동안 공격하지 않을 경우 스테미나 회복속도가 증가한다.";
         ShotPointCache = FireArrowShotPoint;
         PlayerCache = Player;
         Original_Recovery = Player_Stat.instance.Stamina_recovery_speed;            //최초에 한번 값을 먼저 넣어준다.

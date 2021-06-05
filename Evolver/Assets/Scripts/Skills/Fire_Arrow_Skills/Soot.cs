@@ -13,8 +13,8 @@ public class Soot : Skill_Manager
         ChangeTwice = false;
         ChangeLast = false;
         this.Sprite_Num = 9;
-        this.Skill_Name = "Soot";
-        this.Skill_Desc = "When an enemy on fire contact with another enemy, the burn spreads ";
+        this.Skill_Name = "그을림";
+        this.Skill_Desc = "화상을 입은 개채가 자신과 접촉한 적 1명에게 화상을 전이시킨다.";
     }
 
    
@@ -24,13 +24,15 @@ public class Soot : Skill_Manager
         {
             ChangeOnce = true;
             FireArrow.GetComponent<Fire_Arrow>().isSoot = true;
+            this.Skill_Desc = "화상을 입은 개채가 자신과 접촉한 적 2명에게 화상을 전이시키며, 화상이 주는 피해량이 증가한다.";
         }
 
         if (this.Selected_Second && !ChangeTwice)
         {
             ChangeTwice = true;
             Player_Stat.instance.FireborneMax++;
-            Player_Stat.instance.Burning_DMG += 0.0001f;
+            Player_Stat.instance.Burning_DMG += 5f;
+            this.Skill_Desc = "화상을 입은 개채가 자신과 접촉한 적 3명에게 화상을 전이시키며, 화상이 주는 피해량이 증가한다.";
         }
 
         if(this.Selected_Last && !ChangeLast)
@@ -38,7 +40,7 @@ public class Soot : Skill_Manager
             ChangeLast = true;
             this.Selected = true;
             Player_Stat.instance.FireborneMax++;
-            Player_Stat.instance.Burning_DMG += 0.0001f;
+            Player_Stat.instance.Burning_DMG += 5f;
             return;
         }
     }

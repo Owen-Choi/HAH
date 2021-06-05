@@ -19,8 +19,8 @@ public class FlameBottle : Skill_Manager
     {
         this.Skill_Num = 29;
         this.Sprite_Num = 10;
-        this.Skill_Name = "Flame bottle";
-        this.Skill_Desc = "you can use explosive flame bottle";
+        this.Skill_Name = "화염병";
+        this.Skill_Desc = "우클릭으로 물체에 닿으면 폭발하면 화염병을 던질 수 있다. 화염병은 6초에 한개씩 재생된다.";
         FlameBottleFor1Cache = FlameBottleFor1;
         FlameBottleFor2Cache = FlameBottleFor2;
         FlameBottleFor3Cache = FlameBottleFor3;
@@ -35,6 +35,7 @@ public class FlameBottle : Skill_Manager
             FlameBottleFor1Cache.GetComponent<FlameBottleFor1>().isActive = true;
             this.Sprite_Num = 11;
             FlameBottle1UI.gameObject.SetActive(true);
+            this.Skill_Desc = "화염병의 최대 개수를 1개 늘려 2개로 만든다.";
         }
 
         if (this.Selected_Second && !ChangeTwice)
@@ -43,6 +44,7 @@ public class FlameBottle : Skill_Manager
             FlameBottleFor2Cache.GetComponent<FlameBottleFor2>().isActive = true;
             this.Sprite_Num = 12;
             FlameBottle2UI.gameObject.SetActive(true);
+            this.Skill_Desc = "화염병의 최대 개수를 1개 늘려 3개로 만든다.";
         }
 
         if (this.Selected_Last)

@@ -12,10 +12,8 @@ public class Oil : Skill_Manager
         ChangeOnce = false;
         ChangeTwice = false;
         this.Sprite_Num = 13;
-        this.Skill_Name = "Oil";
-        this.Skill_Desc = "+ : There is an increased chance of burning the enemy " +
-            "++ : There is an increased chance of burning the enemy " +
-            "+++ : Every attack causes burning ";
+        this.Skill_Name = "기름";
+        this.Skill_Desc = "적에게 화상을 입힐 확률이 20% 증가한다.";
     }
 
     // Update is called once per frame
@@ -23,15 +21,17 @@ public class Oil : Skill_Manager
     {
         if (this.Selected_First && !ChangeOnce)
         {
-            Player_Stat.instance.Burn_Percent = 40f;
+            Player_Stat.instance.Burn_Percent += 20f;
             ChangeOnce = true;
             this.Sprite_Num = 14;
+            this.Skill_Desc = "적에게 화상을 입힐 확률이 20% 증가한다.";
         }
         if (this.Selected_Second && !ChangeTwice)
         {
-            Player_Stat.instance.Burn_Percent = 60f;
+            Player_Stat.instance.Burn_Percent += 20f;
             ChangeTwice = true;
             this.Sprite_Num = 15;
+            this.Skill_Desc = "모든 공격이 적에게 화상을 입힌다.";
         }
         if(this.Selected_Last)
         {

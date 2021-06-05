@@ -123,15 +123,12 @@ public class Fire_Arrow_ShotPoint : MonoBehaviour
         shootDirection.x = (float)2f * Mathf.Cos(degree);
         shootDirection.y = (float)2f * Mathf.Sin(degree);
 
-
-
-
-
         GameObject newArrow = Instantiate(Fire_Arrow, transform.position, this.transform.rotation);
         newArrow.GetComponent<Arrow_Damage_System>().HoldDamage = increaseDamage;
         newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
         newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
            shootDirection.y * (launchForce + increaseLaunchForce));
+        newArrow.GetComponent<Fire_Arrow>().Launched = true;
         isShoot = true;                         //심지 준비 관련 변수. 다시 false로 변경도 심지 준비 스크립트에서 해준다.  추후 변경 가능
     }
         
@@ -159,6 +156,7 @@ public class Fire_Arrow_ShotPoint : MonoBehaviour
         newArrow.GetComponent<Arrow_Damage_System>().HoldLaunchForce = increaseLaunchForce;
         newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
            shootDirection.y * (launchForce + increaseLaunchForce));
+        newArrow.GetComponent<Fire_Arrow_For_Explode>().Launched = true;
         isShoot = true;
     }
    

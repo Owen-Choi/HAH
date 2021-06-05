@@ -6,7 +6,7 @@ public class Explode : MonoBehaviour
 {
     bool DamageOnce;
     Animator anim;  float radius = 0.75f;   int i;
-    Vector3 vec;    GameObject temp;    float ExplodeDMG;
+    Vector3 vec;    GameObject temp;    float ExplodeDMG;   Vector2 Direction;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -47,10 +47,14 @@ public class Explode : MonoBehaviour
                     continue;
                 }
                 circle[i].transform.gameObject.GetComponent<Zombie_Stat>().Health -= ExplodeDMG;
+                // # 데미지를 UI에 표시해주는 코드
                 vec = new Vector3(circle[i].transform.position.x, circle[i].transform.position.y + 0.5f, 0f);     //Vector2도 되는 지 모르겠다.
                 temp = Instantiate(Resources.Load("FloatingParents"), vec, Quaternion.identity) as GameObject;
                 temp.transform.GetChild(0).GetComponent<TextMesh>().text = ExplodeDMG.ToString();
                 circle[i].transform.gameObject.layer = LayerMask.NameToLayer("Servant_Burned");
+                // # 적을 밀어내는 코드
+                Direction = (circle[i].transform.position - this.transform.position).normalized;
+                circle[i].transform.GetComponent<Rigidbody2D>().AddForce(Direction * 5000);
             }
         }
     }

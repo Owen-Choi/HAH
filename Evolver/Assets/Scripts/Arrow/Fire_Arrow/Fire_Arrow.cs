@@ -9,12 +9,21 @@ public class Fire_Arrow : MonoBehaviour
     public bool isSoot;                             //그을림 스킬체크 변수
     public float countTime;
     EdgeCollider2D EdgeCol;
+    public bool Launched;   float time;
     void Awake()
     {
         EdgeCol = GetComponent<EdgeCollider2D>();
     }
 
-
+    private void Update()
+    {
+        if (Launched)
+        {
+            time += Time.deltaTime;
+            if (time > 1f)
+                Destroy(this.gameObject);
+        }
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")
@@ -48,8 +57,6 @@ public class Fire_Arrow : MonoBehaviour
             }
             StartCoroutine("DestroyDelay");
         }
-        if (other.tag == "border")
-            StartCoroutine("DestroyDelay");
     }
 
    IEnumerator DestroyDelay()

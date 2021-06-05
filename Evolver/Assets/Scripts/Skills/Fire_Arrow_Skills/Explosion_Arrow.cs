@@ -15,8 +15,8 @@ public class Explosion_Arrow : Skill_Manager
         ChangeTwice = false;
         ChangeLast = false;
         this.Sprite_Num = 6;
-        this.Skill_Name = "Explosive arrow";
-        this.Skill_Desc = "The arrow explodes in the event of a critical shot";
+        this.Skill_Name = "폭발성 화살";
+        this.Skill_Desc = "화살이 치명타로 적용될 시 폭발하며 큰 피해를 입힌다.";
     }
 
     // Update is called once per frame
@@ -25,9 +25,10 @@ public class Explosion_Arrow : Skill_Manager
         if (this.Selected_First && !ChangeOnce)
         {
             Fire_Arrow_ShotPoint.GetComponent<Fire_Arrow_ShotPoint>().is_Explode = true;
-            Player_Stat.instance.criticalPercent -= 10;
+            //Player_Stat.instance.criticalPercent -= 10;       원래는 치명타 확률을 10% 줄였지만 일단 보류해보자. 불화살이 너무 약하다.
             ChangeOnce = true;
             this.Sprite_Num = 7;
+            this.Skill_Desc = "크리티컬 확률(화살이 폭발할 확률)이 5% 증가하며 모든 종류의 폭발 데미지가 50% 증가한다.";
         }
 
         if(this.Selected_Second && !ChangeTwice)
@@ -36,6 +37,7 @@ public class Explosion_Arrow : Skill_Manager
             Player_Stat.instance.criticalPercent += 5;
             Player_Stat.instance.Explode_Multiple_Damage += 0.5f;
             this.Sprite_Num = 8;
+            this.Skill_Desc = "모든 종류의 폭발 데미지가 50% 증가한다.";
         }
 
         if(this.Selected_Last && !ChangeLast)

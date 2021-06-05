@@ -35,9 +35,6 @@ public class Arrow : MonoBehaviour
             temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMG.ToString();      //첫번째 자식(floatingPoints를 가리킴)의 요소를 얻기 위한 코드
             StartCoroutine("DestroyDelay");
         }
-
-        if (other.tag == "border")
-            StartCoroutine("DestroyDelay");
     }
 
     IEnumerator DestroyDelay()

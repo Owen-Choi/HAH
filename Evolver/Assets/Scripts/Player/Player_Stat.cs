@@ -65,5 +65,7 @@ public class Player_Stat : MonoBehaviour
 
         healthMax = DefaultHealthMax - RadioActive;
         Max_Stamina = DefaultStaminaMax - thirsty;
+
+
     }
 }

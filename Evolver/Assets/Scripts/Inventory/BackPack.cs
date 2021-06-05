@@ -39,12 +39,30 @@ public class BackPack : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.H))                         //H키 누르면 힐템 밴드 사용
+        if(Input.GetKeyDown(KeyCode.Alpha1))                         //1번 누르면 밴드 사용
         {
             if(GetItemCount("Bandage") != 0)
             {
                 Player_Stat.instance.health += 15;
                 UseItem("Bandage", 1);
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha2))                        //2번 누르면 메디킷 사용
+        {
+            if(GetItemCount("Medikit") != 0)
+            {
+                Player_Stat.instance.health += 80;
+                UseItem("Medikit", 1);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))                       //3번을 누르면 스테미나 회복약 사용
+        {
+            if (GetItemCount("StaminaPotion") != 0)
+            {
+                Player_Stat.instance.stamina = Player_Stat.instance.DefaultStaminaMax;
+                UseItem("StaminaPotion", 1);
             }
         }
        

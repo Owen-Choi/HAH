@@ -248,7 +248,7 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
                 if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)
                 {                                                                           // +무기 색깔 바꾸기
                     if (isFlash)
-                        if (Random.Range(0, 100) < 20)
+                        if (Random.Range(0, 100) < 70)
                             hit.transform.gameObject.layer = LayerMask.NameToLayer("Servant_Burned");
                     if (Player_Stat.instance.is_Penetrate3)
                         Player_Stat.instance.stamina += 20;
