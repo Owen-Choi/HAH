@@ -8,8 +8,8 @@ public class DamageIncrease : Physical_Manager
     {
         this.Skill_Num = 10;
         this.Sprite_Num = 1;
-        this.Skill_Name = "Increase damage";
-        this.Skill_Desc = "";
+        this.Skill_Name = "공격력 증가";
+        this.Skill_Desc = "수련을 통해 공격력을 증가시킨다. (공격력 수치 5 증가)";
     }
     void Update()
     {

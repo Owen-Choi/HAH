@@ -12,8 +12,8 @@ public class HealthPerDamage : Physical_Manager
         //this.Sprite_Num = 6;
         isChanged = true;
         originalDMG = Player_Stat.instance.damage;
-        this.Skill_Name = "Viking";
-        this.Skill_Desc = "Increase health as 5 percent of damage";
+        this.Skill_Name = "바이킹";
+        this.Skill_Desc = "공격력의 5퍼센트 만큼 최대 체력을 증가시킨다.";
     }
     void Update()
     {

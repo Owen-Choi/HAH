@@ -13,6 +13,8 @@ public class Tutorial_Next : MonoBehaviour
         Oncolor.g = 255; ExitColor.g = 255;
         Oncolor.b = 255; ExitColor.b = 255;
         Oncolor.a = 1f; ExitColor.a = 0.4f;
+
+        this.gameObject.GetComponent<Image>().color = ExitColor;
     }
 
     public void OnMouseEnter()

@@ -15,7 +15,7 @@ public class Continued_Shot : Skill_Manager
         this.Skill_Num = 4;
         this.Sprite_Num = 4;
         this.Skill_Name = "연속사격";
-        this.Skill_Desc = "사격이 끝난 뒤 곧바로 한번 더 사격한다.";
+        this.Skill_Desc = "사격이 끝난 뒤 곧바로 한번 더 사격한다. 공격력이 3 감소한다.";
     }
 
    
@@ -29,6 +29,7 @@ public class Continued_Shot : Skill_Manager
                 this.Sprite_Num = 5;
                 Player_Stat.instance.is_Continued_Shot = true;
                 Player_Stat.instance.damage -= 3;               //향후 수치 조정하기
+                this.Skill_Desc = "사격이 끝난 뒤 곧바로 한번 더 사격한다. 공격력이 2 감소한다.";
             }
             
 
@@ -39,6 +40,7 @@ public class Continued_Shot : Skill_Manager
                 DMG_Decrease_Twice = true;
                 Player_Stat.instance.is_Continued_Shot2 = true;
                 Player_Stat.instance.damage -= 2;               //향후 수치 조정하기
+                this.Skill_Desc = "공격력을 5 증가시킨다.";
             }
         
 

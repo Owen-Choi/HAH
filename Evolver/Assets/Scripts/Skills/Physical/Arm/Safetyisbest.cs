@@ -10,8 +10,8 @@ public class Safetyisbest : Physical_Manager
     {
         this.Skill_Num = 14;
         this.Sprite_Num = 5;
-        this.Skill_Name = "Safety is the best";
-        this.Skill_Desc = "Decrease damage as 10 percent, and increase armor as damage decreased";
+        this.Skill_Name = "안전제일";
+        this.Skill_Desc = "공격력이 10% 감소하고, 감소한 수치만큼 방어력이 증가한다.";
     }
     void Update()
     {
