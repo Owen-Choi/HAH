@@ -7,11 +7,11 @@ public class Game_Manager : MonoBehaviour
     bool isOnce;
     // # 게임 메니저 스크립트에서는 게임 진행의 전반적인 흐름을 제어하는 코드를 주로 다룰 예정이다. ex : 플레이어의 레이어 변경에 따른 오브젝트 수정, UI 오브젝트 조정 등
     public GameObject Player; GameObject PlayerCache;
-    public GameObject WeaponChooseUI; 
+    public GameObject Tutorial; 
     void Awake()
     {
         PlayerCache = Player;
-        WeaponChooseUI.gameObject.SetActive(true);
+        Tutorial.gameObject.SetActive(true);
     }
 
     
