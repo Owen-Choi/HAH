@@ -12,7 +12,7 @@ public class Police_Line : Skill_Manager
     private void Awake()
     {
         this.Skill_Num = 21;
-        //this.Sprite_Num =
+        this.Sprite_Num = 11;
         this.Skill_Name = "접근 금지";
         this.Skill_Desc = "+ : 적에게 피격당했을 시 10%의 확률로 주위의 모든 적들을 밀어냄 ";
         PlayerCache = Player;

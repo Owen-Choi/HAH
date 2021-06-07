@@ -12,7 +12,7 @@ public class State_Of_The_Art : Physical_Manager
     void Start()
     {
         this.Skill_Num = 44;
-        //this.Sprite_Num =
+        this.Sprite_Num = 4;
         this.Skill_Name = "궁극의 경지";
         this.Skill_Desc = "L 키를 눌러 스테미나를 50 소모하고 5초 동안 모든 공격을 치명타로 적용시킨다. ";
         Available = true;

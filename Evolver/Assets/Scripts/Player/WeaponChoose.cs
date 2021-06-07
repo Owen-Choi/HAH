@@ -25,7 +25,7 @@ public class WeaponChoose : MonoBehaviour
             Follower2.gameObject.SetActive(false);
             Follower3.gameObject.SetActive(false);
             SkillChoose.GetComponent<SkillChoose>().MinValue = 1;
-            SkillChoose.GetComponent<SkillChoose>().MaxValue = 6;
+            SkillChoose.GetComponent<SkillChoose>().MaxValue = 8;
             GameObject.Find("SkillChoose").GetComponent<SkillChoose>().sprites = Resources.LoadAll<Sprite>("Light_Arrow_SkillIcon");
             Destroy(this.gameObject);                       //이렇게 오브젝트를 삭제하려면 SkillChoose의 MinValue와 MaxValue를 다른 스크립트에서 수정해주어야 한다.
         }
@@ -38,7 +38,7 @@ public class WeaponChoose : MonoBehaviour
             Follower2.gameObject.SetActive(false);
             Follower3.gameObject.SetActive(false);
             SkillChoose.GetComponent<SkillChoose>().MinValue = 15;
-            SkillChoose.GetComponent<SkillChoose>().MaxValue = 19;
+            SkillChoose.GetComponent<SkillChoose>().MaxValue = 24;
             GameObject.Find("SkillChoose").GetComponent<SkillChoose>().sprites = Resources.LoadAll<Sprite>("Silver_Arrow_SkillIcon");
             Destroy(this.gameObject);
         }
@@ -48,7 +48,7 @@ public class WeaponChoose : MonoBehaviour
             LightArrow.gameObject.SetActive(false);
             SilverArrow.gameObject.SetActive(false);
             SkillChoose.GetComponent<SkillChoose>().MinValue = 25;
-            SkillChoose.GetComponent<SkillChoose>().MaxValue = 29;
+            SkillChoose.GetComponent<SkillChoose>().MaxValue = 32;
             GameObject.Find("SkillChoose").GetComponent<SkillChoose>().sprites = Resources.LoadAll<Sprite>("Fire_Arrow_SkillIcon");
             Destroy(this.gameObject);
         }
