@@ -13,8 +13,8 @@ public class CounterAttack : Physical_Manager
     {
         this.Skill_Num = 27;
         this.Sprite_Num = 8;
-        this.Skill_Name = "Counter Attack";
-        this.Skill_Desc = "Damage will be increased temporarily if you are attacked";
+        this.Skill_Name = "카운터";
+        this.Skill_Desc = "적에게 공격을 받은 직후 일시적으로 공격력이 증가한다.";
         PlayerCache = Player;
         OriginalDMG = Player_Stat.instance.damage;
     }

@@ -9,7 +9,7 @@ public class Reinforce_Fast_Twich_Muscle : Physical_Manager
     {
         this.Skill_Name = "속근 강화";
         this.Skill_Num = 17;
-        //this.Sprite_Num = 
+        this.Sprite_Num = 9;
         this.Skill_Desc = "스테미나 사용량이 증가하는 대신 공격력, 차징속도, 투사체 속도가 증가한다. (스테미나 사용량 2 증가, 공격력 7.5 증가, 차징속도 0.65 증가, 투사체 속도 3 증가)";
     }
 

@@ -8,8 +8,8 @@ public class EvadePercentIncrease : Physical_Manager
     {
         this.Skill_Num = 1;
         this.Sprite_Num = 2;
-        this.Skill_Name = "Increase dodge probability";
-        this.Skill_Desc = "";
+        this.Skill_Name = "회피율 증가";
+        this.Skill_Desc = "회피율을 증가시킨다. (회피율 5 증가)";
     }
     void Update()
     {

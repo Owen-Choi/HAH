@@ -10,9 +10,9 @@ public class Motor_Agility : Physical_Manager
     void Start()
     {
         this.Skill_Num = 8;
-        //this.Sprite_Num = 
-        this.Skill_Name = "Motor Agility";
-        this.Skill_Desc = "Your movement speed will be temporariliy increased when you dodge enemy's attack ";
+        this.Sprite_Num = 10;
+        this.Skill_Name = "순발력";
+        this.Skill_Desc = "적의 공격을 피했을 경우 이동속도가 5초간 1 증가한다.";
         PlayerCache = Player;
         OriginalMoveSpeed = Player_Stat.instance.moveSpeed;
     }

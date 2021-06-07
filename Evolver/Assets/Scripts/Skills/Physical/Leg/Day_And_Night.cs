@@ -11,9 +11,9 @@ public class Day_And_Night :Physical_Manager
     void Start()
     {
         this.Skill_Num = 9;
-        this.Skill_Name = "Day and Night";
+        this.Skill_Name = "낮과 밤";
         //this.Sprite_Num = 
-        this.Skill_Desc = "Day : Movement speed increase,  Night : Dodge probability increase.  Day and Night will be swiitched every 8 seconds";
+        this.Skill_Desc = "낮과 밤이 8초를 주기로 교체되며 플레이어에게 이로운 효과를 준다. 낮 : 이동속도를 1 증가시킨다. 밤 : 회피율을 5% 증가시킨다.";
         PlayerCache = Player;
         isDay = true;
         Original_MoveSpeed = Player_Stat.instance.moveSpeed;

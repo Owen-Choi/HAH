@@ -122,15 +122,18 @@ public class Zombie_Stat : MonoBehaviour
         }
 
         dropNum = Random.Range(0, 100);
-        if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("Food"))
-        {
-            dropNum = Random.Range(0, 2);
-            if(dropNum == 0)
-                Instantiate(Resources.Load("Food"), this.transform.position, Quaternion.identity);
-            else
+        if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("Water"))
+        { 
                 Instantiate(Resources.Load("Water"), this.transform.position, Quaternion.identity);
             return;
         }
+        dropNum = Random.Range(0, 100);
+        if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("Food"))
+        {
+            Instantiate(Resources.Load("Food"), this.transform.position, Quaternion.identity);
+            return;
+        }
+
     }
 
 }

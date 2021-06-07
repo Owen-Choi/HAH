@@ -12,8 +12,8 @@ public class RadioActiveDMG : Physical_Manager
         this.Skill_Num = 39;
         this.Sprite_Num = 6;
         originalDMG = Player_Stat.instance.damage;          //기존의 데미지 값을 저장
-        this.Skill_Name = "A crisis as an opportunity";
-        this.Skill_Desc = "your damage value will be increased as radio active stack";
+        this.Skill_Name = "위기를 기회로";
+        this.Skill_Desc = "공격력 값이 현재 축적된 방사능 수치에 비례하여 증가한다.";
     }
     void Update()
     {

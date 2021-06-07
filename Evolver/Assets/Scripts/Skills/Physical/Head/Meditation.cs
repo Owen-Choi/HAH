@@ -9,8 +9,8 @@ public class Meditation : Physical_Manager
     {
         this.Skill_Num = 43;
         this.Sprite_Num = 1;
-        this.Skill_Name = "Meditation";
-        this.Skill_Desc = "All stats will be slightly increased ";
+        this.Skill_Name = "명상";
+        this.Skill_Desc = "모든 능력치가 약간씩 증가한다. (공격력, 방어력, 치명타 확률 2씩 증가, 치명타 피해량 5 증가, 회피확률 3 증가, 이동속도 0.05 증가)";
     }
     void Update()
     {
@@ -18,12 +18,12 @@ public class Meditation : Physical_Manager
         if (this.Selected)
         {
             this.Selected = false;
-            Player_Stat.instance.damage += 3f;
-            Player_Stat.instance.armor += 3f;
-            Player_Stat.instance.criticalPercent += 3f;
-            Player_Stat.instance.criticalDamage += 7f;
+            Player_Stat.instance.damage += 2f;
+            Player_Stat.instance.armor += 2f;
+            Player_Stat.instance.criticalPercent += 2f;
+            Player_Stat.instance.criticalDamage += 5f;
             Player_Stat.instance.missPercent += 3f;
-            Player_Stat.instance.moveSpeed += 0.2f;
+            Player_Stat.instance.moveSpeed += 0.05f;
             // # 더 추가할 능력치는 필요에 따라 추가해주기
         }
     }

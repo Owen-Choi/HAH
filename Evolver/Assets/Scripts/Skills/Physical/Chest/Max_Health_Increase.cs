@@ -8,15 +8,15 @@ public class Max_Health_Increase : Physical_Manager
     {
         this.Skill_Num = 20;
         this.Sprite_Num = 1;
-        this.Skill_Name = "Increase max health";
-        this.Skill_Desc = "";
+        this.Skill_Name = "최대 체력 증가";
+        this.Skill_Desc = "최대 체력 값이 10 증가한다.";
     }
     void Update()
     {
         if (this.Selected)
         {
             this.Selected = false;
-            Player_Stat.instance.DefaultHealthMax += 20;
+            Player_Stat.instance.DefaultHealthMax += 10;
         }    
     }
 }

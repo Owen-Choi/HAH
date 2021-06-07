@@ -13,8 +13,8 @@ public class DashCritical : Physical_Manager
     {
         this.Skill_Num = 37;
         this.Sprite_Num = 9;
-        this.Skill_Name = "Sharp posture";
-        this.Skill_Desc = "Critical attack's probability will be temporarily increased after dash";
+        this.Skill_Name = "예민한 태도";
+        this.Skill_Desc = "질주가 끝난 후 5초 동안 치명타 발생 확률이 30% 증가한다.";
         Original_CritPercent = Player_Stat.instance.criticalPercent;
     }
     void Start()

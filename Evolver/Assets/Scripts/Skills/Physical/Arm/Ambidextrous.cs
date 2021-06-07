@@ -7,7 +7,7 @@ public class Ambidextrous : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 15;
-        //this.Sprite_Num =
+        this.Sprite_Num = 8;
         this.Skill_Name = "양손잡이";
         this.Skill_Desc = "공격력이 30% 감소하지만 차징속도가 대폭 증가한다.";
     }

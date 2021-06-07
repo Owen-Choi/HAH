@@ -10,9 +10,9 @@ public class Protect_Position : Physical_Manager
     void Start()
     {
         this.Skill_Num = 31;
-        //this.Sprite_Num =
-        this.Skill_Name = "Protection";
-        this.Skill_Desc = "You can protect enemy's attack once with 40 stamina, just Press P";
+        this.Sprite_Num = 12;
+        this.Skill_Name = "방어태세";
+        this.Skill_Desc = "P 버튼을 눌러 스테미나 40을 소모하고 방어 태세에 들어간다. 방어태세에서는 적의 공격을 확정적으로 막을 수 있다.";
         PlayerCache = Player;
         available = true;
 

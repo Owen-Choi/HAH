@@ -11,9 +11,9 @@ public class refill_Stamina : Physical_Manager
     {
         isAble = true;
         this.Skill_Num = 29;
-        //this.Sprite_Num = 8;    
-        this.Skill_Name = "Stamina re-fill";
-        this.Skill_Desc = "if your stamina is zero, your stamina immediately jump to max value by 10 percent probability";
+        this.Sprite_Num = 10;    
+        this.Skill_Name = "스테미나 리필";
+        this.Skill_Desc = "스테미나를 모두 소진한 경우, 5%의 확률로 스테미나를 다시 최대값으로 회복한다.";
     }
     void Update()
     {
@@ -21,7 +21,7 @@ public class refill_Stamina : Physical_Manager
         {
             if (isAble && Player_Stat.instance.stamina <= 0f)
             {
-                if(Random.Range(0, 10) == 0)
+                if(Random.Range(0, 100) <= 4)
                 {
                     isAble = false;
                     Player_Stat.instance.stamina = Player_Stat.instance.DefaultStaminaMax;      //스테미나를 다시 최대치로 채워줌

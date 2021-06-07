@@ -11,8 +11,8 @@ public class Double_Income : Physical_Manager
     {
         this.Skill_Num = 32;
         //this.Sprite_Num =
-        this.Skill_Name = "Double Income";
-        this.Skill_Desc = "";
+        this.Skill_Name = "일석이조";
+        this.Skill_Desc = "적의 공격을 피할 경우 체력을 5 회복한다.";
         PlayerCache = Player;
     }
 

@@ -10,7 +10,9 @@ public class Insight : Physical_Manager
     void Start()
     {
         this.Skill_Num = 45;
+        this.Skill_Name = "통찰력";
         //this.Sprite_Num =
+        this.Skill_Desc = "플레이어의 시야 반경이 약간 넓어진다.";
         PlayerCache = Player;
     }
 

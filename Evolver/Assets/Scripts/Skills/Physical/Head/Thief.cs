@@ -10,8 +10,8 @@ public class Thief : Physical_Manager
     {
         this.Skill_Num = 40;
         this.Sprite_Num = 2;
-        this.Skill_Name = "Thief";
-        this.Skill_Desc = "Food drop probability will be increased";
+        this.Skill_Name = "좀도둑";
+        this.Skill_Desc = "식량의 드롭율이 6% 증가한다.";
     }
     void Update()
     {
@@ -19,7 +19,7 @@ public class Thief : Physical_Manager
         {
             this.Selected = false;
             original_FoodDrop = BackPack.GetComponent<BackPack>().GetDropPercent("Food");
-            original_FoodDrop += 10;
+            original_FoodDrop += 6;
             BackPack.GetComponent<BackPack>().setDropPercent("Food", original_FoodDrop);
         }       
     }

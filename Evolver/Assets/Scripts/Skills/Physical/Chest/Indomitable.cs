@@ -12,9 +12,9 @@ public class Indomitable : Physical_Manager
     private void Awake()
     {
         this.Skill_Num = 30;
-        //this.Sprite_Num =
-        this.Skill_Name = "Indomitable";
-        this.Skill_Desc = "";
+        this.Sprite_Num = 11;
+        this.Skill_Name = "불굴";
+        this.Skill_Desc = "적에게 피해를 입은 직후 5초 동안 방어력이 1.5배가 된다.";
         PlayerCache = Player;
         OriginalArmor = Player_Stat.instance.armor;
     }

@@ -11,9 +11,9 @@ public class Taekwondo : Physical_Manager
     void Start()
     {
         this.Skill_Num = 6;
-        //this.Sprite_Num =
-        this.Skill_Name = "Taekwondo";
-        this.Skill_Desc = "If you use 20 stamina, you can push all of enemies around you with 5 damage, just press 'k' ";
+        this.Sprite_Num = 8;
+        this.Skill_Name = "태권도";
+        this.Skill_Desc = "K 키를 눌러 주변의 적에게 5의 데미지를 주고 강하게 밀어낸다.";
         PlayerCache = Player;
     }
 

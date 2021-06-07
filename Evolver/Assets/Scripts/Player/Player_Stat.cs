@@ -66,6 +66,8 @@ public class Player_Stat : MonoBehaviour
         healthMax = DefaultHealthMax - RadioActive;
         Max_Stamina = DefaultStaminaMax - thirsty;
 
+        if (armor < 0) armor = 0;
+        if (damage < 0) damage = 1;             //능력치들을 음수가 아닌 0으로 만들어 줄 코드. 다른 능력치들도 나중에 추가하도록 하자.
 
     }
 }
