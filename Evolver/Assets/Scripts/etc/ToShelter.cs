@@ -4,7 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ToShelter : MonoBehaviour
 {
-    private void OnTriggerStay2D(Collider2D collision)
+    float radius = 1f;
+    GameObject PlayerCache;
+    GameObject GuideUICache;
+    private void Start()
+    {
+        PlayerCache = GameObject.Find("Player");
+        GuideUICache = GameObject.Find("Guide").transform.GetChild(1).gameObject;
+    }
+    /*private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -18,5 +26,28 @@ public class ToShelter : MonoBehaviour
                 // # 생성되었던 스테이지 프리팹을 삭제해주는 작업도 필요하다.
             }               
         }
+    }
+    */
+    private void Update()
+    {
+        // # 플레이어를 이동시킴과 동시에 레이어를 PlayerInShelter로 바꿔주어야 한다.
+
+        RaycastHit2D circle = Physics2D.CircleCast(transform.position, radius, Vector2.up, radius, LayerMask.GetMask("Player"));
+        if (circle)
+        {
+
+            GuideUICache.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PlayerCache.layer = LayerMask.NameToLayer("PlayerInShelter");
+                GuideUICache.SetActive(false);
+                PlayerCache.GetComponent<Transform>().position = GameObject.Find("ReturnHole").GetComponent<Transform>().position;
+                Destroy(this.transform.root.gameObject);            //맵을 통째로 없애기 위한 코드
+            }
+
+        }
+        else
+            GuideUICache.SetActive(false);
     }
 }
