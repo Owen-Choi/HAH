@@ -6,6 +6,7 @@ public class Kitchen : MonoBehaviour
 {
     float radius = 1;
     public GameObject BackPack;
+    GameObject BackPackCache;
     public int RadioActiveDecrease;
     public int ThirstyDecrease;
 
@@ -13,15 +14,16 @@ public class Kitchen : MonoBehaviour
     {
         RadioActiveDecrease = 10;
         ThirstyDecrease = 5;
+        BackPackCache = BackPack;
     }
     void Update()
     {
         RaycastHit2D circle = Physics2D.CircleCast(transform.position, radius, Vector2.up, radius, LayerMask.GetMask("PlayerInShelter"));
         if (circle)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && BackPackCache.GetComponent<BackPack>().GetItemCount("Food") > 0)
             {
-                BackPack.GetComponent<BackPack>().UseItem("Food", 1);
+                BackPackCache.GetComponent<BackPack>().UseItem("Food", 1);
                 if (Player_Stat.instance.RadioActive > 10)
                     Player_Stat.instance.RadioActive -= RadioActiveDecrease;
                 else
@@ -29,9 +31,9 @@ public class Kitchen : MonoBehaviour
                 //Player_Stat.instance.healthMax += RadioActiveDecrease;    healthMax값은 Player_Stat에서 자동으로 업데이트 된다.
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) && BackPackCache.GetComponent<BackPack>().GetItemCount("Water") > 0)
             {
-                BackPack.GetComponent<BackPack>().UseItem("Water", 1);
+                BackPackCache.GetComponent<BackPack>().UseItem("Water", 1);
                 if (Player_Stat.instance.thirsty > 5)
                     Player_Stat.instance.thirsty -= ThirstyDecrease;              //수치 조정하기
                 else

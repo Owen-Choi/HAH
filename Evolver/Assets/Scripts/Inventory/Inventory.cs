@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory
 {
     //아이템 목록
-    public int MutantSample;    public int MutantSampleDropPercent = 10;
+    public int MutantSample;    public int MutantSampleDropPercent = 30;
     public int Bandage;         public int BandageDropPercent = 4;
     public int Medikit;         public int MedikitDropPercent = 2;
     public int StaminaPotion;   public int StaminaPotionDropPercent = 3;
