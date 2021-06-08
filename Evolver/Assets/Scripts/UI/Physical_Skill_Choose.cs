@@ -17,6 +17,8 @@ public class Physical_Skill_Choose : MonoBehaviour
     Physical_Manager One;
     Physical_Manager Two;
     bool ForOne;
+
+    GameObject GMCache;
     private void Awake()
     {
         ForOne = false;
@@ -24,6 +26,8 @@ public class Physical_Skill_Choose : MonoBehaviour
         LegSprites = Resources.LoadAll<Sprite>("Leg_Physical_Skill");
         ChestSprites = Resources.LoadAll<Sprite>("Chest_Physical_Skill");
         HeadSprites = Resources.LoadAll<Sprite>("Head_Physical_Skill");
+
+        GMCache = GameObject.Find("GameManager");
     }
     void Update()
     {
@@ -106,6 +110,9 @@ public class Physical_Skill_Choose : MonoBehaviour
         else if (Head.gameObject.activeSelf)
             Head.gameObject.SetActive(false);
         ForOne = false;
+
+        Time.timeScale = 1;
+        GMCache.GetComponent<Game_Manager>().SkillChosen = true;
     }
 
     public void SecondButtonPress()
@@ -120,6 +127,9 @@ public class Physical_Skill_Choose : MonoBehaviour
         else if (Head.gameObject.activeSelf)
             Head.gameObject.SetActive(false);
         ForOne = false;
+
+        Time.timeScale = 1;
+        GMCache.GetComponent<Game_Manager>().SkillChosen = true;
     }
     IEnumerator WaitForUpdate()
     {

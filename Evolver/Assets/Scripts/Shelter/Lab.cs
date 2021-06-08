@@ -9,11 +9,15 @@ public class Lab : MonoBehaviour
     int require;    int DefaultRequire = 5;
     public Text MutantSampleCount;
     public GameObject BackPack;
+
+    public GameObject GameManager;
+    GameObject GMCache;
     void Start()
     {
         require = DefaultRequire;                   //씬 전환 시스템 개선 이전 코드 : 현재에는 관계 없음.                  
         Require.text = require.ToString();
         radius = 1;
+        GMCache = GameManager;
     }
 
    
@@ -34,6 +38,8 @@ public class Lab : MonoBehaviour
                     // #기존의 코드에서는 Lab 오브젝트에서 SkillChoose UI를 띄웠지만, 현재는 SkillChoose 스크립트에서 조정하는 것으로 변경하였다.
                     //Require.text = require.ToString();
                     Require.text = require.ToString();
+                    GMCache.GetComponent<Game_Manager>().SkillOpen = true;
+                    Time.timeScale = 0;
                     //미리 만들어둔 버튼 프레임 3개에 스프라이트 경로 통해서 넣어주는 코드 작성하기
                 }   //# 이제 레벨업했음을 알리고 스킬 시스템에서 랜덤으로 3개의 스킬이 뜨게 해야한다. 스킬마다 스프라이트를 부여해야하고 Selected가 true인 스킬은 뜨지 않게 해야한다.
             }

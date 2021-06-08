@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     protected Color color;
     public GameObject DashIcon;
     GameObject DashIconCache;   Color available;    Color unavailable;
-
+   
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -136,13 +136,13 @@ public class Player : MonoBehaviour
     public void StackThirsty()
     {
         Player_Stat.instance.thirsty++;                 
-        Invoke("StackThirsty", 30f);                        //30초마다 목마름 스택 추가
+        Invoke("StackThirsty", 30f);                                                                //30초마다 목마름 스택 추가
     }
     public void StackRadioActive()
     {
         Player_Stat.instance.RadioActive++;
         // 최대 체력 감소는 Player_Stat 스크립트에서 실행하겠다.
-        Invoke("StackRadioActive", 40f);                    //20초마다 방사능 스택 추가 #수정 : 20초는 너무 빠르다. 40초로 수정
+        Invoke("StackRadioActive", 40f);                                                            //20초마다 방사능 스택 추가 #수정 : 20초는 너무 빠르다. 40초로 수정
     }
     void OnCollisionStay2D(Collision2D collision)
     {
@@ -151,20 +151,20 @@ public class Player : MonoBehaviour
             if (this.gameObject.layer == LayerMask.NameToLayer("Player_Damaged") || this.gameObject.layer == LayerMask.NameToLayer("Player_Defense"))
             {
                 if (this.gameObject.layer == LayerMask.NameToLayer("Player_Defense"))
-                    this.gameObject.layer = LayerMask.NameToLayer("Player_Damaged");            //방어태세 해제
+                    this.gameObject.layer = LayerMask.NameToLayer("Player_Damaged");                //방어태세 해제
                 return;
             }
 
-            if (isThorn)                                    //경량화살 스킬 가시 관련 코드. 비효율적이다.
+            if (isThorn)                                                                            //경량화살 스킬 가시 관련 코드. 비효율적이다.
             {
                 if (Random.Range(0, 100) < 4)
                     Destroy(collision.gameObject);
             }
 
-            if (isBurningCloak)                             //불화살 스킬 불타는 망토 관련 코드. 비효율적이다.
+            if (isBurningCloak)                                                                     //불화살 스킬 불타는 망토 관련 코드. 비효율적이다.
                 collision.gameObject.layer = LayerMask.NameToLayer("Servant_Burned");               //불타는 망토 스킬체크 시 화상상태로 만듦.
 
-            if (Random.Range(1, 100) < Player_Stat.instance.missPercent)      //회피했을 시
+            if (Random.Range(1, 100) < Player_Stat.instance.missPercent)                            //회피했을 시
             {
                 this.gameObject.layer = LayerMask.NameToLayer("Player_Damaged");
                 isDodge = true;

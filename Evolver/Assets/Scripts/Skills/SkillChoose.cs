@@ -13,11 +13,15 @@ public class SkillChoose : MonoBehaviour
     Skill_Manager Two;
     Skill_Manager Three;
     public Sprite[] sprites;
+
+    public GameObject GameManager;
+    GameObject GMCache;
     private void Start()
     {
         SkillChooseUI.gameObject.SetActive(false);
         // # 스프라이트를 Resources 파일에서 가져오는 작업은 WeaponChoose 스크립트에서 진행한다.
         ForOne = false;
+        GMCache = GameManager;
     }
 
     private void Update()
@@ -65,6 +69,8 @@ public class SkillChoose : MonoBehaviour
         }
         SkillChooseUI.gameObject.SetActive(false);
         isPressed = true;
+        Time.timeScale = 1;
+        GMCache.GetComponent<Game_Manager>().SkillChosen = true;
     }
     public void SecondButtonPressed()
     {
@@ -81,6 +87,8 @@ public class SkillChoose : MonoBehaviour
         }
         SkillChooseUI.gameObject.SetActive(false);
         isPressed = true;
+        Time.timeScale = 1;
+        GMCache.GetComponent<Game_Manager>().SkillChosen = true;
     }
     public void ThirdButtonPressed()
     {
@@ -97,6 +105,8 @@ public class SkillChoose : MonoBehaviour
         }
         SkillChooseUI.gameObject.SetActive(false);
         isPressed = true;
+        Time.timeScale = 1;
+        GMCache.GetComponent<Game_Manager>().SkillChosen = true;
     }
     IEnumerator LevelUpDelay()                          //혹시 몰라 약간의 간격을 주기 위해 만들어 둔 딜레이
     {

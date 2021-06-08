@@ -9,11 +9,14 @@ public class Physical_Lab : MonoBehaviour
     int require; int DefaultRequire = 3;
     public Text MutantSampleCount;
     public GameObject BackPack;
+    public GameObject GameManager;
+    GameObject GMCache;
     private void Start()
     {
         radius = 1f;
         require = DefaultRequire;                                     
         Require.text = require.ToString();
+        GMCache = GameManager;
     }
     private void Update()
     {
@@ -29,6 +32,8 @@ public class Physical_Lab : MonoBehaviour
                     BackPack.GetComponent<BackPack>().UseItem("MutantSample", require);
                     require++;
                     Require.text = require.ToString();
+                    GMCache.GetComponent<Game_Manager>().SkillOpen = true;
+                    Time.timeScale = 0;
                 }
             }
         }

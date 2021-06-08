@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Rendering.Universal;
 public class Player_Stat : MonoBehaviour
 {
     public int Level = 1;               public bool isLevelUp;          public int Physical_Level = 1;  public bool isPhysical_LevelUp;
@@ -14,8 +14,9 @@ public class Player_Stat : MonoBehaviour
     public float Burn_Percent;          public bool isPyro;             public int FireborneMax = 1;    public float Burning_DMG;
     public float Explode_Multiple_Damage;   public bool isShelter;      public float ChargingSpeed;     public int dashCool;    public float DashTime; public float burningTime;
     public bool isNapalm2;
-    public bool isLight;    public bool isSilver;   public bool isFire; 
+    public bool isLight;    public bool isSilver;   public bool isFire;
 
+    
     void Awake()
     {
         // # 초기값으로 설정되어야 하는 값들 추가하기
@@ -35,6 +36,8 @@ public class Player_Stat : MonoBehaviour
         DashTime = 0.4f;
         Burning_DMG = 7f;
         burningTime = 5f;
+        
+
     }
 
     public void Update()
