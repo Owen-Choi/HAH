@@ -8,7 +8,9 @@ public class WindStep : Skill_Manager
     bool ForOne = false;
     public float time = 0f;
     public GameObject ShotPoint;
+    public GameObject BuffCarrier;
     GameObject SP;
+    GameObject BCcache;
     bool isShoot;
     
     void Start()
@@ -17,6 +19,8 @@ public class WindStep : Skill_Manager
         this.Sprite_Num = 2;
         this.Skill_Name = "바람걸음";
         this.Skill_Desc = "회피율이 영구적으로 증가하고 적을 공격할 때 마다 일시적으로 이동속도가 증가한다.";
+        BCcache = BuffCarrier;
+        SP = ShotPoint;
     }
 
 
@@ -30,7 +34,7 @@ public class WindStep : Skill_Manager
                 ForOne = true;
             }
             this.Selected = true;
-            if (ShotPoint.GetComponent<ShotPoint>().isShoot && !TimeDone)           //비효율적인 코드지만 개선안이 생각나지 않는다....
+            if (SP.GetComponent<ShotPoint>().isShoot && !TimeDone)           //비효율적인 코드지만 개선안이 생각나지 않는다....
                 ws();
         }
     }
@@ -38,7 +42,8 @@ public class WindStep : Skill_Manager
     void ws()
     {
         TimeDone = true;
-        Player_Stat.instance.moveSpeed += 2;
+        //Player_Stat.instance.moveSpeed += 2;
+        BCcache.GetComponent<Buff_Carrier>().buff_MS += 2;
         StartCoroutine("ThreeSecDelay");
 
     }
@@ -46,7 +51,8 @@ public class WindStep : Skill_Manager
     IEnumerator ThreeSecDelay()
     {
         yield return new WaitForSeconds(3f);
-        Player_Stat.instance.moveSpeed -= 2;
+        //Player_Stat.instance.moveSpeed -= 2;
+        BCcache.GetComponent<Buff_Carrier>().buff_MS -= 2;
         TimeDone = false;
     }
 

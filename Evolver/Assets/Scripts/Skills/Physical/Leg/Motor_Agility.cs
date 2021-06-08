@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Motor_Agility : Physical_Manager
 {
-    public GameObject Player;
+    public GameObject Player;       
     GameObject PlayerCache;
+    public GameObject BuffCarrier;
+    GameObject BCcache;
     float OriginalMoveSpeed;
     void Start()
     {
@@ -15,6 +17,7 @@ public class Motor_Agility : Physical_Manager
         this.Skill_Desc = "적의 공격을 피했을 경우 이동속도가 5초간 1 증가한다.";
         PlayerCache = Player;
         OriginalMoveSpeed = Player_Stat.instance.moveSpeed;
+        BCcache = BuffCarrier;
     }
 
     
@@ -29,7 +32,8 @@ public class Motor_Agility : Physical_Manager
                 if (PlayerCache.GetComponent<Player>().isDodge)
                 {
                     //PlayerCache.GetComponent<Player>().isDodge = false;   여기서 꺼버리면 다른 스킬은 해당 변수를 이용할 수 없다.
-                    Player_Stat.instance.moveSpeed += 1;
+                    //Player_Stat.instance.moveSpeed += 1;
+                    BCcache.GetComponent<Buff_Carrier>().buff_MS += 1;
                     StartCoroutine("SpeedUp");
                 }
             }
@@ -39,6 +43,7 @@ public class Motor_Agility : Physical_Manager
     IEnumerator SpeedUp()
     {
         yield return new WaitForSeconds(5f);                        // 가비지 생성이 많을 것이므로 캐싱하는 방법을 시도해보자.
-        Player_Stat.instance.moveSpeed = OriginalMoveSpeed;     // 이동속도 원위치
+        //Player_Stat.instance.moveSpeed = OriginalMoveSpeed;         // 이동속도 원위치
+        BCcache.GetComponent<Buff_Carrier>().buff_MS -= 1;
     }
 }
