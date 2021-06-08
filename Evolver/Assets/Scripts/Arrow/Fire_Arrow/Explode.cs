@@ -7,10 +7,12 @@ public class Explode : MonoBehaviour
     bool DamageOnce;
     Animator anim;  float radius = 0.75f;   int i;
     Vector3 vec;    GameObject temp;    float ExplodeDMG;   Vector2 Direction;
+    AudioSource audio;
     private void Awake()
     {
         anim = GetComponent<Animator>();
         anim.SetBool("isEnter", true);
+        audio.Play();
        
     }
 

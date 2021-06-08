@@ -9,6 +9,9 @@ public class Indomitable : Physical_Manager
     [SerializeField]
     bool isOnce;
     float OriginalArmor;
+    public GameObject BuffCarrier;
+    GameObject BCcache;
+    
     private void Awake()
     {
         this.Skill_Num = 30;
@@ -17,6 +20,7 @@ public class Indomitable : Physical_Manager
         this.Skill_Desc = "적에게 피해를 입은 직후 5초 동안 방어력이 1.5배가 된다.";
         PlayerCache = Player;
         OriginalArmor = Player_Stat.instance.armor;
+        BCcache = BuffCarrier;
     }
     void Update()
     {
@@ -29,7 +33,8 @@ public class Indomitable : Physical_Manager
                 if (!isOnce && PlayerCache.gameObject.layer == LayerMask.NameToLayer("Player_Damaged"))
                 {
                     isOnce = true;
-                    Player_Stat.instance.armor += Player_Stat.instance.armor * 0.5f;
+                    //player_Stat.instance.armor += Player_Stat.instance.armor * 0.5f;
+                    BCcache.GetComponent<Buff_Carrier>().buff_Armor += OriginalArmor * 0.5f;
                     StartCoroutine("Duration");
 
                 }
@@ -40,8 +45,9 @@ public class Indomitable : Physical_Manager
     {
         yield return new WaitForSeconds(5f);
         isOnce = false;
-        
-        Player_Stat.instance.armor = OriginalArmor;                 //방어력 원상복귀.
+
+        //Player_Stat.instance.armor = OriginalArmor;                 //방어력 원상복귀.
+        BCcache.GetComponent<Buff_Carrier>().buff_Armor -= OriginalArmor * 0.5f;
             
     }
 }

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Game_Manager : MonoBehaviour
 {
-    bool isOnce;
+    bool isOnce;    bool One;   bool Two;
     // # 게임 메니저 스크립트에서는 게임 진행의 전반적인 흐름을 제어하는 코드를 주로 다룰 예정이다. ex : 플레이어의 레이어 변경에 따른 오브젝트 수정, UI 오브젝트 조정 등
     public GameObject Player; GameObject PlayerCache;
     public GameObject Tutorial;
+    public GameObject Guide;
+    GameObject GuideCache;
     // # 포스트 프로세싱 관련 변수
     UnityEngine.Rendering.VolumeProfile profile;                        //먼저 프로필에 접근하고
     public GameObject Global_Volume;
@@ -23,7 +25,7 @@ public class Game_Manager : MonoBehaviour
     {
         PlayerCache = Player;
         Tutorial.gameObject.SetActive(true);
-
+        GuideCache = Guide;
         Global_Volume_Cache = Global_Volume;
         profile = Global_Volume_Cache.GetComponent<UnityEngine.Rendering.Volume>().profile;
         profile.TryGet(out CA);
@@ -63,9 +65,18 @@ public class Game_Manager : MonoBehaviour
         // # 방사능과 화면 크로마틱 관련 코드
         if(Temp_RadioActive != Player_Stat.instance.RadioActive)
         {
-            CA.intensity.Override(Player_Stat.instance.RadioActive * 0.04f);                //화면에 크로마틱 효과를 준다.
+            CA.intensity.Override(Player_Stat.instance.RadioActive * 0.06f);                //화면에 크로마틱 효과를 준다.
             Temp_RadioActive = Player_Stat.instance.RadioActive;
         }
+
+        // # 방사능 수치 UI관련 코드
+        if (Temp_RadioActive > 70 && !Two)
+        {
+            Two = true;
+            GuideCache.transform.GetChild(3).gameObject.SetActive(true);
+        }
+        else
+            Two = false;
 
 
         // # 체력과 화면 노이즈 관련 코드
@@ -74,6 +85,11 @@ public class Game_Manager : MonoBehaviour
             Check = true;
             FG.intensity.Override((100 - Player_Stat.instance.health) * 0.01f);             //화면에 노이즈 효과를 준다.
             CAJ.saturation.Override((100 - Player_Stat.instance.health) * -1);
+            if (!One)
+            {
+                GuideCache.transform.GetChild(2).gameObject.SetActive(true);                    //체력 안내 UI를 띄워준다.
+                One = true;
+            }
         }
         else
         {
@@ -83,7 +99,7 @@ public class Game_Manager : MonoBehaviour
                 CAJ.saturation.Override(0);
                 Check = false;
             }
-            
+            One = false;
         }
 
         // # 스킬 선택창 오픈 시 초점 흐려짐 관련 코드
