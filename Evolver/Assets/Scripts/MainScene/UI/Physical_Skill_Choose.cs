@@ -113,6 +113,7 @@ public class Physical_Skill_Choose : MonoBehaviour
 
         Time.timeScale = 1;
         GMCache.GetComponent<Game_Manager>().SkillChosen = true;
+        SaveSystem.SavePhysicalSkill();
     }
 
     public void SecondButtonPress()
@@ -130,6 +131,7 @@ public class Physical_Skill_Choose : MonoBehaviour
 
         Time.timeScale = 1;
         GMCache.GetComponent<Game_Manager>().SkillChosen = true;
+        SaveSystem.SavePhysicalSkill();
     }
     IEnumerator WaitForUpdate()
     {

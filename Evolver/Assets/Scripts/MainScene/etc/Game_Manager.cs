@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Game_Manager : MonoBehaviour
 {
-    bool isOnce;    bool One;   bool Two;   bool Three;
+    bool isOnce;    bool One;   bool Two;   bool Three; public bool isStart;    public bool isLoad;
     // # 게임 메니저 스크립트에서는 게임 진행의 전반적인 흐름을 제어하는 코드를 주로 다룰 예정이다. ex : 플레이어의 레이어 변경에 따른 오브젝트 수정, UI 오브젝트 조정 등
     public GameObject Player; GameObject PlayerCache;
     public GameObject Tutorial;
     public GameObject Guide;
+    public GameObject MainScreen;
+    public GameObject BasicUI;
+    GameObject MainScreenCache;
     GameObject GuideCache;
+
     // # 포스트 프로세싱 관련 변수
     UnityEngine.Rendering.VolumeProfile profile;                        //먼저 프로필에 접근하고
     public GameObject Global_Volume;
@@ -23,8 +26,9 @@ public class Game_Manager : MonoBehaviour
     float DecreaseVal;
     void Awake()
     {
+        MainScreenCache = MainScreen;
         PlayerCache = Player;
-        Tutorial.gameObject.SetActive(true);
+        MainScreenCache.gameObject.SetActive(true);
         GuideCache = Guide;
         Global_Volume_Cache = Global_Volume;
         profile = Global_Volume_Cache.GetComponent<UnityEngine.Rendering.Volume>().profile;
@@ -32,7 +36,6 @@ public class Game_Manager : MonoBehaviour
         profile.TryGet(out FG);
         profile.TryGet(out CAJ);
         profile.TryGet(out DF);
-
     }
 
     private void Start()
@@ -48,6 +51,30 @@ public class Game_Manager : MonoBehaviour
 
     void Update()
     {
+        if(isStart)
+        {
+            MainScreenCache.SetActive(false);
+            Tutorial.SetActive(true);
+            isStart = false;
+        }
+
+        if(isLoad)
+        {
+            isLoad = false;
+            MainScreenCache.SetActive(false);
+            // # 로드 코드
+            SaveSystem.LoadPhysicalSkill();
+            SaveSystem.LoadSkill();
+            SaveSystem.LoadStat();
+
+
+            LoadSystem.LoadPhysicalSkill();
+            LoadSystem.LoadSkill();
+            LoadSystem.LoadStat();
+            BasicUI.SetActive(true);
+            Time.timeScale = 1;
+            DF.focalLength.Override(0);
+        }
         if(PlayerCache.layer != LayerMask.NameToLayer("PlayerInShelter") && !isOnce)       //플레이어가 쉘터가 아니라면 방사능과 목마름 수치 증가 
         {
             isOnce = true;
