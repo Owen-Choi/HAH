@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Game_Manager : MonoBehaviour
 {
-    bool isOnce;    bool One;   bool Two;
+    bool isOnce;    bool One;   bool Two;   bool Three;
     // # 게임 메니저 스크립트에서는 게임 진행의 전반적인 흐름을 제어하는 코드를 주로 다룰 예정이다. ex : 플레이어의 레이어 변경에 따른 오브젝트 수정, UI 오브젝트 조정 등
     public GameObject Player; GameObject PlayerCache;
     public GameObject Tutorial;
@@ -69,7 +69,7 @@ public class Game_Manager : MonoBehaviour
             Temp_RadioActive = Player_Stat.instance.RadioActive;
         }
 
-        // # 방사능 수치 UI관련 코드
+        // # 방사능 수치 UI 관련 코드
         if (Temp_RadioActive > 70 && !Two)
         {
             Two = true;
@@ -78,9 +78,17 @@ public class Game_Manager : MonoBehaviour
         else
             Two = false;
 
+        // # 목마름 수치 UI 관련 코드
+        if (Player_Stat.instance.thirsty > 70 && !Three)
+        {
+            Three = true;
+            GuideCache.transform.GetChild(4).gameObject.SetActive(true);
+        }
+        else
+            Three = false;
 
         // # 체력과 화면 노이즈 관련 코드
-        if(Player_Stat.instance.health <= 35f)                                              //체력이 35 이하로 떨어진다면
+        if (Player_Stat.instance.health <= 35f)                                              //체력이 35 이하로 떨어진다면
         {
             Check = true;
             FG.intensity.Override((100 - Player_Stat.instance.health) * 0.01f);             //화면에 노이즈 효과를 준다.

@@ -60,7 +60,7 @@ public class FlameBottleFor2 : MonoBehaviour
         shootDirection.x = (float)5f * Mathf.Cos(degree);
         shootDirection.y = (float)5f * Mathf.Sin(degree);
 
-        GameObject newBottle = Instantiate(FlameBottle, FireArrowShotPoint.position, FireArrowShotPoint.transform.rotation) as GameObject;
+        GameObject newBottle = Instantiate(Resources.Load("FlameBottle"), FireArrowShotPoint.position, FireArrowShotPoint.transform.rotation) as GameObject;
         newBottle.GetComponent<Rigidbody2D>().velocity = shootDirection;
         StartCoroutine("ChangeDelay");
     }

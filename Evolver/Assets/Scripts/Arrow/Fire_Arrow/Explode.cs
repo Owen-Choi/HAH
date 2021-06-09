@@ -7,7 +7,7 @@ public class Explode : MonoBehaviour
     bool DamageOnce;
     Animator anim;  float radius = 0.75f;   int i;
     Vector3 vec;    GameObject temp;    float ExplodeDMG;   Vector2 Direction;
-    AudioSource audio;
+    public AudioSource audio;
     private void Awake()
     {
         anim = GetComponent<Animator>();

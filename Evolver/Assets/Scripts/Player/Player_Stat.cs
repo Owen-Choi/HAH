@@ -12,7 +12,7 @@ public class Player_Stat : MonoBehaviour
     public static Player_Stat instance; public float speedForDash = 2f; public float SlowForCharge = 0.5f;  public bool AbsolCrit;  public bool Runner;
     public float damage;                public float Charge_Damage_Plus = 6f;   public bool is_Continued_Shot; public bool is_Continued_Shot2;  public bool is_Penetrate3;
     public float Burn_Percent;          public bool isPyro;             public int FireborneMax = 1;    public float Burning_DMG;
-    public float Explode_Multiple_Damage;   public bool isShelter;      public float ChargingSpeed;     public int dashCool;    public float DashTime; public float burningTime;
+    public float Explode_Multiple_Damage;  public float ChargingSpeed;     public int dashCool;    public float DashTime; public float burningTime;
     public bool isNapalm2;
     public bool isLight;    public bool isSilver;   public bool isFire;
 
@@ -26,7 +26,6 @@ public class Player_Stat : MonoBehaviour
         DefaultHealthMax = 100f;
         DefaultStaminaMax = 100f;
         Max_Stamina = DefaultStaminaMax;
-        isShelter = true;
         is_Continued_Shot = false;
         is_Continued_Shot2 = false;
         ChargingSpeed = 1.2f;
