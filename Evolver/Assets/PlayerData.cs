@@ -19,14 +19,22 @@ public class PlayerData
     public bool isLight; public bool isSilver; public bool isFire;
 
     // # 스킬 변수
-    public Skill_Manager[] scripts;
+    //public Skill_Manager[] scripts;
+    [System.Serializable]
     public struct SkillContainer
     {
         public bool Selected_Once;
         public bool Selected_Twice;
         public bool Selected_Third;
     }
-
+    public SkillContainer[] SC = new SkillContainer[100];
+    //public Physical_Manager[] Physic_Scripts;
+    [System.Serializable]
+    public struct PhysicalSkillContainer
+    {
+        public bool Selected;
+    }
+    public PhysicalSkillContainer[] PC = new PhysicalSkillContainer[100];
     public PlayerData()
     {
         // default 생성자에서는 PlayerStat의 모든 능력치를 저장
@@ -68,12 +76,11 @@ public class PlayerData
     }
 
     // # 여기서 얘한테 Skill_System_In_Map을 넘겨주어야 한다. 될까....?
-    public PlayerData(GameObject SkillSystem)
+    public PlayerData(GameObject SkillSystem, int i)
     {
-        int i = 0;
-        scripts = SkillSystem.GetComponent<Skill_Manager>().scripts;
-        SkillContainer[] SC = new SkillContainer[scripts.Length];
-        foreach(Skill_Manager sm in scripts)
+        //scripts = SkillSystem.GetComponent<Skill_Manager>().scripts;
+        SkillContainer[] SC = new SkillContainer[SkillSystem.GetComponent<Skill_Manager>().scripts.Length];
+        foreach(Skill_Manager sm in SkillSystem.GetComponent<Skill_Manager>().scripts)
         {
             if (sm.Selected_First)
                 SC[i].Selected_Once = true;
@@ -86,8 +93,17 @@ public class PlayerData
         }
     }
 
-    public PlayerData(Physical_Manager PhysicSkill)
+    public PlayerData(GameObject PhysicSkill)
     {
+        int i = 0;
+        //Physic_Scripts = PhysicSkill.GetComponent<Physical_Manager>().scripts;
+        PhysicalSkillContainer[] PC = new PhysicalSkillContainer[PhysicSkill.GetComponent<Physical_Manager>().scripts.Length];
+        foreach(Physical_Manager pm in PhysicSkill.GetComponent<Physical_Manager>().scripts)
+        {
+            if (pm.Selected)
+                PC[i].Selected = true;
 
+            i++;
+        }
     }
 }
