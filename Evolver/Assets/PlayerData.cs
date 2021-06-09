@@ -79,7 +79,6 @@ public class PlayerData
     public PlayerData(GameObject SkillSystem, int i)
     {
         //scripts = SkillSystem.GetComponent<Skill_Manager>().scripts;
-        SkillContainer[] SC = new SkillContainer[SkillSystem.GetComponent<Skill_Manager>().scripts.Length];
         foreach(Skill_Manager sm in SkillSystem.GetComponent<Skill_Manager>().scripts)
         {
             if (sm.Selected_First)
@@ -97,7 +96,7 @@ public class PlayerData
     {
         int i = 0;
         //Physic_Scripts = PhysicSkill.GetComponent<Physical_Manager>().scripts;
-        PhysicalSkillContainer[] PC = new PhysicalSkillContainer[PhysicSkill.GetComponent<Physical_Manager>().scripts.Length];
+        //PhysicalSkillContainer[] PC = new PhysicalSkillContainer[PhysicSkill.GetComponent<Physical_Manager>().scripts.Length];
         foreach(Physical_Manager pm in PhysicSkill.GetComponent<Physical_Manager>().scripts)
         {
             if (pm.Selected)

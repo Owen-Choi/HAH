@@ -13,9 +13,14 @@ public class saveTest : MonoBehaviour
 
     public void LoadProcess()
     {
-        SaveSystem.LoadStat();
-        SaveSystem.LoadSkill();
         SaveSystem.LoadPhysicalSkill();
+        SaveSystem.LoadSkill();
+        SaveSystem.LoadStat();
+
+
+        LoadSystem.LoadPhysicalSkill();
+        LoadSystem.LoadSkill();
+        LoadSystem.LoadStat(); 
     }
 
 }
