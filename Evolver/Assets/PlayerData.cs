@@ -17,6 +17,8 @@ public class PlayerData
     public float Explode_Multiple_Damage; public float ChargingSpeed; public int dashCool; public float DashTime; public float burningTime;
     public bool isNapalm2;
     public bool isLight; public bool isSilver; public bool isFire;
+    // # 아이템 변수
+    public int Bandage; public int Medikit; public int StaminaPotion;   public int MutantSample;    public int Food;    public int Water;
 
     // # 스킬 변수
     //public Skill_Manager[] scripts;
@@ -104,5 +106,15 @@ public class PlayerData
 
             i++;
         }
+    }
+
+    public PlayerData(GameObject BackPack, bool checker)
+    {
+        MutantSample = BackPack.GetComponent<BackPack>().GetItemCount("MutantSample");
+        Bandage = BackPack.GetComponent<BackPack>().GetItemCount("Bandage");
+        Medikit = BackPack.GetComponent<BackPack>().GetItemCount("Medikit");
+        StaminaPotion = BackPack.GetComponent<BackPack>().GetItemCount("StaminaPotion");
+        Food = BackPack.GetComponent<BackPack>().GetItemCount("Food");
+        Water = BackPack.GetComponent<BackPack>().GetItemCount("Water");
     }
 }

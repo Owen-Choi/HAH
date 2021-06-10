@@ -39,6 +39,17 @@ public static class SaveSystem
         stream.Close();
     }
 
+    public static void SaveItem()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Items.save";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        PlayerData ItemData = new PlayerData(GameObject.Find("BackPack"), true);
+        formatter.Serialize(stream, ItemData);
+        stream.Close();
+    }
+
     public static PlayerData LoadStat()                                                     //능력치를 불러오는 함수
     {
         string path = Application.persistentDataPath + "/Player_Stat.save";
@@ -91,6 +102,25 @@ public static class SaveSystem
             stream.Close();
 
             return PhysicSkillData;
+        }
+        else
+        {
+            Debug.LogError("Save file not found in " + path);
+            return null;
+        }
+    }
+
+    public static PlayerData LoadItem()
+    {
+        string path = Application.persistentDataPath + "/Items.save";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            PlayerData ItemData = formatter.Deserialize(stream) as PlayerData;
+            stream.Close();
+            return ItemData;
         }
         else
         {

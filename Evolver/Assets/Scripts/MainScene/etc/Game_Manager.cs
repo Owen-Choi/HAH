@@ -13,6 +13,9 @@ public class Game_Manager : MonoBehaviour
     GameObject MainScreenCache;
     GameObject GuideCache;
 
+    public GameObject LightArrow;   public GameObject SilverArrow;  public GameObject FireArrow;    public GameObject Middle_Left_ShotPoint;   public GameObject Middle_Right_ShotPoint; 
+    public GameObject Full_Left_ShotPoint;     public GameObject Full_Right_ShotPoint;    public GameObject Bottle1;  public GameObject Bottle2;  public GameObject Bottle3;
+    public GameObject SkillChoose;
     // # 포스트 프로세싱 관련 변수
     UnityEngine.Rendering.VolumeProfile profile;                        //먼저 프로필에 접근하고
     public GameObject Global_Volume;
@@ -61,19 +64,7 @@ public class Game_Manager : MonoBehaviour
         if(isLoad)
         {
             isLoad = false;
-            MainScreenCache.SetActive(false);
-            // # 로드 코드
-            SaveSystem.LoadPhysicalSkill();
-            SaveSystem.LoadSkill();
-            SaveSystem.LoadStat();
-
-
-            LoadSystem.LoadPhysicalSkill();
-            LoadSystem.LoadSkill();
-            LoadSystem.LoadStat();
-            BasicUI.SetActive(true);
-            Time.timeScale = 1;
-            DF.focalLength.Override(0);
+            LoadGame();
         }
         if(PlayerCache.layer != LayerMask.NameToLayer("PlayerInShelter") && !isOnce)       //플레이어가 쉘터가 아니라면 방사능과 목마름 수치 증가 
         {
@@ -147,6 +138,75 @@ public class Game_Manager : MonoBehaviour
         {
             SkillChosen = false;
             DF.focalLength.Override(0);
+        }
+    }
+
+    void LoadGame()
+    {
+        MainScreenCache.SetActive(false);
+
+        // # 로드 코드
+        SaveSystem.LoadPhysicalSkill();
+        SaveSystem.LoadSkill();
+        SaveSystem.LoadStat();
+        SaveSystem.LoadItem();
+
+        LoadSystem.LoadPhysicalSkill();
+        LoadSystem.LoadSkill();
+        LoadSystem.LoadStat();
+        LoadSystem.LoadItem();
+        BasicUI.SetActive(true);
+        Time.timeScale = 1;
+        DF.focalLength.Override(0);
+
+        if (Player_Stat.instance.isLight)
+        {
+            BasicUI.transform.GetChild(16).gameObject.SetActive(true);
+            BasicUI.transform.GetChild(16).transform.GetChild(0).gameObject.SetActive(true);    //차징 UI의 첫번째 자식(경량화살)을 활성화
+            Destroy(BasicUI.transform.GetChild(16).transform.GetChild(1).gameObject);           //두번째 자식(은화살)은 파괴
+            Destroy(BasicUI.transform.GetChild(16).transform.GetChild(2).gameObject);           //세번째 자식(불화살)도 파괴
+
+            SilverArrow.gameObject.SetActive(false);
+            FireArrow.gameObject.SetActive(false);
+            Middle_Left_ShotPoint.gameObject.SetActive(false);
+            Middle_Right_ShotPoint.gameObject.SetActive(false);
+            Full_Left_ShotPoint.gameObject.SetActive(false);
+            Full_Right_ShotPoint.gameObject.SetActive(false);
+            Bottle1.gameObject.SetActive(false);
+            Bottle2.gameObject.SetActive(false);
+            Bottle3.gameObject.SetActive(false);
+            SkillChoose.GetComponent<SkillChoose>().MinValue = 1;
+            SkillChoose.GetComponent<SkillChoose>().MaxValue = 8;
+            GameObject.Find("SkillChoose").GetComponent<SkillChoose>().sprites = Resources.LoadAll<Sprite>("Light_Arrow_SkillIcon");
+        }
+        else if (Player_Stat.instance.isSilver)
+        {
+            BasicUI.transform.GetChild(16).gameObject.SetActive(true);
+            BasicUI.transform.GetChild(16).transform.GetChild(1).gameObject.SetActive(true);   
+            Destroy(BasicUI.transform.GetChild(16).transform.GetChild(0).gameObject);          
+            Destroy(BasicUI.transform.GetChild(16).transform.GetChild(2).gameObject);
+
+            LightArrow.gameObject.SetActive(false);
+            FireArrow.gameObject.SetActive(false);
+            Bottle1.gameObject.SetActive(false);
+            Bottle2.gameObject.SetActive(false);
+            Bottle3.gameObject.SetActive(false);
+            SkillChoose.GetComponent<SkillChoose>().MinValue = 15;
+            SkillChoose.GetComponent<SkillChoose>().MaxValue = 24;
+            GameObject.Find("SkillChoose").GetComponent<SkillChoose>().sprites = Resources.LoadAll<Sprite>("Silver_Arrow_SkillIcon");
+        }
+        else if (Player_Stat.instance.isFire)
+        {
+            BasicUI.transform.GetChild(16).gameObject.SetActive(true);
+            BasicUI.transform.GetChild(16).transform.GetChild(2).gameObject.SetActive(true);
+            Destroy(BasicUI.transform.GetChild(16).transform.GetChild(1).gameObject);
+            Destroy(BasicUI.transform.GetChild(16).transform.GetChild(0).gameObject);
+
+            LightArrow.gameObject.SetActive(false);
+            SilverArrow.gameObject.SetActive(false);
+            SkillChoose.GetComponent<SkillChoose>().MinValue = 25;
+            SkillChoose.GetComponent<SkillChoose>().MaxValue = 32;
+            GameObject.Find("SkillChoose").GetComponent<SkillChoose>().sprites = Resources.LoadAll<Sprite>("Fire_Arrow_SkillIcon");
         }
     }
 }

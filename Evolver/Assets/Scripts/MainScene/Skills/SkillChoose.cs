@@ -71,6 +71,9 @@ public class SkillChoose : MonoBehaviour
         isPressed = true;
         Time.timeScale = 1;
         GMCache.GetComponent<Game_Manager>().SkillChosen = true;
+        SaveSystem.SaveStat();
+        SaveSystem.SavePhysicalSkill();
+        SaveSystem.SaveItem();
         SaveSystem.SaveSkill();
     }
     public void SecondButtonPressed()
@@ -91,6 +94,9 @@ public class SkillChoose : MonoBehaviour
         Time.timeScale = 1;
         GMCache.GetComponent<Game_Manager>().SkillChosen = true;
         SaveSystem.SaveSkill();
+        SaveSystem.SaveItem();
+        SaveSystem.SaveStat();
+        SaveSystem.SavePhysicalSkill();
     }
     public void ThirdButtonPressed()
     {
@@ -110,6 +116,9 @@ public class SkillChoose : MonoBehaviour
         Time.timeScale = 1;
         GMCache.GetComponent<Game_Manager>().SkillChosen = true;
         SaveSystem.SaveSkill();
+        SaveSystem.SaveItem();
+        SaveSystem.SaveStat();
+        SaveSystem.SavePhysicalSkill();
     }
     IEnumerator LevelUpDelay()                          //혹시 몰라 약간의 간격을 주기 위해 만들어 둔 딜레이
     {

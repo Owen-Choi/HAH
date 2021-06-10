@@ -85,4 +85,17 @@ public static class LoadSystem
             i++;
         }
     }
+
+    public static void LoadItem()
+    {
+        GameObject BackPackCache;
+        BackPackCache = GameObject.Find("BackPack");
+        PlayerData ItemData = SaveSystem.LoadItem();
+        BackPackCache.GetComponent<BackPack>().SetItemCount("MutantSample", ItemData.MutantSample);
+        BackPackCache.GetComponent<BackPack>().SetItemCount("Bandage", ItemData.Bandage);
+        BackPackCache.GetComponent<BackPack>().SetItemCount("Medikit", ItemData.Medikit);
+        BackPackCache.GetComponent<BackPack>().SetItemCount("StaminaPotion", ItemData.StaminaPotion);
+        BackPackCache.GetComponent<BackPack>().SetItemCount("Food", ItemData.Food);
+        BackPackCache.GetComponent<BackPack>().SetItemCount("Water", ItemData.Water);
+    }
 }

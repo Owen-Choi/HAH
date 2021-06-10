@@ -37,6 +37,11 @@ public class BackPack : MonoBehaviour
     {
         inventory.UseItem(name, count);
     }
+
+    public void SetItemCount(string name, int count)
+    {
+        inventory.SetItemCount(name, count);
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))                         //1번 누르면 밴드 사용
