@@ -17,6 +17,7 @@ public class PlayerData
     public float Explode_Multiple_Damage; public float ChargingSpeed; public int dashCool; public float DashTime; public float burningTime;
     public bool isNapalm2;
     public bool isLight; public bool isSilver; public bool isFire;
+    public bool Starve1;    public bool Starve2;    public bool Starve3;    public float tempDMG;   public int Starvation;
     // # 아이템 변수
     public int Bandage; public int Medikit; public int StaminaPotion;   public int MutantSample;    public int Food;    public int Water;
 
@@ -75,6 +76,11 @@ public class PlayerData
         isLight = Player_Stat.instance.isLight;
         isSilver = Player_Stat.instance.isSilver;
         isFire = Player_Stat.instance.isFire;
+        Starvation = Player_Stat.instance.Starvation;
+        Starve1 = Player_Stat.instance.Starve1;
+        Starve2 = Player_Stat.instance.Starve2;
+        Starve3 = Player_Stat.instance.Starve3;
+        tempDMG = Player_Stat.instance.tempDMG;
     }
 
     // # 여기서 얘한테 Skill_System_In_Map을 넘겨주어야 한다. 될까....?

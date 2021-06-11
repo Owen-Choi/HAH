@@ -46,6 +46,11 @@ public static class LoadSystem
         Player_Stat.instance.isLight = StatData.isLight;
         Player_Stat.instance.isSilver = StatData.isSilver;
         Player_Stat.instance.isFire = StatData.isFire;
+        Player_Stat.instance.Starvation = StatData.Starvation;
+        Player_Stat.instance.Starve1 = StatData.Starve1;
+        Player_Stat.instance.Starve2 = StatData.Starve2;
+        Player_Stat.instance.Starve3 = StatData.Starve3;
+        Player_Stat.instance.tempDMG = StatData.tempDMG;
     }
 
     public static void LoadSkill()

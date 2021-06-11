@@ -15,8 +15,9 @@ public class Player_Stat : MonoBehaviour
     public float Explode_Multiple_Damage;  public float ChargingSpeed;     public int dashCool;    public float DashTime; public float burningTime;
     public bool isNapalm2;
     public bool isLight;    public bool isSilver;   public bool isFire;
+    public int Starvation;  public bool Starve1;    public bool Starve2;    public bool Starve3;    public float tempDMG;
 
-    
+
     void Awake()
     {
         // # 초기값으로 설정되어야 하는 값들 추가하기
@@ -71,5 +72,48 @@ public class Player_Stat : MonoBehaviour
         if (armor < 0) armor = 0;
         if (damage < 0) damage = 1;             //능력치들을 음수가 아닌 0으로 만들어 줄 코드. 다른 능력치들도 나중에 추가하도록 하자.
 
+
+        if(Starvation >= 30 && !Starve1)
+        {
+            Stamina_recovery_speed -= 0.5f;      
+            Starve1 = true;
+        }
+        else if(Starve1 && Starvation < 30)
+        {
+            Starve1 = false;
+            Stamina_recovery_speed += 0.5f;     //패널티 해소
+        }
+
+
+        if(Starvation >= 60 && !Starve2)
+        {
+            Stamina_recovery_speed -= 0.5f;
+            moveSpeed -= 0.5f;
+            Starve2 = true;
+        }
+        else if(Starve2 && (Starvation >= 30 && Starvation < 60))
+        {
+            Starve2 = false;
+            Stamina_recovery_speed += 0.5f;
+            moveSpeed += 0.5f;
+        }
+
+        if(Starvation >= 90 && !Starve3)
+        {
+            Stamina_recovery_speed -= 0.35f;
+            moveSpeed -= 0.5f;
+            tempDMG = damage * 0.5f;
+            damage -= tempDMG;
+            Starve3 = true;
+        }
+        else if(Starve3 && (Starvation >= 60 && Starvation < 90))
+        {
+            Stamina_recovery_speed += 0.35f;
+            moveSpeed += 0.5f;
+            damage += tempDMG;
+        }
+
+        if (Starvation >= 100)
+            health = 0;
     }
 }

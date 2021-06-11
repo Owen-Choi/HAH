@@ -41,9 +41,10 @@ public class ToShelter : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 PlayerCache.layer = LayerMask.NameToLayer("PlayerInShelter");
+                PlayerCache.GetComponent<Player>().StopRadioActive();               //쉘터로 돌아가면 방사능 축적 종료
                 GuideUICache.SetActive(false);
                 PlayerCache.GetComponent<Transform>().position = GameObject.Find("ReturnHole").GetComponent<Transform>().position;
-                Destroy(this.transform.root.gameObject);            //맵을 통째로 없애기 위한 코드
+                Destroy(this.transform.root.gameObject);                            //맵을 통째로 없애기 위한 코드
             }
 
         }

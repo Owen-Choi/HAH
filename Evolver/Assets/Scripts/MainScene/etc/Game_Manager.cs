@@ -49,6 +49,8 @@ public class Game_Manager : MonoBehaviour
 
         Time.timeScale = 0;
         DF.focalLength.Override(80);
+        PlayerCache.GetComponent<Player>().StackStarvation();                               //시작과 동시에 갈증, 허기 Stack
+        PlayerCache.GetComponent<Player>().StackThirsty();
     }
 
 
@@ -66,7 +68,8 @@ public class Game_Manager : MonoBehaviour
             isLoad = false;
             LoadGame();
         }
-        if(PlayerCache.layer != LayerMask.NameToLayer("PlayerInShelter") && !isOnce)       //플레이어가 쉘터가 아니라면 방사능과 목마름 수치 증가 
+
+        /*if(PlayerCache.layer != LayerMask.NameToLayer("PlayerInShelter") && !isOnce)       //플레이어가 쉘터가 아니라면 방사능과 목마름 수치 증가 
         {
             isOnce = true;
             PlayerCache.GetComponent<Player>().StackRadioActive();
@@ -77,7 +80,7 @@ public class Game_Manager : MonoBehaviour
             isOnce = false;
             CancelInvoke("StackThirsty");
             CancelInvoke("StackRadioActive");
-        }
+        }*/
 
 
         // # 방사능과 화면 크로마틱 관련 코드

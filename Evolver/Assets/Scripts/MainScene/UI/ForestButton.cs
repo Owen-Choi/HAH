@@ -34,8 +34,9 @@ public class ForestButton : MonoBehaviour
     {
         // # 아직은 맵이 하나밖에 없지만 2개 이상 만들어질 경우 랜덤으로 맵이 선택되게 하기(스테이지 숫자를 랜덤으로 받고 실행하면 된다)
         Instantiate(Resources.Load("Forest_Stage_1"));
-        GameObject.Find("Player").GetComponent<Transform>().position = GameObject.Find("SpawnPoint").GetComponent<Transform>().position;
-        PlayerCache.layer = LayerMask.NameToLayer("Player");        //플레이어의 레이어를 PlayerInShelter에서 Player로 변경한다.
+        PlayerCache.transform.position = GameObject.Find("SpawnPoint").GetComponent<Transform>().position;
+        PlayerCache.layer = LayerMask.NameToLayer("Player");                                                //플레이어의 레이어를 PlayerInShelter에서 Player로 변경한다.
+        PlayerCache.GetComponent<Player>().StackRadioActive();
 
     }
 }
