@@ -114,7 +114,8 @@ public class Player_Stat : MonoBehaviour
             Starve3 = false;
         }
 
-        if (Starvation >= 100 || RadioActive >= 100 || thirsty >= 100)
-            health = 0;
+        
+
+        
     }
 }
