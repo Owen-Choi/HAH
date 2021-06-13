@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Game_Manager : MonoBehaviour
 {
-    bool isOnce;    bool One;   bool Two;   bool Three; public bool isStart;    public bool isLoad;
+    bool isOnce;    bool One;   bool Two;   bool Three;     bool Four;   public bool isStart;    public bool isLoad;
     bool LensDistorted;
     // # 게임 메니저 스크립트에서는 게임 진행의 전반적인 흐름을 제어하는 코드를 주로 다룰 예정이다. ex : 플레이어의 레이어 변경에 따른 오브젝트 수정, UI 오브젝트 조정 등
     public GameObject Player; GameObject PlayerCache;
@@ -99,18 +99,32 @@ public class Game_Manager : MonoBehaviour
             Two = true;
             GuideCache.transform.GetChild(3).gameObject.SetActive(true);
         }
-        else
+        else if(Two)
+        {
             Two = false;
-
+            GuideCache.transform.GetChild(3).gameObject.SetActive(false);
+        }
         // # 목마름 수치 UI 관련 코드
         if (Player_Stat.instance.thirsty > 70 && !Three)
         {
             Three = true;
             GuideCache.transform.GetChild(4).gameObject.SetActive(true);
         }
-        else
+        else if (Three && Player_Stat.instance.thirsty <= 70)
+        {
             Three = false;
-
+            GuideCache.transform.GetChild(3).gameObject.SetActive(false);
+        }
+        if (Player_Stat.instance.Starvation > 70 && !Four)
+        {
+            Four = true;
+            GuideCache.transform.GetChild(5).gameObject.SetActive(true);
+        }
+        else if (Four)
+        {
+            Four = false;
+            GuideCache.transform.GetChild(3).gameObject.SetActive(false);
+        }
         // # 체력과 화면 노이즈 관련 코드
         if (Player_Stat.instance.health <= 35f)                                              //체력이 35 이하로 떨어진다면
         {
@@ -131,7 +145,11 @@ public class Game_Manager : MonoBehaviour
                 CAJ.saturation.Override(0);
                 Check = false;
             }
-            One = false;
+            if (One)
+            {
+                One = false;
+                GuideCache.transform.GetChild(3).gameObject.SetActive(false);
+            }
         }
 
         // # 스킬 선택창 오픈 시 초점 흐려짐 관련 코드

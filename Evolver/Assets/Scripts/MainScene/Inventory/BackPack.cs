@@ -71,7 +71,7 @@ public class BackPack : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(KeyCode.Alpha4))                       //4번을 누르면 방사능 회복
         {
             if(GetItemCount("Pill") > 0)
             {

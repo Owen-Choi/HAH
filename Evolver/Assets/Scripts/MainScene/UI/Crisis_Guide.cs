@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class Crisis_Guide : MonoBehaviour
 {
+    float time;
+
     private void Awake()
     {
-        StartCoroutine("OFFDelay");
+        time = 0f;
     }
-
-    IEnumerator OFFDelay()
+    private void Update()
     {
-        yield return new WaitForSeconds(5f);
-        this.gameObject.SetActive(false);
+        time += Time.deltaTime;
+
+        if(time > 5f)
+        {
+            time = 0f;
+            this.gameObject.SetActive(false);
+        }
     }
 }
