@@ -46,7 +46,7 @@ public class BackPack : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))                         //1번 누르면 밴드 사용
         {
-            if(GetItemCount("Bandage") != 0)
+            if(GetItemCount("Bandage") > 0)
             {
                 Player_Stat.instance.health += 15;
                 UseItem("Bandage", 1);
@@ -55,7 +55,7 @@ public class BackPack : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Alpha2))                        //2번 누르면 메디킷 사용
         {
-            if(GetItemCount("Medikit") != 0)
+            if(GetItemCount("Medikit") > 0)
             {
                 Player_Stat.instance.health += 80;
                 UseItem("Medikit", 1);
@@ -64,12 +64,20 @@ public class BackPack : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))                       //3번을 누르면 스테미나 회복약 사용
         {
-            if (GetItemCount("StaminaPotion") != 0)
+            if (GetItemCount("StaminaPotion") > 0)
             {
                 Player_Stat.instance.stamina = Player_Stat.instance.DefaultStaminaMax;
                 UseItem("StaminaPotion", 1);
             }
         }
-       
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            if(GetItemCount("Pill") > 0)
+            {
+                Player_Stat.instance.RadioActive -= 10;
+                UseItem("Pill", 1);
+            }
+        }
     }
 }

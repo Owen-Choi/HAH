@@ -11,7 +11,7 @@ public class Homo_erectus : Skill_Manager
         this.Skill_Num = 30;
         this.Sprite_Num = 2;
         this.Skill_Name = "호모 에렉투스";
-        this.Skill_Desc = "식량이 더 많은 방사능을 없애준다.";
+        this.Skill_Desc = "식량이 더 많은 배고픔을 없애준다.";
         ForOnce = false;
     }
 
@@ -21,7 +21,7 @@ public class Homo_erectus : Skill_Manager
         if (this.Selected && !ForOnce)
         {
             ForOnce = true;
-            Kitchen.GetComponent<Kitchen>().RadioActiveDecrease += 10;
+            Kitchen.GetComponent<Kitchen>().StarvationDecrease += 10;
         }
     }
 }

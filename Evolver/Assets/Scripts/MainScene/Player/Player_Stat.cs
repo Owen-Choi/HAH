@@ -15,7 +15,7 @@ public class Player_Stat : MonoBehaviour
     public float Explode_Multiple_Damage;  public float ChargingSpeed;     public int dashCool;    public float DashTime; public float burningTime;
     public bool isNapalm2;
     public bool isLight;    public bool isSilver;   public bool isFire;
-    public int Starvation;  public bool Starve1;    public bool Starve2;    public bool Starve3;    public float tempDMG;
+    public int Starvation;  public bool Starve1;    public bool Starve2;    public bool Starve3;   public float tempDMG;
 
 
     void Awake()
@@ -111,9 +111,10 @@ public class Player_Stat : MonoBehaviour
             Stamina_recovery_speed += 0.35f;
             moveSpeed += 0.5f;
             damage += tempDMG;
+            Starve3 = false;
         }
 
-        if (Starvation >= 100)
+        if (Starvation >= 100 || RadioActive >= 100 || thirsty >= 100)
             health = 0;
     }
 }

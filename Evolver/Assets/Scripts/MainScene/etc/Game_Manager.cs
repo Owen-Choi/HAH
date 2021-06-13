@@ -4,6 +4,7 @@ using UnityEngine;
 public class Game_Manager : MonoBehaviour
 {
     bool isOnce;    bool One;   bool Two;   bool Three; public bool isStart;    public bool isLoad;
+    bool LensDistorted;
     // # 게임 메니저 스크립트에서는 게임 진행의 전반적인 흐름을 제어하는 코드를 주로 다룰 예정이다. ex : 플레이어의 레이어 변경에 따른 오브젝트 수정, UI 오브젝트 조정 등
     public GameObject Player; GameObject PlayerCache;
     public GameObject Tutorial;
@@ -24,6 +25,7 @@ public class Game_Manager : MonoBehaviour
     UnityEngine.Rendering.Universal.FilmGrain FG;
     UnityEngine.Rendering.Universal.ColorAdjustments CAJ;
     UnityEngine.Rendering.Universal.DepthOfField DF;
+    UnityEngine.Rendering.Universal.LensDistortion LD;
 
     float Temp_RadioActive; float Temp_Health;  bool Check; public bool SkillOpen;  public bool SkillChosen;
     float DecreaseVal;
@@ -39,6 +41,7 @@ public class Game_Manager : MonoBehaviour
         profile.TryGet(out FG);
         profile.TryGet(out CAJ);
         profile.TryGet(out DF);
+        profile.TryGet(out LD);
     }
 
     private void Start()
@@ -142,6 +145,20 @@ public class Game_Manager : MonoBehaviour
             SkillChosen = false;
             DF.focalLength.Override(0);
         }
+
+        // # 배고픔이 심해지면 생기는 화면 변형 효과
+        if (Player_Stat.instance.Starve3)
+        {
+            LensDistorted = true;
+            LD.intensity.Override(0.81f);
+            // # 따로 X,Y 멀티플라이어는 건들 필요 없다.
+        }
+        if (LensDistorted && !Player_Stat.instance.Starve3)
+        {
+            LensDistorted = false;
+            LD.intensity.Override(0);
+            // # 따로 X,Y 멀티플라이어는 건들 필요 없다.
+        }
     }
 
     void LoadGame()
@@ -211,5 +228,17 @@ public class Game_Manager : MonoBehaviour
             SkillChoose.GetComponent<SkillChoose>().MaxValue = 32;
             GameObject.Find("SkillChoose").GetComponent<SkillChoose>().sprites = Resources.LoadAll<Sprite>("Fire_Arrow_SkillIcon");
         }
+    }
+
+    void CheckValues()
+    {
+        if (Player_Stat.instance.RadioActive < 0)
+            Player_Stat.instance.RadioActive = 0;
+
+        if (Player_Stat.instance.thirsty < 0)
+            Player_Stat.instance.thirsty = 0;
+
+        if (Player_Stat.instance.Starvation < 0)
+            Player_Stat.instance.Starvation = 0;
     }
 }
