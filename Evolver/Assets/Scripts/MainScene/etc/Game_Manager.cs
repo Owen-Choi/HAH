@@ -13,6 +13,8 @@ public class Game_Manager : MonoBehaviour
     public GameObject BasicUI;
     GameObject MainScreenCache;
     GameObject GuideCache;
+    public GameObject ESC_Menu;
+    GameObject MenuCache;
 
     public GameObject LightArrow;   public GameObject SilverArrow;  public GameObject FireArrow;    public GameObject Middle_Left_ShotPoint;   public GameObject Middle_Right_ShotPoint; 
     public GameObject Full_Left_ShotPoint;     public GameObject Full_Right_ShotPoint;    public GameObject Bottle1;  public GameObject Bottle2;  public GameObject Bottle3;
@@ -36,6 +38,7 @@ public class Game_Manager : MonoBehaviour
         MainScreenCache.gameObject.SetActive(true);
         GuideCache = Guide;
         Global_Volume_Cache = Global_Volume;
+        MenuCache = ESC_Menu;
         profile = Global_Volume_Cache.GetComponent<UnityEngine.Rendering.Volume>().profile;
         profile.TryGet(out CA);
         profile.TryGet(out FG);
@@ -72,85 +75,14 @@ public class Game_Manager : MonoBehaviour
             LoadGame();
         }
 
-        /*if(PlayerCache.layer != LayerMask.NameToLayer("PlayerInShelter") && !isOnce)       //플레이어가 쉘터가 아니라면 방사능과 목마름 수치 증가 
-        {
-            isOnce = true;
-            PlayerCache.GetComponent<Player>().StackRadioActive();
-            PlayerCache.GetComponent<Player>().StackThirsty();
-        }
-        if(PlayerCache.layer == LayerMask.NameToLayer("PlayerInShelter"))                  //플레이어가 쉘터라면 축적 멈춤
-        {
-            isOnce = false;
-            CancelInvoke("StackThirsty");
-            CancelInvoke("StackRadioActive");
-        }*/
-
-
         // # 방사능과 화면 크로마틱 관련 코드
-        if(Temp_RadioActive != Player_Stat.instance.RadioActive)
-        {
-            CA.intensity.Override(Player_Stat.instance.RadioActive * 0.06f);                //화면에 크로마틱 효과를 준다.
-            Temp_RadioActive = Player_Stat.instance.RadioActive;
-        }
-
-        // # 방사능 수치 UI 관련 코드
-        if (Temp_RadioActive > 70 && !Two)
-        {
-            Two = true;
-            GuideCache.transform.GetChild(3).gameObject.SetActive(true);
-        }
-        else if(Two)
-        {
-            Two = false;
-            GuideCache.transform.GetChild(3).gameObject.SetActive(false);
-        }
+        RadioActiveDisplay();
         // # 목마름 수치 UI 관련 코드
-        if (Player_Stat.instance.thirsty > 70 && !Three)
-        {
-            Three = true;
-            GuideCache.transform.GetChild(4).gameObject.SetActive(true);
-        }
-        else if (Three && Player_Stat.instance.thirsty <= 70)
-        {
-            Three = false;
-            GuideCache.transform.GetChild(3).gameObject.SetActive(false);
-        }
-        if (Player_Stat.instance.Starvation > 70 && !Four)
-        {
-            Four = true;
-            GuideCache.transform.GetChild(5).gameObject.SetActive(true);
-        }
-        else if (Four)
-        {
-            Four = false;
-            GuideCache.transform.GetChild(3).gameObject.SetActive(false);
-        }
+        ThirstyDisplay();
+        // # 배고픔 수치 UI 관련 코드
+        StarvationDisplay();
         // # 체력과 화면 노이즈 관련 코드
-        if (Player_Stat.instance.health <= 35f)                                              //체력이 35 이하로 떨어진다면
-        {
-            Check = true;
-            FG.intensity.Override((100 - Player_Stat.instance.health) * 0.01f);             //화면에 노이즈 효과를 준다.
-            CAJ.saturation.Override((100 - Player_Stat.instance.health) * -1);
-            if (!One)
-            {
-                GuideCache.transform.GetChild(2).gameObject.SetActive(true);                    //체력 안내 UI를 띄워준다.
-                One = true;
-            }
-        }
-        else
-        {
-            if (Check)
-            {
-                FG.intensity.Override(0);
-                CAJ.saturation.Override(0);
-                Check = false;
-            }
-            if (One)
-            {
-                One = false;
-                GuideCache.transform.GetChild(3).gameObject.SetActive(false);
-            }
-        }
+        HealthEffect();
 
         // # 스킬 선택창 오픈 시 초점 흐려짐 관련 코드
         if (SkillOpen)
@@ -176,6 +108,13 @@ public class Game_Manager : MonoBehaviour
             LensDistorted = false;
             LD.intensity.Override(0);
             // # 따로 X,Y 멀티플라이어는 건들 필요 없다.
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
+            DF.focalLength.Override(80);
+            MenuCache.gameObject.SetActive(true);                       //ESC_Menu에서 계속하기 버튼을 누르면 거기서 focalLength와 timeScale 조정해주기
         }
     }
 
@@ -259,4 +198,95 @@ public class Game_Manager : MonoBehaviour
         if (Player_Stat.instance.Starvation < 0)
             Player_Stat.instance.Starvation = 0;
     }
+
+    void RadioActiveDisplay()
+    {
+        if (Temp_RadioActive != Player_Stat.instance.RadioActive)
+        {
+            CA.intensity.Override(Player_Stat.instance.RadioActive * 0.06f);                //화면에 크로마틱 효과를 준다.
+            Temp_RadioActive = Player_Stat.instance.RadioActive;
+        }
+
+        // # 방사능 수치 UI 관련 코드
+        if (Temp_RadioActive > 70 && !Two)
+        {
+            Two = true;
+            GuideCache.transform.GetChild(3).gameObject.SetActive(true);
+        }
+        else if (Two)
+        {
+            Two = false;
+            GuideCache.transform.GetChild(3).gameObject.SetActive(false);
+        }
+    }
+
+    void ThirstyDisplay()
+    {
+        if (Player_Stat.instance.thirsty > 70 && !Three)
+        {
+            Three = true;
+            GuideCache.transform.GetChild(4).gameObject.SetActive(true);
+        }
+        else if (Three && Player_Stat.instance.thirsty <= 70)
+        {
+            Three = false;
+            GuideCache.transform.GetChild(3).gameObject.SetActive(false);
+        }
+    }
+
+    void StarvationDisplay()
+    {
+        if (Player_Stat.instance.Starvation > 70 && !Four)
+        {
+            Four = true;
+            GuideCache.transform.GetChild(5).gameObject.SetActive(true);
+        }
+        else if (Four)
+        {
+            Four = false;
+            GuideCache.transform.GetChild(3).gameObject.SetActive(false);
+        }
+    }
+
+    void HealthEffect()
+    {
+        if (Player_Stat.instance.health <= 35f)                                              //체력이 35 이하로 떨어진다면
+        {
+            Check = true;
+            FG.intensity.Override((100 - Player_Stat.instance.health) * 0.01f);             //화면에 노이즈 효과를 준다.
+            CAJ.saturation.Override((100 - Player_Stat.instance.health) * -1);
+            if (!One)
+            {
+                GuideCache.transform.GetChild(2).gameObject.SetActive(true);                    //체력 안내 UI를 띄워준다.
+                One = true;
+            }
+        }
+        else
+        {
+            if (Check)
+            {
+                FG.intensity.Override(0);
+                CAJ.saturation.Override(0);
+                Check = false;
+            }
+            if (One)
+            {
+                One = false;
+                GuideCache.transform.GetChild(3).gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void Keep_Playing()
+    {
+        Time.timeScale = 1;
+        DF.focalLength.Override(0);
+        MenuCache.gameObject.SetActive(false);
+    }
+
+    public void Exit_Game()
+    {
+        Application.Quit();
+    }
+
 }
