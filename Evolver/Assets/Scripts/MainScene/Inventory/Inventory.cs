@@ -6,7 +6,7 @@ public class Inventory
 {
     //아이템 목록
     // 드롭율은 불러오기 했을 경우 달라질 수도 있다. 달라질 경우 조치할 것
-    public int MutantSample;    public int MutantSampleDropPercent = 30;
+    public int MutantSample;    public int MutantSampleDropPercent = 5;
     public int Bandage;         public int BandageDropPercent = 4;
     public int Medikit;         public int MedikitDropPercent = 2;
     public int StaminaPotion;   public int StaminaPotionDropPercent = 3;
@@ -17,13 +17,13 @@ public class Inventory
     //인벤토리 최초 생성 시 기본 지급 아이템 목록
     public Inventory()     
     {
-        MutantSample = 80;
-        Bandage = 3;
+        MutantSample = 7;
+        Bandage = 1;
         Medikit = 1;
-        StaminaPotion = 3;
+        StaminaPotion = 1;
         Food = 5;
         Water = 7;
-        Pill = 5;
+        Pill = 2;
     }
    
     public int getItemCount(string name)
@@ -94,7 +94,7 @@ public class Inventory
                 this.Water += count;
                 break;
             case "Pill":
-                this.PillDropPercent += count;
+                this.Pill += count;
                 break;
         }
     }

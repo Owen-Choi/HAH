@@ -114,8 +114,14 @@ public class Player_Stat : MonoBehaviour
             Starve3 = false;
         }
 
-        
+        isDead();
 
         
+    }
+
+    void isDead()
+    {
+        if (health < 0)
+            Application.Quit();
     }
 }

@@ -28,6 +28,7 @@ public class Bed : MonoBehaviour
                 SaveSystem.SaveStat();
                 BedCache.transform.GetChild(0).gameObject.SetActive(false);
                 BedCache.transform.GetChild(1).gameObject.SetActive(true);
+                StartCoroutine("vanishing");
             }
         }
         else

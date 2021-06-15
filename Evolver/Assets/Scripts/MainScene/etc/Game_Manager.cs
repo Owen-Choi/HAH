@@ -116,6 +116,7 @@ public class Game_Manager : MonoBehaviour
             DF.focalLength.Override(80);
             MenuCache.gameObject.SetActive(true);                       //ESC_Menu에서 계속하기 버튼을 누르면 거기서 focalLength와 timeScale 조정해주기
         }
+        CheckValues();
     }
 
     void LoadGame()
@@ -138,10 +139,10 @@ public class Game_Manager : MonoBehaviour
 
         if (Player_Stat.instance.isLight)
         {
-            BasicUI.transform.GetChild(16).gameObject.SetActive(true);
-            BasicUI.transform.GetChild(16).transform.GetChild(0).gameObject.SetActive(true);    //차징 UI의 첫번째 자식(경량화살)을 활성화
-            Destroy(BasicUI.transform.GetChild(16).transform.GetChild(1).gameObject);           //두번째 자식(은화살)은 파괴
-            Destroy(BasicUI.transform.GetChild(16).transform.GetChild(2).gameObject);           //세번째 자식(불화살)도 파괴
+            BasicUI.transform.GetChild(20).gameObject.SetActive(true);
+            BasicUI.transform.GetChild(20).transform.GetChild(0).gameObject.SetActive(true);    //차징 UI의 첫번째 자식(경량화살)을 활성화
+            Destroy(BasicUI.transform.GetChild(20).transform.GetChild(1).gameObject);           //두번째 자식(은화살)은 파괴
+            Destroy(BasicUI.transform.GetChild(20).transform.GetChild(2).gameObject);           //세번째 자식(불화살)도 파괴
 
             SilverArrow.gameObject.SetActive(false);
             FireArrow.gameObject.SetActive(false);
@@ -158,10 +159,10 @@ public class Game_Manager : MonoBehaviour
         }
         else if (Player_Stat.instance.isSilver)
         {
-            BasicUI.transform.GetChild(16).gameObject.SetActive(true);
-            BasicUI.transform.GetChild(16).transform.GetChild(1).gameObject.SetActive(true);   
-            Destroy(BasicUI.transform.GetChild(16).transform.GetChild(0).gameObject);          
-            Destroy(BasicUI.transform.GetChild(16).transform.GetChild(2).gameObject);
+            BasicUI.transform.GetChild(20).gameObject.SetActive(true);
+            BasicUI.transform.GetChild(20).transform.GetChild(1).gameObject.SetActive(true);   
+            Destroy(BasicUI.transform.GetChild(20).transform.GetChild(0).gameObject);          
+            Destroy(BasicUI.transform.GetChild(20).transform.GetChild(2).gameObject);
 
             LightArrow.gameObject.SetActive(false);
             FireArrow.gameObject.SetActive(false);
@@ -174,10 +175,10 @@ public class Game_Manager : MonoBehaviour
         }
         else if (Player_Stat.instance.isFire)
         {
-            BasicUI.transform.GetChild(16).gameObject.SetActive(true);
-            BasicUI.transform.GetChild(16).transform.GetChild(2).gameObject.SetActive(true);
-            Destroy(BasicUI.transform.GetChild(16).transform.GetChild(1).gameObject);
-            Destroy(BasicUI.transform.GetChild(16).transform.GetChild(0).gameObject);
+            BasicUI.transform.GetChild(20).gameObject.SetActive(true);
+            BasicUI.transform.GetChild(20).transform.GetChild(2).gameObject.SetActive(true);
+            Destroy(BasicUI.transform.GetChild(20).transform.GetChild(1).gameObject);
+            Destroy(BasicUI.transform.GetChild(20).transform.GetChild(0).gameObject);
 
             LightArrow.gameObject.SetActive(false);
             SilverArrow.gameObject.SetActive(false);

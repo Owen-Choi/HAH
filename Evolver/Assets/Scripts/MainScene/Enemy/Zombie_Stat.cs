@@ -99,52 +99,35 @@ public class Zombie_Stat : MonoBehaviour
     {
         Instantiate(Resources.Load("Zombie_Dead"), this.transform.position, this.transform.rotation);
 
-        dropNum = Random.Range(0, 2);
-        if (dropNum == 0)
-        {
             dropNum = Random.Range(0, 100);
+
             if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("MutantSample"))
                 Instantiate(Resources.Load("MutantSample"), this.transform.position, Quaternion.identity);
-            return;
-        }
-        else
-        {
-            // 다른 방법이 없어 어쩔 수 없이 확률이 낮은 순으로 한번씩 다 체크하는 시스템으로 코딩했다.
+        
+            
             dropNum = Random.Range(0, 100);
+
             if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("Medikit"))  //백팩 -> 인벤토리 순으로 접근
-            {
                 Instantiate(Resources.Load("Medikit"), this.transform.position, Quaternion.identity);
-                return;
-            }
 
             dropNum = Random.Range(0, 100);
             if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("StaminaPotion"))
-            {
                 Instantiate(Resources.Load("StaminaPotion"), this.transform.position, Quaternion.identity);
-                return;
-            }
 
             dropNum = Random.Range(0, 100);
             if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("Bandage"))
-            {
                 Instantiate(Resources.Load("Bandage"), this.transform.position, Quaternion.identity);
-                return;
-            }
 
             dropNum = Random.Range(0, 100);
             if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("Water"))
-            {
                 Instantiate(Resources.Load("Water"), this.transform.position, Quaternion.identity);
-                return;
-            }
             dropNum = Random.Range(0, 100);
             if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("Food"))
-            {
                 Instantiate(Resources.Load("Food"), this.transform.position, Quaternion.identity);
-                return;
-            }
-        }
-        return;
+            dropNum = Random.Range(0, 100);
+            if (dropNum < BackPackCache.GetComponent<BackPack>().GetDropPercent("Pill"))
+                Instantiate(Resources.Load("Pill"), this.transform.position, Quaternion.identity);
+            return;
     }
 
 }

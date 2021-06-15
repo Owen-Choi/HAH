@@ -38,7 +38,7 @@ public class ToShelter : MonoBehaviour
 
             GuideUICache.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.B))
             {
                 PlayerCache.layer = LayerMask.NameToLayer("PlayerInShelter");
                 PlayerCache.GetComponent<Player>().StopRadioActive();               //쉘터로 돌아가면 방사능 축적 종료

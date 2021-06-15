@@ -6,16 +6,14 @@ public class Lab : MonoBehaviour
 {
     float radius;
     public Text Require;
-    int require;    int DefaultRequire = 5;
     public Text MutantSampleCount;
     public GameObject BackPack;
 
     public GameObject GameManager;
     GameObject GMCache;
     void Start()
-    {
-        require = DefaultRequire;                   //씬 전환 시스템 개선 이전 코드 : 현재에는 관계 없음.                  
-        Require.text = require.ToString();
+    {                 
+        Require.text = "1";
         radius = 1;
         GMCache = GameManager;
     }
@@ -28,16 +26,11 @@ public class Lab : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (BackPack.GetComponent<BackPack>().GetItemCount("MutantSample") >= require)
+                if (BackPack.GetComponent<BackPack>().GetItemCount("MutantSample") >= 1)
                 {
                     Player_Stat.instance.Level++;
                     Player_Stat.instance.isLevelUp = true;
-                    BackPack.GetComponent<BackPack>().UseItem("MutantSample", require);
-                    //MutantSampleCount.text = BackPack.GetComponent<BackPack>().GetItemCount("MutantSample").ToString();
-                    require++;
-                    // #기존의 코드에서는 Lab 오브젝트에서 SkillChoose UI를 띄웠지만, 현재는 SkillChoose 스크립트에서 조정하는 것으로 변경하였다.
-                    //Require.text = require.ToString();
-                    Require.text = require.ToString();
+                    BackPack.GetComponent<BackPack>().UseItem("MutantSample", 1);
                     GMCache.GetComponent<Game_Manager>().SkillOpen = true;
                     Time.timeScale = 0;
                     //미리 만들어둔 버튼 프레임 3개에 스프라이트 경로 통해서 넣어주는 코드 작성하기

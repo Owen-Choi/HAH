@@ -7,7 +7,8 @@ public class ItemCollecter : MonoBehaviour
     int tempCount;
     public GameObject BasicUI;
     public GameObject BackPack;
-    private void Start()
+
+    /*private void Start()
     {
         if (SceneManager.GetActiveScene().name != "Shelter")
         {
@@ -15,8 +16,9 @@ public class ItemCollecter : MonoBehaviour
             BasicUI.GetComponent<ItemCounterForMapping>().BandageCount.text = BackPack.GetComponent<BackPack>().GetItemCount("Bandage").ToString();
             BasicUI.GetComponent<ItemCounterForMapping>().MedikitCount.text = BackPack.GetComponent<BackPack>().GetItemCount("Medikit").ToString();
             BasicUI.GetComponent<ItemCounterForMapping>().StaminaPotionCount.text = BackPack.GetComponent<BackPack>().GetItemCount("StaminaPotion").ToString();
+            
         }
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -56,6 +58,12 @@ public class ItemCollecter : MonoBehaviour
             if (other.gameObject.layer == LayerMask.NameToLayer("WaterItem"))
             {
                 BackPack.GetComponent<BackPack>().AddItem("Water", 1);
+            }
+
+            if(other.gameObject.layer == LayerMask.NameToLayer("Pill"))
+            {
+                BackPack.GetComponent<BackPack>().AddItem("Pill", 1);
+                BasicUI.GetComponent<ItemCounterForMapping>().PillCount.text = (int.Parse(BasicUI.GetComponent<ItemCounterForMapping>().PillCount.text) + 1).ToString();
             }
         }
     }
