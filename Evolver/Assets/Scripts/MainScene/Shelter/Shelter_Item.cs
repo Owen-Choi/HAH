@@ -6,9 +6,8 @@ public class Shelter_Item : MonoBehaviour
 {
     public Canvas DisplayLab;
     public Canvas DisplayPhysical_Lab;
-    Canvas DisplaySkill;                //구현 보류
+    public Text Current_Skills;
     public Canvas DisplayMap;
-    Canvas Displaysurvive;              //구현 보류
     public Canvas DisplayKitchen;
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -16,6 +15,7 @@ public class Shelter_Item : MonoBehaviour
         if (other.gameObject.tag == "Player" && this.gameObject.layer == LayerMask.NameToLayer("Lab"))
         {
             DisplayLab.gameObject.SetActive(true);                   //비활성화 되어있으면 못찾는 것 같은데.....?
+            Current_Skills.text = Player_Stat.instance.SkillLimit.ToString();
         }
         //Kitchen 오브젝트가 플레이어와 충돌했다면
         if (other.gameObject.tag == "Player" && this.gameObject.layer == LayerMask.NameToLayer("Kitchen"))

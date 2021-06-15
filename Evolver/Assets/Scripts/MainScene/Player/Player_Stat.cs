@@ -16,7 +16,7 @@ public class Player_Stat : MonoBehaviour
     public bool isNapalm2;
     public bool isLight;    public bool isSilver;   public bool isFire;
     public int Starvation;  public bool Starve1;    public bool Starve2;    public bool Starve3;   public float tempDMG;
-
+    public int SkillLimit;  public int ArmLimit;    public int LegLimit;    public int ChestLimit;  public int HeadLimit;
 
     void Awake()
     {
@@ -36,7 +36,7 @@ public class Player_Stat : MonoBehaviour
         DashTime = 0.4f;
         Burning_DMG = 7f;
         burningTime = 5f;
-        
+        SkillLimit = 0;
 
     }
 

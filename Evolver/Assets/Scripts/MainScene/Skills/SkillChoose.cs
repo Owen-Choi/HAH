@@ -71,6 +71,7 @@ public class SkillChoose : MonoBehaviour
         isPressed = true;
         Time.timeScale = 1;
         GMCache.GetComponent<Game_Manager>().SkillChosen = true;
+        Player_Stat.instance.SkillLimit++;
         SaveSystem.SaveStat();
         SaveSystem.SavePhysicalSkill();
         SaveSystem.SaveItem();
@@ -93,6 +94,7 @@ public class SkillChoose : MonoBehaviour
         isPressed = true;
         Time.timeScale = 1;
         GMCache.GetComponent<Game_Manager>().SkillChosen = true;
+        Player_Stat.instance.SkillLimit++;
         SaveSystem.SaveSkill();
         SaveSystem.SaveItem();
         SaveSystem.SaveStat();
@@ -115,6 +117,7 @@ public class SkillChoose : MonoBehaviour
         isPressed = true;
         Time.timeScale = 1;
         GMCache.GetComponent<Game_Manager>().SkillChosen = true;
+        Player_Stat.instance.SkillLimit++;
         SaveSystem.SaveSkill();
         SaveSystem.SaveItem();
         SaveSystem.SaveStat();

@@ -16,6 +16,7 @@ public class Physical_Part_Choose : MonoBehaviour
     public Canvas Arm;
     public Canvas Chest;
     public Canvas Head;
+    public Text Limit_Guide;
     // # 신체부위 버튼 2개 먼저 띄우기
     void Start()
     {
@@ -100,24 +101,44 @@ public class Physical_Part_Choose : MonoBehaviour
         {
             case 1:
                 {
+                    if(Player_Stat.instance.ArmLimit >= 10)
+                    {
+                        Limit_Guide.gameObject.SetActive(true);
+                        break;
+                    }
                     Physic_ChooseUI.gameObject.SetActive(false);
                     Arm.gameObject.SetActive(true);             //Leg_Skills UI에서 스킬 선정부터 적용까지 다 다뤄야할 것 같다. 버튼을 기준으로 더 이상 투자 가능한 스킬이 없으면 비워두는 형식으로 가자.
                     break;
                 }
             case 2:
                 {
+                    if (Player_Stat.instance.LegLimit >= 10)
+                    {
+                        Limit_Guide.gameObject.SetActive(true);
+                        break;
+                    }
                     Physic_ChooseUI.gameObject.SetActive(false);
                     Leg.gameObject.SetActive(true);
                     break;
                 }
             case 3:
                 {
+                    if (Player_Stat.instance.ChestLimit >= 10)
+                    {
+                        Limit_Guide.gameObject.SetActive(true);
+                        break;
+                    }
                     Physic_ChooseUI.gameObject.SetActive(false);
                     Chest.gameObject.SetActive(true);
                     break;
                 }
             case 4:
                 {
+                    if (Player_Stat.instance.HeadLimit >= 10)
+                    {
+                        Limit_Guide.gameObject.SetActive(true);
+                        break;
+                    }
                     Physic_ChooseUI.gameObject.SetActive(false);
                     Head.gameObject.SetActive(true);
                     break;
@@ -132,18 +153,38 @@ public class Physical_Part_Choose : MonoBehaviour
         switch (randNum2)
         {
             case 1:
+                if (Player_Stat.instance.ArmLimit >= 10)
+                {
+                    Limit_Guide.gameObject.SetActive(true);
+                    break;
+                }
                 Physic_ChooseUI.gameObject.SetActive(false);
                 Arm.gameObject.SetActive(true);
                 break;
             case 2:
+                if (Player_Stat.instance.LegLimit >= 10)
+                {
+                    Limit_Guide.gameObject.SetActive(true);
+                    break;
+                }
                 Physic_ChooseUI.gameObject.SetActive(false);
                 Leg.gameObject.SetActive(true);
                 break;
             case 3:
+                if (Player_Stat.instance.ChestLimit >= 10)
+                {
+                    Limit_Guide.gameObject.SetActive(true);
+                    break;
+                }
                 Physic_ChooseUI.gameObject.SetActive(false);
                 Chest.gameObject.SetActive(true);
                 break;
             case 4:
+                if (Player_Stat.instance.HeadLimit >= 10)
+                {
+                    Limit_Guide.gameObject.SetActive(true);
+                    break;
+                }
                 Physic_ChooseUI.gameObject.SetActive(false);
                 Head.gameObject.SetActive(true);
                 break;
