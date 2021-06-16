@@ -14,7 +14,7 @@ public class Lab : MonoBehaviour
     public GameObject Limit_Guide;
     void Start()
     {                 
-        Require.text = "1";
+        Require.text = "10";
         radius = 1;
         GMCache = GameManager;
     }
@@ -27,11 +27,11 @@ public class Lab : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (Player_Stat.instance.SkillLimit < 10 && BackPack.GetComponent<BackPack>().GetItemCount("MutantSample") >= 1)
+                if (Player_Stat.instance.SkillLimit < 10 && BackPack.GetComponent<BackPack>().GetItemCount("MutantSample") >= 10)
                 {
                     Player_Stat.instance.Level++;
                     Player_Stat.instance.isLevelUp = true;
-                    BackPack.GetComponent<BackPack>().UseItem("MutantSample", 1);
+                    BackPack.GetComponent<BackPack>().UseItem("MutantSample", 10);
                     GMCache.GetComponent<Game_Manager>().SkillOpen = true;
                     Time.timeScale = 0;
                     //미리 만들어둔 버튼 프레임 3개에 스프라이트 경로 통해서 넣어주는 코드 작성하기

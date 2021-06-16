@@ -130,7 +130,7 @@ public class Physical_Skill_Choose : MonoBehaviour
 
     public void FirstButtonPress()
     {
-        One.Selected = true;
+        
         if (Leg.gameObject.activeSelf)
         {
             Leg.gameObject.SetActive(false);
@@ -159,6 +159,7 @@ public class Physical_Skill_Choose : MonoBehaviour
             HeadCurrent.gameObject.SetActive(false);
             Player_Stat.instance.HeadLimit++;
         }
+        One.Selected = true;
         ForOne = false;
 
         Limitation.gameObject.SetActive(false);
@@ -173,7 +174,7 @@ public class Physical_Skill_Choose : MonoBehaviour
 
     public void SecondButtonPress()
     {
-        Two.Selected = true;
+        
         if (Leg.gameObject.activeSelf)
         {
             Leg.gameObject.SetActive(false);
@@ -202,6 +203,7 @@ public class Physical_Skill_Choose : MonoBehaviour
             HeadCurrent.gameObject.SetActive(false);
             Player_Stat.instance.HeadLimit++;
         }
+        Two.Selected = true;
         ForOne = false;
 
         Limitation.gameObject.SetActive(false);

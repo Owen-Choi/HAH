@@ -13,7 +13,7 @@ public class SkillChoose : MonoBehaviour
     Skill_Manager Two;
     Skill_Manager Three;
     public Sprite[] sprites;
-
+    public GameObject BackPack;
     public GameObject GameManager;
     GameObject GMCache;
     private void Start()
@@ -123,6 +123,19 @@ public class SkillChoose : MonoBehaviour
         SaveSystem.SaveStat();
         SaveSystem.SavePhysicalSkill();
     }
+
+    public void CancelButton()
+    {
+        BackPack.GetComponent<BackPack>().AddItem("MutantSample", 5);
+        SkillChooseUI.gameObject.SetActive(false);
+        GMCache.GetComponent<Game_Manager>().SkillChosen = true;
+        Time.timeScale = 1f;
+        SaveSystem.SaveSkill();
+        SaveSystem.SaveItem();
+        SaveSystem.SaveStat();
+        SaveSystem.SavePhysicalSkill();
+    }
+
     IEnumerator LevelUpDelay()                          //혹시 몰라 약간의 간격을 주기 위해 만들어 둔 딜레이
     {
         yield return new WaitForEndOfFrame();

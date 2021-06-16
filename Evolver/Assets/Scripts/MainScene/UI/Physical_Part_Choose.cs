@@ -17,6 +17,7 @@ public class Physical_Part_Choose : MonoBehaviour
     public Canvas Chest;
     public Canvas Head;
     public Text Limit_Guide;
+    public GameObject GameManager;
     // # 신체부위 버튼 2개 먼저 띄우기
     void Start()
     {
@@ -192,6 +193,17 @@ public class Physical_Part_Choose : MonoBehaviour
                 Debug.Log("Error in body part choose");
                 break;
         }
+    }
+
+    public void CancelButton()
+    {
+        Physic_ChooseUI.gameObject.SetActive(false);
+        GameManager.GetComponent<Game_Manager>().SkillChosen = true;
+        Time.timeScale = 1f;
+        SaveSystem.SavePhysicalSkill();
+        SaveSystem.SaveSkill();
+        SaveSystem.SaveStat();
+        SaveSystem.SaveItem();
     }
 
     IEnumerator Physical_LevelUp_Delay()
