@@ -215,6 +215,25 @@ public class Physical_Skill_Choose : MonoBehaviour
         SaveSystem.SaveStat();
         SaveSystem.SaveItem();
     }
+
+    public void CancelButton()
+    {
+        if (Leg.gameObject.activeSelf)
+            Leg.gameObject.SetActive(false);
+        else if (Arm.gameObject.activeSelf)
+            Arm.gameObject.SetActive(false);
+        else if (Chest.gameObject.activeSelf)
+            Chest.gameObject.SetActive(false);
+        else if (Head.gameObject.activeSelf)
+            Head.gameObject.SetActive(false);
+
+        GMCache.GetComponent<Game_Manager>().SkillChosen = true;
+        Time.timeScale = 1f;
+        SaveSystem.SavePhysicalSkill();
+        SaveSystem.SaveSkill();
+        SaveSystem.SaveStat();
+        SaveSystem.SaveItem();
+    }
     IEnumerator WaitForUpdate()
     {
         yield return new WaitForEndOfFrame();

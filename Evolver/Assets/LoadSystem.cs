@@ -51,6 +51,13 @@ public static class LoadSystem
         Player_Stat.instance.Starve2 = StatData.Starve2;
         Player_Stat.instance.Starve3 = StatData.Starve3;
         Player_Stat.instance.tempDMG = StatData.tempDMG;
+        Player_Stat.instance.SkillLimit = StatData.SkillLimit;
+        Player_Stat.instance.ArmLimit = StatData.ArmLimit;
+        Player_Stat.instance.LegLimit = StatData.LegLimit;
+        Player_Stat.instance.ChestLimit = StatData.ChestLimit;
+        Player_Stat.instance.HeadLimit = StatData.HeadLimit;
+
+
     }
 
     public static void LoadSkill()

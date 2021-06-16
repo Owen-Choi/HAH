@@ -20,6 +20,7 @@ public class PlayerData
     public bool Starve1;    public bool Starve2;    public bool Starve3;    public float tempDMG;   public int Starvation;
     // # 아이템 변수
     public int Bandage; public int Medikit; public int StaminaPotion;   public int MutantSample;    public int Food;    public int Water;
+    public int SkillLimit; public int ArmLimit; public int LegLimit; public int ChestLimit; public int HeadLimit;
 
     // # 스킬 변수
     //public Skill_Manager[] scripts;
@@ -81,6 +82,11 @@ public class PlayerData
         Starve2 = Player_Stat.instance.Starve2;
         Starve3 = Player_Stat.instance.Starve3;
         tempDMG = Player_Stat.instance.tempDMG;
+        SkillLimit = Player_Stat.instance.SkillLimit;
+        ArmLimit = Player_Stat.instance.ArmLimit;
+        LegLimit = Player_Stat.instance.LegLimit;
+        ChestLimit = Player_Stat.instance.ChestLimit;
+        HeadLimit = Player_Stat.instance.HeadLimit;
     }
 
     // # 여기서 얘한테 Skill_System_In_Map을 넘겨주어야 한다. 될까....?
