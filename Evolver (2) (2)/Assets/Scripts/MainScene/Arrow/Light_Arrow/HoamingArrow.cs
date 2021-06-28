@@ -6,7 +6,7 @@ public class HoamingArrow : MonoBehaviour
 {
     EdgeCollider2D EdgeCol;
     public bool Launched; float time;
-    float radius = 7f;
+    float radius = 15f;
     int layermask;
     bool forOnce;
     void Awake()

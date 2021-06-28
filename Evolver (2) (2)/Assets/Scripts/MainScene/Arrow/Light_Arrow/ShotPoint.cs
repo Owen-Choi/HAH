@@ -19,8 +19,8 @@ public class ShotPoint : MonoBehaviour
     Color activate; Color deActivate;
     float DMGCache;
 
-    [SerializeField]
-    bool tester;
+    
+    public bool tester;
     private void Awake()
     {
         LightArrowUI_Cache = LightArrowUI;
