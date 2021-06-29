@@ -10,12 +10,15 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
     TrailRenderer tr;  public float DMGPercent;  float First;    float Second;  public float DSC;
     public bool concen; public bool Long_range;   public int Immediate_Shot_Count;   public int ISCMax = 999; public bool ISCAble; //스킬 관련 변수들
     public bool isImmed;    float DMG;  float DMGForCrit;    GameObject temp;   public bool isFlash;    public bool isStalker;
-    bool isShoot;   public bool isSatisfying;   int layerMask;
+    bool isShoot;   public bool isSatisfying;   int layerMask;  Vector3 InitDest;   //scatter 관련 변수
 
     public GameObject SilverArrowUI;
+    public GameObject Player;
+    GameObject PlayerCache;
     GameObject SilverArrowUI_Cache; Color activate; Color DeActivate;
     private void Start()
     {
+        PlayerCache = Player;
         chargingDamage = Player_Stat.instance.Charge_Damage_Plus + 14;
         launchForce = Player_Stat.instance.launchForce;
         tr = GetComponent<TrailRenderer>();
@@ -111,9 +114,12 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
             isShoot = false;
         }
 
+        //새 스킬로 저장하기
         if (Input.GetKeyDown(KeyCode.C))
             StartCoroutine("SkillDelay");
 
+        if (Input.GetKeyDown(KeyCode.X))
+            Scatter();
     }
 
 
@@ -288,6 +294,125 @@ public class Silver_Arrow_ShotPoint : MonoBehaviour
         {
             ISCAble = true;
             TempDMG = increaseDamage;
+        }
+    }
+
+    public void Scatter()
+    {
+        Vector3 temp;
+
+        Vector3 calcTargetDirec(Vector3 StartPosition){
+            Vector3 difference = PlayerCache.transform.position - StartPosition;
+            difference.Normalize();
+            temp = difference;
+            float degree = Mathf.Atan2(difference.y, difference.x);
+            InitDest.z = 0.0f;
+            InitDest = Camera.main.ScreenToWorldPoint(InitDest);
+            InitDest = InitDest - StartPosition;
+            return InitDest;
+        }
+
+        Vector3 calcDegreeDirec(Vector3 StartPosition, Vector3 InitDest, float DG)
+        {
+            float degree = Mathf.Atan2(temp.y, temp.x) - DG;
+            InitDest.z = 0.0f;
+            InitDest = Camera.main.ScreenToWorldPoint(InitDest);
+            InitDest = InitDest - StartPosition;
+            InitDest.x = (float)2f * Mathf.Cos(degree);
+            InitDest.y = (float)2f * Mathf.Sin(degree);
+            return InitDest;
+        }
+
+        //shoot 함수에서 rayAll호출부만 뺀 코드
+        shootDirection = Input.mousePosition;
+        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+        difference.Normalize();
+
+
+        float degree = Mathf.Atan2(difference.y, difference.x);
+        shootDirection.z = 0.0f;
+        shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
+        shootDirection = shootDirection - transform.position;
+        //shootDirection.x = (float)2f * Mathf.Cos(degree);                       
+        //shootDirection.y = (float)2f * Mathf.Sin(degree);
+
+        GameObject new_Silver_Arrow = Instantiate(Resources.Load("Silver_Arrow"), transform.position, this.transform.rotation) as GameObject;
+        new_Silver_Arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (200f),
+           shootDirection.y * (200f));
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, shootDirection, MaxDist, layerMask);
+        Vector3 tempVec;
+                RaycastHit2D hit = hits[0];
+                Vector3 InitTarget = calcTargetDirec(hit.transform.position);
+                CustomRayAll(hit.transform.position, InitTarget);
+                tempVec = calcDegreeDirec(hit.transform.position, InitTarget, 0.36f);
+                CustomRayAll(hit.transform.position, tempVec);
+                tempVec = calcDegreeDirec(hit.transform.position, InitTarget, 0.72f);
+                CustomRayAll(hit.transform.position, tempVec);
+                tempVec = calcDegreeDirec(hit.transform.position, InitTarget, 1.08f);
+                CustomRayAll(hit.transform.position, tempVec);
+                tempVec = calcDegreeDirec(hit.transform.position, InitTarget, 1.44f);
+                CustomRayAll(hit.transform.position, tempVec);
+                tempVec = calcDegreeDirec(hit.transform.position, InitTarget, 1.8f);
+                CustomRayAll(hit.transform.position, tempVec);
+                tempVec = calcDegreeDirec(hit.transform.position, InitTarget, 2.16f);
+                CustomRayAll(hit.transform.position, tempVec);
+                tempVec = calcDegreeDirec(hit.transform.position, InitTarget, 2.52f);
+                CustomRayAll(hit.transform.position, tempVec);
+                tempVec = calcDegreeDirec(hit.transform.position, InitTarget, 2.88f);
+                CustomRayAll(hit.transform.position, tempVec);
+                tempVec = calcDegreeDirec(hit.transform.position, InitTarget, 3.24f);
+                CustomRayAll(hit.transform.position, tempVec);
+            
+    }
+
+    void CustomRayAll(Vector3 StartPosition, Vector3 TargetDirection)
+    {
+        GameObject new_Silver_Arrow = Instantiate(Resources.Load("Silver_Arrow"), StartPosition, this.transform.rotation) as GameObject;
+        new_Silver_Arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(TargetDirection.x * (200f),
+           TargetDirection.y * (200f));
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(StartPosition, TargetDirection, MaxDist, layerMask);
+        DMGPercent = 10f;
+        for (int i = 0; i < hits.Length; i++)
+        {
+            RaycastHit2D hit = hits[i];                                 
+            if (hit.transform.tag == "Enemy_Bug")
+                Destroy(hit.transform.gameObject);
+            if (DMGPercent > 0f)
+            {
+                /*if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy_Bug"))
+                    Destroy(hit.transform.parent.gameObject);
+
+                Vector3 vec = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, 0f);
+               
+                if (Random.Range(0, 100) < Player_Stat.instance.criticalPercent || Player_Stat.instance.AbsolCrit)
+                {                                                                           // +무기 색깔 바꾸기
+                    DMGForCrit = (TempDMG * (float)(0.1f * DMGPercent)) * (float)(Player_Stat.instance.criticalDamage * 0.01f);
+                    hit.transform.GetComponent<Zombie_Stat>().Health -= DMGForCrit;
+                    temp = Instantiate(Resources.Load("FloatingParentsForCrit"), vec, Quaternion.identity) as GameObject;
+                    temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMGForCrit.ToString();
+                }
+                else
+                {
+                    DMG = TempDMG * (float)(0.1f * DMGPercent);
+                    hit.transform.GetComponent<Zombie_Stat>().Health -= DMG;
+                    temp = Instantiate(Resources.Load("FloatingParents"), vec, Quaternion.identity) as GameObject;
+                    temp.transform.GetChild(0).GetComponent<TextMesh>().text = DMG.ToString();
+                }
+                DMGPercent -= 1f;
+
+                if (this.isSatisfying)
+                {
+                    Player_Stat.instance.stamina++;
+                }*/
+                Vector3 vec = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.5f, 0f);
+                hit.transform.GetComponent<Zombie_Stat>().Health -= 50;
+                temp = Instantiate(Resources.Load("FloatingParents"), vec, Quaternion.identity) as GameObject;
+                temp.transform.GetChild(0).GetComponent<TextMesh>().text = "50";
+            }
+
         }
     }
 
