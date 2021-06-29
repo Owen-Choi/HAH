@@ -102,11 +102,13 @@ public class Middle_Left_ShotPoint : MonoBehaviour
             newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + increaseLaunchForce),
                shootDirection.y * (launchForce + increaseLaunchForce));
             newArrow.GetComponent<LightArrow_For_Crit>().Launched = true;
-
+            
+            // # 짧은 시간에 연산이 많아 코드가 실행이 안되는 경우가 있다. 사격점 마다 로컬변수를 만들어 체크하는 것이 나은 듯 하다.
             if (ShotPointCache.GetComponent<ShotPoint>().tester)
             {
                 StartCoroutine("HoamingDelay");
             }
+        
         }
 
         else
@@ -148,6 +150,11 @@ public class Middle_Left_ShotPoint : MonoBehaviour
             newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
                shootDirection.y * (launchForce + tempLaunchForce));
             newArrow.GetComponent<LightArrow_For_Crit>().Launched = true;
+
+            if (ShotPointCache.GetComponent<ShotPoint>().tester)
+            {
+                StartCoroutine("HoamingDelay");
+            }
         }
 
         else

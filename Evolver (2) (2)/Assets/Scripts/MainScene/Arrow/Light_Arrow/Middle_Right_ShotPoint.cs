@@ -148,6 +148,11 @@ public class Middle_Right_ShotPoint : MonoBehaviour
             newArrow.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * (launchForce + tempLaunchForce),
                shootDirection.y * (launchForce + tempLaunchForce));
             newArrow.GetComponent<LightArrow_For_Crit>().Launched = true;
+
+            if (ShotPointCache.GetComponent<ShotPoint>().tester)
+            {
+                StartCoroutine("HoamingDelay");
+            }
         }
 
         else
