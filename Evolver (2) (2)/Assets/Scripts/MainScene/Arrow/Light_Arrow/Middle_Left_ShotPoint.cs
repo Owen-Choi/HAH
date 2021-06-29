@@ -174,6 +174,7 @@ public class Middle_Left_ShotPoint : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         GameObject hoaming = Instantiate(HoamingArrow, transform.position, this.transform.rotation);
         hoaming.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x, shootDirection.y);
+        hoaming.GetComponent<HoamingArrow>().Launched = true;
     }
 
 }

@@ -172,5 +172,6 @@ public class Full_Left_ShotPoint : MonoBehaviour
         yield return new WaitForSeconds(1f);
         GameObject hoaming = Instantiate(HoamingArrow, transform.position, this.transform.rotation);
         hoaming.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x, shootDirection.y);
+        hoaming.GetComponent<HoamingArrow>().Launched = true;
     }
 }
