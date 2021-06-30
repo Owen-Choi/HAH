@@ -1,0 +1,16 @@
+#folder
+.vs/
+Library/
+Logs/
+obj/
+Packages/
+ProjectSettings/
+Unity-Game-making/
+UserSettings/
+Assets/Animations/
+Assets/Install Bolt/
+Assets/Ludiq
+Assets/Scenes/
+Assets/Sprite/
+Assets/Tilemap/
+
